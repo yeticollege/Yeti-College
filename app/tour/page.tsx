@@ -138,7 +138,7 @@ export default function VirtualTourPage() {
                       className="object-cover"
                       priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
                     {/* Floating Overlay Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
@@ -287,11 +287,11 @@ export default function VirtualTourPage() {
               </div>
 
               {/* Bottom CTA Card */}
-              <div className="p-8 rounded-[2rem] bg-primary text-primary-foreground relative overflow-hidden group cursor-pointer">
+              <div className="p-8 h-64 rounded-[2rem]  bg-primary text-primary-foreground relative overflow-hidden group cursor-pointer">
                 {/* Decorative Circle */}
                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
 
-                <div className="relative z-10">
+                <div className="relative z-10 ">
                   <div className="flex items-center gap-3 mb-4 text-primary-foreground/80">
                     <MapPin className="w-5 h-5" />
                     <span className="text-sm font-bold uppercase tracking-wider">
@@ -303,7 +303,7 @@ export default function VirtualTourPage() {
                   </h3>
                   <Button
                     variant="secondary"
-                    className="w-full h-14 rounded-xl text-base font-bold shadow-lg"
+                    className="w-full h-14  rounded-xl text-base font-bold shadow-lg"
                   >
                     Schedule Campus Visit
                   </Button>
