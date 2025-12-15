@@ -18,7 +18,7 @@ const TEAM = [
     name: "Chandan Kushwaha",
     role: "Backend",
     image: "/chandan.jpg", // ⚠️ Replace with actual path
-    link: "https://github.com/Chandan-kushwaha01",
+    link: "https://infochandan.vercel.app",
     badge: null,
   },
 ];
