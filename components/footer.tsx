@@ -142,7 +142,7 @@ export default function Footer() {
               Terms of Use
             </Link> */}
             <Link href="/about/team/dev" className="hover:text-zinc-400">
-              Devs
+              Devlopers
             </Link>
           </div>
 
