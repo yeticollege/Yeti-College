@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  role String  @default("USER")
+}
+
+model Blogs {
+id         Int     @id @default(autoincrement())
+title      String
+excerpt    String
+author     String
+//create defalut date as now
+date  DateTime @default(now())
+readTime   String
+category   String
+image      String
+}
+
+model Events {
+  id          Int      @id @default(autoincrement())
+  title       String
+  date        DateTime
+  category    String
+  description String
+  location    String
+  time        String
+  accent      String @default("bg-[#0057FF]")
+  textAccent  String @default("text-[#0057FF]")
+}
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
