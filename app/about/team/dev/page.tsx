@@ -12,7 +12,7 @@ const TEAM = [
     role: "Frontend",
     image: "/sumit.jpg", // ⚠️ Replace with actual path
     link: "https://sumit.info.np",
-    badge: "Lead developer",
+    // badge: "Lead developer",
   },
   {
     name: "Chandan Kushwaha",
