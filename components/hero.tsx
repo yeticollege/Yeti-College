@@ -406,7 +406,7 @@ const VideoCarousel = () => {
           ))}
         </div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/30 sm:via-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30 sm:via-black/60 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent md:hidden pointer-events-none" />
       <div className="absolute bottom-8 right-8 flex gap-3 z-20">
         {SLIDES.map((_, index) => (
