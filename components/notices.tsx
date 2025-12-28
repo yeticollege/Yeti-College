@@ -1,12 +1,30 @@
-"use client";
+// components/notice-snippet.tsx
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
-import { noticesData, MediaThumbnail } from "@/app/notices/page";
+import { prisma } from "@/lib/prisma"; // Ensure you have this configured
+import { MediaThumbnail } from "@/components/media-thumbnail";
 
-export default function NoticeSnippet() {
-  // Grab top 3 notices
-  const latestNotices = noticesData.slice(0, 3);
+export default async function NoticeSnippet() {
+  // 1. Fetch top 3 notices from the database
+  const rawNotices = await prisma.notice.findMany({
+    take: 3,
+    orderBy: {
+      date: "desc",
+    },
+  });
+
+  // 2. Format the data for the UI
+  const notices = rawNotices.map((notice) => ({
+    ...notice,
+    // Format date nicely (e.g., "Nov 22, 2025")
+    formattedDate: notice.date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+    accent: notice.accent || "bg-zinc-500", // Fallback color
+  }));
 
   return (
     <section className="w-full py-16 px-4 bg-white">
@@ -32,7 +50,7 @@ export default function NoticeSnippet() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {latestNotices.map((notice) => (
+          {notices.map((notice) => (
             <Link href="/notices" key={notice.id} className="block h-full">
               <div className="group h-full bg-zinc-50 rounded-[2.5rem] p-3 border border-zinc-100 hover:border-zinc-300 hover:shadow-2xl transition-all duration-500 flex flex-col">
                 {/* 1. Media Preview Area (Large) */}
@@ -56,7 +74,7 @@ export default function NoticeSnippet() {
                   <div className="flex items-center gap-2 text-zinc-400 mb-3">
                     <Calendar className="w-4 h-4" />
                     <span className="text-xs font-bold uppercase tracking-wider">
-                      {notice.date}
+                      {notice.formattedDate}
                     </span>
                   </div>
 

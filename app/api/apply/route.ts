@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import nodemailer from "nodemailer";
 
 // type definitions remain the same
@@ -68,15 +68,22 @@ async function generatePdfBuffer(body: Body) {
       doc.rect(0, 0, 595.28, 90).fill(colors.primary);
 
       // 2. College Title
-      doc.fillColor("white").fontSize(20).font("Helvetica-Bold")
-         .text("YETI INTERNATIONAL COLLEGE", 40, 30);
-      
-      doc.fontSize(10).font("Helvetica")
-         .text("ADMISSION APPLICATION FORM", 40, 58);
+      doc
+        .fillColor("white")
+        .fontSize(20)
+        .font("Helvetica-Bold")
+        .text("YETI INTERNATIONAL COLLEGE", 40, 30);
+
+      doc
+        .fontSize(10)
+        .font("Helvetica")
+        .text("ADMISSION APPLICATION FORM", 40, 58);
 
       // 3. Application ID / Date (Top Right overlay on blue)
       const dateStr = new Date().toLocaleDateString("en-GB", {
-        day: "2-digit", month: "short", year: "numeric"
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
       });
       doc.text(`Date: ${dateStr}`, 400, 30, { align: "right" });
       doc.text(`Status: Pending`, 400, 45, { align: "right" });
@@ -92,15 +99,28 @@ async function generatePdfBuffer(body: Body) {
       const photoY = 110;
 
       // Draw Photo Placeholder/Frame
-      doc.rect(photoX, photoY, photoWidth, photoHeight).strokeColor(colors.secondary).lineWidth(1).stroke();
-      doc.fillColor(colors.secondary).fontSize(8)
-         .text("PHOTO", photoX, photoY + 60, { width: photoWidth, align: "center" });
+      doc
+        .rect(photoX, photoY, photoWidth, photoHeight)
+        .strokeColor(colors.secondary)
+        .lineWidth(1)
+        .stroke();
+      doc
+        .fillColor(colors.secondary)
+        .fontSize(8)
+        .text("PHOTO", photoX, photoY + 60, {
+          width: photoWidth,
+          align: "center",
+        });
 
       // Try to render actual photo
       if (body.photo?.data) {
         try {
           const photoBuf = bufferFromBase64(body.photo.data);
-          doc.image(photoBuf, photoX, photoY, { fit: [photoWidth, photoHeight], align: "center", valign: "center" });
+          doc.image(photoBuf, photoX, photoY, {
+            fit: [photoWidth, photoHeight],
+            align: "center",
+            valign: "center",
+          });
         } catch (e) {
           // Keep placeholder if fail
         }
@@ -108,19 +128,33 @@ async function generatePdfBuffer(body: Body) {
 
       // --- SECTION 1: PERSONAL DETAILS ---
       // We limit the text width to 380 so it doesn't hit the photo
-      const textMaxWidth = 380; 
+      const textMaxWidth = 380;
 
-      doc.fillColor(colors.primary).fontSize(14).font("Helvetica-Bold")
-         .text("PERSONAL DETAILS", 40, yPos);
-      
+      doc
+        .fillColor(colors.primary)
+        .fontSize(14)
+        .font("Helvetica-Bold")
+        .text("PERSONAL DETAILS", 40, yPos);
+
       doc.rect(40, yPos + 18, textMaxWidth, 2).fill(colors.accent); // Underline
       yPos += 35;
 
-      const drawField = (label: string, value: string, x: number, y: number) => {
-        doc.fillColor(colors.secondary).fontSize(9).font("Helvetica-Bold")
-           .text(label.toUpperCase(), x, y);
-        doc.fillColor(colors.text).fontSize(11).font("Helvetica")
-           .text(value || "N/A", x, y + 12);
+      const drawField = (
+        label: string,
+        value: string,
+        x: number,
+        y: number
+      ) => {
+        doc
+          .fillColor(colors.secondary)
+          .fontSize(9)
+          .font("Helvetica-Bold")
+          .text(label.toUpperCase(), x, y);
+        doc
+          .fillColor(colors.text)
+          .fontSize(11)
+          .font("Helvetica")
+          .text(value || "N/A", x, y + 12);
       };
 
       // Row 1
@@ -136,13 +170,16 @@ async function generatePdfBuffer(body: Body) {
       // Row 3
       drawField("Date of Birth", body.dob, 40, yPos);
       drawField("Address", body.address, 220, yPos);
-      
+
       // Move past the photo area now
-      yPos = Math.max(yPos + 50, 260); 
+      yPos = Math.max(yPos + 50, 260);
 
       // --- SECTION 2: ACADEMIC DETAILS ---
-      doc.fillColor(colors.primary).fontSize(14).font("Helvetica-Bold")
-         .text("ACADEMIC BACKGROUND", 40, yPos);
+      doc
+        .fillColor(colors.primary)
+        .fontSize(14)
+        .font("Helvetica-Bold")
+        .text("ACADEMIC BACKGROUND", 40, yPos);
       doc.rect(40, yPos + 18, 515, 2).fill(colors.accent); // Full width underline
       yPos += 35;
 
@@ -158,41 +195,75 @@ async function generatePdfBuffer(body: Body) {
 
       // --- SECTION 3: DECLARATION ---
       doc.rect(40, yPos, 515, 80).fill(colors.accent); // Gray box
-      doc.fillColor(colors.primary).fontSize(10).font("Helvetica-Bold")
-         .text("DECLARATION", 50, yPos + 15);
-      doc.fillColor(colors.text).fontSize(9).font("Helvetica")
-         .text(
-           "I hereby declare that the information provided above is true and correct to the best of my knowledge. I understand that any incorrect information may lead to the rejection of my application.",
-           50, yPos + 35, { width: 495 }
-         );
-      
-      // --- FOOTER PAGE 1 ---
-      doc.fontSize(8).fillColor(colors.secondary)
-         .text("Generated by Yeti International College Portal", 40, 780, { align: "center" });
+      doc
+        .fillColor(colors.primary)
+        .fontSize(10)
+        .font("Helvetica-Bold")
+        .text("DECLARATION", 50, yPos + 15);
+      doc
+        .fillColor(colors.text)
+        .fontSize(9)
+        .font("Helvetica")
+        .text(
+          "I hereby declare that the information provided above is true and correct to the best of my knowledge. I understand that any incorrect information may lead to the rejection of my application.",
+          50,
+          yPos + 35,
+          { width: 495 }
+        );
 
+      // --- FOOTER PAGE 1 ---
+      doc
+        .fontSize(8)
+        .fillColor(colors.secondary)
+        .text("Generated by Yeti International College Portal", 40, 780, {
+          align: "center",
+        });
 
       // --- HELPER FOR APPENDIX PAGES ---
-      const addAttachmentPage = (title: string, dataStr: string, index: number) => {
+      const addAttachmentPage = (
+        title: string,
+        dataStr: string,
+        index: number
+      ) => {
         if (!dataStr) return;
         try {
           const buf = bufferFromBase64(dataStr);
           doc.addPage();
-          
+
           // Header Bar
           doc.rect(0, 0, 595.28, 50).fill(colors.accent);
-          doc.fillColor(colors.primary).fontSize(12).font("Helvetica-Bold")
-             .text(`APPENDIX ${index}:  ${title.toUpperCase()}`, 0, 20, { align: "center" });
+          doc
+            .fillColor(colors.primary)
+            .fontSize(12)
+            .font("Helvetica-Bold")
+            .text(`APPENDIX ${index}:  ${title.toUpperCase()}`, 0, 20, {
+              align: "center",
+            });
 
           // Draw Border for Image Area
-          doc.rect(40, 70, 515, 700).strokeColor(colors.border).lineWidth(2).stroke();
+          doc
+            .rect(40, 70, 515, 700)
+            .strokeColor(colors.border)
+            .lineWidth(2)
+            .stroke();
 
           // Image
-          doc.image(buf, 42, 72, { fit: [511, 696], align: "center", valign: "center" });
+          doc.image(buf, 42, 72, {
+            fit: [511, 696],
+            align: "center",
+            valign: "center",
+          });
 
           // Footer
-          doc.fontSize(8).fillColor(colors.secondary)
-             .text(`Document: ${title} - Applicant: ${body.firstName} ${body.lastName}`, 40, 780, { align: "center" });
-
+          doc
+            .fontSize(8)
+            .fillColor(colors.secondary)
+            .text(
+              `Document: ${title} - Applicant: ${body.firstName} ${body.lastName}`,
+              40,
+              780,
+              { align: "center" }
+            );
         } catch (e) {
           console.error(`Error rendering ${title}`, e);
         }
@@ -201,7 +272,7 @@ async function generatePdfBuffer(body: Body) {
       // --- GENERATE ATTACHMENTS ---
       // Note: Photo is already on Page 1, so we don't print it again unless desired.
       // We print the other docs as full-page appendices.
-      
+
       const attachments = [
         { label: "Marksheet / Transcript", data: body.marksheet?.data },
         { label: "Character Certificate", data: body.character?.data },
@@ -241,14 +312,28 @@ export async function POST(req: Request) {
 
     // Validate required fields
     const required = [
-      "firstName", "lastName", "email", "phone", "dob", "address",
-      "courseId", "gpa", "prevInstitute", "board",
-      "marksheet", "character", "citizenship", "photo",
+      "firstName",
+      "lastName",
+      "email",
+      "phone",
+      "dob",
+      "address",
+      "courseId",
+      "gpa",
+      "prevInstitute",
+      "board",
+      "marksheet",
+      "character",
+      "citizenship",
+      "photo",
     ];
 
     for (const key of required) {
       if (!((body as any)[key] || (body as any)[key] === 0)) {
-        return NextResponse.json({ error: `${key} is required.` }, { status: 400 });
+        return NextResponse.json(
+          { error: `${key} is required.` },
+          { status: 400 }
+        );
       }
     }
 
@@ -294,10 +379,13 @@ export async function POST(req: Request) {
           subject: `New Application: ${body.firstName} ${body.lastName}`,
           text: `Application received for ${body.courseId}. See attached PDF.`,
           attachments: [
-            { filename: `Application_${body.firstName}.pdf`, content: pdfBuffer },
+            {
+              filename: `Application_${body.firstName}.pdf`,
+              content: pdfBuffer,
+            },
           ],
         });
-        
+
         console.log("Email sent for", app.id);
       } catch (bgErr) {
         console.error("Background error:", bgErr);
@@ -307,6 +395,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, application: app }, { status: 201 });
   } catch (err: any) {
     console.error("Apply API error:", err);
-    return NextResponse.json({ error: err?.message || "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: err?.message || "Server error" },
+      { status: 500 }
+    );
   }
 }

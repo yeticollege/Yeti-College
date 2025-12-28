@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 type Body = {
@@ -17,14 +17,11 @@ export async function POST(req: Request) {
     const { firstName, lastName, email, subject, message } = body || {};
 
     // Basic validation: all fields required
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !subject ||
-      !message
-    ) {
-      return NextResponse.json({ error: "All fields are required." }, { status: 400 });
+    if (!firstName || !lastName || !email || !subject || !message) {
+      return NextResponse.json(
+        { error: "All fields are required." },
+        { status: 400 }
+      );
     }
 
     // Save to database
@@ -59,7 +56,10 @@ export async function POST(req: Request) {
       text: `You have a new enquiry from ${firstName} ${lastName} <${email}>\n\nSubject: ${subject}\n\nMessage:\n${message}`,
       html: `<p>You have a new enquiry from <strong>${firstName} ${lastName}</strong> &lt;${email}&gt;</p>
              <p><strong>Subject:</strong> ${subject}</p>
-             <p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>`,
+             <p><strong>Message:</strong><br/>${message.replace(
+               /\n/g,
+               "<br/>"
+             )}</p>`,
     };
 
     // Try to send mail but don't fail the whole request if email sending fails.
@@ -74,6 +74,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, contact, mailError }, { status: 201 });
   } catch (err: any) {
     console.error("Contact API error:", err);
-    return NextResponse.json({ error: err?.message || "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: err?.message || "Server error" },
+      { status: 500 }
+    );
   }
 }

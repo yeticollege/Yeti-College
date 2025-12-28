@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__ca7a5010._.js")
+R.c("server/chunks/ssr/a3711_next_dist_fcb3ec13._.js")
+R.c("server/chunks/ssr/a3711_next_dist_esm_build_templates_app-page_0e589e4b.js")
+R.c("server/chunks/ssr/[root-of-the-server]__df62144c._.js")
+R.c("server/chunks/ssr/a3711_next_dist_ef8df9ef._.js")
+R.c("server/chunks/ssr/a3711_next_dist_6b88ee06._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__48d6dacf._.js")
+R.c("server/chunks/ssr/a3711_next_dist_client_components_d2cbe8f9._.js")
+R.c("server/chunks/ssr/a3711_next_dist_client_components_builtin_forbidden_3987e5f5.js")
+R.c("server/chunks/ssr/Yeti-College__next-internal_server_app__not-found_page_actions_29c21e84.js")
+R.m(69042)
+module.exports=R.m(69042).exports

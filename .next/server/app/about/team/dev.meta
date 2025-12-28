@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/about/layout,_N_T_/about/team/layout,_N_T_/about/team/dev/layout,_N_T_/about/team/dev/page,_N_T_/about/team/dev"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/about/team/dev/__PAGE__",
+    "/about/team/dev",
+    "/about/team",
+    "/about",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -426,60 +426,37 @@ const VideoCarousel = () => {
 };
 
 // --- Component: Event Card (FIXED) ---
+// --- Component: Event Card (FIXED) ---
 const EventCard = ({
   constraintsRef,
 }: {
   constraintsRef: React.RefObject<any>;
 }) => {
-  const [events, setEvents] = useState<
-    {
-      id: number;
-      title: string;
-      date?: string;
-      time?: string;
-      location?: string;
-    }[]
-  >([]);
+  const [event, setEvent] = useState<{
+    id: number;
+    title: string;
+    date: string;
+    time: string;
+    location: string;
+  } | null>(null);
 
   useEffect(() => {
-    let mounted = true;
-    // Dynamically import the events file
-    import("@/public/data/events")
-      .then((mod) => {
-        // Access the named export 'events' which is an array
-        const rawEvents = mod.events || [];
+    async function fetchEvent() {
+      try {
+        const res = await fetch("/api/events/upcoming");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
 
-        // Map the array to our state structure
-        const list = rawEvents.map((e: any) => ({
-          id: e.id,
-          title: e.title,
-          date: e.date,
-          time: e.time,
-          location: e.location,
-        }));
+        if (data && data.length > 0) {
+          setEvent(data[0]);
+        }
+      } catch (err) {
+        console.error("Failed to load upcoming event:", err);
+      }
+    }
 
-        if (!mounted) return;
-
-        // Sort by date
-        list.sort((a: any, b: any) => {
-          const da = a.date ? new Date(a.date).getTime() : Infinity;
-          const db = b.date ? new Date(b.date).getTime() : Infinity;
-          return da - db;
-        });
-
-        setEvents(list);
-      })
-      .catch((err) => {
-        console.error("Failed to load events:", err);
-        if (!mounted) return;
-        setEvents([]);
-      });
-    return () => {
-      mounted = false;
-    };
+    fetchEvent();
   }, []);
-
-  const next = events.length > 0 ? events[0] : null;
 
   const formatMonthDay = (iso?: string) => {
     if (!iso) return { mon: "TBD", day: "--" };
@@ -504,7 +481,7 @@ const EventCard = ({
       </div>
       <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 to-purple-500" />
       <div className="p-5 bg-black/40">
-        {next ? (
+        {event ? (
           <>
             <div className="flex justify-between items-start mb-4">
               <div className="flex flex-col">
@@ -512,15 +489,15 @@ const EventCard = ({
                   Upcoming Event
                 </span>
                 <h3 className="text-xl font-bold text-white line-clamp-2">
-                  {next.title}
+                  {event.title}
                 </h3>
               </div>
               <div className="bg-white/10 rounded-lg p-2 text-center min-w-[60px]">
                 <span className="block text-xs uppercase text-slate-400 font-bold">
-                  {formatMonthDay(next.date).mon}
+                  {formatMonthDay(event.date).mon}
                 </span>
                 <span className="block text-xl font-bold text-white">
-                  {formatMonthDay(next.date).day}
+                  {formatMonthDay(event.date).day}
                 </span>
               </div>
             </div>
@@ -528,20 +505,9 @@ const EventCard = ({
             <div className="flex items-center gap-2 text-slate-300 text-sm mb-4">
               <Icons.Clock />
               <span>
-                {next.time ?? "Time TBA"} • {next.location ?? "Location TBA"}
+                {event.time ?? "Time TBA"} • {event.location ?? "Location TBA"}
               </span>
             </div>
-
-            {/* <button
-              onPointerDownCapture={(e) => e.stopPropagation()}
-              className="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-bold border border-white/5 transition-colors"
-              onClick={() => {
-                // Using ID for URL since your data doesn't have slugs
-                window.location.href = `/events/${next.id}`;
-              }}
-            >
-              Reserve Spot
-            </button> */}
           </>
         ) : (
           <div className="text-center py-8">

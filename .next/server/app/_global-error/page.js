@@ -1,0 +1,10 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__a398dd12._.js")
+R.c("server/chunks/ssr/a3711_next_dist_fcb3ec13._.js")
+R.c("server/chunks/ssr/a3711_next_dist_66d69896._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__df62144c._.js")
+R.c("server/chunks/ssr/a3711_next_dist_ef8df9ef._.js")
+R.c("server/chunks/ssr/a3711_next_dist_6b88ee06._.js")
+R.c("server/chunks/ssr/Yeti-College__next-internal_server_app__global-error_page_actions_2a60709a.js")
+R.m(18856)
+module.exports=R.m(18856).exports

@@ -101,7 +101,7 @@ export default function ApplicationPage() {
       formData.firstName.trim().length > 0,
       formData.lastName.trim().length > 0,
       /^\S+@\S+\.\S+$/.test(formData.email), // Email Regex
-      formData.phone.trim().length >= 10,    // Phone min length
+      formData.phone.trim().length >= 10, // Phone min length
       formData.dob !== "",
       formData.address.trim().length > 0,
       formData.courseId !== "",
@@ -181,14 +181,36 @@ export default function ApplicationPage() {
         });
 
       // Safe checks for TS
-      if (!files.marksheet || !files.character || !files.citizenship || !files.photo) throw new Error("Files missing");
+      if (
+        !files.marksheet ||
+        !files.character ||
+        !files.citizenship ||
+        !files.photo
+      )
+        throw new Error("Files missing");
 
       const payload = {
         ...formData,
-        marksheet: { name: files.marksheet.name, type: files.marksheet.type, data: await fileToBase64(files.marksheet) },
-        character: { name: files.character.name, type: files.character.type, data: await fileToBase64(files.character) },
-        citizenship: { name: files.citizenship.name, type: files.citizenship.type, data: await fileToBase64(files.citizenship) },
-        photo: { name: files.photo.name, type: files.photo.type, data: await fileToBase64(files.photo) },
+        marksheet: {
+          name: files.marksheet.name,
+          type: files.marksheet.type,
+          data: await fileToBase64(files.marksheet),
+        },
+        character: {
+          name: files.character.name,
+          type: files.character.type,
+          data: await fileToBase64(files.character),
+        },
+        citizenship: {
+          name: files.citizenship.name,
+          type: files.citizenship.type,
+          data: await fileToBase64(files.citizenship),
+        },
+        photo: {
+          name: files.photo.name,
+          type: files.photo.type,
+          data: await fileToBase64(files.photo),
+        },
       };
 
       const res = await fetch("/api/apply", {
@@ -310,9 +332,12 @@ export default function ApplicationPage() {
                           onClick={() => {
                             setFormData({ ...formData, courseId: course.id });
                             setErrors((prev) => ({ ...prev, courseId: "" }));
-                            const personalSection = document.getElementById("personal");
+                            const personalSection =
+                              document.getElementById("personal");
                             if (personalSection) {
-                              personalSection.scrollIntoView({ behavior: "smooth" });
+                              personalSection.scrollIntoView({
+                                behavior: "smooth",
+                              });
                             }
                           }}
                           className={cn(
@@ -521,10 +546,7 @@ export default function ApplicationPage() {
 
               {/* 04. DOCUMENTS */}
               <motion.section variants={itemVariants} id="documents">
-                <SectionLabel
-                  number="04"
-                  title="Documents"
-                />
+                <SectionLabel number="04" title="Documents" />
                 <div className="grid md:grid-cols-2 gap-6">
                   {(
                     ["marksheet", "character", "citizenship", "photo"] as const
@@ -534,7 +556,9 @@ export default function ApplicationPage() {
                       id={key}
                       label={key.charAt(0).toUpperCase() + key.slice(1)}
                       file={files[key]}
-                      setFile={(f) => setFiles((prev) => ({ ...prev, [key]: f }))}
+                      setFile={(f) =>
+                        setFiles((prev) => ({ ...prev, [key]: f }))
+                      }
                     />
                   ))}
                 </div>
@@ -544,18 +568,22 @@ export default function ApplicationPage() {
             {/* RIGHT SIDEBAR - STICKY SUMMARY */}
             <aside className="lg:col-span-4">
               <div className="sticky top-32 space-y-6">
-
                 {/* STATUS BAR CARD */}
                 <div className="mb-4">
                   <div className="flex justify-between items-end mb-2">
-                    <span className="text-sm font-bold text-muted-foreground">Application Progress</span>
-                    <span className="text-sm font-bold text-primary">{Math.round(formStatus.progress)}%</span>
+                    <span className="text-sm font-bold text-muted-foreground">
+                      Application Progress
+                    </span>
+                    <span className="text-sm font-bold text-primary">
+                      {Math.round(formStatus.progress)}%
+                    </span>
                   </div>
                   <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${formStatus.progress}%` }}
-                      className={cn("h-full rounded-full transition-all duration-500",
+                      className={cn(
+                        "h-full rounded-full transition-all duration-500",
                         formStatus.isValid ? "bg-green-500" : "bg-primary"
                       )}
                     />
@@ -573,10 +601,19 @@ export default function ApplicationPage() {
                       <br />
                       Application
                     </h3>
-                    <div className={cn("w-10 h-10 rounded-full flex items-center justify-center transition-colors",
-                      formStatus.isValid ? "bg-green-500 text-white" : "bg-background/10 text-background"
-                    )}>
-                      {formStatus.isValid ? <CheckCircle2 className="w-5 h-5" /> : <FileText className="w-5 h-5" />}
+                    <div
+                      className={cn(
+                        "w-10 h-10 rounded-full flex items-center justify-center transition-colors",
+                        formStatus.isValid
+                          ? "bg-green-500 text-white"
+                          : "bg-background/10 text-background"
+                      )}
+                    >
+                      {formStatus.isValid ? (
+                        <CheckCircle2 className="w-5 h-5" />
+                      ) : (
+                        <FileText className="w-5 h-5" />
+                      )}
                     </div>
                   </div>
 
@@ -631,7 +668,8 @@ export default function ApplicationPage() {
 
                     {!formStatus.isValid && (
                       <div className="mt-4 text-center text-[10px] text-background/50 font-mono uppercase tracking-widest">
-                        {formStatus.totalCount - formStatus.filledCount} Fields Remaining
+                        {formStatus.totalCount - formStatus.filledCount} Fields
+                        Remaining
                       </div>
                     )}
                   </div>
@@ -794,7 +832,7 @@ function DocumentUpload({
   id,
   file,
   setFile,
-  error
+  error,
 }: {
   label: string;
   id: string;
@@ -815,10 +853,11 @@ function DocumentUpload({
       onClick={() => !file && inputRef.current?.click()}
       className={cn(
         "relative h-48 rounded-3xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center overflow-hidden",
-        error ? "border-red-500 bg-red-500/5" :
-          file
-            ? "bg-green-500/5 border-green-500/50"
-            : "border-border hover:border-primary/50 hover:bg-primary/5 cursor-pointer"
+        error
+          ? "border-red-500 bg-red-500/5"
+          : file
+          ? "bg-green-500/5 border-green-500/50"
+          : "border-border hover:border-primary/50 hover:bg-primary/5 cursor-pointer"
       )}
     >
       <input
@@ -872,10 +911,25 @@ function DocumentUpload({
             animate={{ opacity: 1 }}
             className="flex flex-col items-center"
           >
-            <div className={cn("w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-border group-hover:scale-110 transition-transform", error ? "bg-red-100" : "bg-muted")}>
-              <Upload className={cn("w-6 h-6", error ? "text-red-500" : "text-muted-foreground")} />
+            <div
+              className={cn(
+                "w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-border group-hover:scale-110 transition-transform",
+                error ? "bg-red-100" : "bg-muted"
+              )}
+            >
+              <Upload
+                className={cn(
+                  "w-6 h-6",
+                  error ? "text-red-500" : "text-muted-foreground"
+                )}
+              />
             </div>
-            <span className={cn("text-sm font-bold", error ? "text-red-500" : "text-foreground")}>
+            <span
+              className={cn(
+                "text-sm font-bold",
+                error ? "text-red-500" : "text-foreground"
+              )}
+            >
               {error ? error : label}
             </span>
             <span className="text-xs text-muted-foreground/60 mt-2 font-medium">

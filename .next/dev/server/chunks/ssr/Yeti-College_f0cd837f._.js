@@ -6758,9 +6758,7 @@ __turbopack_context__.s([
     "MediaThumbnail",
     ()=>MediaThumbnail,
     "default",
-    ()=>NoticesPage,
-    "noticesData",
-    ()=>noticesData
+    ()=>NoticesClient
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
@@ -6772,7 +6770,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modu
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$external$2d$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ExternalLink$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/external-link.js [app-ssr] (ecmascript) <export default as ExternalLink>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/calendar.js [app-ssr] (ecmascript) <export default as Calendar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript) <export default as Search>");
-// Assuming you have these components, otherwise replace with simple divs
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$header$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/header.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/footer.tsx [app-ssr] (ecmascript)");
 "use client";
@@ -6782,40 +6779,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$component
 ;
 ;
 ;
-const noticesData = [
-    {
-        id: 1,
-        title: "New Course Structure of BCA 2025 Batch",
-        date: "2025-11-22",
-        category: "Academic",
-        description: "The final course for the Spring 2025 semester has been published. Please check for your update",
-        mediaType: "pdf",
-        mediaUrl: "https://portal.tu.edu.np/downloads/BCA_Syllabus-compressed_compre_2024_01_30_18_33_22.pdf",
-        accent: "bg-rose-600"
-    },
-    // {
-    //   id: 2,
-    //   title: "Campus Renovation Progress",
-    //   date: "2025-11-22",
-    //   category: "Administrative",
-    //   description:
-    //     "See the progress on the new library wing. Construction is expected to finish by July.",
-    //   mediaType: "image",
-    //   mediaUrl:
-    //     "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000&auto=format&fit=crop",
-    //   accent: "bg-blue-600",
-    // },
-    {
-        id: 3,
-        title: "Udhauli Festival / Yomari punhe Holiday",
-        date: "2025-12-4",
-        category: "Holiday",
-        description: "The campus will remain closed on December 4th.",
-        mediaType: "image",
-        mediaUrl: "/bida.png",
-        accent: "bg-amber-500"
-    }
-];
 const MediaThumbnail = ({ type, url, className = "" })=>{
     if (type === "image" && url) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6826,12 +6789,12 @@ const MediaThumbnail = ({ type, url, className = "" })=>{
                 className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 94,
+                lineNumber: 43,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-            lineNumber: 93,
+            lineNumber: 42,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -6845,28 +6808,28 @@ const MediaThumbnail = ({ type, url, className = "" })=>{
                         className: "w-full h-1.5 bg-zinc-100 rounded-full"
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 109,
+                        lineNumber: 58,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "w-2/3 h-1.5 bg-zinc-100 rounded-full"
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 110,
+                        lineNumber: 59,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "w-full h-1.5 bg-zinc-100 rounded-full mt-2"
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 111,
+                        lineNumber: 60,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "w-full h-1.5 bg-zinc-100 rounded-full"
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 112,
+                        lineNumber: 61,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6874,18 +6837,18 @@ const MediaThumbnail = ({ type, url, className = "" })=>{
                         children: "PDF"
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 113,
+                        lineNumber: 62,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 108,
+                lineNumber: 57,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-            lineNumber: 105,
+            lineNumber: 54,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -6898,24 +6861,23 @@ const MediaThumbnail = ({ type, url, className = "" })=>{
                 className: "w-5 h-5"
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 127,
+                lineNumber: 76,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-            lineNumber: 126,
+            lineNumber: 75,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-        lineNumber: 123,
+        lineNumber: 72,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
-function NoticesPage() {
+function NoticesClient({ initialNotices }) {
     const [selectedNotice, setSelectedNotice] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [filterCategory, setFilterCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("All");
-    // 1. New Search State
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (selectedNotice) {
@@ -6926,12 +6888,18 @@ function NoticesPage() {
     }, [
         selectedNotice
     ]);
-    // 2. Updated Filtering Logic
-    const filteredNotices = noticesData.filter((n)=>{
-        const matchesCategory = filterCategory === "All" || n.category === filterCategory;
-        const matchesSearch = n.title.toLowerCase().includes(searchQuery.toLowerCase()) || n.description.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
-    });
+    // Filtering Logic using useMemo for performance
+    const filteredNotices = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
+        return initialNotices.filter((n)=>{
+            const matchesCategory = filterCategory === "All" || n.category === filterCategory;
+            const matchesSearch = n.title.toLowerCase().includes(searchQuery.toLowerCase()) || n.description.toLowerCase().includes(searchQuery.toLowerCase());
+            return matchesCategory && matchesSearch;
+        });
+    }, [
+        initialNotices,
+        filterCategory,
+        searchQuery
+    ]);
     const categories = [
         "All",
         "Administrative",
@@ -6943,7 +6911,7 @@ function NoticesPage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$header$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 166,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -6967,7 +6935,7 @@ function NoticesPage() {
                                                         "Official",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                            lineNumber: 177,
+                                                            lineNumber: 130,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6975,13 +6943,13 @@ function NoticesPage() {
                                                             children: "Notices."
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                            lineNumber: 178,
+                                                            lineNumber: 131,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 175,
+                                                    lineNumber: 128,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6989,13 +6957,13 @@ function NoticesPage() {
                                                     children: "Stay updated with the latest announcements."
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 133,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 174,
+                                            lineNumber: 127,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7007,12 +6975,12 @@ function NoticesPage() {
                                                         className: "h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 transition-colors"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                        lineNumber: 188,
+                                                        lineNumber: 141,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 187,
+                                                    lineNumber: 140,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -7023,13 +6991,13 @@ function NoticesPage() {
                                                     className: "w-full pl-11 pr-4 py-4 bg-white border border-zinc-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent shadow-sm transition-all"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 190,
+                                                    lineNumber: 143,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 186,
+                                            lineNumber: 139,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7042,17 +7010,17 @@ function NoticesPage() {
                                                         children: cat
                                                     }, cat, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                        lineNumber: 203,
+                                                        lineNumber: 156,
                                                         columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 201,
+                                                lineNumber: 154,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 153,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7065,7 +7033,7 @@ function NoticesPage() {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                            lineNumber: 220,
+                                                            lineNumber: 174,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7073,13 +7041,13 @@ function NoticesPage() {
                                                             children: "Filter by Category"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                            lineNumber: 221,
+                                                            lineNumber: 175,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 219,
+                                                    lineNumber: 173,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7093,35 +7061,35 @@ function NoticesPage() {
                                                                     className: "w-2 h-2 rounded-full bg-blue-600"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                    lineNumber: 237,
+                                                                    lineNumber: 192,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, cat, true, {
                                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                            lineNumber: 227,
+                                                            lineNumber: 181,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 225,
+                                                    lineNumber: 179,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 172,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 125,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                lineNumber: 171,
+                                lineNumber: 124,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7135,7 +7103,7 @@ function NoticesPage() {
                                                 children: "Recent Updates"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 249,
+                                                lineNumber: 204,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7146,13 +7114,13 @@ function NoticesPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 207,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 248,
+                                        lineNumber: 203,
                                         columnNumber: 15
                                     }, this),
                                     filteredNotices.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7162,7 +7130,7 @@ function NoticesPage() {
                                                 className: "w-12 h-12 mb-4 opacity-20"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 260,
+                                                lineNumber: 215,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -7170,7 +7138,7 @@ function NoticesPage() {
                                                 children: "No notices found"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 261,
+                                                lineNumber: 216,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -7178,7 +7146,7 @@ function NoticesPage() {
                                                 children: "Try adjusting your search or filter."
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 262,
+                                                lineNumber: 217,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -7190,13 +7158,13 @@ function NoticesPage() {
                                                 children: "Clear all filters"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 265,
+                                                lineNumber: 220,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 259,
+                                        lineNumber: 214,
                                         columnNumber: 17
                                     }, this) : filteredNotices.map((notice)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                                             onClick: ()=>setSelectedNotice(notice),
@@ -7214,7 +7182,7 @@ function NoticesPage() {
                                                                 })
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                lineNumber: 285,
+                                                                lineNumber: 240,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7222,13 +7190,13 @@ function NoticesPage() {
                                                                 children: new Date(notice.date).getDate()
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                lineNumber: 290,
+                                                                lineNumber: 245,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                        lineNumber: 284,
+                                                        lineNumber: 239,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MediaThumbnail, {
@@ -7237,7 +7205,7 @@ function NoticesPage() {
                                                         className: "w-24 h-24 sm:w-32 sm:h-auto rounded-2xl border border-zinc-100 shrink-0"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                        lineNumber: 296,
+                                                        lineNumber: 251,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7250,7 +7218,7 @@ function NoticesPage() {
                                                                         className: `w-2 h-2 rounded-full ${notice.accent}`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                        lineNumber: 305,
+                                                                        lineNumber: 260,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7258,7 +7226,7 @@ function NoticesPage() {
                                                                         children: notice.category
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                        lineNumber: 308,
+                                                                        lineNumber: 263,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7268,20 +7236,20 @@ function NoticesPage() {
                                                                                 className: "w-3 h-3"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                                lineNumber: 313,
+                                                                                lineNumber: 268,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             notice.date
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                        lineNumber: 312,
+                                                                        lineNumber: 267,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                lineNumber: 304,
+                                                                lineNumber: 259,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -7289,7 +7257,7 @@ function NoticesPage() {
                                                                 children: notice.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                lineNumber: 318,
+                                                                lineNumber: 273,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -7297,13 +7265,13 @@ function NoticesPage() {
                                                                 children: notice.description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                                lineNumber: 322,
+                                                                lineNumber: 277,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                        lineNumber: 303,
+                                                        lineNumber: 258,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7312,50 +7280,50 @@ function NoticesPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                            lineNumber: 329,
+                                                            lineNumber: 284,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                        lineNumber: 328,
+                                                        lineNumber: 283,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 237,
                                                 columnNumber: 21
                                             }, this)
                                         }, notice.id, false, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 277,
+                                            lineNumber: 232,
                                             columnNumber: 19
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                lineNumber: 247,
+                                lineNumber: 202,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 169,
+                        lineNumber: 122,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                    lineNumber: 168,
+                    lineNumber: 121,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 167,
+                lineNumber: 120,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 339,
+                lineNumber: 294,
                 columnNumber: 7
             }, this),
             selectedNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7366,7 +7334,7 @@ function NoticesPage() {
                         onClick: ()=>setSelectedNotice(null)
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 345,
+                        lineNumber: 300,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7380,12 +7348,12 @@ function NoticesPage() {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                    lineNumber: 372,
+                                    lineNumber: 327,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                lineNumber: 368,
+                                lineNumber: 323,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7399,7 +7367,7 @@ function NoticesPage() {
                                                 children: selectedNotice.category
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 378,
+                                                lineNumber: 333,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7407,13 +7375,13 @@ function NoticesPage() {
                                                 children: selectedNotice.date
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 383,
+                                                lineNumber: 338,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 377,
+                                        lineNumber: 332,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -7421,7 +7389,7 @@ function NoticesPage() {
                                         children: selectedNotice.title
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 388,
+                                        lineNumber: 343,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -7429,7 +7397,7 @@ function NoticesPage() {
                                         children: selectedNotice.description
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 392,
+                                        lineNumber: 347,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7444,25 +7412,25 @@ function NoticesPage() {
                                                     className: "w-4 h-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                    lineNumber: 404,
+                                                    lineNumber: 359,
                                                     columnNumber: 21
                                                 }, this),
                                                 " Download Attachment"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 398,
+                                            lineNumber: 353,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 396,
+                                        lineNumber: 351,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                lineNumber: 376,
+                                lineNumber: 331,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7475,12 +7443,12 @@ function NoticesPage() {
                                             className: "w-6 h-6"
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                            lineNumber: 417,
+                                            lineNumber: 372,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 413,
+                                        lineNumber: 368,
                                         columnNumber: 15
                                     }, this),
                                     selectedNotice.mediaType === "image" && selectedNotice.mediaUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -7489,7 +7457,7 @@ function NoticesPage() {
                                         className: "w-full h-full object-cover md:object-contain md:rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 423,
+                                        lineNumber: 378,
                                         columnNumber: 17
                                     }, this) : selectedNotice.mediaType === "pdf" && selectedNotice.mediaUrl ? // PDF Viewer
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7501,20 +7469,20 @@ function NoticesPage() {
                                                 title: "PDF Viewer"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 432,
+                                                lineNumber: 387,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "md:hidden absolute inset-0 bg-transparent pointer-events-none"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 437,
+                                                lineNumber: 392,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 431,
+                                        lineNumber: 386,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "text-zinc-500 flex flex-col items-center text-center",
@@ -7523,7 +7491,7 @@ function NoticesPage() {
                                                 className: "w-16 h-16 opacity-20 mb-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 441,
+                                                lineNumber: 396,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -7531,31 +7499,31 @@ function NoticesPage() {
                                                 children: "No Preview Available"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                                lineNumber: 442,
+                                                lineNumber: 397,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                        lineNumber: 440,
+                                        lineNumber: 395,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                                lineNumber: 411,
+                                lineNumber: 366,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                        lineNumber: 351,
+                        lineNumber: 306,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Yeti-College/app/notices/page.tsx",
-                lineNumber: 343,
+                lineNumber: 298,
                 columnNumber: 9
             }, this)
         ]
