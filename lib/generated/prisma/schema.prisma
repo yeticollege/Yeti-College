@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Notice {
+  id          Int      @id @default(autoincrement())
+  title       String
+  date        DateTime
+  category    String // Administrative, Academic, etc.
+  description String
+  mediaType   String // pdf, image, none
+  mediaUrl    String? // Optional field (represented by ?)
+  accent      String
+  createdAt   DateTime @default(now())
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  excerpt   String
+  author    String
+  date      DateTime
+  readTime  String
+  category  String
+  image     String
+  createdAt DateTime @default(now())
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  date        DateTime
+  category    String
+  description String
+  location    String
+  time        String
+  accent      String
+  textAccent  String
+  createdAt   DateTime @default(now())
+}
+
+model GalleryItem {
+  id        Int      @id @default(autoincrement())
+  type      String // "video" | "image"
+  src       String
+  poster    String?
+  title     String
+  category  String
+  year      String
+  width     Int
+  height    Int
+  createdAt DateTime @default(now())
+}

@@ -1,4 +1,55 @@
-node_modules
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Next.js build output
+/.next/
+/out/
+
+# Production build
+/build
+
+# Environment variables
 .env
-/lib/generated/prisma
-.vercel
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TypeScript
+*.tsbuildinfo
+
+# ESLint cache
+.eslintcache
+
+# Turbopack
+.turbo/
+
+# Prisma
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# Coverage
+/coverage
+vercel
+# Optional: lockfiles (KEEP ONE, ignore others if needed)
+# yarn.lock
+# package-lock.json
+# pnpm-lock.yaml
