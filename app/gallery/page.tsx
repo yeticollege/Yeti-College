@@ -1,39 +1,41 @@
-// app/gallery/page.tsx
 import { prisma } from "@/lib/prisma";
-import SwissGallery from "./gallery-client"; // Importing the client component below
+import SwissGallery from "./gallery-client";
 
-// Define the shape of data we expect from DB to match UI types
-interface GalleryItem {
-  id: number;
-  type: string; // Prisma returns string, UI expects "video" | "image"
-  src: string;
-  poster: string | null;
-  title: string;
-  category: string;
-  year: string;
-  width: number;
-  height: number;
-}
-
-export const dynamic = "force-dynamic"; // Ensure fresh data on every request (optional)
+// This helps Next.js not cache the data too aggressively
+export const dynamic = "force-dynamic";
 
 export default async function GalleryPage() {
+  console.log("Fetching gallery items...");
+
   // 1. Fetch data from Database
   const rawItems = await prisma.galleryItem.findMany({
     orderBy: {
-      id: "desc", // Latest items first
+      id: "desc",
     },
   });
 
-  // 2. Transform/Validate data if necessary to match Client Types
-  // (Casting here assumes your seeded data matches your UI Enum strictly)
+  console.log(`Found ${rawItems.length} items`);
+
+  // 2. Transform data for the Client
   const items = rawItems.map((item) => ({
-    ...item,
-    type: item.type as "video" | "image",
-    category: item.category,
-    poster: item.poster || undefined, // Handle null vs undefined
+    id: item.id,
+
+    // --- CRITICAL FIX HERE ---
+    // The DB calls it 'imageUrl', but your UI calls it 'src'.
+    src: item.imageUrl,
+    // ------------------------
+
+    // Handle the rest
+    type: (item.type as "video" | "image") || "image",
+    poster: item.poster || undefined,
+    title: item.title,
+    category: item.category || "All",
+    year: item.year || "2024",
+    // Ensure we have numbers for width/height (defaults provided just in case)
+    width: item.width || 1000,
+    height: item.height || 1000,
   }));
 
-  // 3. Pass data to Client Component
+  // 3. Render
   return <SwissGallery initialItems={items} />;
 }

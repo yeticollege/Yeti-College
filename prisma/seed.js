@@ -19,7 +19,7 @@ const pool = new Pool({
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
-// --- DATA DEFINITIONS ---
+// --- 2. DATA DEFINITIONS ---
 
 const noticesData = [
   {
@@ -44,7 +44,6 @@ const noticesData = [
   },
 ];
 
-// 1. The Featured Post Data
 const featuredPostData = {
   title: "The Renaissance of Analog: Why Print Matters in a Digital Age",
   excerpt:
@@ -60,7 +59,6 @@ const featuredPostData = {
   trending: false,
 };
 
-// 2. The Standard Posts
 const postsData = [
   {
     title: "EU Proposes New AI Regulations to Protect Privacy",
@@ -444,6 +442,8 @@ const galleryItemsData = [
     title: "Urban Verticality",
     category: "Architecture",
     year: "2023",
+    description:
+      "A stunning view of modern skyscrapers reaching into the sky, showcasing innovative architectural designs in urban environments.",
     width: 1000,
     height: 1500,
   },
@@ -479,23 +479,25 @@ const galleryItemsData = [
   },
 ];
 
+// --- 3. EXECUTION ---
+
 async function main() {
   console.log("Start seeding...");
 
   try {
     // 1. CLEAR EXISTING DATA
-    // We add 'await' to ensure tables are cleared before refilling
+    // We explicitly delete many to clear tables before refilling.
     await prisma.galleryItem.deleteMany();
     await prisma.event.deleteMany();
     await prisma.post.deleteMany();
     await prisma.notice.deleteMany();
 
-    // 2. SEED NOTICES (Fixed the 'pris111ma' typo here)
+    // 2. SEED NOTICES
     for (const notice of noticesData) {
       await prisma.notice.create({ data: notice });
     }
 
-    // 3. SEED FEATURED POST (Added this step!)
+    // 3. SEED FEATURED POST
     await prisma.post.create({ data: featuredPostData });
 
     // 4. SEED STANDARD POSTS
@@ -505,16 +507,32 @@ async function main() {
       });
     }
 
-    // 5. SEED EVENTS
+    // 5. SEED EVENTS (FIXED)
+    // We do NOT pass 'time' or 'textAccent' because they don't exist in Schema
     for (const event of eventsData) {
       await prisma.event.create({
-        data: { ...event, date: new Date(event.date) },
+        data: {
+          title: event.title,
+          description: event.description,
+          date: new Date(event.date),
+          location: event.location,
+          category: event.category,
+          accent: event.accent,
+        },
       });
     }
 
-    // 6. SEED GALLERY
+    // 6. SEED GALLERY (FIXED)
+    // We map 'src' -> 'imageUrl' and IGNORE width/height/year/type/poster
     for (const item of galleryItemsData) {
-      await prisma.galleryItem.create({ data: item });
+      await prisma.galleryItem.create({
+        data: {
+          title: item.title,
+          imageUrl: item.src,
+          category: item.category,
+          // description is optional, defaulting to null if not provided
+        },
+      });
     }
 
     console.log("Seeding finished.");

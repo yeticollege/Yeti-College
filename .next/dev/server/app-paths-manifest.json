@@ -1,8 +1,6 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/chat-context/route": "app/api/chat-context/route.js",
-  "/api/events/upcoming/route": "app/api/events/upcoming/route.js",
-  "/contact/page": "app/contact/page.js",
-  "/page": "app/page.js",
-  "/programs/[slug]/page": "app/programs/[slug]/page.js"
+  "/events/page": "app/events/page.js",
+  "/gallery/page": "app/gallery/page.js",
+  "/notices/page": "app/notices/page.js"
 }
