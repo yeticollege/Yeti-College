@@ -91,3 +91,4 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 [00:29:33.321] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
 [00:29:33.321] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/notices","route":"/notices"}
 [00:29:33.321] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notices color: rgb(120, 120, 120) color: inherit {"dp":"/notices","o":"http://localhost:3000/notices","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766996858962}
+[00:33:10.051] Server  LOG     ✓ Compiled in 999ms
