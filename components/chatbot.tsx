@@ -250,7 +250,7 @@ const ContactCard = () => (
         <User className="w-5 h-5" />
       </div>
       <div>
-        <h3 className="text-white font-bold text-sm">Admissions Counselor</h3>
+        <h3 className="text-white font-bold text-sm">Academic Counselor</h3>
         <p className="text-zinc-400 text-xs flex items-center gap-1">
           <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />{" "}
           Available Now
@@ -265,7 +265,7 @@ const ContactCard = () => (
         <div className="flex items-center gap-3">
           <Phone className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 transition" />
           <span className="text-zinc-300 text-xs font-medium">
-            +977-1-446578
+            +977 1-4792063
           </span>
         </div>
         <span className="text-[10px] bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded">
@@ -279,7 +279,7 @@ const ContactCard = () => (
         <div className="flex items-center gap-3">
           <Mail className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 transition" />
           <span className="text-zinc-300 text-xs font-medium">
-            info@yeti.edu.np
+            info@yeticollege.edu.np
           </span>
         </div>
         <span className="text-[10px] bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded">
@@ -287,14 +287,14 @@ const ContactCard = () => (
         </span>
       </a>
       <a
-        href="https://maps.google.com"
+        href="https://maps.app.goo.gl/bvkVRGqQNLGgJY6n8"
         target="_blank"
         className="flex items-center justify-between p-3 bg-zinc-900/50 rounded-xl hover:bg-zinc-700/50 transition border border-zinc-800 group"
       >
         <div className="flex items-center gap-3">
           <MapPin className="w-4 h-4 text-zinc-400 group-hover:text-blue-400 transition" />
           <span className="text-zinc-300 text-xs font-medium">
-            Baneshwor, Kathmandu
+            Buddhanagar, New-Baneshwor, Kathmandu
           </span>
         </div>
         <span className="text-[10px] bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded">
@@ -627,7 +627,7 @@ export default function YetiChatbot() {
               </p>
               <p className="text-zinc-400 text-xs">Baneshwor, Kathmandu</p>
               <a
-                href="https://maps.google.com"
+                href="https://maps.app.goo.gl/bvkVRGqQNLGgJY6n8"
                 target="_blank"
                 className="text-blue-400 text-xs font-bold mt-2 block hover:underline"
               >

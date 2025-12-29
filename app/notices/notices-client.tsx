@@ -2,19 +2,9 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import { Card } from "@/components/ui/card";
-import {
-  FileText,
-  Download,
-  X,
-  Filter,
-  ExternalLink,
-  Calendar,
-  Search,
-} from "lucide-react";
+import { Download, X, Filter, Search } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-// Make sure MediaThumbnail is imported correctly.
-// Ideally, move MediaThumbnail to its own file in /components/
 import { MediaThumbnail } from "@/components/media-thumbnail";
 
 // --- Types ---
@@ -30,14 +20,12 @@ export type Notice = {
 };
 
 interface NoticesClientProps {
-  initialNotices?: Notice[]; // Make optional
+  initialNotices?: Notice[];
 }
 
 export default function NoticesClient({
   initialNotices = [],
 }: NoticesClientProps) {
-  // ^^^ ADDED DEFAULT VALUE = [] TO PREVENT CRASH
-
   const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
   const [filterCategory, setFilterCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -50,17 +38,37 @@ export default function NoticesClient({
     }
   }, [selectedNotice]);
 
+  // --- HELPER 1: Strip HTML for the Preview Card ---
+  // Removes tags so the card shows clean, short text.
+  const stripHtml = (html: string) => {
+    if (!html) return "";
+    let text = html.replace(/<br\s*\/?>/gi, " ").replace(/<\/p>/gi, " ");
+    text = text.replace(/<[^>]+>/g, "");
+    text = text.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&");
+    return text.trim();
+  };
+
+  // --- HELPER 2: Prepare HTML for the Modal ---
+  // Keeps the bold/paragraph tags, but replaces &nbsp; with normal spaces
+  // so the text can wrap automatically.
+  const prepareHtmlForDisplay = (html: string) => {
+    if (!html) return "";
+    // Replace non-breaking spaces with normal spaces to allow wrapping
+    return html.replace(/&nbsp;/g, " ");
+  };
+
   const filteredNotices = useMemo(() => {
-    // Safety check
     if (!initialNotices) return [];
 
     return initialNotices.filter((n) => {
       const matchesCategory =
         filterCategory === "All" || n.category === filterCategory;
 
+      const plainDescription = stripHtml(n.description).toLowerCase();
+
       const matchesSearch =
         n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        n.description.toLowerCase().includes(searchQuery.toLowerCase());
+        plainDescription.includes(searchQuery.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
@@ -74,8 +82,6 @@ export default function NoticesClient({
       <section className="min-h-screen bg-[#F2F2F2] text-zinc-900 py-6 md:py-12 px-4 md:px-8 font-sans">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* ... KEEP YOUR EXISTING JSX ... */}
-
             {/* Sidebar / Topbar */}
             <div className="lg:col-span-4 space-y-6">
               <div className="lg:sticky lg:top-8 space-y-6">
@@ -200,11 +206,12 @@ export default function NoticesClient({
                             {notice.category}
                           </span>
                         </div>
-                        <h3 className="text-base sm:text-xl font-bold text-zinc-900 line-clamp-2 leading-tight group-hover:text-blue-700 transition-colors mb-1">
+                        <h3 className="text-base sm:text-xl font-bold text-zinc-900 line-clamp-2 leading-tight group-hover:text-blue-700 transition-colors mb-1 break-words">
                           {notice.title}
                         </h3>
-                        <p className="text-zinc-500 text-xs sm:text-sm line-clamp-2 pr-2">
-                          {notice.description}
+                        {/* Preview text stripped of HTML */}
+                        <p className="text-zinc-500 text-xs sm:text-sm line-clamp-2 pr-2 break-words">
+                          {stripHtml(notice.description)}
                         </p>
                       </div>
                     </div>
@@ -235,17 +242,30 @@ export default function NoticesClient({
               <X className="w-5 h-5" />
             </button>
             <div className="order-2 md:order-1 flex-1 md:w-1/3 bg-zinc-50 p-6 md:p-10 border-r border-zinc-100 flex flex-col overflow-y-auto">
-              <h2 className="text-2xl font-bold mb-4">
+              <h2 className="text-2xl font-bold mb-4 break-words">
                 {selectedNotice.title}
               </h2>
-              <p className="text-zinc-600 mb-8">{selectedNotice.description}</p>
+
+              {/* 
+                UPDATES for Formatting:
+                1. prepareHtmlForDisplay() swaps &nbsp; for spaces.
+                2. 'break-words' CSS class ensures text wraps.
+                3. custom selectors [&>p] style the paragraphs.
+              */}
+              <div
+                className="text-zinc-600 mb-8 text-sm md:text-base leading-relaxed space-y-4 break-words [&>p]:min-h-[1em] [&>strong]:text-zinc-900 [&>strong]:font-bold"
+                dangerouslySetInnerHTML={{
+                  __html: prepareHtmlForDisplay(selectedNotice.description),
+                }}
+              />
+
               {selectedNotice.mediaUrl && (
                 <a
                   href={selectedNotice.mediaUrl}
                   target="_blank"
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-zinc-900 text-white font-bold"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-zinc-900 text-white font-bold mt-auto"
                 >
-                  <Download className="w-4 h-4" /> Download
+                  <Download className="w-4 h-4" /> Download Attachment
                 </a>
               )}
             </div>
@@ -260,12 +280,14 @@ export default function NoticesClient({
                 <img
                   src={selectedNotice.mediaUrl}
                   className="object-contain w-full h-full"
+                  alt="Notice attachment"
                 />
               )}
               {selectedNotice.mediaType === "pdf" && (
                 <iframe
                   src={selectedNotice.mediaUrl}
                   className="w-full h-full bg-white"
+                  title="PDF Viewer"
                 />
               )}
             </div>

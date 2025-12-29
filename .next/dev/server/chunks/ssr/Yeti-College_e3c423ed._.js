@@ -2109,8 +2109,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modu
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/search.js [app-ssr] (ecmascript) <export default as Search>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$header$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/header.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/footer.tsx [app-ssr] (ecmascript)");
-// Make sure MediaThumbnail is imported correctly.
-// Ideally, move MediaThumbnail to its own file in /components/
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$media$2d$thumbnail$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/media-thumbnail.tsx [app-ssr] (ecmascript)");
 "use client";
 ;
@@ -2121,7 +2119,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$component
 ;
 ;
 function NoticesClient({ initialNotices = [] }) {
-    // ^^^ ADDED DEFAULT VALUE = [] TO PREVENT CRASH
     const [selectedNotice, setSelectedNotice] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [filterCategory, setFilterCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("All");
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
@@ -2134,12 +2131,29 @@ function NoticesClient({ initialNotices = [] }) {
     }, [
         selectedNotice
     ]);
+    // --- HELPER 1: Strip HTML for the Preview Card ---
+    // Removes tags so the card shows clean, short text.
+    const stripHtml = (html)=>{
+        if (!html) return "";
+        let text = html.replace(/<br\s*\/?>/gi, " ").replace(/<\/p>/gi, " ");
+        text = text.replace(/<[^>]+>/g, "");
+        text = text.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&");
+        return text.trim();
+    };
+    // --- HELPER 2: Prepare HTML for the Modal ---
+    // Keeps the bold/paragraph tags, but replaces &nbsp; with normal spaces
+    // so the text can wrap automatically.
+    const prepareHtmlForDisplay = (html)=>{
+        if (!html) return "";
+        // Replace non-breaking spaces with normal spaces to allow wrapping
+        return html.replace(/&nbsp;/g, " ");
+    };
     const filteredNotices = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        // Safety check
         if (!initialNotices) return [];
         return initialNotices.filter((n)=>{
             const matchesCategory = filterCategory === "All" || n.category === filterCategory;
-            const matchesSearch = n.title.toLowerCase().includes(searchQuery.toLowerCase()) || n.description.toLowerCase().includes(searchQuery.toLowerCase());
+            const plainDescription = stripHtml(n.description).toLowerCase();
+            const matchesSearch = n.title.toLowerCase().includes(searchQuery.toLowerCase()) || plainDescription.includes(searchQuery.toLowerCase());
             return matchesCategory && matchesSearch;
         });
     }, [
@@ -2158,7 +2172,7 @@ function NoticesClient({ initialNotices = [] }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$header$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                lineNumber: 73,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2182,7 +2196,7 @@ function NoticesClient({ initialNotices = [] }) {
                                                         "Official",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                            lineNumber: 85,
+                                                            lineNumber: 91,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2190,13 +2204,13 @@ function NoticesClient({ initialNotices = [] }) {
                                                             children: "Notices."
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                            lineNumber: 86,
+                                                            lineNumber: 92,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                    lineNumber: 83,
+                                                    lineNumber: 89,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2204,13 +2218,13 @@ function NoticesClient({ initialNotices = [] }) {
                                                     children: "Stay updated with the latest announcements."
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                    lineNumber: 88,
+                                                    lineNumber: 94,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 82,
+                                            lineNumber: 88,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2222,12 +2236,12 @@ function NoticesClient({ initialNotices = [] }) {
                                                         className: "h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 transition-colors"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                        lineNumber: 95,
+                                                        lineNumber: 101,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 100,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2238,13 +2252,13 @@ function NoticesClient({ initialNotices = [] }) {
                                                     className: "w-full pl-11 pr-4 py-4 bg-white border border-zinc-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-zinc-900 shadow-sm transition-all"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                    lineNumber: 97,
+                                                    lineNumber: 103,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 93,
+                                            lineNumber: 99,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2257,17 +2271,17 @@ function NoticesClient({ initialNotices = [] }) {
                                                         children: cat
                                                     }, cat, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                        lineNumber: 110,
+                                                        lineNumber: 116,
                                                         columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 114,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 107,
+                                            lineNumber: 113,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2280,7 +2294,7 @@ function NoticesClient({ initialNotices = [] }) {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                            lineNumber: 127,
+                                                            lineNumber: 133,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2288,13 +2302,13 @@ function NoticesClient({ initialNotices = [] }) {
                                                             children: "Filter by Category"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                            lineNumber: 128,
+                                                            lineNumber: 134,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                    lineNumber: 126,
+                                                    lineNumber: 132,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2308,35 +2322,35 @@ function NoticesClient({ initialNotices = [] }) {
                                                                     className: "w-2 h-2 rounded-full bg-blue-600"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                    lineNumber: 145,
+                                                                    lineNumber: 151,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, cat, true, {
                                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                            lineNumber: 134,
+                                                            lineNumber: 140,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                    lineNumber: 132,
+                                                    lineNumber: 138,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 125,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                    lineNumber: 81,
+                                    lineNumber: 87,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                lineNumber: 80,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2350,7 +2364,7 @@ function NoticesClient({ initialNotices = [] }) {
                                                 children: "Recent Updates"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                lineNumber: 157,
+                                                lineNumber: 163,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2361,13 +2375,13 @@ function NoticesClient({ initialNotices = [] }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                lineNumber: 160,
+                                                lineNumber: 166,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 156,
+                                        lineNumber: 162,
                                         columnNumber: 15
                                     }, this),
                                     filteredNotices.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2376,12 +2390,12 @@ function NoticesClient({ initialNotices = [] }) {
                                             children: "No notices found"
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 173,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 166,
+                                        lineNumber: 172,
                                         columnNumber: 17
                                     }, this) : filteredNotices.map((notice)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                                             onClick: ()=>setSelectedNotice(notice),
@@ -2399,7 +2413,7 @@ function NoticesClient({ initialNotices = [] }) {
                                                                 })
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                lineNumber: 178,
+                                                                lineNumber: 184,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2407,13 +2421,13 @@ function NoticesClient({ initialNotices = [] }) {
                                                                 children: new Date(notice.date).getDate()
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                lineNumber: 183,
+                                                                lineNumber: 189,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                        lineNumber: 177,
+                                                        lineNumber: 183,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$media$2d$thumbnail$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MediaThumbnail"], {
@@ -2422,7 +2436,7 @@ function NoticesClient({ initialNotices = [] }) {
                                                         className: "w-24 h-24 sm:w-32 sm:h-auto rounded-2xl border border-zinc-100 shrink-0"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                        lineNumber: 188,
+                                                        lineNumber: 194,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2435,7 +2449,7 @@ function NoticesClient({ initialNotices = [] }) {
                                                                         className: `w-2 h-2 rounded-full ${notice.accent}`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                        lineNumber: 196,
+                                                                        lineNumber: 202,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2443,73 +2457,73 @@ function NoticesClient({ initialNotices = [] }) {
                                                                         children: notice.category
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                        lineNumber: 199,
+                                                                        lineNumber: 205,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                lineNumber: 195,
+                                                                lineNumber: 201,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                className: "text-base sm:text-xl font-bold text-zinc-900 line-clamp-2 leading-tight group-hover:text-blue-700 transition-colors mb-1",
+                                                                className: "text-base sm:text-xl font-bold text-zinc-900 line-clamp-2 leading-tight group-hover:text-blue-700 transition-colors mb-1 break-words",
                                                                 children: notice.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                lineNumber: 203,
+                                                                lineNumber: 209,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-zinc-500 text-xs sm:text-sm line-clamp-2 pr-2",
-                                                                children: notice.description
+                                                                className: "text-zinc-500 text-xs sm:text-sm line-clamp-2 pr-2 break-words",
+                                                                children: stripHtml(notice.description)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                                lineNumber: 206,
+                                                                lineNumber: 213,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                        lineNumber: 194,
+                                                        lineNumber: 200,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                lineNumber: 176,
+                                                lineNumber: 182,
                                                 columnNumber: 21
                                             }, this)
                                         }, notice.id, false, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 171,
+                                            lineNumber: 177,
                                             columnNumber: 19
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                lineNumber: 155,
+                                lineNumber: 161,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                        lineNumber: 76,
+                        lineNumber: 84,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                    lineNumber: 75,
+                    lineNumber: 83,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                lineNumber: 74,
+                lineNumber: 82,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                lineNumber: 218,
+                lineNumber: 225,
                 columnNumber: 7
             }, this),
             selectedNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2520,7 +2534,7 @@ function NoticesClient({ initialNotices = [] }) {
                         onClick: ()=>setSelectedNotice(null)
                     }, void 0, false, {
                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                        lineNumber: 223,
+                        lineNumber: 230,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2534,56 +2548,58 @@ function NoticesClient({ initialNotices = [] }) {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                    lineNumber: 235,
+                                    lineNumber: 242,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                lineNumber: 231,
+                                lineNumber: 238,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "order-2 md:order-1 flex-1 md:w-1/3 bg-zinc-50 p-6 md:p-10 border-r border-zinc-100 flex flex-col overflow-y-auto",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                        className: "text-2xl font-bold mb-4",
+                                        className: "text-2xl font-bold mb-4 break-words",
                                         children: selectedNotice.title
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 238,
+                                        lineNumber: 245,
                                         columnNumber: 15
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-zinc-600 mb-8",
-                                        children: selectedNotice.description
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-zinc-600 mb-8 text-sm md:text-base leading-relaxed space-y-4 break-words [&>p]:min-h-[1em] [&>strong]:text-zinc-900 [&>strong]:font-bold",
+                                        dangerouslySetInnerHTML: {
+                                            __html: prepareHtmlForDisplay(selectedNotice.description)
+                                        }
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 241,
+                                        lineNumber: 255,
                                         columnNumber: 15
                                     }, this),
                                     selectedNotice.mediaUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                         href: selectedNotice.mediaUrl,
                                         target: "_blank",
-                                        className: "flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-zinc-900 text-white font-bold",
+                                        className: "flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-zinc-900 text-white font-bold mt-auto",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                                lineNumber: 248,
+                                                lineNumber: 268,
                                                 columnNumber: 19
                                             }, this),
-                                            " Download"
+                                            " Download Attachment"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 243,
+                                        lineNumber: 263,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                lineNumber: 237,
+                                lineNumber: 244,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2596,46 +2612,48 @@ function NoticesClient({ initialNotices = [] }) {
                                             className: "w-6 h-6"
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 277,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 253,
+                                        lineNumber: 273,
                                         columnNumber: 15
                                     }, this),
                                     selectedNotice.mediaType === "image" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: selectedNotice.mediaUrl,
-                                        className: "object-contain w-full h-full"
+                                        className: "object-contain w-full h-full",
+                                        alt: "Notice attachment"
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 260,
+                                        lineNumber: 280,
                                         columnNumber: 17
                                     }, this),
                                     selectedNotice.mediaType === "pdf" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
                                         src: selectedNotice.mediaUrl,
-                                        className: "w-full h-full bg-white"
+                                        className: "w-full h-full bg-white",
+                                        title: "PDF Viewer"
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 287,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                                lineNumber: 252,
+                                lineNumber: 272,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                        lineNumber: 227,
+                        lineNumber: 234,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Yeti-College/app/notices/notices-client.tsx",
-                lineNumber: 222,
+                lineNumber: 229,
                 columnNumber: 9
             }, this)
         ]

@@ -10723,6 +10723,10 @@
     border-radius: calc(var(--radius)  - 5px);
   }
 
+  .\[\&\>p\]\:min-h-\[1em\] > p {
+    min-height: 1em;
+  }
+
   .\[\&\>span\]\:text-xs > span {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
@@ -10736,6 +10740,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  .\[\&\>strong\]\:font-bold > strong {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .\[\&\>strong\]\:text-zinc-900 > strong {
+    color: var(--color-zinc-900);
   }
 
   .\[\&\>svg\]\:pointer-events-none > svg {
