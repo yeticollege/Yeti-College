@@ -6,13 +6,14 @@ const connectionString = process.env.DATABASE_URL;
 
 const pool = new pg.Pool({
   connectionString,
-  // 1. Enable SSL for deployments (Vercel)
-  // Most cloud providers (Neon, Supabase) need this.
-  // Local DBs usually don't.
-  ssl: process.env.NODE_ENV === "production" ? true : undefined,
+  // Fix: Use an object with rejectUnauthorized: false
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : undefined,
 });
 
 const adapter = new PrismaPg(pool);
 
-// 2. Instantiate Prisma
 export const prisma = new PrismaClient({ adapter });
+s;
