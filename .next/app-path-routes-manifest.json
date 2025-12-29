@@ -9,6 +9,7 @@
   "/about/team/dev/page": "/about/team/dev",
   "/about/team/page": "/about/team",
   "/api/apply/route": "/api/apply",
+  "/api/chat-context/route": "/api/chat-context",
   "/api/contact/route": "/api/contact",
   "/api/events/upcoming/route": "/api/events/upcoming",
   "/apply/page": "/apply",

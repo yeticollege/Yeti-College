@@ -107,6 +107,12 @@
       "namedRegex": "^/api/apply(?:/)?$"
     },
     {
+      "page": "/api/chat-context",
+      "regex": "^/api/chat\\-context(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/chat\\-context(?:/)?$"
+    },
+    {
       "page": "/api/contact",
       "regex": "^/api/contact(?:/)?$",
       "routeKeys": {},

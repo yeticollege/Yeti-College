@@ -9,6 +9,7 @@
   "/about/team/dev/page": "app/about/team/dev/page.js",
   "/about/team/page": "app/about/team/page.js",
   "/api/apply/route": "app/api/apply/route.js",
+  "/api/chat-context/route": "app/api/chat-context/route.js",
   "/api/contact/route": "app/api/contact/route.js",
   "/api/events/upcoming/route": "app/api/events/upcoming/route.js",
   "/apply/page": "app/apply/page.js",

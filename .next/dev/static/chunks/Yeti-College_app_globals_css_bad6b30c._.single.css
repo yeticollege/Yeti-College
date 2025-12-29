@@ -1293,6 +1293,10 @@
     display: block;
   }
 
+  .contents {
+    display: contents;
+  }
+
   .flex {
     display: flex;
   }
@@ -5800,6 +5804,10 @@
     color: var(--color-zinc-950);
   }
 
+  .lowercase {
+    text-transform: lowercase;
+  }
+
   .normal-case {
     text-transform: none;
   }
@@ -6415,6 +6423,10 @@
 
   .fade-in {
     --tw-enter-opacity: 0;
+  }
+
+  .running {
+    animation-play-state: running;
   }
 
   .slide-in-from-bottom-12 {
