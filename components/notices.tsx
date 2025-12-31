@@ -6,20 +6,20 @@ import { prisma } from "@/lib/prisma";
 import { MediaThumbnail } from "@/components/media-thumbnail";
 import striptags from "striptags";
 
-// Cache configuration (Optional: Revalidate data every hour)
-export const revalidate = 3600;
+// 1. Force dynamic rendering (No caching - fetches fresh data on every request)
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function NoticeSnippet() {
   let notices = [];
 
   try {
-    // 1. Fetch top 3 notices (Optimized with SELECT)
+    // 2. Fetch top 3 notices
     const rawNotices = await prisma.notice.findMany({
       take: 3,
-      orderBy: {
-        date: "desc",
-      },
-      // Select only what we need to keep payload light
+      // Sort by Date descending (Latest first).
+      // Added ID desc as a fallback to ensure consistent order if dates are identical.
+      orderBy: [{ date: "desc" }, { id: "desc" }],
       select: {
         id: true,
         title: true,
@@ -32,18 +32,18 @@ export default async function NoticeSnippet() {
       },
     });
 
-    // 2. Process data (Strip Tags & Decode Entities)
+    // 3. Process data
     notices = rawNotices.map((notice) => {
-      // Step A: Strip HTML tags (<p>, <br>, etc.)
+      // Strip HTML tags
       let cleanText = striptags(notice.description || "");
 
-      // Step B: Replace HTML entities (Fixes the &nbsp; issue seen in your image)
+      // Clean specific entities & whitespace
       cleanText = cleanText
-        .replace(/&nbsp;/g, " ") // Replace non-breaking space with normal space
-        .replace(/&amp;/g, "&") // Replace &amp; with &
-        .replace(/&lt;/g, "<") // Replace &lt; with <
-        .replace(/&gt;/g, ">") // Replace &gt; with >
-        .replace(/\s+/g, " ") // Collapse multiple spaces into one
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/\s+/g, " ")
         .trim();
 
       return {
@@ -53,7 +53,6 @@ export default async function NoticeSnippet() {
           day: "numeric",
           year: "numeric",
         }),
-        // Create snippet from the fully cleaned text
         snippet:
           cleanText.length > 120
             ? `${cleanText.substring(0, 120)}...`
@@ -123,7 +122,6 @@ export default async function NoticeSnippet() {
                     {notice.title}
                   </h3>
 
-                  {/* Cleaned Snippet */}
                   <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2 mb-6 break-words">
                     {notice.snippet}
                   </p>
