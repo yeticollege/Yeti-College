@@ -5,20 +5,18 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { MediaThumbnail } from "@/components/media-thumbnail";
 import striptags from "striptags";
-
-// 1. Force dynamic rendering (No caching - fetches fresh data on every request)
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+import { unstable_noStore as noStore } from "next/cache"; // 1. Import noStore
 
 export default async function NoticeSnippet() {
+  // 2. Call noStore() to opt out of static rendering.
+  // This forces fresh data fetching on every request in deployment.
+  noStore();
+
   let notices = [];
 
   try {
-    // 2. Fetch top 3 notices
     const rawNotices = await prisma.notice.findMany({
       take: 3,
-      // Sort by Date descending (Latest first).
-      // Added ID desc as a fallback to ensure consistent order if dates are identical.
       orderBy: [{ date: "desc" }, { id: "desc" }],
       select: {
         id: true,
@@ -32,12 +30,9 @@ export default async function NoticeSnippet() {
       },
     });
 
-    // 3. Process data
     notices = rawNotices.map((notice) => {
-      // Strip HTML tags
       let cleanText = striptags(notice.description || "");
 
-      // Clean specific entities & whitespace
       cleanText = cleanText
         .replace(/&nbsp;/g, " ")
         .replace(/&amp;/g, "&")
@@ -94,7 +89,6 @@ export default async function NoticeSnippet() {
           {notices.map((notice) => (
             <Link href="/notices" key={notice.id} className="block h-full">
               <div className="group h-full bg-zinc-50 rounded-[2.5rem] p-3 border border-zinc-100 hover:border-zinc-300 hover:shadow-2xl transition-all duration-500 flex flex-col">
-                {/* Media Preview */}
                 <div className="h-48 w-full rounded-[2rem] overflow-hidden mb-4 relative">
                   <MediaThumbnail
                     type={notice.mediaType}
@@ -109,7 +103,6 @@ export default async function NoticeSnippet() {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="px-3 pb-4 flex-1 flex flex-col">
                   <div className="flex items-center gap-2 text-zinc-400 mb-3">
                     <Calendar className="w-4 h-4" />
@@ -140,7 +133,6 @@ export default async function NoticeSnippet() {
           ))}
         </div>
 
-        {/* Mobile Button */}
         <div className="mt-8 md:hidden">
           <Link
             href="/notices"
