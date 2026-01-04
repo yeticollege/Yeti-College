@@ -11,16 +11,23 @@ import {
   X,
   Clock,
   Search,
+  History,
 } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 // --- Types ---
-import { Event } from "./page"; // Or define inline if preferred
+import { Event } from "./page";
 
 interface EventsClientProps {
   events: Event[];
 }
+
+// --- Helper: Strip HTML ---
+const stripHtml = (html: string) => {
+  if (typeof html !== "string") return "";
+  return html.replace(/<[^>]*>?/gm, "");
+};
 
 // --- Helper Functions ---
 const getDaysInMonth = (year: number, month: number) =>
@@ -141,6 +148,9 @@ export default function EventsClient({ events }: EventsClientProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  
+  // TOGGLE STATE: Default to false (hide past events)
+  const [showPastEvents, setShowPastEvents] = useState(false);
 
   useEffect(() => {
     if (selectedEvent) {
@@ -153,16 +163,34 @@ export default function EventsClient({ events }: EventsClientProps) {
     };
   }, [selectedEvent]);
 
+  // FILTER LOGIC
   const displayedEvents = events.filter((e) => {
+    // 1. Date Match
     const matchesDate = selectedDate ? e.date === selectedDate : true;
-    const query = searchQuery.toLowerCase();
-    const matchesSearch =
-      e.title.toLowerCase().includes(query) ||
-      e.description.toLowerCase().includes(query) ||
-      e.location.toLowerCase().includes(query) ||
-      e.category.toLowerCase().includes(query);
 
-    return matchesDate && matchesSearch;
+    // 2. Search Match (Clean HTML before searching)
+    const cleanQuery = searchQuery.toLowerCase();
+    const cleanTitle = stripHtml(e.title).toLowerCase();
+    const cleanDesc = stripHtml(e.description).toLowerCase();
+    const cleanLoc = stripHtml(e.location).toLowerCase();
+    
+    const matchesSearch =
+      cleanTitle.includes(cleanQuery) ||
+      cleanDesc.includes(cleanQuery) ||
+      cleanLoc.includes(cleanQuery) ||
+      e.category.toLowerCase().includes(cleanQuery);
+
+    // 3. Past Event Logic
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize to start of today
+    const eventDate = new Date(e.date);
+    // An event is "past" if it is strictly before today
+    const isPast = eventDate < today;
+
+    // If showPastEvents is false, we EXCLUDE past events
+    const matchesHistory = showPastEvents ? true : !isPast;
+
+    return matchesDate && matchesSearch && matchesHistory;
   });
 
   const getDateParts = (dateString: string) => {
@@ -195,6 +223,7 @@ export default function EventsClient({ events }: EventsClientProps) {
                   </p>
                 </div>
 
+                {/* SEARCH */}
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Search className="h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 transition-colors" />
@@ -206,6 +235,24 @@ export default function EventsClient({ events }: EventsClientProps) {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-11 pr-4 py-4 bg-white border border-zinc-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-zinc-900 shadow-sm transition-all"
                   />
+                </div>
+
+                {/* PAST EVENTS TOGGLE */}
+                <div 
+                  onClick={() => setShowPastEvents(!showPastEvents)}
+                  className="bg-white px-6 py-4 rounded-2xl border border-zinc-200 shadow-sm flex items-center justify-between cursor-pointer group hover:border-zinc-300 transition-all"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-full transition-colors ${showPastEvents ? 'bg-zinc-100 text-zinc-900' : 'bg-zinc-50 text-zinc-400'}`}>
+                       <History className="w-5 h-5" />
+                    </div>
+                    <span className="text-sm font-bold text-zinc-700">Show passed events</span>
+                  </div>
+                  
+                  {/* Custom Switch UI */}
+                  <div className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 ${showPastEvents ? 'bg-zinc-900' : 'bg-zinc-200'}`}>
+                    <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${showPastEvents ? 'translate-x-5' : 'translate-x-0'}`} />
+                  </div>
                 </div>
 
                 <SwissCalendar
@@ -251,7 +298,7 @@ export default function EventsClient({ events }: EventsClientProps) {
             <div className="lg:col-span-8 flex flex-col gap-4">
               <div className="flex justify-between items-end mb-2 px-2">
                 <h2 className="text-2xl font-bold tracking-tight">
-                  {selectedDate ? "Filtered Events" : "Upcoming Events"}
+                  {selectedDate ? "Filtered Events" : (showPastEvents ? "All Events" : "Upcoming Events")}
                 </h2>
                 <span className="text-sm font-semibold text-zinc-400 bg-white px-3 py-1 rounded-full border border-zinc-200">
                   {displayedEvents.length} found
@@ -273,16 +320,19 @@ export default function EventsClient({ events }: EventsClientProps) {
                   <p className="text-zinc-500 max-w-sm mx-auto mt-2">
                     {searchQuery
                       ? `We couldn't find any events matching "${searchQuery}".`
-                      : "There are no events scheduled for this specific date."}
+                      : showPastEvents 
+                         ? "There are no events matching your criteria."
+                         : "There are no upcoming events. Try enabling 'Show passed events'."}
                   </p>
                   <button
                     onClick={() => {
                       setSelectedDate(null);
                       setSearchQuery("");
+                      if(!showPastEvents) setShowPastEvents(true); // Helper UX
                     }}
                     className="mt-6 text-sm font-bold text-blue-600 underline underline-offset-4"
                   >
-                    Clear all filters
+                    Clear filters & Show History
                   </button>
                 </div>
               )}
@@ -319,7 +369,8 @@ export default function EventsClient({ events }: EventsClientProps) {
                               </span>
                             </div>
                             <h3 className="text-2xl font-bold tracking-tight text-zinc-900 leading-tight">
-                              {event.title}
+                              {/* Strip HTML from title */}
+                              {stripHtml(event.title)}
                             </h3>
                           </div>
                           <div className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-zinc-50 border border-zinc-100 group-hover:bg-zinc-900 group-hover:text-white transition-all duration-300">
@@ -327,7 +378,8 @@ export default function EventsClient({ events }: EventsClientProps) {
                           </div>
                         </div>
                         <p className="text-zinc-500 leading-relaxed mb-6 line-clamp-2">
-                          {event.description}
+                           {/* Strip HTML from description */}
+                          {stripHtml(event.description)}
                         </p>
                         <div className="flex flex-wrap items-center gap-3 mt-auto">
                           <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-600 bg-zinc-100 px-3 py-2 rounded-xl">
@@ -336,7 +388,7 @@ export default function EventsClient({ events }: EventsClientProps) {
                           </div>
                           <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-600 bg-zinc-100 px-3 py-2 rounded-xl">
                             <MapPin className="w-3.5 h-3.5" />
-                            {event.location}
+                            {stripHtml(event.location)}
                           </div>
                         </div>
                       </CardContent>
@@ -349,6 +401,7 @@ export default function EventsClient({ events }: EventsClientProps) {
         </div>
       </section>
 
+      {/* MODAL */}
       {selectedEvent && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-zinc-900/60 backdrop-blur-sm animate-in fade-in duration-300"
@@ -388,7 +441,7 @@ export default function EventsClient({ events }: EventsClientProps) {
                     {selectedEvent.category}
                   </span>
                   <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 leading-tight">
-                    {selectedEvent.title}
+                    {stripHtml(selectedEvent.title)}
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-4">
@@ -402,7 +455,7 @@ export default function EventsClient({ events }: EventsClientProps) {
                   </div>
                   <div className="flex items-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-50 px-4 py-2 rounded-xl border border-zinc-100">
                     <MapPin className="w-4 h-4 text-zinc-400" />
-                    {selectedEvent.location}
+                    {stripHtml(selectedEvent.location)}
                   </div>
                 </div>
                 <div className="h-px w-full bg-zinc-100 my-6" />
@@ -411,7 +464,7 @@ export default function EventsClient({ events }: EventsClientProps) {
                     About this event
                   </h4>
                   <p className="text-zinc-500 leading-relaxed text-lg">
-                    {selectedEvent.description}
+                    {stripHtml(selectedEvent.description)}
                   </p>
                 </div>
               </div>

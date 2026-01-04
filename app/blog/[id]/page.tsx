@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -11,6 +11,12 @@ interface PageProps {
 }
 
 export const dynamic = "force-dynamic";
+
+// ─── HELPER: STRIP HTML TAGS ───
+const stripHtml = (html: string) => {
+  if (typeof html !== "string") return "";
+  return html.replace(/<[^>]*>?/gm, "");
+};
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { id } = await params;
@@ -42,14 +48,14 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="relative w-full h-[50vh] md:h-[60vh] bg-zinc-900">
           <img
             src={post.image}
-            alt={post.title}
+            alt={stripHtml(post.title)}
             className="w-full h-full object-cover opacity-80"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
           <div className="absolute top-24 left-4 md:left-8 z-20">
             <Link
-              href="/blogs"
+              href="/blog"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-bold hover:bg-white/20 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" /> Back to Blog
@@ -76,7 +82,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-zinc-900 leading-[1.1] mb-8 tracking-tight">
-              {post.title}
+              {/* STRIP HTML FROM TITLE */}
+              {stripHtml(post.title)}
             </h1>
 
             <div className="flex flex-wrap items-center gap-6 md:gap-8 text-zinc-500 text-sm md:text-base font-medium border-t border-zinc-100 pt-8">
@@ -97,7 +104,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <div className="bg-white rounded-b-[2.5rem] p-8 md:p-12 text-lg md:text-xl leading-relaxed text-zinc-700 shadow-xl space-y-8">
             <p className="font-serif text-2xl md:text-3xl leading-normal text-zinc-900 italic border-l-4 border-zinc-900 pl-6 my-8">
-              {post.excerpt}
+              {/* STRIP HTML FROM EXCERPT */}
+              {stripHtml(post.excerpt)}
             </p>
 
             <div className="space-y-6 text-zinc-600">

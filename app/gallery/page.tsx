@@ -39,4 +39,3 @@ export default async function GalleryPage() {
   // 3. Render
   return <SwissGallery initialItems={items} />;
 }
-// hellooo

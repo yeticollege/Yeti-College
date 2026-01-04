@@ -46,6 +46,13 @@ export const categories = [
   "Health",
 ];
 
+// ─── HELPER: STRIP HTML TAGS ───
+const stripHtml = (html: string) => {
+  if (typeof html !== "string") return "";
+  // Replaces any pattern looking like <tag> or </tag> with an empty string
+  return html.replace(/<[^>]*>?/gm, "");
+};
+
 export default function BlogClient({
   featuredPost,
   trendingPosts,
@@ -61,11 +68,16 @@ export default function BlogClient({
       .filter((post) =>
         activeCategory === "All" ? true : post.category === activeCategory
       )
-      .filter(
-        (post) =>
-          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      .filter((post) => {
+        // Clean data before searching
+        const cleanQuery = searchQuery.toLowerCase();
+        const cleanTitle = stripHtml(post.title).toLowerCase();
+        const cleanExcerpt = stripHtml(post.excerpt).toLowerCase();
+
+        return (
+          cleanTitle.includes(cleanQuery) || cleanExcerpt.includes(cleanQuery)
+        );
+      });
   }, [activeCategory, searchQuery, allPosts]);
 
   // “LOAD MORE”
@@ -115,7 +127,8 @@ export default function BlogClient({
               transition={{ duration: 0.6 }}
               className="rounded-[2.5rem] overflow-hidden bg-zinc-900 text-white shadow-xl"
             >
-              <Link href={`/blogs/${featuredPost.id}`}>
+              {/* UPDATED LINK */}
+              <Link href={`blog/${featuredPost.id}`}>
                 <div className="flex flex-col md:flex-row min-h-[480px] group cursor-pointer">
                   {/* IMAGE */}
                   <div className="md:w-1/2 relative h-64 md:h-auto overflow-hidden">
@@ -149,7 +162,7 @@ export default function BlogClient({
                     </h2>
 
                     <p className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-md">
-                      {featuredPost.excerpt}
+                      {stripHtml(featuredPost.excerpt)}
                     </p>
 
                     <div className="flex items-center gap-4 mt-auto">
@@ -203,7 +216,8 @@ export default function BlogClient({
                 </h3>
                 <ul className="space-y-6">
                   {trendingPosts.map((item, idx) => (
-                    <Link href={`/blogs/${item.id}`} key={item.id}>
+                    /* UPDATED LINK */
+                    <Link href={`blog/${item.id}`} key={item.id}>
                       <li className="group cursor-pointer mb-6">
                         <span className="text-xs font-bold text-zinc-400 mr-3">
                           0{idx + 1}
@@ -245,7 +259,8 @@ export default function BlogClient({
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 >
                   {visiblePosts.map((post) => (
-                    <Link href={`/blogs/${post.id}`} key={post.id}>
+                    /* UPDATED LINK */
+                    <Link href={`blog/${post.id}`} key={post.id}>
                       <motion.div
                         layout
                         initial={{ opacity: 0, y: 20 }}
@@ -279,7 +294,7 @@ export default function BlogClient({
                           </h3>
 
                           <p className="text-zinc-600 text-sm line-clamp-3">
-                            {post.excerpt}
+                            {stripHtml(post.excerpt)}
                           </p>
 
                           <div className="mt-auto pt-6 flex justify-between items-center border-t border-zinc-100">
