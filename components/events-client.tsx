@@ -116,7 +116,8 @@ export default function EventsSnippetClient({
                       </h3>
                     </div>
 
-                    <p className="text-zinc-500 text-sm leading-relaxed line-clamp-3 mb-6">
+                    {/* ADDED: break-words whitespace-normal */}
+                    <p className="text-zinc-500 text-sm leading-relaxed line-clamp-3 mb-6 break-words whitespace-normal">
                       {event.description}
                     </p>
 
@@ -227,7 +228,8 @@ export default function EventsSnippetClient({
                   <h4 className="text-lg font-bold text-zinc-900">
                     About this event
                   </h4>
-                  <p className="text-zinc-500 leading-relaxed text-base md:text-lg">
+                  {/* ADDED: break-words whitespace-normal */}
+                  <p className="text-zinc-500 leading-relaxed text-base md:text-lg break-words whitespace-normal">
                     {selectedEvent.description}
                   </p>
                 </div>
