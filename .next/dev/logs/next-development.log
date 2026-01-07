@@ -1,126 +1,92 @@
-[00:00:01.233] Server  LOG     ✓ Ready in 915ms
-[00:00:06.161] Server  ERROR   ⨯ ./Yeti-College/components/events.tsx:3:1
-Module not found: Can't resolve 'string-strip-html'
-  1 | import { prisma } from "@/lib/prisma";
-  2 | import EventsSnippetClient from "./events-client";
-> 3 | import { stripHtml } from "string-strip-html"; // Import the library
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | export default async function EventsSnippet() {
-  6 |   // Fetch top 3 upcoming events
+[00:00:01.244] Server  LOG     ✓ Ready in 881ms
+[00:00:05.921] Server  ERROR   ⨯ ./Yeti-College/app/layout.tsx:70:23
+Ecmascript file had an error
+  68 | };
+  69 | // 1. Convert the static 'metadata' export into a dynamic 'generateMetadata' function
+> 70 | export async function generateMetadata(): Promise<Metadata> {
+     |                       ^^^^^^^^^^^^^^^^
+  71 |   // Use the domain check
+  72 |   const domain = getCurrentDomain();
+  73 |   const isKennt = domain === "kennt.edu.np";
+
+"metadata" and "generateMetadata" cannot be exported at the same time, please keep one of them. Read more: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
 
 
 
-Import trace:
-  Server Component:
-    ./Yeti-College/components/events.tsx
-    ./Yeti-College/app/page.tsx
 
-https://nextjs.org/docs/messages/module-not-found
+[00:00:06.985] Browser ERROR   uncaughtError: Error: ./Yeti-College/app/layout.tsx:70:23
+Ecmascript file had an error
+  68 | };
+  69 | // 1. Convert the static 'metadata' export into a dynamic 'generateMetadata' function
+> 70 | export async function generateMetadata(): Promise<Metadata> {
+     |                       ^^^^^^^^^^^^^^^^
+  71 |   // Use the domain check
+  72 |   const domain = getCurrentDomain();
+  73 |   const isKennt = domain === "kennt.edu.np";
 
-
-[00:00:07.159] Browser ERROR   uncaughtError: Error: ./Yeti-College/components/events.tsx:3:1
-Module not found: Can't resolve 'string-strip-html'
-  1 | import { prisma } from "@/lib/prisma";
-  2 | import EventsSnippetClient from "./events-client";
-> 3 | import { stripHtml } from "string-strip-html"; // Import the library
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | export default async function EventsSnippet() {
-  6 |   // Fetch top 3 upcoming events
+"metadata" and "generateMetadata" cannot be exported at the same time, please keep one of them. Read more: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
 
 
 
-Import trace:
-  Server Component:
-    ./Yeti-College/components/events.tsx
-    ./Yeti-College/app/page.tsx
 
-https://nextjs.org/docs/messages/module-not-found
+[00:00:07.291] Browser ERROR   ./Yeti-College/app/layout.tsx:70:23
+Ecmascript file had an error
+  68 | };
+  69 | // 1. Convert the static 'metadata' export into a dynamic 'generateMetadata' function
+> 70 | export async function generateMetadata(): Promise<Metadata> {
+     |                       ^^^^^^^^^^^^^^^^
+  71 |   // Use the domain check
+  72 |   const domain = getCurrentDomain();
+  73 |   const isKennt = domain === "kennt.edu.np";
 
+"metadata" and "generateMetadata" cannot be exported at the same time, please keep one of them. Read more: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
+[00:00:07.291] Browser ERROR   ./Yeti-College/app/layout.tsx:70:23
+Ecmascript file had an error
+  68 | };
+  69 | // 1. Convert the static 'metadata' export into a dynamic 'generateMetadata' function
+> 70 | export async function generateMetadata(): Promise<Metadata> {
+     |                       ^^^^^^^^^^^^^^^^
+  71 |   // Use the domain check
+  72 |   const domain = getCurrentDomain();
+  73 |   const isKennt = domain === "kennt.edu.np";
 
-[00:00:07.400] Browser ERROR   ./Yeti-College/components/events.tsx:3:1
-Module not found: Can't resolve 'string-strip-html'
-  1 | import { prisma } from "@/lib/prisma";
-  2 | import EventsSnippetClient from "./events-client";
-> 3 | import { stripHtml } from "string-strip-html"; // Import the library
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | export default async function EventsSnippet() {
-  6 |   // Fetch top 3 upcoming events
+"metadata" and "generateMetadata" cannot be exported at the same time, please keep one of them. Read more: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
+[00:00:08.264] Browser ERROR   ./Yeti-College/app/layout.tsx:70:23
+Ecmascript file had an error
+  68 | };
+  69 | // 1. Convert the static 'metadata' export into a dynamic 'generateMetadata' function
+> 70 | export async function generateMetadata(): Promise<Metadata> {
+     |                       ^^^^^^^^^^^^^^^^
+  71 |   // Use the domain check
+  72 |   const domain = getCurrentDomain();
+  73 |   const isKennt = domain === "kennt.edu.np";
 
-Import trace:
-  Server Component:
-    ./Yeti-College/components/events.tsx
-    ./Yeti-College/app/page.tsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:00:07.943] Browser ERROR   ./Yeti-College/components/events.tsx:3:1
-Module not found: Can't resolve 'string-strip-html'
-  1 | import { prisma } from "@/lib/prisma";
-  2 | import EventsSnippetClient from "./events-client";
-> 3 | import { stripHtml } from "string-strip-html"; // Import the library
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | export default async function EventsSnippet() {
-  6 |   // Fetch top 3 upcoming events
-
-Import trace:
-  Server Component:
-    ./Yeti-College/components/events.tsx
-    ./Yeti-College/app/page.tsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:00:16.510] Browser ERROR   ./Yeti-College/components/events.tsx:3:1
-Module not found: Can't resolve 'string-strip-html'
-  1 | import { prisma } from "@/lib/prisma";
-  2 | import EventsSnippetClient from "./events-client";
-> 3 | import { stripHtml } from "string-strip-html"; // Import the library
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | export default async function EventsSnippet() {
-  6 |   // Fetch top 3 upcoming events
-
-Import trace:
-  Server Component:
-    ./Yeti-College/components/events.tsx
-    ./Yeti-College/app/page.tsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:00:45.878] Browser ERROR   ./Yeti-College/components/events.tsx:3:1
-Module not found: Can't resolve 'string-strip-html'
-  1 | import { prisma } from "@/lib/prisma";
-  2 | import EventsSnippetClient from "./events-client";
-> 3 | import { stripHtml } from "string-strip-html"; // Import the library
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  4 |
-  5 | export default async function EventsSnippet() {
-  6 |   // Fetch top 3 upcoming events
-
-Import trace:
-  Server Component:
-    ./Yeti-College/components/events.tsx
-    ./Yeti-College/app/page.tsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:00:52.755] Server  LOG     ✓ Compiled in 8.5s
-[00:00:59.773] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:02.686] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:01:02.689] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:02.689] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:02.689] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767766158780}
-[00:02:18.080] Server  LOG     ✓ Compiled in 1256ms
-[00:02:18.613] Server  ERROR   ⨯ TypeError: Cannot read properties of undefined (reading 'map')
-[00:02:20.317] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'map')
-[00:02:50.991] Server  LOG     ✓ Compiled in 1316ms
-[00:02:51.051] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:02:57.281] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:58.543] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:02:58.543] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:02:58.543] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:02:58.543] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767766274792}
-[00:06:43.742] Server  LOG     ✓ Compiled in 1002ms
-[00:06:54.485] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. T
-[00:06:54.485] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. S
-[00:06:54.485] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/events color: rgb(120, 120, 120) color: inherit {"dp":"/events","o":"http://localhost:3000/events","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767766511217}
-[00:06:58.159] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notices color: rgb(120, 120, 120) color: inherit {"dp":"/notices","o":"http://localhost:3000/notices","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767766514903}
+"metadata" and "generateMetadata" cannot be exported at the same time, please keep one of them. Read more: https://nextjs.org/docs/app/api-reference/file-conventions/metadata
+[00:01:07.653] Server  LOG     ✓ Compiled in 304ms
+[00:01:13.320] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:13.336] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:13.337] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:13.338] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:13.339] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:13.339] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772476315}
+[00:01:18.601] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/babm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772482495}
+[00:01:21.116] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772484966}
+[00:01:21.910] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bhm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bhm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772485807}
+[00:01:24.015] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772487893}
+[00:01:25.467] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/mba color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/mba","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772489363}
+[00:01:27.751] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772491520}
+[00:01:31.007] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bca color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bca","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772494904}
+[00:01:32.717] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772496610}
+[00:01:38.045] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bttm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bttm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772501942}
+[00:01:40.790] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772504678}
+[00:01:46.720] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bmm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bmm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772510545}
+[00:01:56.574] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772520436}
+[00:01:56.783] Browser ERROR   Failed to load upcoming event: {}
+[00:01:56.783] Browser ERROR   Failed to load upcoming event: {}
+[00:02:18.522] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bmm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bmm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772542419}
+[00:02:21.345] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772544946}
+[00:02:21.345] Browser ERROR   Failed to load upcoming event: {}
+[00:02:21.345] Browser ERROR   Failed to load upcoming event: {}
+[00:02:31.301] Server  LOG     ✓ Compiled in 163ms
+[00:02:39.082] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bamm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bamm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767772562976}

@@ -30,7 +30,7 @@ const programs = [
       "Master the fundamentals of business operations, leadership, and strategic management in a global context.",
     image:
       "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
-    href: "/programs/business",
+    href: "/programs/babm",
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const programs = [
       "Learn world-class hospitality standards, culinary arts, and hotel operations with hands-on training.",
     image:
       "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
-    href: "/programs/hospitality",
+    href: "/programs/bhm",
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ const programs = [
       "Dive into software development, cloud computing, and AI with a curriculum built for the tech industry.",
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-    href: "/programs/technology",
+    href: "/programs/bca",
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ const programs = [
       "Explore journalism, advertising, and digital media production in our state-of-the-art studios.",
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
-    href: "/programs/media",
+    href: "/programs/bamm",
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ const programs = [
       "Prepare for a dynamic career in global tourism, sustainable travel, and destination management.",
     image:
       "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
-    href: "/programs/tourism",
+    href: "/programs/bttm",
   },
 ];
 
