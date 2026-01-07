@@ -23,10 +23,13 @@ interface EventsClientProps {
   events: Event[];
 }
 
-// --- Helper: Strip HTML ---
+// --- Helper: Strip HTML & Special Entities ---
 const stripHtml = (html: string) => {
   if (typeof html !== "string") return "";
-  return html.replace(/<[^>]*>?/gm, "");
+  return html
+    .replace(/<[^>]*>?/gm, "") // Remove HTML tags
+    .replace(/&nbsp;/g, " ") // Replace &nbsp; with a normal space
+    .trim(); // Remove leading/trailing whitespace
 };
 
 // --- Helper Functions ---
@@ -148,7 +151,7 @@ export default function EventsClient({ events }: EventsClientProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   // TOGGLE STATE: Default to false (hide past events)
   const [showPastEvents, setShowPastEvents] = useState(false);
 
@@ -173,7 +176,7 @@ export default function EventsClient({ events }: EventsClientProps) {
     const cleanTitle = stripHtml(e.title).toLowerCase();
     const cleanDesc = stripHtml(e.description).toLowerCase();
     const cleanLoc = stripHtml(e.location).toLowerCase();
-    
+
     const matchesSearch =
       cleanTitle.includes(cleanQuery) ||
       cleanDesc.includes(cleanQuery) ||
@@ -238,20 +241,36 @@ export default function EventsClient({ events }: EventsClientProps) {
                 </div>
 
                 {/* PAST EVENTS TOGGLE */}
-                <div 
+                <div
                   onClick={() => setShowPastEvents(!showPastEvents)}
                   className="bg-white px-6 py-4 rounded-2xl border border-zinc-200 shadow-sm flex items-center justify-between cursor-pointer group hover:border-zinc-300 transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-full transition-colors ${showPastEvents ? 'bg-zinc-100 text-zinc-900' : 'bg-zinc-50 text-zinc-400'}`}>
-                       <History className="w-5 h-5" />
+                    <div
+                      className={`p-2 rounded-full transition-colors ${
+                        showPastEvents
+                          ? "bg-zinc-100 text-zinc-900"
+                          : "bg-zinc-50 text-zinc-400"
+                      }`}
+                    >
+                      <History className="w-5 h-5" />
                     </div>
-                    <span className="text-sm font-bold text-zinc-700">Show passed events</span>
+                    <span className="text-sm font-bold text-zinc-700">
+                      Show passed events
+                    </span>
                   </div>
-                  
+
                   {/* Custom Switch UI */}
-                  <div className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 ${showPastEvents ? 'bg-zinc-900' : 'bg-zinc-200'}`}>
-                    <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${showPastEvents ? 'translate-x-5' : 'translate-x-0'}`} />
+                  <div
+                    className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 ${
+                      showPastEvents ? "bg-zinc-900" : "bg-zinc-200"
+                    }`}
+                  >
+                    <div
+                      className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
+                        showPastEvents ? "translate-x-5" : "translate-x-0"
+                      }`}
+                    />
                   </div>
                 </div>
 
@@ -298,7 +317,11 @@ export default function EventsClient({ events }: EventsClientProps) {
             <div className="lg:col-span-8 flex flex-col gap-4">
               <div className="flex justify-between items-end mb-2 px-2">
                 <h2 className="text-2xl font-bold tracking-tight">
-                  {selectedDate ? "Filtered Events" : (showPastEvents ? "All Events" : "Upcoming Events")}
+                  {selectedDate
+                    ? "Filtered Events"
+                    : showPastEvents
+                    ? "All Events"
+                    : "Upcoming Events"}
                 </h2>
                 <span className="text-sm font-semibold text-zinc-400 bg-white px-3 py-1 rounded-full border border-zinc-200">
                   {displayedEvents.length} found
@@ -320,15 +343,15 @@ export default function EventsClient({ events }: EventsClientProps) {
                   <p className="text-zinc-500 max-w-sm mx-auto mt-2">
                     {searchQuery
                       ? `We couldn't find any events matching "${searchQuery}".`
-                      : showPastEvents 
-                         ? "There are no events matching your criteria."
-                         : "There are no upcoming events. Try enabling 'Show passed events'."}
+                      : showPastEvents
+                      ? "There are no events matching your criteria."
+                      : "There are no upcoming events. Try enabling 'Show passed events'."}
                   </p>
                   <button
                     onClick={() => {
                       setSelectedDate(null);
                       setSearchQuery("");
-                      if(!showPastEvents) setShowPastEvents(true); // Helper UX
+                      if (!showPastEvents) setShowPastEvents(true); // Helper UX
                     }}
                     className="mt-6 text-sm font-bold text-blue-600 underline underline-offset-4"
                   >
@@ -378,7 +401,7 @@ export default function EventsClient({ events }: EventsClientProps) {
                           </div>
                         </div>
                         <p className="text-zinc-500 leading-relaxed mb-6 line-clamp-2">
-                           {/* Strip HTML from description */}
+                          {/* Strip HTML from description */}
                           {stripHtml(event.description)}
                         </p>
                         <div className="flex flex-wrap items-center gap-3 mt-auto">

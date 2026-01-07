@@ -2080,6 +2080,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modu
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/x.js [app-client] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/search.js [app-client] (ecmascript) <export default as Search>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$history$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__History$3e$__ = __turbopack_context__.i("[project]/Yeti-College/node_modules/lucide-react/dist/esm/icons/history.js [app-client] (ecmascript) <export default as History>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/header.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Yeti-College/components/footer.tsx [app-client] (ecmascript)");
 ;
@@ -2090,6 +2091,13 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 ;
 ;
 ;
+// --- Helper: Strip HTML & Special Entities ---
+const stripHtml = (html)=>{
+    if (typeof html !== "string") return "";
+    return html.replace(/<[^>]*>?/gm, "") // Remove HTML tags
+    .replace(/&nbsp;/g, " ") // Replace &nbsp; with a normal space
+    .trim(); // Remove leading/trailing whitespace
+};
 // --- Helper Functions ---
 const getDaysInMonth = (year, month)=>new Date(year, month + 1, 0).getDate();
 const getFirstDayOfMonth = (year, month)=>new Date(year, month, 1).getDay();
@@ -2135,13 +2143,13 @@ const SwissCalendar = ({ events, onDateSelect, selectedDate })=>{
                                 children: year
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                lineNumber: 68,
+                                lineNumber: 78,
                                 columnNumber: 23
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                        lineNumber: 67,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2154,12 +2162,12 @@ const SwissCalendar = ({ events, onDateSelect, selectedDate })=>{
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 75,
+                                    lineNumber: 85,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                lineNumber: 71,
+                                lineNumber: 81,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2169,24 +2177,24 @@ const SwissCalendar = ({ events, onDateSelect, selectedDate })=>{
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 81,
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                lineNumber: 77,
+                                lineNumber: 87,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                        lineNumber: 70,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 66,
+                lineNumber: 76,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2196,12 +2204,12 @@ const SwissCalendar = ({ events, onDateSelect, selectedDate })=>{
                         children: d
                     }, d, false, {
                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                        lineNumber: 88,
+                        lineNumber: 98,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)))
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 86,
+                lineNumber: 96,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2211,7 +2219,7 @@ const SwissCalendar = ({ events, onDateSelect, selectedDate })=>{
                         length: startingDayIndex
                     }).map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {}, `empty-${i}`, false, {
                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                            lineNumber: 96,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))),
                     Array.from({
@@ -2234,26 +2242,26 @@ const SwissCalendar = ({ events, onDateSelect, selectedDate })=>{
                                     className: `absolute bottom-1.5 w-1 h-1 rounded-full ${isSelected ? "bg-zinc-900" : "bg-blue-500"}`
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 135,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, day, true, {
                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                            lineNumber: 106,
+                            lineNumber: 116,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0));
                     })
                 ]
             }, void 0, true, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 94,
+                lineNumber: 104,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-        lineNumber: 65,
+        lineNumber: 75,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -2264,6 +2272,8 @@ function EventsClient({ events }) {
     const [selectedDate, setSelectedDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [selectedEvent, setSelectedEvent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    // TOGGLE STATE: Default to false (hide past events)
+    const [showPastEvents, setShowPastEvents] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "EventsClient.useEffect": ()=>{
             if (selectedEvent) {
@@ -2280,11 +2290,25 @@ function EventsClient({ events }) {
     }["EventsClient.useEffect"], [
         selectedEvent
     ]);
+    // FILTER LOGIC
     const displayedEvents = events.filter((e)=>{
+        // 1. Date Match
         const matchesDate = selectedDate ? e.date === selectedDate : true;
-        const query = searchQuery.toLowerCase();
-        const matchesSearch = e.title.toLowerCase().includes(query) || e.description.toLowerCase().includes(query) || e.location.toLowerCase().includes(query) || e.category.toLowerCase().includes(query);
-        return matchesDate && matchesSearch;
+        // 2. Search Match (Clean HTML before searching)
+        const cleanQuery = searchQuery.toLowerCase();
+        const cleanTitle = stripHtml(e.title).toLowerCase();
+        const cleanDesc = stripHtml(e.description).toLowerCase();
+        const cleanLoc = stripHtml(e.location).toLowerCase();
+        const matchesSearch = cleanTitle.includes(cleanQuery) || cleanDesc.includes(cleanQuery) || cleanLoc.includes(cleanQuery) || e.category.toLowerCase().includes(cleanQuery);
+        // 3. Past Event Logic
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Normalize to start of today
+        const eventDate = new Date(e.date);
+        // An event is "past" if it is strictly before today
+        const isPast = eventDate < today;
+        // If showPastEvents is false, we EXCLUDE past events
+        const matchesHistory = showPastEvents ? true : !isPast;
+        return matchesDate && matchesSearch && matchesHistory;
     });
     const getDateParts = (dateString)=>{
         const date = new Date(dateString);
@@ -2303,7 +2327,7 @@ function EventsClient({ events }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 180,
+                lineNumber: 211,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2327,7 +2351,7 @@ function EventsClient({ events }) {
                                                         "Event",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 190,
+                                                            lineNumber: 221,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2335,13 +2359,13 @@ function EventsClient({ events }) {
                                                             children: "Calendar."
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 191,
+                                                            lineNumber: 222,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 188,
+                                                    lineNumber: 219,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2349,13 +2373,13 @@ function EventsClient({ events }) {
                                                     children: "Select a date or search to find activities."
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 224,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 187,
+                                            lineNumber: 218,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2367,12 +2391,12 @@ function EventsClient({ events }) {
                                                         className: "h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 transition-colors"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 232,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 199,
+                                                    lineNumber: 231,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2383,13 +2407,68 @@ function EventsClient({ events }) {
                                                     className: "w-full pl-11 pr-4 py-4 bg-white border border-zinc-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-zinc-900 shadow-sm transition-all"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 234,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 198,
+                                            lineNumber: 230,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            onClick: ()=>setShowPastEvents(!showPastEvents),
+                                            className: "bg-white px-6 py-4 rounded-2xl border border-zinc-200 shadow-sm flex items-center justify-between cursor-pointer group hover:border-zinc-300 transition-all",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex items-center gap-3",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: `p-2 rounded-full transition-colors ${showPastEvents ? "bg-zinc-100 text-zinc-900" : "bg-zinc-50 text-zinc-400"}`,
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$history$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__History$3e$__["History"], {
+                                                                className: "w-5 h-5"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                                                lineNumber: 256,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                                            lineNumber: 249,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "text-sm font-bold text-zinc-700",
+                                                            children: "Show passed events"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                                            lineNumber: 258,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                                    lineNumber: 248,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `w-12 h-7 rounded-full p-1 transition-colors duration-300 ${showPastEvents ? "bg-zinc-900" : "bg-zinc-200"}`,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: `w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${showPastEvents ? "translate-x-5" : "translate-x-0"}`
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                                        lineNumber: 269,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                                    lineNumber: 264,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Yeti-College/app/events/events-client.tsx",
+                                            lineNumber: 244,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SwissCalendar, {
@@ -2398,7 +2477,7 @@ function EventsClient({ events }) {
                                             onDateSelect: setSelectedDate
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 211,
+                                            lineNumber: 277,
                                             columnNumber: 17
                                         }, this),
                                         (selectedDate || searchQuery) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2412,7 +2491,7 @@ function EventsClient({ events }) {
                                                             children: "Active Filters"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 220,
+                                                            lineNumber: 286,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2423,7 +2502,7 @@ function EventsClient({ events }) {
                                                                     children: selectedDate
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                    lineNumber: 225,
+                                                                    lineNumber: 291,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2435,19 +2514,19 @@ function EventsClient({ events }) {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                    lineNumber: 230,
+                                                                    lineNumber: 296,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 223,
+                                                            lineNumber: 289,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 219,
+                                                    lineNumber: 285,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2460,29 +2539,29 @@ function EventsClient({ events }) {
                                                         className: "w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                        lineNumber: 243,
+                                                        lineNumber: 309,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 236,
+                                                    lineNumber: 302,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 284,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 186,
+                                    lineNumber: 217,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                lineNumber: 185,
+                                lineNumber: 216,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2493,10 +2572,10 @@ function EventsClient({ events }) {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                 className: "text-2xl font-bold tracking-tight",
-                                                children: selectedDate ? "Filtered Events" : "Upcoming Events"
+                                                children: selectedDate ? "Filtered Events" : showPastEvents ? "All Events" : "Upcoming Events"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 253,
+                                                lineNumber: 319,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2507,13 +2586,13 @@ function EventsClient({ events }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 256,
+                                                lineNumber: 326,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                        lineNumber: 252,
+                                        lineNumber: 318,
                                         columnNumber: 15
                                     }, this),
                                     displayedEvents.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2525,18 +2604,18 @@ function EventsClient({ events }) {
                                                     className: "w-6 h-6 text-zinc-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 265,
+                                                    lineNumber: 335,
                                                     columnNumber: 23
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2d$days$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CalendarDays$3e$__["CalendarDays"], {
                                                     className: "w-6 h-6 text-zinc-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 267,
+                                                    lineNumber: 337,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 263,
+                                                lineNumber: 333,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2544,33 +2623,34 @@ function EventsClient({ events }) {
                                                 children: "No events found"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 270,
+                                                lineNumber: 340,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-zinc-500 max-w-sm mx-auto mt-2",
-                                                children: searchQuery ? `We couldn't find any events matching "${searchQuery}".` : "There are no events scheduled for this specific date."
+                                                children: searchQuery ? `We couldn't find any events matching "${searchQuery}".` : showPastEvents ? "There are no events matching your criteria." : "There are no upcoming events. Try enabling 'Show passed events'."
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 273,
+                                                lineNumber: 343,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 onClick: ()=>{
                                                     setSelectedDate(null);
                                                     setSearchQuery("");
+                                                    if (!showPastEvents) setShowPastEvents(true); // Helper UX
                                                 },
                                                 className: "mt-6 text-sm font-bold text-blue-600 underline underline-offset-4",
-                                                children: "Clear all filters"
+                                                children: "Clear filters & Show History"
                                             }, void 0, false, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 278,
+                                                lineNumber: 350,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 332,
                                         columnNumber: 17
                                     }, this),
                                     displayedEvents.map((event)=>{
@@ -2589,7 +2669,7 @@ function EventsClient({ events }) {
                                                                 children: month
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                lineNumber: 300,
+                                                                lineNumber: 373,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2597,7 +2677,7 @@ function EventsClient({ events }) {
                                                                 children: day
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                lineNumber: 303,
+                                                                lineNumber: 376,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2605,13 +2685,13 @@ function EventsClient({ events }) {
                                                                 children: weekday
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                lineNumber: 306,
+                                                                lineNumber: 379,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                        lineNumber: 299,
+                                                        lineNumber: 372,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2629,7 +2709,7 @@ function EventsClient({ events }) {
                                                                                         className: `w-2 h-2 rounded-full ${event.accent}`
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                                        lineNumber: 314,
+                                                                                        lineNumber: 387,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2637,27 +2717,27 @@ function EventsClient({ events }) {
                                                                                         children: event.category
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                                        lineNumber: 317,
+                                                                                        lineNumber: 390,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                                lineNumber: 313,
+                                                                                lineNumber: 386,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                                                 className: "text-2xl font-bold tracking-tight text-zinc-900 leading-tight",
-                                                                                children: event.title
+                                                                                children: stripHtml(event.title)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                                lineNumber: 321,
+                                                                                lineNumber: 394,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                        lineNumber: 312,
+                                                                        lineNumber: 385,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2666,26 +2746,26 @@ function EventsClient({ events }) {
                                                                             className: "w-5 h-5"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                            lineNumber: 326,
+                                                                            lineNumber: 400,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                        lineNumber: 325,
+                                                                        lineNumber: 399,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                lineNumber: 311,
+                                                                lineNumber: 384,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                 className: "text-zinc-500 leading-relaxed mb-6 line-clamp-2",
-                                                                children: event.description
+                                                                children: stripHtml(event.description)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                lineNumber: 329,
+                                                                lineNumber: 403,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2698,14 +2778,14 @@ function EventsClient({ events }) {
                                                                                 className: "w-3.5 h-3.5"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                                lineNumber: 334,
+                                                                                lineNumber: 409,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             event.time
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                        lineNumber: 333,
+                                                                        lineNumber: 408,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2715,60 +2795,60 @@ function EventsClient({ events }) {
                                                                                 className: "w-3.5 h-3.5"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                                lineNumber: 338,
+                                                                                lineNumber: 413,
                                                                                 columnNumber: 29
                                                                             }, this),
-                                                                            event.location
+                                                                            stripHtml(event.location)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                        lineNumber: 337,
+                                                                        lineNumber: 412,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                                lineNumber: 332,
+                                                                lineNumber: 407,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                        lineNumber: 310,
+                                                        lineNumber: 383,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                lineNumber: 298,
+                                                lineNumber: 371,
                                                 columnNumber: 21
                                             }, this)
                                         }, event.id, false, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 293,
+                                            lineNumber: 366,
                                             columnNumber: 19
                                         }, this);
                                     })
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                lineNumber: 251,
+                                lineNumber: 317,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                        lineNumber: 183,
+                        lineNumber: 214,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                    lineNumber: 182,
+                    lineNumber: 213,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 181,
+                lineNumber: 212,
                 columnNumber: 7
             }, this),
             selectedEvent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2787,12 +2867,12 @@ function EventsClient({ events }) {
                                         className: `w-64 h-64 rounded-full ${selectedEvent.accent || "bg-blue-500"}`
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                        lineNumber: 363,
+                                        lineNumber: 439,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 362,
+                                    lineNumber: 438,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2802,18 +2882,18 @@ function EventsClient({ events }) {
                                         className: "w-5 h-5 text-zinc-900"
                                     }, void 0, false, {
                                         fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                        lineNumber: 373,
+                                        lineNumber: 449,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 369,
+                                    lineNumber: 445,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                            lineNumber: 361,
+                            lineNumber: 437,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2827,7 +2907,7 @@ function EventsClient({ events }) {
                                             children: getDateParts(selectedEvent.date).month
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 378,
+                                            lineNumber: 454,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2835,13 +2915,13 @@ function EventsClient({ events }) {
                                             children: getDateParts(selectedEvent.date).day
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 381,
+                                            lineNumber: 457,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 377,
+                                    lineNumber: 453,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2854,21 +2934,21 @@ function EventsClient({ events }) {
                                                     children: selectedEvent.category
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 387,
+                                                    lineNumber: 463,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                     className: "text-3xl md:text-4xl font-bold text-zinc-900 leading-tight",
-                                                    children: selectedEvent.title
+                                                    children: stripHtml(selectedEvent.title)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 390,
+                                                    lineNumber: 466,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 386,
+                                            lineNumber: 462,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2881,14 +2961,14 @@ function EventsClient({ events }) {
                                                             className: "w-4 h-4 text-zinc-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 396,
+                                                            lineNumber: 472,
                                                             columnNumber: 21
                                                         }, this),
                                                         selectedEvent.date
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 395,
+                                                    lineNumber: 471,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2898,14 +2978,14 @@ function EventsClient({ events }) {
                                                             className: "w-4 h-4 text-zinc-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 400,
+                                                            lineNumber: 476,
                                                             columnNumber: 21
                                                         }, this),
                                                         selectedEvent.time
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 399,
+                                                    lineNumber: 475,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2915,27 +2995,27 @@ function EventsClient({ events }) {
                                                             className: "w-4 h-4 text-zinc-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                            lineNumber: 404,
+                                                            lineNumber: 480,
                                                             columnNumber: 21
                                                         }, this),
-                                                        selectedEvent.location
+                                                        stripHtml(selectedEvent.location)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 403,
+                                                    lineNumber: 479,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 394,
+                                            lineNumber: 470,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "h-px w-full bg-zinc-100 my-6"
                                         }, void 0, false, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 408,
+                                            lineNumber: 484,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2946,55 +3026,55 @@ function EventsClient({ events }) {
                                                     children: "About this event"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 410,
+                                                    lineNumber: 486,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-zinc-500 leading-relaxed text-lg",
-                                                    children: selectedEvent.description
+                                                    children: stripHtml(selectedEvent.description)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                                    lineNumber: 413,
+                                                    lineNumber: 489,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                            lineNumber: 409,
+                                            lineNumber: 485,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                                    lineNumber: 385,
+                                    lineNumber: 461,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                            lineNumber: 376,
+                            lineNumber: 452,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                    lineNumber: 357,
+                    lineNumber: 433,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 353,
+                lineNumber: 429,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Yeti$2d$College$2f$components$2f$footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Yeti-College/app/events/events-client.tsx",
-                lineNumber: 422,
+                lineNumber: 498,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s1(EventsClient, "oykmH4guzPAAD/GT0XdQCBtT8Ck=");
+_s1(EventsClient, "rjvYoyUrDMrlBTgiO/4qBwg52s0=");
 _c1 = EventsClient;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "SwissCalendar");

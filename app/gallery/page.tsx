@@ -26,14 +26,14 @@ export default async function GalleryPage() {
     // ------------------------
 
     // Handle the rest
-    type: (item.type as "video" | "image") || "image",
-    poster: item.poster || undefined,
+    type: "image" as const,
+    poster: undefined,
     title: item.title,
     category: item.category || "All",
-    year: item.year || "2024",
+     year: "2024",
     // Ensure we have numbers for width/height (defaults provided just in case)
-    width: item.width || 1000,
-    height: item.height || 1000,
+    width: 1000,
+    height: 1000,
   }));
 
   // 3. Render
