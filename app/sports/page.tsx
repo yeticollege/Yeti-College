@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MapPin,
   Mail,
@@ -14,7 +14,8 @@ import {
   Users,
   Calendar,
   AlertCircle,
-  Vote, // Added icon
+  Vote,
+  Timer,
 } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -70,7 +71,6 @@ const InputField = ({
   </div>
 );
 
-// Updated SelectField to handle groups
 const SelectField = ({
   label,
   name,
@@ -232,11 +232,16 @@ const InfoRow = ({
   </div>
 );
 
+// Constants
+const COOLDOWN_DURATION = 120; // 2 minutes in seconds
+const COOLDOWN_KEY = "submission_cooldown_expiry";
+
 export default function SportsRegistrationPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success"
   >("idle");
+  const [cooldown, setCooldown] = useState(0);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -271,6 +276,50 @@ export default function SportsRegistrationPage() {
     { label: "E-Sports (Voting)", options: eSports },
   ];
 
+  // 1. Check for active cooldown on Mount (Page Load/Reload)
+  useEffect(() => {
+    const storedExpiry = localStorage.getItem(COOLDOWN_KEY);
+    if (storedExpiry) {
+      const remainingSeconds = Math.ceil(
+        (parseInt(storedExpiry, 10) - Date.now()) / 1000
+      );
+
+      if (remainingSeconds > 0) {
+        setFormStatus("success");
+        setCooldown(remainingSeconds);
+      } else {
+        localStorage.removeItem(COOLDOWN_KEY);
+      }
+    }
+  }, []);
+
+  // 2. Timer Logic (Syncs with real time to handle reloads accurately)
+  useEffect(() => {
+    if (formStatus !== "success") return;
+
+    // Run immediately to set initial state correctly to avoid 1s delay
+    const checkTimer = () => {
+      const storedExpiry = localStorage.getItem(COOLDOWN_KEY);
+      if (storedExpiry) {
+        const remaining = Math.ceil(
+          (parseInt(storedExpiry, 10) - Date.now()) / 1000
+        );
+
+        if (remaining > 0) {
+          setCooldown(remaining);
+        } else {
+          setCooldown(0);
+          localStorage.removeItem(COOLDOWN_KEY); // Clean up
+        }
+      }
+    };
+
+    const interval = setInterval(checkTimer, 1000);
+    checkTimer(); // Initial call
+
+    return () => clearInterval(interval);
+  }, [formStatus]);
+
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -286,6 +335,12 @@ export default function SportsRegistrationPage() {
       participationType: val,
       teamName: val === "Solo" ? "" : prev.teamName,
     }));
+  };
+
+  const handleResetForm = () => {
+    if (cooldown > 0) return;
+    setFormStatus("idle");
+    localStorage.removeItem(COOLDOWN_KEY); // Explicitly clear to be safe
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -331,7 +386,13 @@ export default function SportsRegistrationPage() {
         throw new Error(err?.error || "Failed to register");
       }
 
+      // Success Logic with Persistence
+      const expiryTime = Date.now() + COOLDOWN_DURATION * 1000;
+      localStorage.setItem(COOLDOWN_KEY, expiryTime.toString());
+
       setFormStatus("success");
+      setCooldown(COOLDOWN_DURATION);
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -364,8 +425,14 @@ export default function SportsRegistrationPage() {
     },
   ];
 
-  // Helper to detect if selected sport is E-Sport
   const isESportSelected = eSports.includes(formData.sport);
+
+  // Helper to format MM:SS
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s < 10 ? "0" : ""}${s}`;
+  };
 
   return (
     <>
@@ -430,7 +497,7 @@ export default function SportsRegistrationPage() {
                     />
                   </div>
 
-                  {/* E-Sports Notice (New) */}
+                  {/* E-Sports Notice */}
                   <div className="mt-4 p-4 bg-amber-50 border border-amber-100 rounded-2xl flex items-start gap-3">
                     <Vote className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                     <div>
@@ -482,11 +549,25 @@ export default function SportsRegistrationPage() {
                       Registration received. We will email details to{" "}
                       {formData.email}.
                     </p>
+
+                    {/* UPDATED: Button with Persisted Timer */}
                     <button
-                      onClick={() => setFormStatus("idle")}
-                      className="mt-8 px-8 py-4 bg-zinc-100 rounded-full font-bold text-sm text-zinc-900 hover:bg-zinc-200 transition-colors"
+                      onClick={handleResetForm}
+                      disabled={cooldown > 0}
+                      className={`mt-8 px-8 py-4 rounded-full font-bold text-sm transition-all flex items-center gap-2 ${
+                        cooldown > 0
+                          ? "bg-zinc-100 text-zinc-400 cursor-not-allowed"
+                          : "bg-zinc-100 text-zinc-900 hover:bg-zinc-200"
+                      }`}
                     >
-                      Register another
+                      {cooldown > 0 ? (
+                        <>
+                          <Timer className="w-4 h-4 animate-pulse" />
+                          Wait {formatTime(cooldown)} to register another
+                        </>
+                      ) : (
+                        "Register another"
+                      )}
                     </button>
                   </div>
                 ) : (
@@ -557,7 +638,6 @@ export default function SportsRegistrationPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                      {/* Updated Sport Selector with Groups */}
                       <SelectField
                         label="Select Sport / Vote for E-Sport"
                         name="sport"
