@@ -460,3 +460,151 @@ This will cause a hydration error.%s <div> html
 
 [00:54:31.767] Browser ERROR   <%s> cannot contain a nested %s.
 See this log for the ancestor stack trace. html <div>
+[01:00:54.627] Server  LOG     ✓ Compiled in 677ms
+[01:01:38.886] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:01:39.290] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:01:39.291] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:01:39.291] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:01:39.291] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768582769689}
+[01:02:40.964] Server  LOG     ✓ Compiled in 7.9s
+[01:02:45.471] Server  LOG     ✓ Compiled in 26ms
+[01:02:49.779] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:02:54.866] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:02:55.046] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:02:55.046] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:02:55.046] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768582845335}
+[01:03:13.984] Server  LOG     ✓ Compiled in 2.4s
+[01:03:16.018] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:03:16.926] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:03:16.927] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:03:16.927] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:03:16.927] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768582867188}
+[01:03:19.105] Browser ERROR   In HTML, %s cannot be a child of <%s>.%s
+This will cause a hydration error.%s <div> html  
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:"...", ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/sports" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/Yeti-Coll...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+>                       <html lang="en">
+                          <DynamicPopup>
+>                           <div
+>                             className="fixed bottom-4 right-4 z-[100] md:bottom-8 md:right-8 animate-in fade-in slid..."
+>                           >
+                          ...
+                  ...
+
+[01:03:19.106] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. html <div>
+[01:03:41.782] Server  LOG     ✓ Compiled in 1109ms
+[01:04:17.705] Browser ERROR   A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://react.dev/link/controlled-components
+[01:08:34.910] Server  LOG     ✓ Compiled in 5.6s
+[01:09:01.352] Server  LOG     ✓ Compiled in 0ms
+[01:15:52.580] Server  LOG     ✓ Compiled in 4.8s
+[01:15:53.139] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./Yeti-College/app/sports/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:15:59.634] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:01.328] Browser ERROR   In HTML, whitespace text nodes cannot be a child of <%s>. Make sure you don't have any extra whitespace between tags on each line of your source code.
+This will cause a hydration error.%s tr 
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/sports" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="/Yeti-Coll...">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function RegistrationsPage} serverProvidedParams={{...}}>
+                <RegistrationsPage params={Promise} searchParams={Promise}>
+                  <div className="min-h-scre...">
+                    <div className="max-w-7xl ...">
+                      <div>
+                      <div className="bg-white r...">
+                        <div className="overflow-x...">
+                          <table className="w-full tex...">
+                            <thead className="bg-gray-50...">
+>                             <tr>
+                                <th>
+                                <th>
+                                <th>
+                                <th>
+>                               {" "}
+                            ...
+            ...
+          ...
+
+[01:16:01.328] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:16:01.329] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:16:01.329] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768583631515}
+[01:16:17.743] Server  LOG     ✓ Finished writing to filesystem cache in 12.6s
+[01:16:20.638] Server  LOG     ✓ Compiled in 3.9s
+[01:16:21.054] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./Yeti-College/app/sports/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:16:23.456] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:24.224] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:16:24.502] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:16:24.502] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:16:24.502] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768583654817}
+[01:20:42.777] Server  LOG     ✓ Compiled in 2.4s
+[01:23:39.296] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:23:39.720] Server  LOG     ✓ Compiled in 140ms
+[01:23:40.689] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:23:40.689] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:23:40.689] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:23:40.689] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768584091143}
+[01:23:43.797] Browser ERROR   In HTML, %s cannot be a child of <%s>.%s
+This will cause a hydration error.%s <div> html  
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:"...", ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/sports" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/Yeti-Coll...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+>                       <html lang="en">
+                          <DynamicPopup>
+>                           <div
+>                             className="fixed bottom-4 right-4 z-[100] md:bottom-8 md:right-8 animate-in fade-in slid..."
+>                           >
+                          ...
+                  ...
+
+[01:23:43.797] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. html <div>
+[01:26:53.261] Server  LOG     ✓ Compiled in 3.4s
+[01:26:57.134] Browser ERROR   A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://react.dev/link/controlled-components
+[01:27:37.871] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:27:38.220] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:27:38.220] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:27:38.220] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:27:38.220] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768584328725}
+[01:39:26.864] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:39:27.830] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:39:27.830] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:39:27.830] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sports","route":"/sports"}
+[01:39:27.830] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/sports color: rgb(120, 120, 120) color: inherit {"dp":"/sports","o":"http://localhost:3001/sports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768585038336}
+[01:41:42.459] Browser ERROR   A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://react.dev/link/controlled-components

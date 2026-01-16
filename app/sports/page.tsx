@@ -16,6 +16,8 @@ import {
   AlertCircle,
   Vote,
   Timer,
+  Plus,
+  Trash2,
 } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -233,7 +235,7 @@ const InfoRow = ({
 );
 
 // Constants
-const COOLDOWN_DURATION = 120; // 2 minutes in seconds
+const COOLDOWN_DURATION = 120; // 2 minutes
 const COOLDOWN_KEY = "submission_cooldown_expiry";
 
 export default function SportsRegistrationPage() {
@@ -242,6 +244,9 @@ export default function SportsRegistrationPage() {
     "idle" | "submitting" | "success"
   >("idle");
   const [cooldown, setCooldown] = useState(0);
+
+  // Dynamic Players State
+  const [players, setPlayers] = useState<string[]>([""]);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -276,7 +281,7 @@ export default function SportsRegistrationPage() {
     { label: "E-Sports (Voting)", options: eSports },
   ];
 
-  // 1. Check for active cooldown on Mount (Page Load/Reload)
+  // 1. Check for active cooldown on Mount
   useEffect(() => {
     const storedExpiry = localStorage.getItem(COOLDOWN_KEY);
     if (storedExpiry) {
@@ -293,32 +298,31 @@ export default function SportsRegistrationPage() {
     }
   }, []);
 
-  // 2. Timer Logic (Syncs with real time to handle reloads accurately)
+  // 2. Timer Logic
   useEffect(() => {
     if (formStatus !== "success") return;
 
-    // Run immediately to set initial state correctly to avoid 1s delay
     const checkTimer = () => {
       const storedExpiry = localStorage.getItem(COOLDOWN_KEY);
       if (storedExpiry) {
         const remaining = Math.ceil(
           (parseInt(storedExpiry, 10) - Date.now()) / 1000
         );
-
         if (remaining > 0) {
           setCooldown(remaining);
         } else {
           setCooldown(0);
-          localStorage.removeItem(COOLDOWN_KEY); // Clean up
+          localStorage.removeItem(COOLDOWN_KEY);
         }
       }
     };
 
     const interval = setInterval(checkTimer, 1000);
-    checkTimer(); // Initial call
-
+    checkTimer();
     return () => clearInterval(interval);
   }, [formStatus]);
+
+  // --- Handlers ---
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -335,17 +339,34 @@ export default function SportsRegistrationPage() {
       participationType: val,
       teamName: val === "Solo" ? "" : prev.teamName,
     }));
+    // Reset players if switching to team
+    if (val === "Team" && players.length === 0) setPlayers([""]);
+  };
+
+  // Dynamic Player Logic
+  const handlePlayerChange = (index: number, value: string) => {
+    const newPlayers = [...players];
+    newPlayers[index] = value;
+    setPlayers(newPlayers);
+  };
+  const addPlayer = () => setPlayers([...players, ""]);
+  const removePlayer = (index: number) => {
+    const newPlayers = players.filter((_, i) => i !== index);
+    setPlayers(newPlayers);
   };
 
   const handleResetForm = () => {
     if (cooldown > 0) return;
     setFormStatus("idle");
-    localStorage.removeItem(COOLDOWN_KEY); // Explicitly clear to be safe
+    localStorage.removeItem(COOLDOWN_KEY);
+    setPlayers([""]);
+    setFormData({ ...formData, participationType: "Solo", sport: "" });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Basic Validation
     if (
       !formData.firstName ||
       !formData.email ||
@@ -362,17 +383,37 @@ export default function SportsRegistrationPage() {
       return;
     }
 
-    if (formData.participationType === "Team" && !formData.teamName) {
-      alert("Please enter a Team Name.");
-      return;
+    // Team Validation
+    if (formData.participationType === "Team") {
+      if (!formData.teamName) {
+        alert("Please enter a Team Name.");
+        return;
+      }
+      if (players.some((p) => p.trim() === "")) {
+        alert("Please fill in all player names or remove empty fields.");
+        return;
+      }
     }
 
     try {
       setFormStatus("submitting");
+
+      // Merge Player List into message for API
+      let finalMessage = formData.message;
+      if (formData.participationType === "Team") {
+        const rosterString = players.map((p, i) => `${i + 1}. ${p}`).join("\n");
+        finalMessage = `${rosterString}\n\nNOTES: ${formData.message}`;
+      }
+
+      const submissionData = {
+        ...formData,
+        message: finalMessage,
+      };
+
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       const contentType = res.headers.get("content-type");
@@ -386,7 +427,7 @@ export default function SportsRegistrationPage() {
         throw new Error(err?.error || "Failed to register");
       }
 
-      // Success Logic with Persistence
+      // Success & Cooldown
       const expiryTime = Date.now() + COOLDOWN_DURATION * 1000;
       localStorage.setItem(COOLDOWN_KEY, expiryTime.toString());
 
@@ -403,6 +444,7 @@ export default function SportsRegistrationPage() {
         teamName: "",
         message: "",
       });
+      setPlayers([""]);
     } catch (err: any) {
       console.error(err);
       alert(err?.message || "An error occurred.");
@@ -427,7 +469,6 @@ export default function SportsRegistrationPage() {
 
   const isESportSelected = eSports.includes(formData.sport);
 
-  // Helper to format MM:SS
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
@@ -550,7 +591,6 @@ export default function SportsRegistrationPage() {
                       {formData.email}.
                     </p>
 
-                    {/* UPDATED: Button with Persisted Timer */}
                     <button
                       onClick={handleResetForm}
                       disabled={cooldown > 0}
@@ -670,20 +710,72 @@ export default function SportsRegistrationPage() {
                       )}
                     </div>
 
-                    <div className="mb-8">
-                      <InputField
-                        label="Additional Notes / Player List"
-                        name="message"
-                        rows={3}
-                        placeholder={
-                          formData.participationType === "Team"
-                            ? "List your squad members here..."
-                            : "Any medical conditions or questions?"
-                        }
-                        value={formData.message}
-                        onChange={handleInputChange}
-                      />
-                    </div>
+                    {/* DYNAMIC PLAYER SECTION (Replaced simple textarea) */}
+                    {formData.participationType === "Team" ? (
+                      <div className="mb-8 animate-in fade-in slide-in-from-top-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
+                            Team Members
+                          </label>
+                          <button
+                            type="button"
+                            onClick={addPlayer}
+                            className="text-xs font-bold bg-zinc-100 px-3 py-1.5 rounded-full hover:bg-zinc-200 transition-colors flex items-center gap-1"
+                          >
+                            <Plus className="w-3 h-3" /> Add Player
+                          </button>
+                        </div>
+
+                        <div className="space-y-3">
+                          {players.map((player, index) => (
+                            <div key={index} className="flex gap-3">
+                              <div className="flex-1">
+                                <input
+                                  type="text"
+                                  placeholder={`Player ${index + 1} Name`}
+                                  value={player}
+                                  onChange={(e) =>
+                                    handlePlayerChange(index, e.target.value)
+                                  }
+                                  className="w-full bg-zinc-50 border-0 rounded-xl p-4 text-zinc-900 font-medium placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:bg-white transition-all outline-none"
+                                />
+                              </div>
+                              {players.length > 1 && (
+                                <button
+                                  type="button"
+                                  onClick={() => removePlayer(index)}
+                                  className="w-14 bg-red-50 text-red-500 rounded-xl flex items-center justify-center hover:bg-red-100 transition-colors"
+                                >
+                                  <Trash2 className="w-5 h-5" />
+                                </button>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-6">
+                          <InputField
+                            label="Additional Notes (Optional)"
+                            name="message"
+                            placeholder="Medical conditions etc."
+                            value={formData.message}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      // SOLO UI
+                      <div className="mb-8">
+                        <InputField
+                          label="Additional Notes"
+                          name="message"
+                          rows={4}
+                          placeholder="Any medical conditions or questions?"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    )}
 
                     <div className="flex items-center justify-end">
                       <button

@@ -1,7 +1,19 @@
-// app/api/register/route.ts
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/app/lib/db";
 
+// GET: Fetch all registrations
+export async function GET() {
+  try {
+    const registrations = await prisma.sportsRegistration.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return NextResponse.json(registrations, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
+  }
+}
+
+// POST: Create Registration with Formatted Message
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -13,10 +25,10 @@ export async function POST(req: Request) {
       sport,
       participationType,
       teamName,
-      message,
+      message, // This contains the list of players from the frontend
     } = body;
 
-    // 1. Basic Validation
+    // Validation
     if (
       !firstName ||
       !lastName ||
@@ -31,41 +43,44 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2. Conditional Validation
     if (participationType === "Team" && !teamName) {
       return NextResponse.json(
-        { error: "Team Name is required for team registration" },
+        { error: "Team Name is required" },
         { status: 400 }
       );
     }
 
-    // 3. Save to Database
+    // --- LOGIC CHANGE: Format the message ---
+    let finalFormattedMessage = message || "";
+
+    if (participationType === "Team") {
+      // Combine Team Name and Player List into one formatted block
+      finalFormattedMessage = `\nROSTER / PLAYERS:\n${
+        message || "No player list provided"
+      }`;
+    }
+    // ----------------------------------------
+
     const registration = await prisma.sportsRegistration.create({
       data: {
         firstName,
         lastName,
         email,
         phone,
-        sport,
         participationType,
-        teamName: participationType === "Team" ? teamName : "",
-        message: message || "",
+        sport,
+        teamName: teamName || "",
+        // We save the formatted data into the 'message' column
+        message: finalFormattedMessage,
       },
     });
 
     return NextResponse.json(
-      { message: "Registration successful", data: registration },
+      { message: "Success", data: registration },
       { status: 201 }
     );
   } catch (error) {
     console.error("Registration Error:", error);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Server Error" }, { status: 500 });
   }
-}
-
-export async function GET() {
-  return NextResponse.json({ message: "Register API is working!" });
 }
