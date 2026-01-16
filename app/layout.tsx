@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import YetiChatbot from "@/components/chatbot";
+import DynamicPopup from "@/components/dynamic-popup";
 // NOTE: I commented out the Header import/usage as it was commented in your original code.
 // import Header from "@/components/althero";
 
@@ -119,6 +120,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <Header /> */}
+      <DynamicPopup />
       <Analytics />
       <body className={`font-sans antialiased`}>
         {children}

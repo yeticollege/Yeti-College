@@ -7,9 +7,11 @@ import {
   Phone,
   ArrowUpRight,
   Send,
-  MessageSquare,
+  Trophy,
   Clock,
   CheckCircle2,
+  ChevronDown,
+  Gamepad2,
 } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -40,7 +42,7 @@ const InputField = ({
 }) => (
   <div className="space-y-2">
     <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
-      {label}
+      {label} {required && <span className="text-red-500">*</span>}
     </label>
     {rows ? (
       <textarea
@@ -50,7 +52,7 @@ const InputField = ({
         rows={rows}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-zinc-50 border-0 rounded-2xl p-5 text-zinc-900 font-medium placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:bg-white transition-all resize-none"
+        className="w-full bg-zinc-50 border-0 rounded-2xl p-5 text-zinc-900 font-medium placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:bg-white transition-all resize-none outline-none"
       />
     ) : (
       <input
@@ -60,9 +62,51 @@ const InputField = ({
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full bg-zinc-50 border-0 rounded-2xl p-5 text-zinc-900 font-medium placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:bg-white transition-all"
+        className="w-full bg-zinc-50 border-0 rounded-2xl p-5 text-zinc-900 font-medium placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:bg-white transition-all outline-none"
       />
     )}
+  </div>
+);
+
+// Styled Select Component for Sports
+const SelectField = ({
+  label,
+  name,
+  value,
+  onChange,
+  options,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: string[];
+  required?: boolean;
+}) => (
+  <div className="space-y-2 relative">
+    <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
+    <div className="relative">
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
+        className="w-full bg-zinc-50 border-0 rounded-2xl p-5 text-zinc-900 font-medium appearance-none focus:ring-2 focus:ring-zinc-900 focus:bg-white transition-all outline-none cursor-pointer"
+      >
+        <option value="" disabled>
+          Select a sport...
+        </option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400 pointer-events-none" />
+    </div>
   </div>
 );
 
@@ -114,24 +158,54 @@ const FAQItem = ({
   );
 };
 
-export default function ContactPage() {
+export default function SportsRegistrationPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success"
   >("idle");
 
-  // Controlled form state
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  // Form State
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    sport: "",
+    teamName: "",
+    message: "",
+  });
+
+  const sportsList = [
+    "Futsal",
+    "Basketball",
+    "Table Tennis",
+    "Carrom Board",
+    "Chess",
+    "PUBG Mobile",
+    "Free Fire",
+    "Clash Royale",
+    "Mobile Legends",
+    "Badminton",
+  ];
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // client-side validation
-    if (!firstName || !lastName || !email || !subject || !message) {
+    if (
+      !formData.firstName ||
+      !formData.email ||
+      !formData.sport ||
+      !formData.phone
+    ) {
       alert("Please fill all required fields.");
       return;
     }
@@ -139,24 +213,28 @@ export default function ContactPage() {
     try {
       setFormStatus("submitting");
 
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, subject, message }),
+        body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
         const err = await res.json();
-        throw new Error(err?.error || "Failed to send message");
+        throw new Error(err?.error || "Failed to register");
       }
 
       setFormStatus("success");
-      // clear form
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        sport: "",
+        teamName: "",
+        message: "",
+      });
     } catch (err: any) {
       console.error(err);
       alert(err?.message || "An error occurred. Please try again later.");
@@ -166,16 +244,16 @@ export default function ContactPage() {
 
   const faqs = [
     {
-      q: "How can I register for an event?",
-      a: "You can register directly through our events page by clicking the 'Register' button on any specific event card.",
+      q: "Is there a registration fee?",
+      a: "Yes, fees vary by sport. Futsal is $50/team, while Table Tennis and Chess are $10/person. E-sports are free this season.",
     },
     {
-      q: "Do you offer group discounts?",
-      a: "Yes, for teams larger than 5 people, we offer a 20% discount on all workshops and conferences.",
+      q: "Do I need to bring my own equipment?",
+      a: "We provide balls, boards, and nets. For Badminton and Table Tennis, we recommend bringing your own racquets/bats, though spares are available.",
     },
     {
-      q: "Where are your offices located?",
-      a: "We have a main hub in Zurich and satellite offices in London and New York. All locations are open for visits.",
+      q: "Can I register for multiple sports?",
+      a: "Yes, but please check the schedule to ensure match times do not clash. You must fill out this form separately for each sport.",
     },
   ];
 
@@ -188,12 +266,12 @@ export default function ContactPage() {
           {/* --- Page Header --- */}
           <div className="mb-12 md:mb-20">
             <h5 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
-              Support & Inquiries
+              Annual Sports Week
             </h5>
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.85] text-zinc-900">
-              Get in
+              Join the
               <br />
-              <span className="text-zinc-400">Touch.</span>
+              <span className="text-zinc-400">Game.</span>
             </h1>
           </div>
 
@@ -204,7 +282,9 @@ export default function ContactPage() {
                 {/* Contact Details Card */}
                 <div className="bg-zinc-900 text-white p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden">
                   <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-8">Contact Info</h3>
+                    <h3 className="text-2xl font-bold mb-8">
+                      Sports Committee
+                    </h3>
 
                     <div className="space-y-6">
                       <div className="flex items-start gap-4">
@@ -213,13 +293,13 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">
-                            Email
+                            Queries
                           </p>
                           <a
-                            href="mailto:hello@agency.com"
+                            href="mailto:sports@college.edu"
                             className="text-lg font-bold hover:text-zinc-300 transition-colors"
                           >
-                            info@yeticollege.edu.np
+                            sports@yeticollege.edu.np
                           </a>
                         </div>
                       </div>
@@ -230,9 +310,9 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">
-                            Phone
+                            Coordinator
                           </p>
-                          <p className="text-lg font-bold">+977 1-4792063</p>
+                          <p className="text-lg font-bold">+977 9800000000</p>
                         </div>
                       </div>
 
@@ -242,10 +322,10 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">
-                            Hours
+                            Registration Deadline
                           </p>
                           <p className="font-medium text-zinc-400">
-                            Mon-Fri, 06:00 - 18:00
+                            January 25, 2026
                           </p>
                         </div>
                       </div>
@@ -258,31 +338,30 @@ export default function ContactPage() {
 
                 {/* Map / Location Card */}
                 <div className="bg-white p-2 rounded-[2.5rem] shadow-sm border border-zinc-100 group cursor-pointer">
-                  <div className="bg-zinc-100 rounded-[2rem] aspect-[4/3] relative overflow-hidden">
-                    {/* Placeholder for Real Map */}
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4655.418152257627!2d85.32724007644036!3d27.687456276193924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a0ab44f839%3A0x21d0492e1239b492!2sYETI%20International%20College!5e1!3m2!1sen!2snp!4v1763720921356!5m2!1sen!2snp"
-                      width="600"
-                      height="450"
-                      //   style="border:0;"
-                      allowFullScreen={true}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-400">
-                      <MapPin className="w-8 h-8 mb-2 group-hover:-translate-y-1 transition-transform duration-300" />
-                      <span className="text-xs font-bold uppercase tracking-widest">
-                        Zurich, CH
+                  <div className="bg-zinc-100 rounded-[2rem] aspect-[4/3] relative overflow-hidden flex items-center justify-center">
+                    {/* Abstract Map Graphic */}
+                    <div className="absolute inset-0 bg-zinc-200">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4655.418152257627!2d85.32724007644036!3d27.687456276193924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a0ab44f839%3A0x21d0492e1239b492!2sYETI%20International%20College!5e1!3m2!1sen!2snp!4v1763720921356!5m2!1sen!2snp"
+                        className="w-full h-full border-0 grayscale opacity-80 group-hover:grayscale-0 transition-all duration-500"
+                        loading="lazy"
+                      ></iframe>
+                    </div>
+
+                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                      <div className="bg-zinc-900 text-white p-3 rounded-full mb-2 shadow-lg group-hover:-translate-y-2 transition-transform duration-300">
+                        <MapPin className="w-6 h-6" />
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm">
+                        College Ground
                       </span>
                     </div>
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-zinc-900/0 group-hover:bg-zinc-900/5 transition-colors duration-300" />
                   </div>
                   <div className="p-6 flex justify-between items-center">
                     <div>
-                      <p className="font-bold text-zinc-900">Headquarters</p>
+                      <p className="font-bold text-zinc-900">Main Venue</p>
                       <p className="text-sm text-zinc-500">
-                        Bahnhofstrasse 10, 8001
+                        Basketball Court & Hall A
                       </p>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-zinc-50 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white transition-all">
@@ -299,22 +378,23 @@ export default function ContactPage() {
               <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden">
                 {formStatus === "success" ? (
                   // Success State
-                  <div className="h-[400px] flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
-                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
-                      <CheckCircle2 className="w-10 h-10" />
+                  <div className="h-[500px] flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
+                    <div className="w-24 h-24 bg-zinc-900 text-white rounded-full flex items-center justify-center mb-6 shadow-xl">
+                      <Trophy className="w-10 h-10" />
                     </div>
                     <h2 className="text-3xl font-bold text-zinc-900 mb-2">
-                      Message Sent!
+                      You're in the game!
                     </h2>
                     <p className="text-zinc-500 max-w-md mx-auto">
-                      Thanks for reaching out. Our team will review your message
-                      and get back to you within 24 hours.
+                      Registration for <strong>{formData.sport}</strong>{" "}
+                      successful. We will email the schedule to {formData.email}{" "}
+                      shortly.
                     </p>
                     <button
                       onClick={() => setFormStatus("idle")}
-                      className="mt-8 px-6 py-3 bg-zinc-100 rounded-full font-bold text-sm text-zinc-600 hover:bg-zinc-200 transition-colors"
+                      className="mt-8 px-8 py-4 bg-zinc-100 rounded-full font-bold text-sm text-zinc-900 hover:bg-zinc-200 transition-colors"
                     >
-                      Send another message
+                      Register another player
                     </button>
                   </div>
                 ) : (
@@ -323,63 +403,81 @@ export default function ContactPage() {
                     <div className="flex justify-between items-end mb-10">
                       <div>
                         <h2 className="text-3xl font-bold text-zinc-900">
-                          Send a message
+                          Participant Registration
                         </h2>
                         <p className="text-zinc-500 mt-2">
-                          We'd love to hear from you.
+                          Fill out the details below to secure your spot.
                         </p>
                       </div>
-                      <MessageSquare className="w-8 h-8 text-zinc-200 hidden md:block" />
+                      <Gamepad2 className="w-10 h-10 text-zinc-200 hidden md:block" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <InputField
                         label="First Name"
                         name="firstName"
-                        placeholder="Jane"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        placeholder="Cristiano"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
                         required
                       />
                       <InputField
                         label="Last Name"
                         name="lastName"
-                        placeholder="Doe"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        placeholder="Ronaldo"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
                         required
                       />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <InputField
-                        label="Email"
+                        label="Email Address"
                         name="email"
                         type="email"
-                        placeholder="jane@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="student@college.edu"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         required
                       />
                       <InputField
-                        label="Subject"
-                        name="subject"
-                        placeholder="General Inquiry"
-                        value={subject}
-                        onChange={(e) => setSubject(e.target.value)}
+                        label="Phone Number"
+                        name="phone"
+                        type="tel"
+                        placeholder="98XXXXXXXX"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         required
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      <SelectField
+                        label="Select Sport"
+                        name="sport"
+                        value={formData.sport}
+                        onChange={handleInputChange}
+                        options={sportsList}
+                        required
+                      />
+                      <InputField
+                        label="Team Name (Optional)"
+                        name="teamName"
+                        placeholder="e.g. The Avengers"
+                        value={formData.teamName}
+                        onChange={handleInputChange}
                       />
                     </div>
 
                     <div className="mb-8">
                       <InputField
-                        label="Message"
+                        label="Additional Notes"
                         name="message"
-                        rows={4}
-                        placeholder="How can we help you today?"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        required
+                        rows={3}
+                        placeholder="Any medical conditions or scheduling conflicts?"
+                        value={formData.message}
+                        onChange={handleInputChange}
                       />
                     </div>
 
@@ -390,8 +488,8 @@ export default function ContactPage() {
                         className="group flex items-center gap-3 bg-zinc-900 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-zinc-800 hover:shadow-lg hover:shadow-zinc-900/20 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                       >
                         {formStatus === "submitting"
-                          ? "Sending..."
-                          : "Send Message"}
+                          ? "Registering..."
+                          : "Submit Registration"}
                         {!formStatus && (
                           <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         )}
@@ -404,7 +502,7 @@ export default function ContactPage() {
               {/* FAQ Section */}
               <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm">
                 <h3 className="text-xl font-bold text-zinc-900 mb-8 border-b border-zinc-100 pb-4">
-                  Frequently Asked Questions
+                  Registration FAQ
                 </h3>
                 <div>
                   {faqs.map((faq, idx) => (

@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -8,11 +9,11 @@ datasource db {
 }
 
 model Notice {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
-  description String
   date        DateTime
   category    String
+  description String
   mediaType   String?
   mediaUrl    String?
   accent      String?
@@ -65,6 +66,35 @@ model GalleryItem {
   password    String   // Note: In production, use bcrypt to hash this!
   collegeCode String
   role        String   @default("admin")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+
+
+model SportsRegistration {
+  id                String   @id @default(cuid())
+  firstName         String
+  lastName          String
+  email             String
+  phone             String
+  participationType String   // "Solo" or "Team"
+  sport             String
+  teamName          String?  // Optional in DB, enforced in API/UI if Team
+  message           String?
+  createdAt         DateTime @default(now())
+}
+
+model Popup {
+  
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String?  // Optional
+  buttonText  String
+  buttonLink  String
+  isActive    Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
