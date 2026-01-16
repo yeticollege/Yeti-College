@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   MapPin,
   Mail,
-  Phone,
   ArrowUpRight,
   Send,
   Trophy,
@@ -13,13 +12,15 @@ import {
   Gamepad2,
   User,
   Users,
+  Calendar,
+  AlertCircle,
+  Vote, // Added icon
 } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 // --- Components ---
 
-// Styled Input Component
 const InputField = ({
   label,
   type = "text",
@@ -69,21 +70,23 @@ const InputField = ({
   </div>
 );
 
-// Styled Select Component
+// Updated SelectField to handle groups
 const SelectField = ({
   label,
   name,
   value,
   onChange,
-  options,
+  groups,
   required = false,
+  helperText,
 }: {
   label: string;
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: string[];
+  groups: { label: string; options: string[] }[];
   required?: boolean;
+  helperText?: string | null;
 }) => (
   <div className="space-y-2 relative w-full">
     <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
@@ -100,18 +103,26 @@ const SelectField = ({
         <option value="" disabled>
           Select a sport...
         </option>
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
+        {groups.map((group) => (
+          <optgroup key={group.label} label={group.label}>
+            {group.options.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </optgroup>
         ))}
       </select>
       <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400 pointer-events-none" />
     </div>
+    {helperText && (
+      <p className="text-xs font-medium text-amber-600 ml-1 animate-in slide-in-from-top-1">
+        {helperText}
+      </p>
+    )}
   </div>
 );
 
-// Toggle Switch for Participation Type
 const ParticipationToggle = ({
   value,
   onChange,
@@ -125,7 +136,6 @@ const ParticipationToggle = ({
         Participation Type <span className="text-red-500">*</span>
       </label>
       <div className="bg-zinc-100 p-1.5 rounded-2xl flex relative">
-        {/* Sliding Background Animation Logic (Optional visual flair) */}
         <button
           type="button"
           onClick={() => onChange("Solo")}
@@ -155,7 +165,6 @@ const ParticipationToggle = ({
   );
 };
 
-// FAQ Item
 const FAQItem = ({
   question,
   answer,
@@ -201,13 +210,34 @@ const FAQItem = ({
   </div>
 );
 
+const InfoRow = ({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: any;
+  label: string;
+  value: string;
+}) => (
+  <div className="flex items-start gap-4 p-4 rounded-2xl bg-zinc-50 hover:bg-zinc-100 transition-colors">
+    <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 text-zinc-900">
+      <Icon className="w-5 h-5" />
+    </div>
+    <div>
+      <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">
+        {label}
+      </p>
+      <p className="font-bold text-zinc-900 leading-tight">{value}</p>
+    </div>
+  </div>
+);
+
 export default function SportsRegistrationPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
   const [formStatus, setFormStatus] = useState<
     "idle" | "submitting" | "success"
   >("idle");
 
-  // Form State
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -219,17 +249,26 @@ export default function SportsRegistrationPage() {
     message: "",
   });
 
-  const sportsList = [
+  // Categorized Sports
+  const physicalSports = [
     "Futsal",
     "Basketball",
     "Table Tennis",
     "Carrom Board",
     "Chess",
+    "Badminton",
+  ];
+
+  const eSports = [
     "PUBG Mobile",
     "Free Fire",
     "Clash Royale",
     "Mobile Legends",
-    "Badminton",
+  ];
+
+  const sportsGroups = [
+    { label: "Physical Sports", options: physicalSports },
+    { label: "E-Sports (Voting)", options: eSports },
   ];
 
   const handleInputChange = (
@@ -245,7 +284,6 @@ export default function SportsRegistrationPage() {
     setFormData((prev) => ({
       ...prev,
       participationType: val,
-      // Clear team name if switching back to solo
       teamName: val === "Solo" ? "" : prev.teamName,
     }));
   };
@@ -253,7 +291,6 @@ export default function SportsRegistrationPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Custom Validation
     if (
       !formData.firstName ||
       !formData.email ||
@@ -264,6 +301,12 @@ export default function SportsRegistrationPage() {
       return;
     }
 
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      alert("Phone number must be exactly 10 digits with no alphabets.");
+      return;
+    }
+
     if (formData.participationType === "Team" && !formData.teamName) {
       alert("Please enter a Team Name.");
       return;
@@ -271,20 +314,14 @@ export default function SportsRegistrationPage() {
 
     try {
       setFormStatus("submitting");
-
-      // FIXED URL HERE:
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      // Check if response is NOT JSON
       const contentType = res.headers.get("content-type");
       if (contentType && contentType.indexOf("application/json") === -1) {
-        const text = await res.text();
-        console.error("API returned HTML instead of JSON:", text);
-        alert("API Error: Check console for details. (Likely 404)");
         setFormStatus("idle");
         return;
       }
@@ -295,7 +332,6 @@ export default function SportsRegistrationPage() {
       }
 
       setFormStatus("success");
-      // Reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -308,7 +344,7 @@ export default function SportsRegistrationPage() {
       });
     } catch (err: any) {
       console.error(err);
-      alert(err?.message || "An error occurred. Please try again later.");
+      alert(err?.message || "An error occurred.");
       setFormStatus("idle");
     }
   };
@@ -316,7 +352,7 @@ export default function SportsRegistrationPage() {
   const faqs = [
     {
       q: "Can I register a full team for PUBG?",
-      a: "Yes! Select 'Team Entry' and provide your Squad Name. We need one registration form per team (filled by the captain).",
+      a: "Yes! Select 'Team Entry' and provide your Squad Name. Remember, your registration counts as a vote for PUBG to be the official E-sport.",
     },
     {
       q: "What if I want to play Badminton Singles and Doubles?",
@@ -328,6 +364,9 @@ export default function SportsRegistrationPage() {
     },
   ];
 
+  // Helper to detect if selected sport is E-Sport
+  const isESportSelected = eSports.includes(formData.sport);
+
   return (
     <>
       <Header />
@@ -337,7 +376,7 @@ export default function SportsRegistrationPage() {
           {/* --- Page Header --- */}
           <div className="mb-12 md:mb-20">
             <h5 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
-              Annual Sports Week
+              Annual Sports Week 2026
             </h5>
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.85] text-zinc-900">
               Join the
@@ -347,69 +386,81 @@ export default function SportsRegistrationPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* --- Left Column (Info Cards) --- */}
+            {/* --- Left Sidebar (Info Dock) --- */}
             <div className="lg:col-span-4 flex flex-col gap-6">
-              <div className="lg:sticky lg:top-8 space-y-6">
-                {/* Contact Card */}
-                <div className="bg-zinc-900 text-white p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden">
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-8">
-                      Sports Committee
-                    </h3>
-                    <div className="space-y-6">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
-                          <Mail className="w-4 h-4 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">
-                            Queries
-                          </p>
-                          <a
-                            href="mailto:sports@college.edu"
-                            className="text-lg font-bold hover:text-zinc-300 transition-colors"
-                          >
-                            sports@yeticollege.edu.np
-                          </a>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
-                          <Clock className="w-4 h-4 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-1">
-                            Deadline
-                          </p>
-                          <p className="font-medium text-zinc-400">
-                            January 26, 2026
-                          </p>
-                        </div>
-                      </div>
+              <div className="lg:sticky lg:top-8 space-y-4">
+                {/* 1. Deadline Card */}
+                <div className="bg-zinc-900 text-white p-6 rounded-[2rem] shadow-xl relative overflow-hidden">
+                  <div className="flex items-start justify-between relative z-10">
+                    <div>
+                      <p className="text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2">
+                        Registration Ends
+                      </p>
+                      <h3 className="text-3xl font-bold">Jan 26</h3>
+                    </div>
+                    <div className="bg-zinc-800 p-3 rounded-full">
+                      <AlertCircle className="w-6 h-6 text-white" />
                     </div>
                   </div>
-                  {/* Decorative Circle */}
-                  <div className="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-zinc-800/50 blur-3xl pointer-events-none" />
+                  <p className="relative z-10 text-sm text-zinc-400 mt-4 leading-relaxed">
+                    Don't miss out. Ensure your squad is registered before
+                    midnight.
+                  </p>
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#ff3e00] rounded-full blur-[60px] opacity-40"></div>
                 </div>
 
-                {/* Map Card */}
-                <div className="bg-white p-2 rounded-[2.5rem] shadow-sm border border-zinc-100 group cursor-pointer">
-                  <div className="bg-zinc-100 rounded-[2rem] aspect-[4/3] relative overflow-hidden flex items-center justify-center">
-                    <div className="absolute inset-0 bg-zinc-200">
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4655.418152257627!2d85.32724007644036!3d27.687456276193924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a0ab44f839%3A0x21d0492e1239b492!2sYETI%20International%20College!5e1!3m2!1sen!2snp!4v1763720921356!5m2!1sen!2snp"
-                        className="w-full h-full border-0 grayscale opacity-80 group-hover:grayscale-0 transition-all duration-500"
-                        loading="lazy"
-                      ></iframe>
+                {/* 2. Event Details Card */}
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-100">
+                  <h3 className="text-xl font-bold mb-6 px-2">Event Details</h3>
+                  <div className="space-y-3">
+                    <InfoRow
+                      icon={Calendar}
+                      label="Schedule"
+                      value="Feb 10 - Feb 15, 2026"
+                    />
+                    <InfoRow
+                      icon={Clock}
+                      label="Timing"
+                      value="10:00 AM - 04:00 PM"
+                    />
+                    <InfoRow
+                      icon={MapPin}
+                      label="Location"
+                      value="College Ground & Futsal Arena"
+                    />
+                  </div>
+
+                  {/* E-Sports Notice (New) */}
+                  <div className="mt-4 p-4 bg-amber-50 border border-amber-100 rounded-2xl flex items-start gap-3">
+                    <Vote className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-1">
+                        E-Sports Voting
+                      </p>
+                      <p className="text-xs font-medium text-amber-900/80 leading-relaxed">
+                        Only the E-Sport game with the highest number of
+                        registrations/votes will be officially played. Choose
+                        wisely!
+                      </p>
                     </div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                      <div className="bg-zinc-900 text-white p-3 rounded-full mb-2 shadow-lg group-hover:-translate-y-2 transition-transform duration-300">
-                        <MapPin className="w-6 h-6" />
-                      </div>
-                      <span className="text-xs font-bold uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm">
-                        College Ground
-                      </span>
-                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Contact Small Card */}
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-100 flex items-center justify-between group cursor-pointer hover:border-zinc-300 transition-colors">
+                  <div>
+                    <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">
+                      Need Help?
+                    </p>
+                    <a
+                      href="mailto:sports@yeticollege.edu.np"
+                      className="font-bold text-zinc-900 text-sm"
+                    >
+                      sports@yeticollege.edu.np
+                    </a>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-zinc-50 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white transition-colors">
+                    <Mail className="w-4 h-4" />
                   </div>
                 </div>
               </div>
@@ -420,7 +471,6 @@ export default function SportsRegistrationPage() {
               {/* Form Container */}
               <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden">
                 {formStatus === "success" ? (
-                  // Success State
                   <div className="h-[500px] flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
                     <div className="w-24 h-24 bg-zinc-900 text-white rounded-full flex items-center justify-center mb-6 shadow-xl">
                       <Trophy className="w-10 h-10" />
@@ -429,10 +479,8 @@ export default function SportsRegistrationPage() {
                       You're in the game!
                     </h2>
                     <p className="text-zinc-500 max-w-md mx-auto">
-                      {formData.participationType === "Team"
-                        ? `Registration for team "${formData.teamName}" in ${formData.sport} received.`
-                        : `Solo registration for ${formData.sport} received.`}{" "}
-                      <br /> We will email details to {formData.email}.
+                      Registration received. We will email details to{" "}
+                      {formData.email}.
                     </p>
                     <button
                       onClick={() => setFormStatus("idle")}
@@ -442,7 +490,6 @@ export default function SportsRegistrationPage() {
                     </button>
                   </div>
                 ) : (
-                  // Form State
                   <form onSubmit={handleSubmit} className="relative z-10">
                     <div className="flex justify-between items-end mb-10">
                       <div>
@@ -456,7 +503,6 @@ export default function SportsRegistrationPage() {
                       <Gamepad2 className="w-10 h-10 text-zinc-200 hidden md:block" />
                     </div>
 
-                    {/* Participation Type Toggle */}
                     <ParticipationToggle
                       value={formData.participationType}
                       onChange={handleTypeChange}
@@ -470,7 +516,7 @@ export default function SportsRegistrationPage() {
                             : "First Name"
                         }
                         name="firstName"
-                        placeholder="Cristiano"
+                        placeholder="Sumit"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
@@ -482,7 +528,7 @@ export default function SportsRegistrationPage() {
                             : "Last Name"
                         }
                         name="lastName"
-                        placeholder="Ronaldo"
+                        placeholder="Pokhrel"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
@@ -511,16 +557,21 @@ export default function SportsRegistrationPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      {/* Updated Sport Selector with Groups */}
                       <SelectField
-                        label="Select Sport"
+                        label="Select Sport / Vote for E-Sport"
                         name="sport"
                         value={formData.sport}
                         onChange={handleInputChange}
-                        options={sportsList}
+                        groups={sportsGroups}
                         required
+                        helperText={
+                          isESportSelected
+                            ? "Note: Your registration for this E-Sport counts as a vote."
+                            : null
+                        }
                       />
 
-                      {/* Dynamic Field: Team Name */}
                       {formData.participationType === "Team" ? (
                         <div className="animate-in slide-in-from-top-4 fade-in duration-300">
                           <InputField
