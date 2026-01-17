@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
+
 }
 
 datasource db {
@@ -87,7 +87,7 @@ model SportsRegistration {
 }
 
 model Popup {
-  
+
   id          String   @id @default(cuid())
   title       String
   description String
