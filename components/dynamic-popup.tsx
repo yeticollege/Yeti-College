@@ -45,7 +45,7 @@ export default function DynamicPopup() {
 
         // Logic: Show on 1st load (New Session) OR after every 3 reloads (1, 4, 7, etc.)
         // (newCount - 1) % 3 === 0 checks if the increment is a multiple of 3 relative to start
-        const shouldShow = newCount === 1 || (newCount - 1) % 3 === 0;
+        const shouldShow = newCount === 1 || (newCount - 1) % 2 === 0;
 
         if (shouldShow) {
           setData(popupData);
