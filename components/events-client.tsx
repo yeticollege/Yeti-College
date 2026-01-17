@@ -5,15 +5,22 @@ import Link from "next/link";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { CalendarDays, MapPin, ArrowUpRight, X, Clock } from "lucide-react";
 
-// Define the type here or import from your schema/types
+// --- Helper: Strip HTML ---
+const stripHtml = (html: string) => {
+  if (typeof html !== "string") return "";
+  return html
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/&nbsp;/g, " ")
+    .trim();
+};
+
 interface Event {
   id: number;
   title: string;
-  date: string;
+  date: string; // Now treated as ISO string
   category: string;
   description: string;
   location: string;
-  time: string;
   accent: string;
 }
 
@@ -26,7 +33,6 @@ export default function EventsSnippetClient({
 }: EventsSnippetClientProps) {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     if (selectedEvent) {
       document.body.style.overflow = "hidden";
@@ -38,13 +44,17 @@ export default function EventsSnippetClient({
     };
   }, [selectedEvent]);
 
+  // --- Date & Time Parsing Helper ---
   const getDateParts = (dateString: string) => {
-    const date = new Date(dateString);
-    const d = new Date(date.valueOf() + date.getTimezoneOffset() * 60 * 1000);
+    const d = new Date(dateString);
     return {
       day: d.getDate(),
       month: d.toLocaleString("default", { month: "short" }).toUpperCase(),
       weekday: d.toLocaleString("default", { weekday: "long" }),
+      // Extract formatted time (e.g., 10:30 AM)
+      time: d.toLocaleString([], { hour: "2-digit", minute: "2-digit" }),
+      // Full readable date (e.g., Oct 24, 2023)
+      fullDate: d.toLocaleDateString([], { dateStyle: "medium" }),
     };
   };
 
@@ -64,8 +74,8 @@ export default function EventsSnippetClient({
                 Events
               </h2>
               <p className="text-base md:text-lg text-zinc-500 max-w-md font-medium leading-relaxed">
-                Connect, learn, and grow. Join our vibrant community at these
-                upcoming gatherings.
+                Connect, learn, and grow. Join our community at these upcoming
+                gatherings.
               </p>
             </div>
 
@@ -81,7 +91,7 @@ export default function EventsSnippetClient({
           {/* --- Grid Layout --- */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {events.map((event) => {
-              const { day, month, weekday } = getDateParts(event.date);
+              const { day, month, weekday, time } = getDateParts(event.date);
 
               return (
                 <Card
@@ -89,7 +99,6 @@ export default function EventsSnippetClient({
                   onClick={() => setSelectedEvent(event)}
                   className="group flex flex-col h-full border-0 bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 transition-all duration-500 cursor-pointer"
                 >
-                  {/* Date & Category Header */}
                   <div className="p-6 md:p-8 pb-0 flex justify-between items-start">
                     <div className="flex flex-col">
                       <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-1">
@@ -102,8 +111,7 @@ export default function EventsSnippetClient({
                         {weekday}
                       </span>
                     </div>
-
-                    <div className={`w-3 h-3 rounded-full ${event.accent}`} />
+                    <div className={`w-3 h-3 rounded-full bg-blue-500`} />
                   </div>
 
                   <CardContent className="p-6 md:p-8 flex-grow">
@@ -112,23 +120,22 @@ export default function EventsSnippetClient({
                         {event.category}
                       </span>
                       <h3 className="text-xl md:text-2xl font-bold text-zinc-900 leading-tight group-hover:text-blue-600 transition-colors">
-                        {event.title}
+                        {stripHtml(event.title)}
                       </h3>
                     </div>
 
-                    {/* ADDED: break-words whitespace-normal */}
                     <p className="text-zinc-500 text-sm leading-relaxed line-clamp-3 mb-6 break-words whitespace-normal">
-                      {event.description}
+                      {stripHtml(event.description)}
                     </p>
 
                     <div className="flex flex-wrap gap-3">
                       <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-500 bg-zinc-50 px-2.5 py-1.5 rounded-lg">
                         <Clock className="w-3.5 h-3.5" />
-                        {event.time}
+                        {time} {/* DYNAMIC TIME */}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-500 bg-zinc-50 px-2.5 py-1.5 rounded-lg">
                         <MapPin className="w-3.5 h-3.5" />
-                        {event.location}
+                        {stripHtml(event.location)}
                       </div>
                     </div>
                   </CardContent>
@@ -147,15 +154,6 @@ export default function EventsSnippetClient({
               );
             })}
           </div>
-
-          <div className="mt-12 text-center md:hidden">
-            <Link
-              href="/events"
-              className="inline-flex items-center justify-center w-full px-8 py-4 text-sm font-bold transition-colors bg-white border border-zinc-200 rounded-full hover:bg-zinc-50"
-            >
-              View Full Calendar
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -170,15 +168,6 @@ export default function EventsSnippetClient({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-24 md:h-32 w-full bg-zinc-100 relative overflow-hidden">
-              <div
-                className={`absolute top-0 right-0 p-10 opacity-10 transform translate-x-10 -translate-y-10`}
-              >
-                <div
-                  className={`w-64 h-64 rounded-full ${
-                    selectedEvent.accent || "bg-blue-500"
-                  }`}
-                />
-              </div>
               <button
                 onClick={() => setSelectedEvent(null)}
                 className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-zinc-100 transition-colors z-10"
@@ -203,22 +192,22 @@ export default function EventsSnippetClient({
                     {selectedEvent.category}
                   </span>
                   <h3 className="text-2xl md:text-4xl font-bold text-zinc-900 leading-tight">
-                    {selectedEvent.title}
+                    {stripHtml(selectedEvent.title)}
                   </h3>
                 </div>
 
                 <div className="flex flex-wrap gap-3 md:gap-4">
                   <div className="flex items-center gap-2 text-xs md:text-sm font-bold text-zinc-600 bg-zinc-50 px-3 py-2 md:px-4 rounded-xl border border-zinc-100">
                     <CalendarDays className="w-3.5 h-3.5 md:w-4 md:h-4 text-zinc-400" />
-                    {selectedEvent.date}
+                    {getDateParts(selectedEvent.date).fullDate}
                   </div>
                   <div className="flex items-center gap-2 text-xs md:text-sm font-bold text-zinc-600 bg-zinc-50 px-3 py-2 md:px-4 rounded-xl border border-zinc-100">
                     <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-zinc-400" />
-                    {selectedEvent.time}
+                    {getDateParts(selectedEvent.date).time} {/* DYNAMIC TIME */}
                   </div>
                   <div className="flex items-center gap-2 text-xs md:text-sm font-bold text-zinc-600 bg-zinc-50 px-3 py-2 md:px-4 rounded-xl border border-zinc-100">
                     <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-zinc-400" />
-                    {selectedEvent.location}
+                    {stripHtml(selectedEvent.location)}
                   </div>
                 </div>
 
@@ -228,17 +217,18 @@ export default function EventsSnippetClient({
                   <h4 className="text-lg font-bold text-zinc-900">
                     About this event
                   </h4>
-                  {/* ADDED: break-words whitespace-normal */}
                   <p className="text-zinc-500 leading-relaxed text-base md:text-lg break-words whitespace-normal">
-                    {selectedEvent.description}
+                    {stripHtml(selectedEvent.description)}
                   </p>
                 </div>
 
-                <div className="pt-8 flex flex-col sm:flex-row gap-4">
-                  <button className="flex-1 bg-zinc-900 text-white font-bold py-4 rounded-xl hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-900/20 flex items-center justify-center gap-2">
-                    No registration required{" "}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
+                <div className="pt-8">
+                  <Link
+                    href="/events"
+                    className="w-full bg-zinc-900 text-white font-bold py-4 rounded-xl hover:bg-zinc-800 transition-all shadow-lg flex items-center justify-center gap-2"
+                  >
+                    View in Calendar <ArrowUpRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
             </div>

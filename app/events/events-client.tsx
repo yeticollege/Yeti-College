@@ -27,9 +27,9 @@ interface EventsClientProps {
 const stripHtml = (html: string) => {
   if (typeof html !== "string") return "";
   return html
-    .replace(/<[^>]*>?/gm, "") // Remove HTML tags
-    .replace(/&nbsp;/g, " ") // Replace &nbsp; with a normal space
-    .trim(); // Remove leading/trailing whitespace
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/&nbsp;/g, " ")
+    .trim();
 };
 
 // --- Helper Functions ---
@@ -109,7 +109,8 @@ const SwissCalendar = ({
         {Array.from({ length: daysInMonth }).map((_, i) => {
           const day = i + 1;
           const dateStr = formatDate(day);
-          const hasEvent = events.some((e) => e.date === dateStr);
+          // FIX: Check if event date (ISO) matches the calendar date (YYYY-MM-DD)
+          const hasEvent = events.some((e) => e.date.split("T")[0] === dateStr);
           const isSelected = selectedDate === dateStr;
 
           return (
@@ -151,8 +152,6 @@ export default function EventsClient({ events }: EventsClientProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-
-  // TOGGLE STATE: Default to false (hide past events)
   const [showPastEvents, setShowPastEvents] = useState(false);
 
   useEffect(() => {
@@ -166,15 +165,29 @@ export default function EventsClient({ events }: EventsClientProps) {
     };
   }, [selectedEvent]);
 
+  // --- Date Parsing Helper ---
+  const getDateParts = (dateString: string) => {
+    const d = new Date(dateString);
+    return {
+      day: d.getDate(),
+      month: d.toLocaleString("default", { month: "short" }).toUpperCase(),
+      weekday: d.toLocaleString("default", { weekday: "long" }),
+      // ADDED: Extract formatted time
+      time: d.toLocaleString([], { hour: "2-digit", minute: "2-digit" }),
+      fullDate: d.toLocaleDateString([], { dateStyle: "medium" }),
+    };
+  };
+
   // FILTER LOGIC
   const displayedEvents = events.filter((e) => {
-    // 1. Date Match
-    const matchesDate = selectedDate ? e.date === selectedDate : true;
+    // FIX: Match date by YYYY-MM-DD regardless of time
+    const matchesDate = selectedDate
+      ? e.date.split("T")[0] === selectedDate
+      : true;
 
-    // 2. Search Match (Clean HTML before searching)
     const cleanQuery = searchQuery.toLowerCase();
     const cleanTitle = stripHtml(e.title).toLowerCase();
-    const cleanDesc = stripHtml(e.description).toLowerCase();
+    const cleanDesc = stripHtml(e.description || "").toLowerCase();
     const cleanLoc = stripHtml(e.location).toLowerCase();
 
     const matchesSearch =
@@ -183,28 +196,15 @@ export default function EventsClient({ events }: EventsClientProps) {
       cleanLoc.includes(cleanQuery) ||
       e.category.toLowerCase().includes(cleanQuery);
 
-    // 3. Past Event Logic
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Normalize to start of today
+    today.setHours(0, 0, 0, 0);
     const eventDate = new Date(e.date);
-    // An event is "past" if it is strictly before today
     const isPast = eventDate < today;
 
-    // If showPastEvents is false, we EXCLUDE past events
     const matchesHistory = showPastEvents ? true : !isPast;
 
     return matchesDate && matchesSearch && matchesHistory;
   });
-
-  const getDateParts = (dateString: string) => {
-    const date = new Date(dateString);
-    const d = new Date(date.valueOf() + date.getTimezoneOffset() * 60 * 1000);
-    return {
-      day: d.getDate(),
-      month: d.toLocaleString("default", { month: "short" }).toUpperCase(),
-      weekday: d.toLocaleString("default", { weekday: "long" }),
-    };
-  };
 
   return (
     <>
@@ -226,7 +226,6 @@ export default function EventsClient({ events }: EventsClientProps) {
                   </p>
                 </div>
 
-                {/* SEARCH */}
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Search className="h-5 w-5 text-zinc-400 group-focus-within:text-blue-600 transition-colors" />
@@ -240,7 +239,6 @@ export default function EventsClient({ events }: EventsClientProps) {
                   />
                 </div>
 
-                {/* PAST EVENTS TOGGLE */}
                 <div
                   onClick={() => setShowPastEvents(!showPastEvents)}
                   className="bg-white px-6 py-4 rounded-2xl border border-zinc-200 shadow-sm flex items-center justify-between cursor-pointer group hover:border-zinc-300 transition-all"
@@ -259,8 +257,6 @@ export default function EventsClient({ events }: EventsClientProps) {
                       Show passed events
                     </span>
                   </div>
-
-                  {/* Custom Switch UI */}
                   <div
                     className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 ${
                       showPastEvents ? "bg-zinc-900" : "bg-zinc-200"
@@ -328,40 +324,8 @@ export default function EventsClient({ events }: EventsClientProps) {
                 </span>
               </div>
 
-              {displayedEvents.length === 0 && (
-                <div className="bg-white rounded-3xl p-12 text-center border border-dashed border-zinc-300">
-                  <div className="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    {searchQuery ? (
-                      <Search className="w-6 h-6 text-zinc-400" />
-                    ) : (
-                      <CalendarDays className="w-6 h-6 text-zinc-400" />
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold text-zinc-900">
-                    No events found
-                  </h3>
-                  <p className="text-zinc-500 max-w-sm mx-auto mt-2">
-                    {searchQuery
-                      ? `We couldn't find any events matching "${searchQuery}".`
-                      : showPastEvents
-                      ? "There are no events matching your criteria."
-                      : "There are no upcoming events. Try enabling 'Show passed events'."}
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSelectedDate(null);
-                      setSearchQuery("");
-                      if (!showPastEvents) setShowPastEvents(true); // Helper UX
-                    }}
-                    className="mt-6 text-sm font-bold text-blue-600 underline underline-offset-4"
-                  >
-                    Clear filters & Show History
-                  </button>
-                </div>
-              )}
-
               {displayedEvents.map((event) => {
-                const { day, month, weekday } = getDateParts(event.date);
+                const { day, month, weekday, time } = getDateParts(event.date);
                 return (
                   <Card
                     key={event.id}
@@ -384,15 +348,12 @@ export default function EventsClient({ events }: EventsClientProps) {
                         <div className="flex justify-between items-start gap-4 mb-4">
                           <div>
                             <div className="flex items-center gap-2 mb-2">
-                              <span
-                                className={`w-2 h-2 rounded-full ${event.accent}`}
-                              />
+                              <span className="w-2 h-2 rounded-full bg-blue-500" />
                               <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">
                                 {event.category}
                               </span>
                             </div>
                             <h3 className="text-2xl font-bold tracking-tight text-zinc-900 leading-tight">
-                              {/* Strip HTML from title */}
                               {stripHtml(event.title)}
                             </h3>
                           </div>
@@ -401,13 +362,12 @@ export default function EventsClient({ events }: EventsClientProps) {
                           </div>
                         </div>
                         <p className="text-zinc-500 leading-relaxed mb-6 line-clamp-2">
-                          {/* Strip HTML from description */}
-                          {stripHtml(event.description)}
+                          {stripHtml(event.description || "")}
                         </p>
                         <div className="flex flex-wrap items-center gap-3 mt-auto">
                           <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-600 bg-zinc-100 px-3 py-2 rounded-xl">
-                            <CalendarDays className="w-3.5 h-3.5" />
-                            {event.time}
+                            <Clock className="w-3.5 h-3.5" />
+                            {time} {/* UPDATED TO DYNAMIC TIME */}
                           </div>
                           <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-600 bg-zinc-100 px-3 py-2 rounded-xl">
                             <MapPin className="w-3.5 h-3.5" />
@@ -435,13 +395,6 @@ export default function EventsClient({ events }: EventsClientProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-32 w-full bg-zinc-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-10 opacity-10 transform translate-x-10 -translate-y-10">
-                <div
-                  className={`w-64 h-64 rounded-full ${
-                    selectedEvent.accent || "bg-blue-500"
-                  }`}
-                />
-              </div>
               <button
                 onClick={() => setSelectedEvent(null)}
                 className="absolute top-6 right-6 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-zinc-100 transition-colors z-10"
@@ -470,11 +423,12 @@ export default function EventsClient({ events }: EventsClientProps) {
                 <div className="flex flex-wrap gap-4">
                   <div className="flex items-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-50 px-4 py-2 rounded-xl border border-zinc-100">
                     <CalendarDays className="w-4 h-4 text-zinc-400" />
-                    {selectedEvent.date}
+                    {getDateParts(selectedEvent.date).fullDate}
                   </div>
                   <div className="flex items-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-50 px-4 py-2 rounded-xl border border-zinc-100">
                     <Clock className="w-4 h-4 text-zinc-400" />
-                    {selectedEvent.time}
+                    {getDateParts(selectedEvent.date).time}{" "}
+                    {/* UPDATED TO DYNAMIC TIME */}
                   </div>
                   <div className="flex items-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-50 px-4 py-2 rounded-xl border border-zinc-100">
                     <MapPin className="w-4 h-4 text-zinc-400" />
@@ -486,8 +440,9 @@ export default function EventsClient({ events }: EventsClientProps) {
                   <h4 className="text-lg font-bold text-zinc-900">
                     About this event
                   </h4>
+                  {/* Note: If you want to render HTML correctly in the modal, use dangerouslySetInnerHTML or keep stripHtml */}
                   <p className="text-zinc-500 leading-relaxed text-lg">
-                    {stripHtml(selectedEvent.description)}
+                    {stripHtml(selectedEvent.description || "")}
                   </p>
                 </div>
               </div>

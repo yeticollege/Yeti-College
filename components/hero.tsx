@@ -26,6 +26,15 @@ interface CourseResult {
   image: string;
 }
 
+// --- Helper: Strip HTML & Special Entities ---
+const stripHtml = (html: string) => {
+  if (typeof html !== "string") return "";
+  return html
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/&nbsp;/g, " ")
+    .trim();
+};
+
 // --- Icons ---
 const Icons = {
   Search: () => (
@@ -70,6 +79,27 @@ const Icons = {
         strokeLinejoin="round"
         strokeWidth={2}
         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  ),
+  MapPin: () => (
+    <svg
+      className="w-4 h-4"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
       />
     </svg>
   ),
@@ -127,7 +157,7 @@ const HighlightedText = ({
   );
 };
 
-// --- Component: Enhanced Search Bar ---
+// --- Component: Search Bar ---
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -136,7 +166,6 @@ const SearchBar = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Filter logic
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
@@ -152,7 +181,6 @@ const SearchBar = () => {
     setSelectedIndex(-1);
   }, [query]);
 
-  // Keyboard Navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -162,10 +190,9 @@ const SearchBar = () => {
       setSelectedIndex((prev) => (prev > -1 ? prev - 1 : -1));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (selectedIndex >= 0 && results[selectedIndex]) {
+      if (selectedIndex >= 0 && results[selectedIndex])
         handleSelect(results[selectedIndex].slug);
-      } else if (query) {
-        console.log("Full search for:", query);
+      else if (query) {
         router.push(`/programs?search=${encodeURIComponent(query)}`);
         setIsFocused(false);
       }
@@ -180,7 +207,6 @@ const SearchBar = () => {
     setIsFocused(false);
     router.push(`/programs/${slug}`);
   };
-
   const clearSearch = () => {
     setQuery("");
     inputRef.current?.focus();
@@ -188,7 +214,6 @@ const SearchBar = () => {
 
   return (
     <div className="relative z-50 w-full max-w-lg mx-auto md:mx-0">
-      {/* Input Area */}
       <div
         className={`relative flex items-center bg-white/5 backdrop-blur-xl border transition-all duration-300 rounded-2xl ${
           isFocused
@@ -229,7 +254,6 @@ const SearchBar = () => {
         </AnimatePresence>
       </div>
 
-      {/* Dropdown Results */}
       <AnimatePresence>
         {isFocused && query.trim().length > 0 && (
           <motion.div
@@ -321,7 +345,7 @@ const SearchBar = () => {
   );
 };
 
-// --- Static Data for Carousel/Stats ---
+// --- Static Data ---
 const SEAT_DATA = [
   { course: "MBA", seats: 4, total: 60 },
   { course: "BABM", seats: 12, total: 120 },
@@ -349,15 +373,13 @@ const SLIDES = [
   },
 ];
 
-// --- Sub-Component: Video Slide ---
 const VideoSlide = ({ video, poster }: { video: string; poster: string }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
   return (
     <div className="relative flex-[0_0_100%] h-full">
       <img
         src={poster}
-        alt="Background Preview"
+        alt=""
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
           isVideoLoaded ? "opacity-0" : "opacity-100"
         }`}
@@ -376,13 +398,11 @@ const VideoSlide = ({ video, poster }: { video: string; poster: string }) => {
   );
 };
 
-// --- Component: Video Carousel ---
 const VideoCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 60 }, [
     Autoplay({ delay: 8000, stopOnInteraction: false }) as any,
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
-
   const scrollTo = useCallback(
     (index: number) => emblaApi && emblaApi.scrollTo(index),
     [emblaApi]
@@ -425,8 +445,7 @@ const VideoCarousel = () => {
   );
 };
 
-// --- Component: Event Card (FIXED) ---
-// --- Component: Event Card (FIXED) ---
+// --- Component: Event Card (UPDATED LOGIC ONLY) ---
 const EventCard = ({
   constraintsRef,
 }: {
@@ -435,8 +454,7 @@ const EventCard = ({
   const [event, setEvent] = useState<{
     id: number;
     title: string;
-    date: string;
-    time: string;
+    date: string; // ISO string
     location: string;
   } | null>(null);
 
@@ -448,24 +466,35 @@ const EventCard = ({
         const data = await res.json();
 
         if (data && data.length > 0) {
-          setEvent(data[0]);
+          // Sort to find nearest upcoming event
+          const now = new Date();
+          const upcoming = data
+            .map((e: any) => ({ ...e, dateObj: new Date(e.date) }))
+            .filter((e: any) => e.dateObj >= now)
+            .sort(
+              (a: any, b: any) => a.dateObj.getTime() - b.dateObj.getTime()
+            );
+
+          setEvent(upcoming.length > 0 ? upcoming[0] : data[0]);
         }
       } catch (err) {
         console.error("Failed to load upcoming event:", err);
       }
     }
-
     fetchEvent();
   }, []);
 
-  const formatMonthDay = (iso?: string) => {
-    if (!iso) return { mon: "TBD", day: "--" };
+  const formatDateTime = (iso?: string) => {
+    if (!iso) return { mon: "TBD", day: "--", time: "Time TBA" };
     const d = new Date(iso);
     return {
       mon: d.toLocaleString(undefined, { month: "short" }),
       day: d.getDate().toString(),
+      time: d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     };
   };
+
+  const dt = formatDateTime(event?.date);
 
   return (
     <motion.div
@@ -489,24 +518,27 @@ const EventCard = ({
                   Upcoming Event
                 </span>
                 <h3 className="text-xl font-bold text-white line-clamp-2">
-                  {event.title}
+                  {stripHtml(event.title)}
                 </h3>
               </div>
               <div className="bg-white/10 rounded-lg p-2 text-center min-w-[60px]">
                 <span className="block text-xs uppercase text-slate-400 font-bold">
-                  {formatMonthDay(event.date).mon}
+                  {dt.mon}
                 </span>
                 <span className="block text-xl font-bold text-white">
-                  {formatMonthDay(event.date).day}
+                  {dt.day}
                 </span>
               </div>
             </div>
-
-            <div className="flex items-center gap-2 text-slate-300 text-sm mb-4">
-              <Icons.Clock />
-              <span>
-                {event.time ?? "Time TBA"} • {event.location ?? "Location TBA"}
-              </span>
+            <div className="flex flex-col gap-2 text-slate-300 text-sm mb-4">
+              <div className="flex items-center gap-2">
+                <Icons.Clock />
+                <span>{dt.time}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icons.MapPin />
+                <span>{stripHtml(event.location) || "Location TBA"}</span>
+              </div>
             </div>
           </>
         ) : (
@@ -520,7 +552,7 @@ const EventCard = ({
   );
 };
 
-// --- Main Hero Component ---
+// --- Main Hero ---
 export default function Hero() {
   const constraintsRef = useRef(null);
 
@@ -530,7 +562,6 @@ export default function Hero() {
       className="relative z-0 min-h-screen flex items-center overflow-hidden font-sans text-white"
     >
       <VideoCarousel />
-
       <style jsx>{`
         @keyframes vertical-scroll {
           0% {
@@ -576,7 +607,6 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* --- SEARCH SECTION --- */}
             <SearchBar />
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
@@ -609,12 +639,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* --- RIGHT SIDE (Interactive Widgets) --- */}
+          {/* --- RIGHT SIDE --- */}
           <div className="hidden md:flex h-full flex-col justify-center items-end gap-8 pointer-events-none">
-            {/* Events Card */}
             <EventCard constraintsRef={constraintsRef} />
 
-            {/* Live Seat Status */}
             <motion.div
               drag
               dragConstraints={constraintsRef}
