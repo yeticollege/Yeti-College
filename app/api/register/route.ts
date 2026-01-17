@@ -2,14 +2,21 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 import { NextResponse } from "next/server";
-import { prisma } from "@/app/lib/db";
+
+async function getPrisma() {
+  const { prisma } = await import("@/app/lib/db");
+  return prisma;
+}
 
 // GET: Fetch all registrations
 export async function GET() {
   try {
+    const prisma = await getPrisma();
+
     const registrations = await prisma.sportsRegistration.findMany({
       orderBy: { createdAt: "desc" },
     });
+
     return NextResponse.json(registrations, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
@@ -19,7 +26,9 @@ export async function GET() {
 // POST: Create Registration with Formatted Message
 export async function POST(req: Request) {
   try {
+    const prisma = await getPrisma();
     const body = await req.json();
+
     const {
       firstName,
       lastName,
@@ -28,10 +37,9 @@ export async function POST(req: Request) {
       sport,
       participationType,
       teamName,
-      message, // This contains the list of players from the frontend
+      message,
     } = body;
 
-    // Validation
     if (
       !firstName ||
       !lastName ||
@@ -53,16 +61,10 @@ export async function POST(req: Request) {
       );
     }
 
-    // --- LOGIC CHANGE: Format the message ---
-    let finalFormattedMessage = message || "";
-
-    if (participationType === "Team") {
-      // Combine Team Name and Player List into one formatted block
-      finalFormattedMessage = `\nROSTER / PLAYERS:\n${
-        message || "No player list provided"
-      }`;
-    }
-    // ----------------------------------------
+    const finalFormattedMessage =
+      participationType === "Team"
+        ? `\nROSTER / PLAYERS:\n${message || "No player list provided"}`
+        : message || "";
 
     const registration = await prisma.sportsRegistration.create({
       data: {
@@ -73,7 +75,6 @@ export async function POST(req: Request) {
         participationType,
         sport,
         teamName: teamName || "",
-        // We save the formatted data into the 'message' column
         message: finalFormattedMessage,
       },
     });
