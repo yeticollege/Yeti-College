@@ -32,28 +32,34 @@ export default function DynamicPopup() {
         const popupData = await res.json();
         if (!popupData) return;
 
-        // --- NEW LOGIC START ---
+        // ---- STORAGE KEYS ----
+        const viewCountKey = "popup_view_count";
+        const closedKey = "popup_closed";
 
-        // Get current view count from Session Storage (clears when tab closes)
+        const isClosed = sessionStorage.getItem(closedKey) === "true";
+
         const currentCount = parseInt(
-          sessionStorage.getItem("popup_view_count") || "0"
+          sessionStorage.getItem(viewCountKey) || "0"
         );
         const newCount = currentCount + 1;
 
-        // Update storage
-        sessionStorage.setItem("popup_view_count", newCount.toString());
+        sessionStorage.setItem(viewCountKey, newCount.toString());
 
-        // Logic: Show on 1st load (New Session) OR after every 3 reloads (1, 4, 7, etc.)
-        // (newCount - 1) % 3 === 0 checks if the increment is a multiple of 3 relative to start
-        const shouldShow = newCount === 1 || (newCount - 1) % 2 === 0;
+        let shouldShow = false;
+
+        // ---- LOGIC ----
+        if (!isClosed) {
+          // Not closed → show every time
+          shouldShow = true;
+        } else {
+          // Closed → show every 2 times
+          shouldShow = newCount % 2 === 0;
+        }
 
         if (shouldShow) {
           setData(popupData);
-          // Small delay before showing for animation effect
           setTimeout(() => setIsVisible(true), 1000);
         }
-
-        // --- NEW LOGIC END ---
       } catch (error) {
         console.error("Failed to load popup", error);
       }
@@ -63,9 +69,8 @@ export default function DynamicPopup() {
   }, []);
 
   const handleClose = () => {
-    // We simply hide it visually. We do NOT save a permanent dismissal
-    // to localStorage, so it can pop up again in 3 reloads.
     setIsVisible(false);
+    sessionStorage.setItem("popup_closed", "true");
   };
 
   if (!isMounted || !data || !isVisible) return null;
