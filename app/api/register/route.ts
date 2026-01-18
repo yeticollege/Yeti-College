@@ -7,7 +7,6 @@ async function getPrisma() {
   const { prisma } = await import("@/app/lib/db");
   return prisma;
 }
-jj;
 // GET: Fetch all registrations
 export async function GET() {
   try {
