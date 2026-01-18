@@ -1,8 +1,14 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { X, ArrowRight } from "lucide-react";
+import { X, ArrowRight, Layers, Plus, ExternalLink } from "lucide-react";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 interface PopupData {
   id: string;
@@ -13,171 +19,220 @@ interface PopupData {
   buttonLink: string;
 }
 
+// Swiss Layout Config
+const CARD_WIDTH = 360;
+const HEIGHT_WITH_IMG = 400;
+const HEIGHT_NO_IMG = 240;
+const GAP_SIZE = 12;
+const MAX_VISIBLE = 3;
+
+// Snappy, heavy-feeling spring curve
+const SWISS_SPRING = "cubic-bezier(0.25, 1, 0.5, 1)";
+
 export default function DynamicPopup() {
   const [popups, setPopups] = useState<PopupData[]>([]);
-  const [visiblePopups, setVisiblePopups] = useState<string[]>([]);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Ref to prevent double-execution in React Strict Mode
-  const initialized = useRef(false);
+  const [isReady, setIsReady] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [closingIds, setClosingIds] = useState<string[]>([]);
 
   useEffect(() => {
-    setIsMounted(true);
-    let timeoutId: NodeJS.Timeout;
-
     const fetchPopup = async () => {
-      if (initialized.current) return;
-      initialized.current = true;
-
       try {
         const res = await fetch("/api/popup");
-        if (!res.ok) throw new Error(`Error: ${res.status}`);
+        if (!res.ok) return;
 
-        const popupDataFromApi = await res.json();
-        if (!popupDataFromApi) return;
+        const data = await res.json();
+        const allPopups: PopupData[] = Array.isArray(data) ? data : [data];
+        const closedIds = JSON.parse(
+          sessionStorage.getItem("closed_popup_ids") || "[]",
+        );
 
-        const allPopups: PopupData[] = Array.isArray(popupDataFromApi)
-          ? popupDataFromApi
-          : [popupDataFromApi];
+        const active = allPopups.filter((p) => !closedIds.includes(p.id));
 
-        if (allPopups.length === 0) return;
-
-        // 1. Manage Global View Count
-        const countKey = "popup_global_view_count";
-        const rawCount = sessionStorage.getItem(countKey);
-        // If it exists, parse and add 1. If not, start at 1.
-        const currentViewCount = rawCount ? parseInt(rawCount, 10) + 1 : 1;
-        sessionStorage.setItem(countKey, currentViewCount.toString());
-
-        // 2. Get list of specifically closed Popup IDs
-        const storedClosedIds = sessionStorage.getItem("closed_popup_ids");
-        const closedIds: string[] = storedClosedIds
-          ? JSON.parse(storedClosedIds)
-          : [];
-
-        // 3. Filter Logic
-        const activePopups = allPopups.filter((popup) => {
-          const isClosed = closedIds.includes(popup.id);
-
-          // Condition A: If NOT closed, show on every reload.
-          if (!isClosed) return true;
-
-          // Condition B: If CLOSED, show every 2nd reload.
-          // (Shows on 1, 3, 5... Hides on 2, 4, 6...)
-          // If you want it to hide immediately after closing and show on the NEXT reload, change logic here.
-          // Current: It acts as a "nag" feature.
-          return currentViewCount % 2 !== 0;
-        });
-
-        if (activePopups.length > 0) {
-          setPopups(activePopups);
-
-          // Stagger appearance
-          timeoutId = setTimeout(() => {
-            setVisiblePopups(activePopups.map((p) => p.id));
-          }, 500);
+        if (active.length) {
+          setPopups(active.slice(0, MAX_VISIBLE));
+          // Slightly faster entrance for Swiss style
+          setTimeout(() => setIsReady(true), 1000);
         }
-      } catch (error) {
-        console.error("Failed to load popup:", error);
+      } catch (err) {
+        console.error(err);
       }
     };
 
     fetchPopup();
-
-    return () => clearTimeout(timeoutId);
   }, []);
 
-  const handleClose = (id: string) => {
-    // 1. Remove from visual state
-    setVisiblePopups((prev) => prev.filter((popupId) => popupId !== id));
+  const handleClose = useCallback((id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setClosingIds((p) => [...p, id]);
 
-    // 2. Add ID to session storage
-    const storedClosedIds = sessionStorage.getItem("closed_popup_ids");
-    const closedIds: string[] = storedClosedIds
-      ? JSON.parse(storedClosedIds)
-      : [];
+    setTimeout(() => {
+      setPopups((p) => p.filter((x) => x.id !== id));
+      setClosingIds((p) => p.filter((x) => x !== id));
+      const closed = JSON.parse(
+        sessionStorage.getItem("closed_popup_ids") || "[]",
+      );
+      sessionStorage.setItem(
+        "closed_popup_ids",
+        JSON.stringify([...closed, id]),
+      );
+    }, 400);
+  }, []);
 
-    if (!closedIds.includes(id)) {
-      const newClosedIds = [...closedIds, id];
-      sessionStorage.setItem("closed_popup_ids", JSON.stringify(newClosedIds));
-    }
-  };
-
-  const handleImageError = (
-    e: React.SyntheticEvent<HTMLImageElement, Event>
-  ) => {
-    e.currentTarget.style.display = "none";
-  };
-
-  if (!isMounted || visiblePopups.length === 0) return null;
+  if (!popups.length) return null;
 
   return (
-    // pointer-events-none ensures clicks pass through the empty areas of the container
-    <div className="fixed bottom-4 right-4 z-[100] flex flex-col-reverse gap-4 md:bottom-8 md:right-8 items-end pointer-events-none">
-      {popups.map((popup) => {
-        if (!visiblePopups.includes(popup.id)) return null;
+    <div className="fixed bottom-8 right-8 z-[100] pointer-events-none font-sans antialiased">
+      <div
+        className="relative flex flex-col items-end pointer-events-auto"
+        style={{ width: CARD_WIDTH }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        {popups.map((popup, index) => {
+          const isClosing = closingIds.includes(popup.id);
+          const isFront = index === 0;
+          const hasImage = !!popup.imageUrl;
+          const height = hasImage ? HEIGHT_WITH_IMG : HEIGHT_NO_IMG;
 
-        return (
-          <div
-            key={popup.id}
-            role="dialog"
-            aria-labelledby={`popup-title-${popup.id}`}
-            aria-describedby={`popup-desc-${popup.id}`}
-            // pointer-events-auto restores clickability for the popup itself
-            className="pointer-events-auto relative w-[340px] bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 overflow-hidden font-sans animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out"
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => handleClose(popup.id)}
-              className="absolute top-3 right-3 z-20 p-1.5 bg-white/90 backdrop-blur-sm rounded-full hover:bg-gray-100 transition-colors group shadow-sm border border-transparent hover:border-gray-200 cursor-pointer"
-              aria-label="Close popup"
+          // Stacking Math
+          const offset = popups
+            .slice(0, index)
+            .reduce(
+              (acc, p) =>
+                acc + (p.imageUrl ? HEIGHT_WITH_IMG : HEIGHT_NO_IMG) + GAP_SIZE,
+              0,
+            );
+
+          const translateY = isHovering ? -offset : -index * 10;
+          const scale = isHovering ? 1 : 1 - index * 0.04;
+
+          // Swiss style prefers opacity changes over brightness for depth
+          const opacity = isClosing ? 0 : 1;
+
+          return (
+            <div
+              key={popup.id}
+              className={cn(
+                "absolute bottom-0 right-0 w-full flex flex-col",
+                "bg-[#fafafa] border border-gray-200",
+                "rounded-[32px] overflow-hidden origin-bottom",
+                "shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)]",
+                "transition-all duration-700 will-change-transform",
+              )}
+              style={{
+                height,
+                zIndex: 50 - index,
+                opacity,
+                transform: isReady
+                  ? `translate3d(0, ${translateY}px, 0) scale(${scale})`
+                  : `translate3d(0, 110%, 0) scale(0.95)`,
+                transitionTimingFunction: SWISS_SPRING,
+                pointerEvents: isHovering || isFront ? "auto" : "none",
+              }}
             >
-              <X className="w-4 h-4 text-gray-800 group-hover:scale-90 transition-transform" />
-            </button>
-
-            {/* Optional Image */}
-            {popup.imageUrl ? (
-              <div className="h-32 w-full bg-gray-50 relative overflow-hidden">
-                <img
-                  src={popup.imageUrl}
-                  alt={popup.title}
-                  onError={handleImageError}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-              </div>
-            ) : null}
-
-            {/* Content */}
-            <div className="p-6 pt-5 flex flex-col items-start gap-4">
-              <div className="text-left">
-                <h3
-                  id={`popup-title-${popup.id}`}
-                  className="text-lg font-bold tracking-tight text-gray-900 leading-tight"
-                >
-                  {popup.title}
-                </h3>
-                <p
-                  id={`popup-desc-${popup.id}`}
-                  className="text-sm font-medium text-gray-500 mt-1.5 leading-relaxed"
-                >
-                  {popup.description}
-                </p>
-              </div>
-
-              {/* Button applied directly to Link to avoid hydration errors */}
-              <Link
-                href={popup.buttonLink}
-                className="w-full group focus:outline-none py-3 px-6 bg-[#ff3e00] text-white rounded-2xl font-semibold text-sm tracking-wide transition-all active:scale-95 hover:bg-[#e63800] shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+              {/* --- Close Button (Minimal) --- */}
+              <button
+                onClick={(e) => handleClose(popup.id, e)}
+                className="absolute top-4 right-4 z-30 h-8 w-8 flex items-center justify-center
+                  rounded-full bg-white border border-gray-200 text-gray-400
+                  hover:bg-black hover:text-white hover:border-black hover:scale-110
+                  transition-all duration-200 group"
               >
-                {popup.buttonText}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* --- Header / Visual --- */}
+              {hasImage ? (
+                <div className="relative h-[200px] w-full p-2">
+                  <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-gray-100">
+                    <img
+                      src={popup.imageUrl!}
+                      alt=""
+                      className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                    />
+                    {/* Inner Shadow for paper cut-out feel */}
+                    <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.05)] pointer-events-none" />
+                  </div>
+                </div>
+              ) : (
+                // SWISS GRID PATTERN
+                <div className="relative h-[110px] w-full bg-[#f4f4f5] overflow-hidden border-b border-gray-100">
+                  {/* CSS Dot Grid Pattern */}
+                  <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(#000 1px, transparent 1px)",
+                      backgroundSize: "12px 12px",
+                    }}
+                  />
+                  <div className="absolute top-5 left-6">
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
+                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                        Notification
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* --- Content Body --- */}
+              <div className="flex-1 px-6 pb-6 pt-2 flex flex-col justify-between">
+                <div>
+                  {!hasImage && <div className="h-2" />}{" "}
+                  {/* Spacer if no image */}
+                  <h3 className="text-[22px] leading-[1.1] font-bold text-black tracking-tight">
+                    {popup.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-gray-500 font-medium tracking-normal line-clamp-3">
+                    {popup.description}
+                  </p>
+                </div>
+
+                {/* --- Swiss Pill Button --- */}
+                <Link
+                  href={popup.buttonLink}
+                  className="
+                    mt-5 group relative w-full flex items-center justify-between
+                    bg-black text-white
+                    pl-6 pr-2 py-2.5 rounded-full
+                    hover:bg-[#ff4400] transition-colors duration-300
+                  "
+                >
+                  <span className="text-sm font-bold tracking-wide">
+                    {popup.buttonText}
+                  </span>
+
+                  <div
+                    className="
+                    h-9 w-9 rounded-full bg-white text-black
+                    flex items-center justify-center
+                    group-hover:scale-90 transition-transform duration-300
+                  "
+                  >
+                    <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                  </div>
+                </Link>
+              </div>
+
+              {/* --- Minimal Stack Badge --- */}
+              {popups.length > 1 && !isHovering && isFront && (
+                <div className="absolute top-4 left-6 z-20">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white shadow-xl">
+                    <Plus className="w-3 h-3" />
+                    <span className="text-xs font-bold tracking-tight">
+                      {popups.length - 1}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
