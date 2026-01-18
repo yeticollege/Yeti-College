@@ -1,4 +1,4 @@
-export const runtime = "nodejs";
+// export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 import { NextResponse } from "next/server";
@@ -7,7 +7,7 @@ async function getPrisma() {
   const { prisma } = await import("@/app/lib/db");
   return prisma;
 }
-
+jj;
 // GET: Fetch all registrations
 export async function GET() {
   try {
@@ -50,14 +50,14 @@ export async function POST(req: Request) {
     ) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (participationType === "Team" && !teamName) {
       return NextResponse.json(
         { error: "Team Name is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -81,7 +81,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: "Success", data: registration },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("Registration Error:", error);
