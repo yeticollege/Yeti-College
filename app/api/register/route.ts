@@ -1,4 +1,3 @@
-// app/api/register/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
@@ -49,7 +48,7 @@ export async function POST(req: Request) {
         sport,
         participationType,
         teamName: participationType === "Team" ? teamName : "",
-        message: message || "",
+        message: message || "", // Faculty and Semester are now included here
       },
     });
 
