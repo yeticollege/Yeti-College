@@ -41,7 +41,7 @@ const InputField = ({
   name?: string;
   value?: string;
   onChange?: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   required?: boolean;
 }) => (
@@ -286,7 +286,7 @@ export default function SportsRegistrationPage() {
     const storedExpiry = localStorage.getItem(COOLDOWN_KEY);
     if (storedExpiry) {
       const remainingSeconds = Math.ceil(
-        (parseInt(storedExpiry, 10) - Date.now()) / 1000
+        (parseInt(storedExpiry, 10) - Date.now()) / 1000,
       );
 
       if (remainingSeconds > 0) {
@@ -306,7 +306,7 @@ export default function SportsRegistrationPage() {
       const storedExpiry = localStorage.getItem(COOLDOWN_KEY);
       if (storedExpiry) {
         const remaining = Math.ceil(
-          (parseInt(storedExpiry, 10) - Date.now()) / 1000
+          (parseInt(storedExpiry, 10) - Date.now()) / 1000,
         );
         if (remaining > 0) {
           setCooldown(remaining);
@@ -327,7 +327,7 @@ export default function SportsRegistrationPage() {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -521,15 +521,15 @@ export default function SportsRegistrationPage() {
                 <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-zinc-100">
                   <h3 className="text-xl font-bold mb-6 px-2">Event Details</h3>
                   <div className="space-y-3">
-                    <InfoRow
+                    {/* <InfoRow
                       icon={Calendar}
                       label="Schedule"
                       value="Feb 10 - Feb 15, 2026"
-                    />
+                    /> */}
                     <InfoRow
                       icon={Clock}
                       label="Timing"
-                      value="10:00 AM - 04:00 PM"
+                      value="07:00 AM - 12:00 PM"
                     />
                     <InfoRow
                       icon={MapPin}
