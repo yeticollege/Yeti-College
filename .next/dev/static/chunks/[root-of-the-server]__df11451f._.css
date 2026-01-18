@@ -6246,10 +6246,6 @@
     --tw-enter-translate-y: calc(12 * var(--spacing));
   }
 
-  .slide-in-from-right-8 {
-    --tw-enter-translate-x: calc(8 * var(--spacing));
-  }
-
   .slide-in-from-top-1 {
     --tw-enter-translate-y: calc(1 * var(--spacing) * -1);
   }
