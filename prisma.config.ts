@@ -11,7 +11,7 @@ export default defineConfig({
     provider: "postgresql",
     url: env("DATABASE_URL"),
   },
-
+  earlyAccess: true,
   migrations: {
     seed: "node ./prisma/seed.js",
   },
