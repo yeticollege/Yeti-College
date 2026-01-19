@@ -18,7 +18,17 @@ export const dynamic = "force-dynamic";
 // Removes <p>, <b>, etc. from strings to make them safe for Meta Tags
 const stripHtml = (html: string | null | undefined) => {
   if (!html) return "";
-  return html.replace(/<[^>]*>?/gm, "").trim();
+
+  return (
+    html
+      // remove all HTML tags
+      .replace(/<[^>]*>/g, "")
+      // remove &nbsp; entities
+      .replace(/&nbsp;/gi, " ")
+      // normalize whitespace
+      .replace(/\s+/g, " ")
+      .trim()
+  );
 };
 
 // =========================================================
