@@ -112,25 +112,25 @@ const programLinks = [
   },
   {
     href: "/programs/bhm",
-    label: "Bachelor in Hotel Management",
+    label: "Bachelor of Hotel Management",
     code: "BHM",
     icon: Hotel,
   },
   {
     href: "/programs/babm",
-    label: "Bachelor in Airlines Business Management",
+    label: "Bachelor of Airlines Business Management",
     code: "BABM",
     icon: Globe,
   },
   {
     href: "/programs/bamm",
-    label: "Bachelor in MICE (Event) Management",
+    label: "Bachelor of MICE (Event) Management",
     code: "Bamm",
     icon: Globe,
   },
   {
     href: "/programs/bttm",
-    label: "Bachelor in Tourism & MICE Management",
+    label: "Bachelor of Tourism & MICE Management",
     code: "BTTM",
     icon: Briefcase,
   },
@@ -178,14 +178,14 @@ const NavItem = ({
     <span
       className={cn(
         "text-sm font-semibold uppercase tracking-wide transition-colors duration-200 flex items-center gap-1",
-        active ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-900"
+        active ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-900",
       )}
     >
       {label}
       <ChevronDown
         className={cn(
           "w-4 h-4 transition-transform duration-300",
-          active ? "rotate-180" : "rotate-0"
+          active ? "rotate-180" : "rotate-0",
         )}
       />
     </span>
@@ -256,7 +256,7 @@ const MobileMenuSection = ({
       <ChevronDown
         className={cn(
           "w-5 h-5 text-zinc-400 transition-transform duration-300",
-          isOpen ? "rotate-180" : "rotate-0"
+          isOpen ? "rotate-180" : "rotate-0",
         )}
       />
     </button>
@@ -278,7 +278,7 @@ const MobileMenuSection = ({
 // --- MAIN COMPONENT ---
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<"about" | "programs" | null>(
-    null
+    null,
   );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileExpand, setMobileExpand] = useState<string | null>(null);
@@ -322,7 +322,7 @@ export default function Header() {
     return availableProgramLinks.filter(
       (p) =>
         p.label.toLowerCase().includes(lowerQ) ||
-        p.code.toLowerCase().includes(lowerQ)
+        p.code.toLowerCase().includes(lowerQ),
     );
   }, [programSearchQuery, availableProgramLinks]);
 
@@ -332,13 +332,13 @@ export default function Header() {
     const lowerQ = mobileSearchQuery.toLowerCase();
 
     const programs = availableProgramLinks.filter((p) =>
-      p.label.toLowerCase().includes(lowerQ)
+      p.label.toLowerCase().includes(lowerQ),
     );
     const about = aboutLinks.filter((a) =>
-      a.label.toLowerCase().includes(lowerQ)
+      a.label.toLowerCase().includes(lowerQ),
     );
     const standard = standardLinks.filter((s) =>
-      s.label.toLowerCase().includes(lowerQ)
+      s.label.toLowerCase().includes(lowerQ),
     );
 
     return [

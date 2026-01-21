@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { X, ArrowRight, Layers, Plus, ExternalLink } from "lucide-react";
+import { X, ArrowRight, Plus } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -51,7 +51,6 @@ export default function DynamicPopup() {
 
         if (active.length) {
           setPopups(active.slice(0, MAX_VISIBLE));
-          // Slightly faster entrance for Swiss style
           setTimeout(() => setIsReady(true), 1000);
         }
       } catch (err) {
@@ -62,11 +61,9 @@ export default function DynamicPopup() {
     fetchPopup();
   }, []);
 
-  const handleClose = useCallback((id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
+  // Close popup function
+  const handleClose = useCallback((id: string) => {
     setClosingIds((p) => [...p, id]);
-
     setTimeout(() => {
       setPopups((p) => p.filter((x) => x.id !== id));
       setClosingIds((p) => p.filter((x) => x !== id));
@@ -79,6 +76,17 @@ export default function DynamicPopup() {
       );
     }, 400);
   }, []);
+
+  // Click handler for button + navigation
+  const handleButtonClick = (id: string, href: string, e: React.MouseEvent) => {
+    e.preventDefault(); // prevent default navigation
+    handleClose(id); // close popup
+
+    // Navigate after short delay for animation
+    setTimeout(() => {
+      window.location.href = href;
+    }, 200);
+  };
 
   if (!popups.length) return null;
 
@@ -107,8 +115,6 @@ export default function DynamicPopup() {
 
           const translateY = isHovering ? -offset : -index * 10;
           const scale = isHovering ? 1 : 1 - index * 0.04;
-
-          // Swiss style prefers opacity changes over brightness for depth
           const opacity = isClosing ? 0 : 1;
 
           return (
@@ -132,9 +138,12 @@ export default function DynamicPopup() {
                 pointerEvents: isHovering || isFront ? "auto" : "none",
               }}
             >
-              {/* --- Close Button (Minimal) --- */}
+              {/* Close Button */}
               <button
-                onClick={(e) => handleClose(popup.id, e)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClose(popup.id);
+                }}
                 className="absolute top-4 right-4 z-30 h-8 w-8 flex items-center justify-center
                   rounded-full bg-white border border-gray-200 text-gray-400
                   hover:bg-black hover:text-white hover:border-black hover:scale-110
@@ -143,7 +152,7 @@ export default function DynamicPopup() {
                 <X className="w-4 h-4" />
               </button>
 
-              {/* --- Header / Visual --- */}
+              {/* Header / Image */}
               {hasImage ? (
                 <div className="relative h-[200px] w-full p-2">
                   <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-gray-100">
@@ -152,14 +161,11 @@ export default function DynamicPopup() {
                       alt=""
                       className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
                     />
-                    {/* Inner Shadow for paper cut-out feel */}
                     <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.05)] pointer-events-none" />
                   </div>
                 </div>
               ) : (
-                // SWISS GRID PATTERN
                 <div className="relative h-[110px] w-full bg-[#f4f4f5] overflow-hidden border-b border-gray-100">
-                  {/* CSS Dot Grid Pattern */}
                   <div
                     className="absolute inset-0 opacity-20"
                     style={{
@@ -179,11 +185,10 @@ export default function DynamicPopup() {
                 </div>
               )}
 
-              {/* --- Content Body --- */}
+              {/* Content */}
               <div className="flex-1 px-6 pb-6 pt-2 flex flex-col justify-between">
                 <div>
-                  {!hasImage && <div className="h-2" />}{" "}
-                  {/* Spacer if no image */}
+                  {!hasImage && <div className="h-2" />}
                   <h3 className="text-[22px] leading-[1.1] font-bold text-black tracking-tight">
                     {popup.title}
                   </h3>
@@ -192,9 +197,12 @@ export default function DynamicPopup() {
                   </p>
                 </div>
 
-                {/* --- Swiss Pill Button --- */}
+                {/* Button */}
                 <Link
                   href={popup.buttonLink}
+                  onClick={(e) =>
+                    handleButtonClick(popup.id, popup.buttonLink, e)
+                  }
                   className="
                     mt-5 group relative w-full flex items-center justify-between
                     bg-black text-white
@@ -205,20 +213,19 @@ export default function DynamicPopup() {
                   <span className="text-sm font-bold tracking-wide">
                     {popup.buttonText}
                   </span>
-
                   <div
                     className="
-                    h-9 w-9 rounded-full bg-white text-black
-                    flex items-center justify-center
-                    group-hover:scale-90 transition-transform duration-300
-                  "
+                      h-9 w-9 rounded-full bg-white text-black
+                      flex items-center justify-center
+                      group-hover:scale-90 transition-transform duration-300
+                    "
                   >
                     <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                   </div>
                 </Link>
               </div>
 
-              {/* --- Minimal Stack Badge --- */}
+              {/* Stack Badge */}
               {popups.length > 1 && !isHovering && isFront && (
                 <div className="absolute top-4 left-6 z-20">
                   <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white shadow-xl">

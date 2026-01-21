@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Alert } from "@/components/ui/alert";
 
 // --- Components ---
 
@@ -291,6 +292,20 @@ export default function SportsRegistrationPage() {
 
   const toggleSport = (sportName: string) => {
     const isESport = eSports.includes(sportName);
+    const isPhysical = physicalSports.includes(sportName);
+
+    // Limit check for Physical Sports
+    if (isPhysical && !formData.sports.includes(sportName)) {
+      const currentPhysicalCount = formData.sports.filter((s) =>
+        physicalSports.includes(s),
+      ).length;
+
+      if (currentPhysicalCount >= 3) {
+        alert("You can only select up to 3 Physical Sports.");
+        return;
+      }
+    }
+
     setFormData((prev) => {
       let newSports = [...prev.sports];
       if (newSports.includes(sportName)) {
@@ -675,7 +690,7 @@ export default function SportsRegistrationPage() {
                     <div className="space-y-8 mb-10">
                       <div className="space-y-4">
                         <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">
-                          Select Physical Sports{" "}
+                          Select Physical Sports (Max 3){" "}
                           <span className="text-red-500">*</span>
                         </label>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

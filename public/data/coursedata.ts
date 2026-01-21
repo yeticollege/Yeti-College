@@ -188,7 +188,7 @@ export const coursesDB: Record<string, any> = {
   },
 
   bhm: {
-    title: "Bachelor in Hotel Management",
+    title: "Bachelor of Hotel Management",
     code: "BHM",
     category: "Undergraduate",
     duration: "4 Years",
@@ -331,7 +331,7 @@ export const coursesDB: Record<string, any> = {
   },
 
   babm: {
-    title: "Bachelor in Airlines Business Management",
+    title: "Bachelor of Airlines Business Management",
     code: "BABM",
     category: "Undergraduate",
     duration: "4 Years",
@@ -472,7 +472,7 @@ export const coursesDB: Record<string, any> = {
   },
 
   bamm: {
-    title: "Bachelor in MICE (Event) Management",
+    title: "Bachelor of MICE (Event) Management",
     code: "BAMM",
     category: "Undergraduate",
     duration: "4 Years",
@@ -615,7 +615,7 @@ export const coursesDB: Record<string, any> = {
   },
 
   bttm: {
-    title: "Bachelor in Tourism & MICE Management",
+    title: "Bachelor of Tourism & MICE Management",
     code: "BTTM",
     category: "Undergraduate",
     duration: "4 Years",
@@ -898,7 +898,6 @@ export const coursesDB: Record<string, any> = {
               "BCA405-II Business Intelligence",
               "BCA405-III Software Testing & Quality Assurance",
               "BCA405-IV Data Visualization",
-              
             ],
           },
           {
@@ -920,7 +919,6 @@ export const coursesDB: Record<string, any> = {
               "BCA454-II Image Processing",
               "BCA454-III Internet of Things",
               "BCA454-IV Data Mining & Data Warehouse",
-              
             ],
           },
         ],
@@ -934,9 +932,9 @@ export const coursesDB: Record<string, any> = {
     ],
   },
 
-
-   bscictc: {
-    title: "Bachelor of Science (Information & Communication Technology-Cybersecurity)",
+  bscictc: {
+    title:
+      "Bachelor of Science (Information & Communication Technology-Cybersecurity)",
     code: "B.Sc ICTC",
     category: "Undergraduate",
     duration: "4 Years",
@@ -967,7 +965,7 @@ export const coursesDB: Record<string, any> = {
       "skills in ethical hacking and penetration testing",
     ],
     // Curriculum updated to match the image provided
-     curriculum: [
+    curriculum: [
       {
         year: "Year 01",
         focus: "Computing Fundamentals",
@@ -1070,9 +1068,7 @@ export const coursesDB: Record<string, any> = {
               "SDM299 Bachelor Thesis on Specialization Area",
               "GAD499 Cooperative Education/Internship",
             ],
-            
           },
-          
         ],
       },
 
@@ -1092,7 +1088,6 @@ export const coursesDB: Record<string, any> = {
               "ICT469 Hacking and Penetrate Security Testing",
               "ICT476 Special Topics in Cyber Security",
             ],
-            
           },
 
           {
@@ -1107,7 +1102,6 @@ export const coursesDB: Record<string, any> = {
               "CSC417 Project Testing and Implementatin (Cyber Security)",
               "CSC418 Network Operating System",
             ],
-            
           },
 
           {
@@ -1122,7 +1116,6 @@ export const coursesDB: Record<string, any> = {
               "AIT313 Data Warehousing and Mining",
               "AIT416 Introduction to AI",
             ],
-            
           },
 
           {
@@ -1137,7 +1130,6 @@ export const coursesDB: Record<string, any> = {
               "AIT426 Internet of Things and Robotics",
               "AIT427 Data Science with R Programming for AI",
             ],
-            
           },
 
           {
@@ -1152,7 +1144,6 @@ export const coursesDB: Record<string, any> = {
               "CSD338 Web Programming",
               "CSD461 Hardware-Software Interface",
             ],
-            
           },
           {
             semester: "Computer Science & S/W Innovation Group (Elective)",
@@ -1164,7 +1155,6 @@ export const coursesDB: Record<string, any> = {
               "CSD415 Research Methods for Engineering",
               "CSD416 Desing & Implementation",
             ],
-            
           },
           {
             semester: "Mobile Application Development Group (Compulsory)",
@@ -1241,7 +1231,7 @@ export const coursesDB: Record<string, any> = {
       },
     ],
     // Curriculum updated to match the image provided
-    
+
     careers: [
       "Ethical Hacker",
       "Penetration Tester",

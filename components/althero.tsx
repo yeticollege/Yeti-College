@@ -80,13 +80,13 @@ const programLinks = [
   },
   {
     href: "/programs/bhm",
-    label: "Bachelor in Hotel Mgmt",
+    label: "Bachelor of Hotel Mgmt",
     code: "BHM",
     icon: Hotel,
   },
   {
     href: "/programs/babm",
-    label: "Bachelor in Airlines Business Mgmt",
+    label: "Bachelor of Airlines Business Mgmt",
     code: "BABM",
     icon: Globe,
   },
@@ -98,19 +98,19 @@ const programLinks = [
   },
   {
     href: "/programs/bamm",
-    label: "Bachelor in Event Mgmt",
+    label: "Bachelor of Event Mgmt",
     code: "BAMM",
     icon: CalendarDays,
   },
   {
     href: "/programs/bttm",
-    label: "Bachelor in Tourism",
+    label: "Bachelor of Tourism",
     code: "BTTM",
     icon: Briefcase,
   },
   {
     href: "/programs/bca",
-    label: "Bachelor in Computer App",
+    label: "Bachelor of Computer App",
     code: "BCA",
     icon: Cpu,
   },
@@ -134,14 +134,14 @@ const NavItem = ({
     <span
       className={cn(
         "text-sm font-semibold uppercase tracking-wide transition-colors duration-200 flex items-center gap-1",
-        active ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-900"
+        active ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-900",
       )}
     >
       {label}
       <ChevronDown
         className={cn(
           "w-4 h-4 transition-transform duration-300",
-          active ? "rotate-180" : "rotate-0"
+          active ? "rotate-180" : "rotate-0",
         )}
       />
     </span>
@@ -194,7 +194,7 @@ const ProgramCard = ({ item }: { item: (typeof programLinks)[0] }) => (
 // --- MAIN COMPONENT ---
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<"about" | "programs" | null>(
-    null
+    null,
   );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

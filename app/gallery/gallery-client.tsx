@@ -26,8 +26,8 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 // --- TYPES ---
-// We match these roughly to your Prisma schema
-type Category = "All" | "Architecture" | "Process" | "Campus" | "Events";
+// Changed to string so it accepts 'bhm practical' or any DB value
+type Category = string;
 
 export interface GalleryItem {
   id: number;
@@ -35,20 +35,11 @@ export interface GalleryItem {
   src: string;
   poster?: string;
   title: string;
-  category: string; // Changed from strict Enum to string to accommodate DB data easily
+  category: string;
   year: string;
   width: number;
   height: number;
 }
-
-// --- CONSTANTS ---
-const categories: Category[] = [
-  "All",
-  "Architecture",
-  "Process",
-  "Campus",
-  "Events",
-];
 
 // --- CUSTOM HOOKS ---
 
@@ -149,7 +140,7 @@ const GalleryCard = ({ item, onClick, gridClass }: GalleryCardProps) => {
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "relative group bg-zinc-100 rounded-2xl overflow-hidden cursor-zoom-in border border-zinc-200/50",
-        gridClass
+        gridClass,
       )}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
@@ -164,7 +155,7 @@ const GalleryCard = ({ item, onClick, gridClass }: GalleryCardProps) => {
               alt={item.title}
               className={cn(
                 "w-full h-full object-cover transition-opacity duration-500",
-                isHovered ? "opacity-0" : "opacity-100"
+                isHovered ? "opacity-0" : "opacity-100",
               )}
             />
             <video
@@ -176,7 +167,7 @@ const GalleryCard = ({ item, onClick, gridClass }: GalleryCardProps) => {
               preload="none"
               className={cn(
                 "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
-                isHovered ? "opacity-100" : "opacity-0"
+                isHovered ? "opacity-100" : "opacity-0",
               )}
             />
             <div className="absolute top-4 right-4 bg-black/20 backdrop-blur-sm p-2 rounded-full text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300">
@@ -309,7 +300,7 @@ const Lightbox = ({
         <div
           className={cn(
             "absolute inset-y-0 left-0 w-[15%] z-20 hidden md:flex items-center justify-start pl-4 transition-cursor",
-            controlsVisible ? "cursor-pointer" : "cursor-none"
+            controlsVisible ? "cursor-pointer" : "cursor-none",
           )}
           onClick={(e) => {
             e.stopPropagation();
@@ -333,7 +324,7 @@ const Lightbox = ({
         <div
           className={cn(
             "absolute inset-y-0 right-0 w-[15%] z-20 hidden md:flex items-center justify-end pr-4 transition-cursor",
-            controlsVisible ? "cursor-pointer" : "cursor-none"
+            controlsVisible ? "cursor-pointer" : "cursor-none",
           )}
           onClick={(e) => {
             e.stopPropagation();
@@ -369,7 +360,7 @@ const Lightbox = ({
               "relative overflow-hidden shadow-2xl bg-zinc-900 rounded-lg pointer-events-auto z-10",
               item.width > item.height
                 ? "w-full max-w-[90vw] md:max-w-[80vw] lg:max-w-[1200px] aspect-video"
-                : "h-full max-h-[85vh] aspect-[2/3]"
+                : "h-full max-h-[85vh] aspect-[2/3]",
             )}
           >
             {item.type === "video" ? (
@@ -481,6 +472,16 @@ export default function SwissGallery({ initialItems }: SwissGalleryProps) {
   const [filter, setFilter] = useState<Category>("All");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
+  // --- CHANGED: Dynamically calculate categories from the items ---
+  const categories = useMemo(() => {
+    // 1. Extract all unique categories from the passed items
+    const uniqueCategories = new Set(initialItems.map((item) => item.category));
+    // 2. Convert to array and sort alphabetically
+    const sortedCategories = Array.from(uniqueCategories).sort();
+    // 3. Prepend "All"
+    return ["All", ...sortedCategories];
+  }, [initialItems]);
+
   const filteredItems = useMemo(() => {
     return filter === "All"
       ? initialItems
@@ -489,7 +490,7 @@ export default function SwissGallery({ initialItems }: SwissGalleryProps) {
 
   const handleNext = useCallback(() => {
     setSelectedIndex((prev) =>
-      prev !== null ? (prev + 1) % filteredItems.length : null
+      prev !== null ? (prev + 1) % filteredItems.length : null,
     );
   }, [filteredItems.length]);
 
@@ -497,7 +498,7 @@ export default function SwissGallery({ initialItems }: SwissGalleryProps) {
     setSelectedIndex((prev) =>
       prev !== null
         ? (prev - 1 + filteredItems.length) % filteredItems.length
-        : null
+        : null,
     );
   }, [filteredItems.length]);
 
@@ -529,7 +530,7 @@ export default function SwissGallery({ initialItems }: SwissGalleryProps) {
                     "relative px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 border select-none outline-none focus-visible:ring-2 ring-zinc-400 ring-offset-2",
                     filter === cat
                       ? "border-zinc-900 text-white bg-zinc-900 shadow-lg shadow-zinc-900/20"
-                      : "border-zinc-200 text-zinc-500 hover:border-zinc-900 hover:text-zinc-900 bg-transparent"
+                      : "border-zinc-200 text-zinc-500 hover:border-zinc-900 hover:text-zinc-900 bg-transparent",
                   )}
                 >
                   {cat}

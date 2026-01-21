@@ -44,8 +44,8 @@ const testimonials = [
     text: "The college provides hands-on learning experiences that really prepare us for real-world careers. From workshops to guest lectures, everything is practical. I feel ready for internships and job opportunities because of the exposure I’ve received here.",
   },
   {
-    name: "Aditi",
-    role: "ABM Student",
+    name: "Aditi Kashyap",
+    role: "Batch of 2024",
     image: "a",
     text: "The faculty at Yeti International College genuinely cares about students’ success. They guide us academically and personally, helping us overcome challenges and stay focused. Their mentorship has made a huge impact on my academic journey.",
   },
@@ -65,7 +65,7 @@ export default function Testimonials() {
 
   // Autoplay plugin
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: true }),
   );
 
   // Update state for the dots
@@ -161,10 +161,11 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`transition-all duration-300 rounded-full ${current === index + 1
-                  ? "w-8 h-2.5 bg-slate-800"
-                  : "w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400"
-                  }`}
+                className={`transition-all duration-300 rounded-full ${
+                  current === index + 1
+                    ? "w-8 h-2.5 bg-slate-800"
+                    : "w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400"
+                }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}

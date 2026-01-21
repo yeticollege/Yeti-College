@@ -14,7 +14,7 @@ interface PageProps {
 
 export const dynamic = "force-dynamic";
 
-// ─── HELPER: STRIP HTML TAGS ───
+// ─── HELPER: STRIP HTML TAGS (For Metadata) ───
 const stripHtml = (html: string | null | undefined) => {
   if (!html) return "";
   return html
@@ -22,6 +22,15 @@ const stripHtml = (html: string | null | undefined) => {
     .replace(/&nbsp;/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
+};
+
+// ─── HELPER: CLEAN CONTENT HTML (Crucial for fixing gaps) ───
+// This removes non-breaking spaces that force "rivers" of white space
+const cleanContentHtml = (html: string | null | undefined) => {
+  if (!html) return "";
+  return html
+    .replace(/&nbsp;/g, " ") // Replace named non-breaking space
+    .replace(/\u00A0/g, " "); // Replace unicode non-breaking space
 };
 
 // =========================================================
@@ -117,6 +126,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     year: "numeric",
   });
 
+  // Clean the content before rendering to remove "sticky" spaces
+  const sanitizedContent = cleanContentHtml(post.content);
+
   return (
     <>
       <script
@@ -194,64 +206,82 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           <div className="bg-white rounded-b-[2.5rem] p-8 md:p-12 text-zinc-800 shadow-xl">
-            {/* ─── IMPROVED EXCERPT UI ─── */}
+            {/* ─── EXCERPT ─── */}
             {post.excerpt && (
               <div className="mb-10 pb-10 border-b border-zinc-100">
-                <p className="text-xl md:text-2xl font-normal leading-relaxed text-zinc-600">
+                <p className="text-xl md:text-2xl font-normal text-justify leading-relaxed text-zinc-600">
                   {stripHtml(post.excerpt)}
                 </p>
               </div>
             )}
-
             {/* ─── CONTENT RENDERER ─── */}
-            {post.content ? (
+            {/* // ... inside your return statement ... */}
+            {sanitizedContent ? (
               <div
                 className="
-                  /* Base Layout */
-                  w-full max-w-none 
-                  
-                  /* Fixed Line Height (was leading-4, now leading-8 for readability) */
-                  leading-8 
+      /* Base Layout */
+      w-full max-w-none 
+      
+      /* Typography & Spacing */
+      leading-8 
 
-                  /* --- HEADINGS --- */
-                  /* Force sizes to override browser resets */
-                  [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:text-zinc-900 [&_h1]:mb-6 [&_h1]:mt-12 [&_h1]:leading-tight
-                  [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-zinc-900 [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:leading-tight
-                  [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-zinc-900 [&_h3]:mb-3 [&_h3]:mt-8
-                  [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:text-zinc-900 [&_h4]:mb-2 [&_h4]:mt-6
+      /* 
+        ALIGNMENT: 
+        Changed lg:text-justify to text-left.
+        Justified text without hyphens creates ugly gaps.
+      */
+      text-left
+      
+      /* 
+        HYPHENATION FIX: 
+        Changed 'hyphens-auto' to 'hyphens-none'.
+        This stops the browser from splitting words with dashes.
+      */
+      hyphens-none
+      
+      /* 
+        WRAPPING:
+        Ensures long words move to the next line. 
+        (Only breaks the word if it is longer than the entire screen width)
+      */
+      break-words
+      
+      /* --- HEADINGS (Reset Align to Left) --- */
+      [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:text-zinc-900 [&_h1]:mb-6 [&_h1]:mt-12 [&_h1]:leading-tight [&_h1]:text-left
+      [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-zinc-900 [&_h2]:mb-4 [&_h2]:mt-10 [&_h2]:leading-tight [&_h2]:text-left
+      [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-zinc-900 [&_h3]:mb-3 [&_h3]:mt-8 [&_h3]:text-left
+      [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:text-zinc-900 [&_h4]:mb-2 [&_h4]:mt-6 [&_h4]:text-left
 
-                  /* --- PARAGRAPHS --- */
-                  /* Ensure proper spacing between blocks of text */
-                  [&_p]:text-lg [&_p]:mb-6 [&_p]:text-zinc-700
+      /* --- PARAGRAPHS --- */
+      [&_p]:text-lg [&_p]:mb-6 [&_p]:text-zinc-700
 
-                  /* --- LISTS --- */
-                  /* Force bullets and numbers to appear with padding */
-                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-8 [&_ul]:space-y-2
-                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-8 [&_ol]:space-y-2
-                  [&_li]:pl-1
+      /* --- LISTS --- */
+      [&_ul]:list-disc [&_ul]:leading-6 [&_ul]:pl-6 [&_ul]:mb-2 [&_ul]:space-y-1
+      [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-8 [&_ol]:space-y-2
+      [&_li]:pl-1 [&li]:mb-8
 
-                  /* --- FORMATTING UTILS --- */
-                  [&_strong]:font-bold [&_strong]:text-zinc-900
-                  [&_b]:font-bold [&_b]:text-zinc-900
-                  
-                  /* Blockquotes */
-                  [&_blockquote]:border-l-4 [&_blockquote]:border-zinc-300 [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-zinc-600 [&_blockquote]:my-10 [&_blockquote]:text-xl
+      /* --- FORMATTING UTILS --- */
+      [&_strong]:font-bold [&_strong]:text-zinc-900
+      [&_b]:font-bold [&_b]:text-zinc-900
+      
+      /* Blockquotes */
+      [&_blockquote]:border-l-4 [&_blockquote]:border-zinc-300 [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-zinc-600 [&_blockquote]:my-10 [&_blockquote]:text-xl
 
-                  /* Links */
-                  [&_a]:text-blue-600 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-blue-800 hover:[&_a]:decoration-2
+      /* Links */
+      [&_a]:text-blue-600 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-blue-800 hover:[&_a]:decoration-2
 
-                  /* Images */
-                  [&_img]:rounded-2xl [&_img]:shadow-lg [&_img]:w-full [&_img]:object-cover [&_img]:my-10
-                  
-                  /* Tables */
-                  [&_table]:w-full [&_table]:border-collapse [&_table]:my-8 [&_table]:text-left
-                  [&_th]:border-b-2 [&_th]:border-zinc-200 [&_th]:py-4 [&_th]:font-bold
-                  [&_td]:border-b [&_td]:border-zinc-100 [&_td]:py-4
+      /* Images */
+      [&_img]:rounded-2xl [&_img]:shadow-lg [&_img]:w-full [&_img]:object-cover [&_img]:my-10
+      
+      /* Tables */
+      [&_table]:w-full [&_table]:border-collapse [&_table]:my-8 [&_table]:text-left
+      [&_th]:border-b-2 [&_th]:border-zinc-200 [&_th]:py-4 [&_th]:font-bold
+      [&_td]:border-b [&_td]:border-zinc-100 [&_td]:py-4
 
-                  /* Overflow handling */
-                  break-words overflow-hidden
-                "
-                dangerouslySetInnerHTML={{ __html: post.content }}
+      /* Overflow handling */
+      overflow-hidden
+    "
+                dangerouslySetInnerHTML={{ __html: sanitizedContent }}
               />
             ) : (
               <div className="space-y-6 text-zinc-600">
