@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="flex flex-col justify-end items-start lg:items-end">
             {/* A large, soft 'Apply' CTA often found in Swiss footers */}
             <Link
-              href="/admissions"
+              href="/apply"
               className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-black transition-all duration-300 bg-white rounded-full hover:bg-zinc-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500 ring-offset-black"
             >
               Apply for Admission

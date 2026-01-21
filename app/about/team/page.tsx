@@ -42,6 +42,14 @@ const leadership = [
 
 const faculty = [
   {
+    name: "Shanti Shrestha",
+    role: "Vice Principal",
+    dept: "Academic Affairs",
+    image: "/message/bhm_coordinator.jpg",
+    color: "bg-amber-100 text-amber-700",
+    fb: "#",
+  },
+  {
     name: "Rakesh Kumar Bhagat",
     role: "Business Development & HOD",
     dept: "Marketing",
@@ -49,14 +57,7 @@ const faculty = [
     color: "bg-blue-100 text-blue-700",
     fb: "#",
   },
-  {
-    name: "Shanti Shrestha",
-    role: "Program Coordinator-BABM & BHM ",
-    dept: "Hospitality Management",
-    image: "/message/bhm_coordinator.jpg",
-    color: "bg-amber-100 text-amber-700",
-    fb: "#",
-  },
+
   {
     name: "Bashu Kafle",
     role: "BABM & BHM Incharge",
@@ -276,10 +277,9 @@ export default function TeamPage() {
           <div className="px-6 md:px-12 max-w-[1800px] mx-auto">
             <div className="flex items-end justify-between mb-16">
               <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">
-                Acedemic Instructor</h2>
-              <span className="hidden md:block font-mono text-xs text-muted-foreground uppercase tracking-widest">
-
-              </span>
+                Acedemic Instructor
+              </h2>
+              <span className="hidden md:block font-mono text-xs text-muted-foreground uppercase tracking-widest"></span>
             </div>
 
             <div className="flex flex-col">
@@ -364,7 +364,7 @@ function FacultyCard({ data, index }: { data: any; index: number }) {
         <div
           className={cn(
             "absolute top-3 left-3 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm backdrop-blur-sm",
-            data.color
+            data.color,
           )}
         >
           {data.dept}

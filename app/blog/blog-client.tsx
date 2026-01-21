@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -9,6 +9,7 @@ import {
   Clock,
   Hash,
   ChevronRight,
+  ChevronLeft,
   Mail,
 } from "lucide-react";
 import Header from "@/components/header";
@@ -46,11 +47,17 @@ export const categories = [
   "Health",
 ];
 
-// ─── HELPER: STRIP HTML TAGS ───
+const ITEMS_PER_PAGE = 6;
+
+// ─── HELPER: STRIP HTML TAGS & ENTITIES ───
 const stripHtml = (html: string) => {
   if (typeof html !== "string") return "";
-  // Replaces any pattern looking like <tag> or </tag> with an empty string
-  return html.replace(/<[^>]*>?/gm, "");
+
+  return html
+    .replace(/<[^>]*>/g, "") // Remove HTML tags
+    .replace(/&nbsp;/gi, " ") // Replace &nbsp; with a normal space
+    .replace(/\s+/g, " ") // Normalize whitespace
+    .trim();
 };
 
 export default function BlogClient({
@@ -62,14 +69,21 @@ export default function BlogClient({
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  // PAGINATION STATE
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Reset to Page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, searchQuery]);
+
   // LIVE SEARCH + CATEGORY FILTER
   const filteredPosts = useMemo(() => {
     return allPosts
       .filter((post) =>
-        activeCategory === "All" ? true : post.category === activeCategory
+        activeCategory === "All" ? true : post.category === activeCategory,
       )
       .filter((post) => {
-        // Clean data before searching
         const cleanQuery = searchQuery.toLowerCase();
         const cleanTitle = stripHtml(post.title).toLowerCase();
         const cleanExcerpt = stripHtml(post.excerpt).toLowerCase();
@@ -80,10 +94,44 @@ export default function BlogClient({
       });
   }, [activeCategory, searchQuery, allPosts]);
 
-  // “LOAD MORE”
-  const [limit, setLimit] = useState(6);
-  const visiblePosts = filteredPosts.slice(0, limit);
-  const loadMore = () => setLimit((prev) => prev + 6);
+  // PAGINATION LOGIC
+  const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
+  const visiblePosts = filteredPosts.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
+  // Helper to handle smooth scroll on page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Optional: Scroll to top of the grid
+    const gridElement = document.getElementById("article-grid");
+    if (gridElement) {
+      gridElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // Helper to generate page numbers array (simple version)
+  const getPageNumbers = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      // Show first, last, current, and neighbors
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= currentPage - 1 && i <= currentPage + 1)
+      ) {
+        pages.push(i);
+      } else if (
+        (i === currentPage - 2 && currentPage > 3) ||
+        (i === currentPage + 2 && currentPage < totalPages - 2)
+      ) {
+        pages.push("...");
+      }
+    }
+    // Deduplicate ellipsis if adjacent logic creates doubles (simple set fix)
+    return Array.from(new Set(pages));
+  };
 
   return (
     <>
@@ -127,7 +175,6 @@ export default function BlogClient({
               transition={{ duration: 0.6 }}
               className="rounded-[2.5rem] overflow-hidden bg-zinc-900 text-white shadow-xl"
             >
-              {/* UPDATED LINK */}
               <Link href={`blog/${featuredPost.id}`}>
                 <div className="flex flex-col md:flex-row min-h-[480px] group cursor-pointer">
                   {/* IMAGE */}
@@ -135,7 +182,7 @@ export default function BlogClient({
                     <motion.img
                       src={featuredPost.image}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      alt={featuredPost.title}
+                      alt={stripHtml(featuredPost.title)}
                     />
                     <div className="absolute top-6 left-6">
                       <span className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider">
@@ -158,7 +205,7 @@ export default function BlogClient({
                     </div>
 
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 group-hover:text-zinc-300 transition-colors">
-                      {featuredPost.title}
+                      {stripHtml(featuredPost.title)}
                     </h2>
 
                     <p className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-md">
@@ -180,7 +227,10 @@ export default function BlogClient({
           )}
 
           {/* ─────── BODY GRID ─────── */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+            id="article-grid"
+          >
             {/* ─── SIDEBAR ─── */}
             <div className="lg:col-span-3 flex flex-col gap-10">
               {/* CATEGORIES */}
@@ -216,14 +266,13 @@ export default function BlogClient({
                 </h3>
                 <ul className="space-y-6">
                   {trendingPosts.map((item, idx) => (
-                    /* UPDATED LINK */
                     <Link href={`blog/${item.id}`} key={item.id}>
                       <li className="group cursor-pointer mb-6">
                         <span className="text-xs font-bold text-zinc-400 mr-3">
                           0{idx + 1}
                         </span>
                         <span className="text-lg font-semibold text-zinc-900 group-hover:underline underline-offset-4 decoration-2">
-                          {item.title}
+                          {stripHtml(item.title)}
                         </span>
                       </li>
                     </Link>
@@ -252,74 +301,113 @@ export default function BlogClient({
             </div>
 
             {/* ─── ARTICLE FEED ─── */}
-            <div className="lg:col-span-9">
-              <AnimatePresence>
+            <div className="lg:col-span-9 flex flex-col">
+              <AnimatePresence mode="wait">
                 <motion.div
-                  layout
+                  key={currentPage + activeCategory + searchQuery}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 >
-                  {visiblePosts.map((post) => (
-                    /* UPDATED LINK */
-                    <Link href={`blog/${post.id}`} key={post.id}>
-                      <motion.div
-                        layout
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="bg-white rounded-3xl shadow-sm overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full"
-                      >
-                        {/* IMAGE */}
-                        <div className="h-60 overflow-hidden relative">
-                          <img
-                            src={post.image}
-                            alt={post.title}
-                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                          />
-                          <div className="absolute top-4 right-4 text-xs px-3 py-1 bg-white border border-zinc-200 rounded-full uppercase font-bold tracking-wider">
-                            {post.category}
-                          </div>
-                        </div>
-
-                        {/* CONTENT */}
-                        <div className="p-6 flex flex-col flex-grow">
-                          <div className="flex items-center gap-2 text-xs uppercase text-zinc-400 mb-3">
-                            {post.date}
-                            <span className="w-1 h-1 bg-zinc-300 rounded-full" />
-                            <Clock className="w-3 h-3" /> {post.readTime}
+                  {visiblePosts.length > 0 ? (
+                    visiblePosts.map((post) => (
+                      <Link href={`blog/${post.id}`} key={post.id}>
+                        <div className="bg-white rounded-3xl shadow-sm overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full">
+                          {/* IMAGE */}
+                          <div className="h-60 overflow-hidden relative">
+                            <img
+                              src={post.image}
+                              alt={stripHtml(post.title)}
+                              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                            />
+                            <div className="absolute top-4 right-4 text-xs px-3 py-1 bg-white border border-zinc-200 rounded-full uppercase font-bold tracking-wider">
+                              {post.category}
+                            </div>
                           </div>
 
-                          <h3 className="text-xl font-bold mb-2 leading-tight hover:text-blue-600 transition-colors">
-                            {post.title}
-                          </h3>
+                          {/* CONTENT */}
+                          <div className="p-6 flex flex-col flex-grow">
+                            <div className="flex items-center gap-2 text-xs uppercase text-zinc-400 mb-3">
+                              {post.date}
+                              <span className="w-1 h-1 bg-zinc-300 rounded-full" />
+                              <Clock className="w-3 h-3" /> {post.readTime}
+                            </div>
 
-                          <p className="text-zinc-600 text-sm line-clamp-3">
-                            {stripHtml(post.excerpt)}
-                          </p>
+                            <h3 className="text-xl font-bold mb-2 leading-tight hover:text-blue-600 transition-colors">
+                              {stripHtml(post.title)}
+                            </h3>
 
-                          <div className="mt-auto pt-6 flex justify-between items-center border-t border-zinc-100">
-                            <span className="text-sm font-semibold text-zinc-500 group-hover:text-zinc-900 transition-colors">
-                              Read Article
-                            </span>
-                            <div className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
-                              <ArrowUpRight className="w-4 h-4" />
+                            <p className="text-zinc-600 text-sm line-clamp-3">
+                              {stripHtml(post.excerpt)}
+                            </p>
+
+                            <div className="mt-auto pt-6 flex justify-between items-center border-t border-zinc-100">
+                              <span className="text-sm font-semibold text-zinc-500 group-hover:text-zinc-900 transition-colors">
+                                Read Article
+                              </span>
+                              <div className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                <ArrowUpRight className="w-4 h-4" />
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </motion.div>
-                    </Link>
-                  ))}
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="col-span-2 text-center py-20 text-zinc-400">
+                      <p className="text-lg">
+                        No posts found matching your criteria.
+                      </p>
+                    </div>
+                  )}
                 </motion.div>
               </AnimatePresence>
 
-              {/* LOAD MORE */}
-              {filteredPosts.length > visiblePosts.length && (
-                <div className="mt-12 flex justify-center">
+              {/* ─────── PAGINATION CONTROLS ─────── */}
+              {totalPages > 1 && (
+                <div className="mt-16 flex justify-center items-center gap-2">
+                  {/* PREV */}
                   <button
-                    onClick={loadMore}
-                    className="px-8 py-4 bg-white border border-zinc-200 rounded-full text-sm font-bold hover:bg-zinc-900 hover:text-white transition-all"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="w-10 h-10 rounded-full flex items-center justify-center border border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   >
-                    Load More Articles
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+
+                  {/* NUMBERS */}
+                  {getPageNumbers().map((page, idx) =>
+                    typeof page === "number" ? (
+                      <button
+                        key={idx}
+                        onClick={() => handlePageChange(page)}
+                        className={`w-10 h-10 rounded-full text-sm font-bold transition-all ${
+                          currentPage === page
+                            ? "bg-zinc-900 text-white shadow-md scale-110"
+                            : "bg-white border border-zinc-200 text-zinc-600 hover:bg-zinc-100"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ) : (
+                      <span
+                        key={idx}
+                        className="w-10 h-10 flex items-center justify-center text-zinc-400 font-bold"
+                      >
+                        ...
+                      </span>
+                    ),
+                  )}
+
+                  {/* NEXT */}
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="w-10 h-10 rounded-full flex items-center justify-center border border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               )}
