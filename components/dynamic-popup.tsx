@@ -19,8 +19,8 @@ interface PopupData {
   buttonLink: string;
 }
 
-// Swiss Layout Config
-const CARD_WIDTH = 360;
+// Configuration
+// CARD_WIDTH is now handled via Tailwind (sm:w-[360px])
 const HEIGHT_WITH_IMG = 400;
 const HEIGHT_NO_IMG = 240;
 const GAP_SIZE = 12;
@@ -82,21 +82,28 @@ export default function DynamicPopup() {
     e.preventDefault(); // prevent default navigation
     handleClose(id); // close popup
 
-    // Navigate after short delay for animation
     setTimeout(() => {
       window.location.href = href;
     }, 200);
   };
 
+  // Toggle stack on mobile click, or hover on desktop
+  const handleInteraction = (active: boolean) => {
+    setIsHovering(active);
+  };
+
   if (!popups.length) return null;
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] pointer-events-none font-sans antialiased">
+    // Responsive container positioning:
+    // Mobile: bottom-4 left-4 right-4 (full width minus padding)
+    // Desktop (sm): bottom-8 right-8 (fixed corner)
+    <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:bottom-8 sm:right-8 z-[100] pointer-events-none font-sans antialiased">
       <div
-        className="relative flex flex-col items-end pointer-events-auto"
-        style={{ width: CARD_WIDTH }}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
+        className="relative flex flex-col items-end pointer-events-auto w-full sm:w-[360px]"
+        onMouseEnter={() => handleInteraction(true)}
+        onMouseLeave={() => handleInteraction(false)}
+        onClick={() => handleInteraction(!isHovering)} // Tap to expand on mobile
       >
         {popups.map((popup, index) => {
           const isClosing = closingIds.includes(popup.id);
@@ -137,6 +144,8 @@ export default function DynamicPopup() {
                 transitionTimingFunction: SWISS_SPRING,
                 pointerEvents: isHovering || isFront ? "auto" : "none",
               }}
+              // Stop propagation on the card so clicking inside doesn't toggle the stack unnecessarily
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
@@ -189,10 +198,10 @@ export default function DynamicPopup() {
               <div className="flex-1 px-6 pb-6 pt-2 flex flex-col justify-between">
                 <div>
                   {!hasImage && <div className="h-2" />}
-                  <h3 className="text-[22px] leading-[1.1] font-bold text-black tracking-tight">
+                  <h3 className="text-[20px] sm:text-[22px] leading-[1.1] font-bold text-black tracking-tight">
                     {popup.title}
                   </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-gray-500 font-medium tracking-normal line-clamp-3">
+                  <p className="mt-3 text-[14px] sm:text-[15px] leading-relaxed text-gray-500 font-medium tracking-normal line-clamp-3">
                     {popup.description}
                   </p>
                 </div>
@@ -227,14 +236,17 @@ export default function DynamicPopup() {
 
               {/* Stack Badge */}
               {popups.length > 1 && !isHovering && isFront && (
-                <div className="absolute top-4 left-6 z-20">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white shadow-xl">
+                <button
+                  onClick={() => setIsHovering(true)}
+                  className="absolute top-4 left-6 z-20 cursor-pointer"
+                >
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black text-white shadow-xl hover:bg-gray-800 transition-colors">
                     <Plus className="w-3 h-3" />
                     <span className="text-xs font-bold tracking-tight">
                       {popups.length - 1}
                     </span>
                   </div>
-                </div>
+                </button>
               )}
             </div>
           );
