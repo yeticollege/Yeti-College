@@ -4,6 +4,7 @@
   "/about/team/page": "app/about/team/page.js",
   "/api/events/upcoming/route": "app/api/events/upcoming/route.js",
   "/api/popup/route": "app/api/popup/route.js",
+  "/apply/page": "app/apply/page.js",
   "/blog/[id]/page": "app/blog/[id]/page.js",
   "/blog/page": "app/blog/page.js",
   "/events/page": "app/events/page.js",

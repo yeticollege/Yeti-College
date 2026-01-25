@@ -76,7 +76,7 @@ const dataDB: Record<string, any> = {
     role: "Head of Business Develpopment",
     name: "Mr. Rakesh Kumar Bhagat",
     image: "/message/marketing.jpg",
-    signature: "Silwal Arna",
+    signature: "Rakesh Bhagat",
     email: "admission@yeticollege.edu.np",
     socials: { linkedin: "#", twitter: "#" },
     quote:
@@ -101,7 +101,7 @@ export default function MessageDetailPage() {
   if (!data) return notFound();
 
   const otherLeaders = Object.values(dataDB).filter(
-    (leader) => leader.id !== id
+    (leader) => leader.id !== id,
   );
 
   return (
