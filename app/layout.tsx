@@ -6,7 +6,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import YetiChatbot from "@/components/chatbot";
 import DynamicPopup from "@/components/dynamic-popup";
-
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 // Fonts
 const geist = Geist({ subsets: ["latin"] });
 const geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -107,6 +107,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.className} ${geistMono.className} antialiased`}>
         <Analytics />
+        <ServiceWorkerRegistration />
         <DynamicPopup />
         {children}
         <YetiChatbot />
