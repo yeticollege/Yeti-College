@@ -62,7 +62,7 @@
       "is192x192": false
     },
     {
-      "src": "https://yeticollege.edu.np/ios/192.png",
+      "src": "/ios/192.png",
       "type": "image/png",
       "sizes": "192x192",
       "isSquare": true,
