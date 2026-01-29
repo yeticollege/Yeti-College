@@ -24,7 +24,7 @@
       "is192x192": false
     },
     {
-      "src": "https://yeticollege.edu.np/icon-dark-32x32.png",
+      "src": "/iconlightdark32-32.png",
       "type": "image/png",
       "sizes": "32x32",
       "isSquare": true,
@@ -37,7 +37,7 @@
       "is192x192": false
     },
     {
-      "src": "https://yeticollege.edu.np/icon.svg",
+      "src": "/icon.svg",
       "type": "image/svg+xml",
       "isSquare": false,
       "isPng": false,
@@ -49,7 +49,7 @@
       "is192x192": false
     },
     {
-      "src": "https://yeticollege.edu.np/apple-icon.png",
+      "src": "/apple-icon.png",
       "type": "image/png",
       "sizes": "180x180",
       "isSquare": true,
