@@ -1,0 +1,65 @@
+{
+  "background_color": "#ffffff",
+  "description": "Discover world-class education and opportunities at Yeti International College. Explore our programs, vibrant campus community, and student success stories.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "yeticollege.edu",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "yeticollege.edu",
+  "start_url": "/index",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://yeticollege.edu.np/iconlightdark32-32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 32,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://yeticollege.edu.np/icon-dark-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 32,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://yeticollege.edu.np/icon.svg",
+      "type": "image/svg+xml",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://yeticollege.edu.np/apple-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "isSquare": true,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 180,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ]
+}
