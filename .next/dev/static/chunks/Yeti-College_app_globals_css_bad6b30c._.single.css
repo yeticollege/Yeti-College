@@ -172,14 +172,6 @@
     --color-zinc-800: #27272a;
     --color-zinc-900: #18181b;
     --color-zinc-950: #09090b;
-    --color-neutral-50: #fafafa;
-    --color-neutral-100: #f5f5f5;
-    --color-neutral-200: #e5e5e5;
-    --color-neutral-300: #d4d4d4;
-    --color-neutral-600: #525252;
-    --color-neutral-700: #404040;
-    --color-neutral-800: #262626;
-    --color-neutral-900: #171717;
     --color-black: #000;
     --color-white: #fff;
     --spacing: .25rem;
@@ -337,14 +329,6 @@
       --color-zinc-800: lab(15.7305% .613764 -2.16959);
       --color-zinc-900: lab(8.30603% .618205 -2.16572);
       --color-zinc-950: lab(2.51107% .242703 -.886115);
-      --color-neutral-50: lab(98.26% 0 0);
-      --color-neutral-100: lab(96.52% -.0000298023 .0000119209);
-      --color-neutral-200: lab(90.952% 0 -.0000119209);
-      --color-neutral-300: lab(84.92% 0 -.0000119209);
-      --color-neutral-600: lab(34.924% 0 0);
-      --color-neutral-700: lab(27.036% 0 0);
-      --color-neutral-800: lab(15.204% 0 -.00000596046);
-      --color-neutral-900: lab(7.78201% -.0000149012 0);
     }
   }
 }
@@ -3088,14 +3072,6 @@
     }
   }
 
-  .border-neutral-200 {
-    border-color: var(--color-neutral-200);
-  }
-
-  .border-neutral-300 {
-    border-color: var(--color-neutral-300);
-  }
-
   .border-primary {
     border-color: var(--primary);
   }
@@ -3778,18 +3754,6 @@
     .bg-muted\/50 {
       background-color: color-mix(in oklab, var(--muted) 50%, transparent);
     }
-  }
-
-  .bg-neutral-50 {
-    background-color: var(--color-neutral-50);
-  }
-
-  .bg-neutral-100 {
-    background-color: var(--color-neutral-100);
-  }
-
-  .bg-neutral-200 {
-    background-color: var(--color-neutral-200);
   }
 
   .bg-orange-500 {
@@ -5394,22 +5358,6 @@
     .text-muted-foreground\/80 {
       color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
     }
-  }
-
-  .text-neutral-600 {
-    color: var(--color-neutral-600);
-  }
-
-  .text-neutral-700 {
-    color: var(--color-neutral-700);
-  }
-
-  .text-neutral-800 {
-    color: var(--color-neutral-800);
-  }
-
-  .text-neutral-900 {
-    color: var(--color-neutral-900);
   }
 
   .text-popover-foreground {
@@ -7622,12 +7570,6 @@
       .hover\:bg-muted\/50:hover {
         background-color: color-mix(in oklab, var(--muted) 50%, transparent);
       }
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-neutral-100:hover {
-      background-color: var(--color-neutral-100);
     }
   }
 

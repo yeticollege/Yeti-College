@@ -105,7 +105,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geist.className} ${geistMono.className} antialiased`}>
+      <body className={`${geist.className}  antialiased`}>
         <Analytics />
         <ServiceWorkerRegistration />
         <DynamicPopup />
