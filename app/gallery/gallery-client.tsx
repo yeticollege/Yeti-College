@@ -7,7 +7,13 @@ import React, {
   useCallback,
   useRef,
 } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  LayoutGroup,
+  PanInfo,
+  Variants,
+} from "framer-motion";
 import {
   Maximize2,
   X,
@@ -15,18 +21,17 @@ import {
   ChevronRight,
   Download,
   Share2,
-  ArrowRight,
-  ArrowLeft,
+  Loader2,
   Play,
   Volume2,
   VolumeX,
+  SearchX,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 // --- TYPES ---
-// Changed to string so it accepts 'bhm practical' or any DB value
 type Category = string;
 
 export interface GalleryItem {
@@ -41,8 +46,49 @@ export interface GalleryItem {
   height: number;
 }
 
-// --- CUSTOM HOOKS ---
+// --- UTILS ---
+const convertGoogleDriveUrl = (url: string): string => {
+  if (!url) return url;
+  if (url.includes("drive.google.com/uc?export=view&id=")) return url;
+  if (!url.includes("drive.google.com")) return url;
 
+  let idMatch;
+  const fileMatch = url.match(/\/file\/d\/([^/]+)\//);
+  if (fileMatch && fileMatch[1]) idMatch = fileMatch[1];
+
+  if (!idMatch) {
+    const paramMatch = url.match(/[?&]id=([^&]+)/);
+    if (paramMatch && paramMatch[1]) idMatch = paramMatch[1];
+  }
+
+  if (idMatch) {
+    return `https://drive.google.com/uc?export=view&id=${idMatch}`;
+  }
+  return url;
+};
+
+const getProxyUrl = (src: string) => {
+  if (!src) return "";
+  if (src.includes("drive.google.com")) {
+    const convertedSrc = convertGoogleDriveUrl(src);
+    return `/api/image-proxy?url=${encodeURIComponent(convertedSrc)}`;
+  }
+  if (src.startsWith("http://") || src.startsWith("https://")) {
+    return `/api/image-proxy?url=${encodeURIComponent(src)}`;
+  }
+  return src;
+};
+
+const getSpanClass = (width: number, height: number): string => {
+  const ratio = width / height;
+  if (ratio > 1.3) return "col-span-1 md:col-span-2 row-span-1";
+  if (ratio < 0.8) return "col-span-1 row-span-2";
+  if (ratio >= 0.8 && ratio <= 1.2 && width > 1100)
+    return "col-span-1 md:col-span-2 row-span-2";
+  return "col-span-1 row-span-1";
+};
+
+// --- HOOKS ---
 const useScrollLock = (lock: boolean) => {
   useEffect(() => {
     if (lock) {
@@ -77,10 +123,9 @@ const useIdleHide = (isActive: boolean, timeoutMs = 3000) => {
       "touchstart",
       "wheel",
     ];
-    events.forEach((event) => window.addEventListener(event, resetTimer));
-
+    events.forEach((e) => window.addEventListener(e, resetTimer));
     return () => {
-      events.forEach((event) => window.removeEventListener(event, resetTimer));
+      events.forEach((e) => window.removeEventListener(e, resetTimer));
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [isActive, resetTimer]);
@@ -88,39 +133,36 @@ const useIdleHide = (isActive: boolean, timeoutMs = 3000) => {
   return visible;
 };
 
-// --- LOGIC: DYNAMIC GRID CALCULATION ---
+// --- COMPONENTS ---
 
-const getSpanClass = (width: number, height: number): string => {
-  const ratio = width / height;
-
-  if (ratio > 1.3) {
-    return "col-span-1 md:col-span-2 row-span-1";
-  }
-  if (ratio < 0.8) {
-    return "col-span-1 row-span-2";
-  }
-  if (ratio >= 0.8 && ratio <= 1.2 && width > 1100) {
-    return "col-span-1 md:col-span-2 row-span-2";
-  }
-  return "col-span-1 row-span-1";
-};
-
-// --- SUB COMPONENTS ---
-
-interface GalleryCardProps {
-  item: GalleryItem;
-  onClick: () => void;
-  gridClass: string;
-}
-
-const GalleryCard = ({ item, onClick, gridClass }: GalleryCardProps) => {
+// 1. Progressive Media (Handles loading states & errors)
+const ProgressiveMedia = ({
+  src,
+  alt,
+  className,
+  isVideo,
+  poster,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  isVideo?: boolean;
+  poster?: string;
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
+  // Safety: Force loaded state after 5s to prevent infinite spinner
   useEffect(() => {
-    if (item.type !== "video" || !videoRef.current) return;
+    const timer = setTimeout(() => setIsLoaded(true), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
-    if (isHovered) {
+  // Video Autoplay on Hover
+  useEffect(() => {
+    if (!isVideo || !videoRef.current) return;
+    if (hovered) {
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
@@ -129,85 +171,142 @@ const GalleryCard = ({ item, onClick, gridClass }: GalleryCardProps) => {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
-  }, [isHovered, item.type]);
+  }, [hovered, isVideo]);
 
+  const handleLoad = () => setIsLoaded(true);
+  const handleError = () => setIsLoaded(true); // Hide spinner on error
+
+  const mediaSrc = getProxyUrl(src);
+  const posterSrc = poster ? getProxyUrl(poster) : null;
+
+  return (
+    <div
+      className="w-full h-full relative bg-zinc-200 overflow-hidden"
+      onMouseEnter={() => isVideo && setHovered(true)}
+      onMouseLeave={() => isVideo && setHovered(false)}
+    >
+      {/* Loading Spinner */}
+      <div
+        className={cn(
+          "absolute inset-0 flex items-center justify-center text-zinc-400 z-10 transition-opacity duration-500",
+          isLoaded ? "opacity-0 pointer-events-none" : "opacity-100",
+        )}
+      >
+        <Loader2 className="w-6 h-6 animate-spin" />
+      </div>
+
+      {isVideo ? (
+        <>
+          {posterSrc ? (
+            <motion.img
+              src={posterSrc}
+              alt={alt}
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{
+                opacity: hovered ? 0 : 1,
+                filter: isLoaded ? "blur(0px)" : "blur(10px)",
+              }}
+              transition={{ duration: 0.5 }}
+              onLoad={handleLoad}
+              onError={handleError}
+              className={cn(
+                "absolute inset-0 w-full h-full object-cover z-20",
+                className,
+              )}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-zinc-800 z-0" />
+          )}
+
+          <video
+            ref={videoRef}
+            src={mediaSrc}
+            muted
+            loop
+            playsInline
+            onLoadedData={!posterSrc ? handleLoad : undefined}
+            onError={!posterSrc ? handleError : undefined}
+            className={cn(
+              "absolute inset-0 w-full h-full object-cover transition-opacity duration-300 z-10",
+              posterSrc
+                ? hovered
+                  ? "opacity-100"
+                  : "opacity-0"
+                : "opacity-100",
+            )}
+          />
+
+          <div className="absolute top-3 right-3 z-30 bg-black/40 backdrop-blur-md p-2 rounded-full text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+            <Play className="w-3 h-3 fill-white stroke-none" />
+          </div>
+        </>
+      ) : (
+        <motion.img
+          src={mediaSrc}
+          alt={alt}
+          initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+          animate={{
+            opacity: isLoaded ? 1 : 0,
+            scale: isLoaded ? 1 : 1.1,
+            filter: isLoaded ? "blur(0px)" : "blur(10px)",
+          }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          onLoad={handleLoad}
+          onError={handleError}
+          className={cn("w-full h-full object-cover", className)}
+        />
+      )}
+    </div>
+  );
+};
+
+// 2. Gallery Card
+const GalleryCard = ({ item, onClick, gridClass }: GalleryCardProps) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4 }}
       className={cn(
-        "relative group bg-zinc-100 rounded-2xl overflow-hidden cursor-zoom-in border border-zinc-200/50",
+        "relative group rounded-[24px] overflow-hidden cursor-zoom-in bg-zinc-100 border border-zinc-200",
         gridClass,
       )}
       onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="absolute inset-0 w-full h-full">
-        {item.type === "video" ? (
-          <>
-            <motion.img
-              layoutId={`media-poster-${item.id}`}
-              src={item.poster}
-              alt={item.title}
-              className={cn(
-                "w-full h-full object-cover transition-opacity duration-500",
-                isHovered ? "opacity-0" : "opacity-100",
-              )}
-            />
-            <video
-              ref={videoRef}
-              src={item.src}
-              muted
-              loop
-              playsInline
-              preload="none"
-              className={cn(
-                "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
-                isHovered ? "opacity-100" : "opacity-0",
-              )}
-            />
-            <div className="absolute top-4 right-4 bg-black/20 backdrop-blur-sm p-2 rounded-full text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-              <Play className="w-3 h-3 fill-current" />
-            </div>
-          </>
-        ) : (
-          <motion.img
-            layoutId={`media-${item.id}`}
-            src={item.src}
-            alt={item.title}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        )}
+        <ProgressiveMedia
+          src={item.src}
+          poster={item.poster}
+          alt={item.title}
+          isVideo={item.type === "video"}
+          className="transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
 
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-        <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-out">
-          <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
-            <Maximize2 className="w-3.5 h-3.5 text-zinc-900" />
-            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-900">
-              View
-            </span>
+      <div className="absolute inset-0 z-40 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <div className="flex items-center justify-between">
+            <div className="text-white">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-zinc-300 mb-1">
+                {item.category}
+              </p>
+              <h3 className="font-bold text-sm md:text-base leading-tight">
+                {item.title}
+              </h3>
+            </div>
+            <div className="bg-white/20 backdrop-blur-md p-2 rounded-full text-white">
+              <Maximize2 className="w-3.5 h-3.5" />
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <p className="text-white text-sm font-medium truncate translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-          {item.title}
-        </p>
-        <p className="text-white/60 text-[10px] uppercase tracking-wider translate-y-2 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-          {item.category} • {item.year}
-        </p>
       </div>
     </motion.div>
   );
 };
 
+// 3. Lightbox (Swiss Style & Dynamic Sizing)
 interface LightboxProps {
   item: GalleryItem | null;
   isOpen: boolean;
@@ -216,7 +315,31 @@ interface LightboxProps {
   onPrev: () => void;
   total: number;
   currentIndex: number;
+  direction: number;
 }
+
+const slideVariants: Variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+    scale: 0.85,
+    rotateY: direction > 0 ? 15 : -15,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    rotateY: 0,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+    scale: 0.85,
+    rotateY: direction < 0 ? 15 : -15,
+  }),
+};
 
 const Lightbox = ({
   item,
@@ -226,15 +349,14 @@ const Lightbox = ({
   onPrev,
   total,
   currentIndex,
+  direction,
 }: LightboxProps) => {
   useScrollLock(isOpen);
-  const controlsVisible = useIdleHide(isOpen);
+  const controlsVisible = useIdleHide(isOpen, 4000);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-  }, [item?.id]);
+  useEffect(() => setIsLoading(true), [item?.id]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -249,221 +371,212 @@ const Lightbox = ({
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose, onNext, onPrev, item?.type]);
+  }, [isOpen, onClose, onNext, onPrev, item]);
+
+  const handleDragEnd = (e: any, { offset, velocity }: PanInfo) => {
+    const swipe = Math.abs(offset.x) * velocity.x;
+    if (swipe < -10000) onNext();
+    else if (swipe > 10000) onPrev();
+  };
 
   if (!item) return null;
+
+  // --- DYNAMIC ASPECT RATIO CALCULATION ---
+  // Calculates exact dimensions to fit within 90vw/80vh while maintaining ratio.
+  const aspect = item.width && item.height ? item.width / item.height : 16 / 9;
+  const dynamicStyle = {
+    "--aspect": aspect,
+    width: `min(90vw, calc(80vh * ${aspect}))`,
+    height: `min(80vh, calc(90vw / ${aspect}))`,
+  } as React.CSSProperties;
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex flex-col"
+      transition={{ duration: 0.4 }}
+      className="fixed inset-0 z-[9999] bg-zinc-950/95 backdrop-blur-2xl flex flex-col"
     >
-      {/* Top Bar */}
-      <AnimatePresence>
-        {controlsVisible && (
-          <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -100, opacity: 0 }}
-            className="absolute top-0 left-0 right-0 flex justify-between items-center p-6 z-50 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"
-          >
-            <div className="flex items-center gap-4 text-white/80 font-mono text-xs pointer-events-auto">
-              <span className="tabular-nums">
-                {(currentIndex + 1).toString().padStart(2, "0")} /{" "}
-                {total.toString().padStart(2, "0")}
-              </span>
-              <span className="hidden md:inline-block text-white/20">|</span>
-              <span className="hidden md:inline-block tracking-widest uppercase opacity-60">
-                {item.category}
-              </span>
-            </div>
+      {/* Header Info */}
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: controlsVisible ? 1 : 0 }}
+        className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between p-6 pointer-events-none"
+      >
+        <div className="pointer-events-auto bg-zinc-900/50 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full text-white/80 font-mono text-xs tracking-widest shadow-2xl">
+          {String(currentIndex + 1).padStart(2, "0")}{" "}
+          <span className="text-white/20">/</span>{" "}
+          {String(total).padStart(2, "0")}
+        </div>
 
-            <button
-              onClick={onClose}
-              className="group relative w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors pointer-events-auto"
-            >
-              <X className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <button
+          onClick={onClose}
+          className="pointer-events-auto group p-3 rounded-full bg-zinc-900/50 border border-white/10 hover:bg-white/10 text-white transition-all backdrop-blur-xl shadow-2xl"
+        >
+          <X className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" />
+        </button>
+      </motion.div>
 
       {/* Main Content Area */}
       <div
-        className="flex-1 relative w-full h-full flex items-center justify-center p-4 md:p-10"
+        className="flex-1 w-full h-full flex items-center justify-center overflow-hidden relative perspective-[1000px]"
         onClick={onClose}
       >
-        {/* Navigation Zones */}
-        <div
-          className={cn(
-            "absolute inset-y-0 left-0 w-[15%] z-20 hidden md:flex items-center justify-start pl-4 transition-cursor",
-            controlsVisible ? "cursor-pointer" : "cursor-none",
-          )}
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-        >
-          <AnimatePresence>
-            {controlsVisible && (
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-white backdrop-blur-md border border-white/5"
+        {/* Navigation Arrows */}
+        <AnimatePresence>
+          {controlsVisible && (
+            <>
+              <motion.button
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -20, opacity: 0 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onPrev();
+                }}
+                className="hidden md:flex absolute left-8 z-50 p-5 rounded-full bg-black/20 hover:bg-black/40 border border-white/5 text-white backdrop-blur-md transition-all group"
               >
-                <ChevronLeft className="w-6 h-6" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <div
-          className={cn(
-            "absolute inset-y-0 right-0 w-[15%] z-20 hidden md:flex items-center justify-end pr-4 transition-cursor",
-            controlsVisible ? "cursor-pointer" : "cursor-none",
-          )}
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-        >
-          <AnimatePresence>
-            {controlsVisible && (
-              <motion.div
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-white backdrop-blur-md border border-white/5"
+                <ChevronLeft className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
+              </motion.button>
+              <motion.button
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 20, opacity: 0 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onNext();
+                }}
+                className="hidden md:flex absolute right-8 z-50 p-5 rounded-full bg-black/20 hover:bg-black/40 border border-white/5 text-white backdrop-blur-md transition-all group"
               >
-                <ChevronRight className="w-6 h-6" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Media */}
-        <div className="relative w-full h-full flex items-center justify-center pointer-events-none">
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center z-0">
-              <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-            </div>
+                <ChevronRight className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
+              </motion.button>
+            </>
           )}
+        </AnimatePresence>
 
-          <motion.div
-            layoutId={`card-container-${item.id}`}
-            onClick={(e) => e.stopPropagation()}
-            className={cn(
-              "relative overflow-hidden shadow-2xl bg-zinc-900 rounded-lg pointer-events-auto z-10",
-              item.width > item.height
-                ? "w-full max-w-[90vw] md:max-w-[80vw] lg:max-w-[1200px] aspect-video"
-                : "h-full max-h-[85vh] aspect-[2/3]",
-            )}
-          >
-            {item.type === "video" ? (
-              <>
+        {/* Dynamic Image Container */}
+        <div
+          className="relative w-full h-full flex items-center justify-center p-4"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
+            <motion.div
+              key={item.id}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              style={dynamicStyle} // <-- Appling dynamic width/height
+              transition={{
+                x: { type: "spring", stiffness: 200, damping: 25 },
+                opacity: { duration: 0.2 },
+                scale: { duration: 0.4 },
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={handleDragEnd}
+              className={cn(
+                "relative shadow-2xl overflow-hidden touch-none ring-1 ring-white/10 bg-black",
+                "rounded-[20px] md:rounded-[32px]", // Swiss Roundness
+              )}
+            >
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">
+                  <Loader2 className="animate-spin text-white/50 w-10 h-10" />
+                </div>
+              )}
+
+              {item.type === "video" ? (
                 <video
-                  src={item.src}
+                  src={getProxyUrl(item.src)}
                   autoPlay
                   loop
                   muted={isMuted}
                   playsInline
                   onLoadedData={() => setIsLoading(false)}
-                  className="w-full h-full object-contain bg-black"
+                  className="w-full h-full object-contain"
                 />
-                <AnimatePresence>
-                  {controlsVisible && (
-                    <motion.button
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsMuted(!isMuted);
-                      }}
-                      className="absolute bottom-6 right-6 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-md transition-colors z-30"
-                    >
-                      {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                    </motion.button>
-                  )}
-                </AnimatePresence>
-              </>
-            ) : (
-              <motion.img
-                layoutId={`media-${item.id}`}
-                src={item.src}
-                alt={item.title}
-                onLoad={() => setIsLoading(false)}
-                className="w-full h-full object-contain bg-black"
-              />
-            )}
-          </motion.div>
+              ) : (
+                <img
+                  src={getProxyUrl(item.src)}
+                  alt={item.title}
+                  draggable={false}
+                  onLoad={() => setIsLoading(false)}
+                  className="w-full h-full object-contain select-none"
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* Bottom Panel */}
-      <AnimatePresence>
-        {controlsVisible && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="absolute bottom-8 left-0 right-0 flex justify-center px-4 z-50 pointer-events-none"
-          >
-            <div
-              className="bg-zinc-900/80 backdrop-blur-md border border-white/10 p-1.5 rounded-[2rem] shadow-2xl pointer-events-auto max-w-2xl w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-4 rounded-[1.7rem] bg-white/5">
-                <div className="text-center md:text-left">
-                  <h2 className="text-lg font-bold text-white tracking-tight">
-                    {item.title}
-                  </h2>
-                  <div className="flex items-center justify-center md:justify-start gap-2 text-[10px] font-mono text-zinc-400 uppercase tracking-wider mt-1">
-                    <span>{item.year}</span>
-                    <span>•</span>
-                    <span>{item.category}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button className="w-10 h-10 rounded-full bg-white text-zinc-900 hover:bg-zinc-200 flex items-center justify-center transition-colors">
-                    <Download className="w-4 h-4" />
-                  </button>
-                  <button className="w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition-colors">
-                    <Share2 className="w-4 h-4" />
-                  </button>
-                  <div className="w-px h-8 bg-white/10 mx-2 hidden md:block" />
-                  <div className="hidden md:flex gap-1">
-                    <button
-                      onClick={onPrev}
-                      className="w-10 h-10 rounded-full hover:bg-white/10 text-white flex items-center justify-center transition-colors"
-                    >
-                      <ArrowLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={onNext}
-                      className="w-10 h-10 rounded-full hover:bg-white/10 text-white flex items-center justify-center transition-colors"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+      {/* Bottom Dock */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: controlsVisible ? 1 : 0 }}
+        className="fixed bottom-8 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
+      >
+        <div className="pointer-events-auto flex items-center gap-4 bg-zinc-900/80 backdrop-blur-2xl border border-white/10 pl-6 pr-3 py-3 rounded-full shadow-2xl max-w-full md:max-w-2xl overflow-hidden">
+          <div className="flex flex-col min-w-0 mr-4">
+            <h2 className="text-sm font-bold text-white truncate leading-tight">
+              {item.title}
+            </h2>
+            <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-medium uppercase tracking-widest leading-tight">
+              <span>{item.category}</span>
+              <span className="w-1 h-1 rounded-full bg-zinc-600" />
+              <span>{item.year}</span>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+          <div className="w-px h-8 bg-white/10 mx-1 hidden sm:block" />
+
+          <div className="flex items-center gap-1 shrink-0">
+            {item.type === "video" && (
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="p-2.5 rounded-full hover:bg-white/10 text-zinc-300 hover:text-white transition-colors"
+              >
+                {isMuted ? (
+                  <VolumeX className="w-4 h-4" />
+                ) : (
+                  <Volume2 className="w-4 h-4" />
+                )}
+              </button>
+            )}
+
+            <a
+              href={getProxyUrl(item.src)}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-full hover:bg-white/10 text-zinc-300 hover:text-white transition-colors"
+            >
+              <Download className="w-4 h-4" />
+            </a>
+
+            <button
+              onClick={() =>
+                navigator.share &&
+                navigator.share({
+                  url: window.location.href,
+                  title: item.title,
+                })
+              }
+              className="p-2.5 rounded-full bg-white text-black hover:bg-zinc-200 transition-colors"
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };
 
-// --- MAIN CLIENT COMPONENT ---
-
+// --- MAIN PAGE ---
 interface SwissGalleryProps {
   initialItems: GalleryItem[];
 }
@@ -471,30 +584,39 @@ interface SwissGalleryProps {
 export default function SwissGallery({ initialItems }: SwissGalleryProps) {
   const [filter, setFilter] = useState<Category>("All");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [direction, setDirection] = useState(0);
 
-  // --- CHANGED: Dynamically calculate categories from the items ---
   const categories = useMemo(() => {
-    // 1. Extract all unique categories from the passed items
-    const uniqueCategories = new Set(initialItems.map((item) => item.category));
-    // 2. Convert to array and sort alphabetically
-    const sortedCategories = Array.from(uniqueCategories).sort();
-    // 3. Prepend "All"
-    return ["All", ...sortedCategories];
+    const counts: Record<string, number> = { All: initialItems.length };
+    initialItems.forEach((item) => {
+      counts[item.category] = (counts[item.category] || 0) + 1;
+    });
+    const uniqueCats = Array.from(
+      new Set(initialItems.map((i) => i.category)),
+    ).sort();
+    return ["All", ...uniqueCats].map((cat) => ({
+      name: cat,
+      count: counts[cat],
+    }));
   }, [initialItems]);
 
-  const filteredItems = useMemo(() => {
-    return filter === "All"
-      ? initialItems
-      : initialItems.filter((item) => item.category === filter);
-  }, [filter, initialItems]);
+  const filteredItems = useMemo(
+    () =>
+      filter === "All"
+        ? initialItems
+        : initialItems.filter((item) => item.category === filter),
+    [filter, initialItems],
+  );
 
   const handleNext = useCallback(() => {
+    setDirection(1);
     setSelectedIndex((prev) =>
       prev !== null ? (prev + 1) % filteredItems.length : null,
     );
   }, [filteredItems.length]);
 
   const handlePrev = useCallback(() => {
+    setDirection(-1);
     setSelectedIndex((prev) =>
       prev !== null
         ? (prev - 1 + filteredItems.length) % filteredItems.length
@@ -505,66 +627,95 @@ export default function SwissGallery({ initialItems }: SwissGalleryProps) {
   return (
     <>
       <Header />
-      <section className="py-24 bg-white text-zinc-900 min-h-screen">
+      <section className="relative min-h-screen bg-white text-zinc-900 pb-24 pt-32">
         <div className="max-w-[1800px] mx-auto px-4 sm:px-6">
-          {/* Header Section */}
-          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-12 mb-16 border-b border-zinc-100 pb-8">
-            <div>
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-4 block">
+          {/* Header */}
+          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-12 mb-20 border-b border-zinc-100 pb-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-zinc-400 mb-6 block">
                 / 04 Portfolio
               </span>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-zinc-900 leading-[0.9]">
+              <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter text-zinc-950 leading-[0.85] select-none">
                 Visual.
                 <br />
-                <span className="tracking-widest text-zinc-300">Archive</span>
+                <span className="text-zinc-200">Archive</span>
               </h1>
-            </div>
+            </motion.div>
 
             {/* Filters */}
-            <div className="flex flex-wrap gap-2">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-wrap gap-2"
+            >
               {categories.map((cat) => (
                 <button
-                  key={cat}
-                  onClick={() => setFilter(cat)}
+                  key={cat.name}
+                  onClick={() => setFilter(cat.name)}
                   className={cn(
-                    "relative px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 border select-none outline-none focus-visible:ring-2 ring-zinc-400 ring-offset-2",
-                    filter === cat
-                      ? "border-zinc-900 text-white bg-zinc-900 shadow-lg shadow-zinc-900/20"
+                    "relative px-5 py-2 rounded-full text-[12px] font-bold uppercase tracking-wider transition-all duration-300 border select-none outline-none focus-visible:ring-2 ring-zinc-400 ring-offset-2",
+                    filter === cat.name
+                      ? "border-zinc-900 bg-zinc-900 text-white shadow-lg shadow-zinc-900/20"
                       : "border-zinc-200 text-zinc-500 hover:border-zinc-900 hover:text-zinc-900 bg-transparent",
                   )}
                 >
-                  {cat}
-                  {filter === cat && (
-                    <motion.span
-                      layoutId="active-pill"
-                      className="absolute inset-0 rounded-full bg-zinc-900 -z-10"
-                      transition={{
-                        type: "spring",
-                        bounce: 0.2,
-                        duration: 0.6,
-                      }}
-                    />
-                  )}
+                  {cat.name}
+                  <span
+                    className={cn(
+                      "ml-2 opacity-60 text-[10px]",
+                      filter === cat.name ? "text-zinc-300" : "text-zinc-400",
+                    )}
+                  >
+                    {cat.count}
+                  </span>
                 </button>
               ))}
-            </div>
+            </motion.div>
           </div>
 
-          {/* Gallery Grid */}
+          {/* Grid */}
           <LayoutGroup>
             <motion.div
               layout
-              className="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[250px]"
+              className="grid grid-flow-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[300px]"
             >
               <AnimatePresence mode="popLayout">
-                {filteredItems.map((item, index) => (
-                  <GalleryCard
-                    key={item.id}
-                    item={item}
-                    onClick={() => setSelectedIndex(index)}
-                    gridClass={getSpanClass(item.width, item.height)}
-                  />
-                ))}
+                {filteredItems.length > 0 ? (
+                  filteredItems.map((item, index) => (
+                    <GalleryCard
+                      key={item.id}
+                      item={item}
+                      onClick={() => {
+                        setSelectedIndex(index);
+                        setDirection(0);
+                      }}
+                      gridClass={getSpanClass(item.width, item.height)}
+                    />
+                  ))
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="col-span-full h-[400px] flex flex-col items-center justify-center text-zinc-400"
+                  >
+                    <SearchX className="w-16 h-16 mb-4 opacity-20" />
+                    <p className="text-lg font-medium">
+                      No items found for "{filter}"
+                    </p>
+                    <button
+                      onClick={() => setFilter("All")}
+                      className="mt-4 text-sm underline hover:text-zinc-900 transition-colors"
+                    >
+                      Clear filter
+                    </button>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </motion.div>
           </LayoutGroup>
@@ -581,6 +732,7 @@ export default function SwissGallery({ initialItems }: SwissGalleryProps) {
             onPrev={handlePrev}
             total={filteredItems.length}
             currentIndex={selectedIndex}
+            direction={direction}
           />
         )}
       </AnimatePresence>
