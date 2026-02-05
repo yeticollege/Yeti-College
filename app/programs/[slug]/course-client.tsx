@@ -102,7 +102,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" /> */}
           </motion.div>
         </header>
 

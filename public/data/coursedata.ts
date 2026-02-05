@@ -8,7 +8,7 @@ export const coursesDB: Record<string, any> = {
     credits: 60, // Approx based on standard MBA (60-72)
     intake: "March / July / November",
     image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1470&auto=format&fit=crop",
+      "/courses/mba.svg", // Local image path for MBA course
     description:
       "A professional master's degree designed to develop leadership, analytical, and strategic skills required in modern business organizations.",
     stats: {
@@ -196,7 +196,7 @@ export const coursesDB: Record<string, any> = {
     credits: 120,
     intake: "March / July / November",
     image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1470&auto=format&fit=crop",
+      "/courses/bhm.svg", // Local image path for BHM course
     description:
       "Designed for students aiming for a career in the hotel, hospitality, and service industry with a strong focus on operational excellence and service leadership.",
     stats: {
@@ -339,7 +339,7 @@ export const coursesDB: Record<string, any> = {
     credits: 120,
     intake: "March / July / November",
     image:
-      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=1470&auto=format&fit=crop",
+      "/courses/babm.svg", // Local image path for BABM course
     description:
       "A unique degree preparing students for careers in global airline business, airport management, and aviation service leadership.",
     stats: {
@@ -480,7 +480,7 @@ export const coursesDB: Record<string, any> = {
     credits: 120,
     intake: "March / July / November",
     image:
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1470&auto=format&fit=crop",
+      "/courses/bamm.svg", // Local image path for BAMM course
     description:
       "A specialized program focused on the Meetings, Incentives, Conferences, and Exhibitions industry with real–world event management exposure.",
     stats: {
@@ -623,7 +623,7 @@ export const coursesDB: Record<string, any> = {
     credits: 124,
     intake: "March / July / November",
     image:
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1335&auto=format&fit=crop",
+      "/courses/bttm.svg", // Local image path for BTTM course
     description:
       "A comprehensive degree designed to produce future leaders in the global hospitality and tourism industry, combining practical exposure with classroom studies.",
     stats: {
@@ -768,7 +768,7 @@ export const coursesDB: Record<string, any> = {
     credits: 130,
     intake: "March / July",
     image:
-      "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=1470&auto=format&fit=crop",
+      "/courses/bca.svg", // Local image path for BCA course
     description:
       "A professional IT program preparing students for careers in software development, networking, automation, and modern digital technologies.",
     stats: {
@@ -942,7 +942,7 @@ export const coursesDB: Record<string, any> = {
     credits: 135,
     intake: "March / July / November",
     image:
-      "https://images.unsplash.com/photo-1662638600476-d563fffbb072?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fChJbmZvcm1hdGlvbiUyMCUyNiUyMENvbW11bmljYXRpb24lMjBUZWNobm9sb2d5LUN5YmVyc2VjdXJpdHl8ZW58MHx8MHx8fDA%3D",
+      "/courses/IT.svg", // Local image path for BSc ICTC course
     description:
       "The emphasis of this degree is on the limitless analysis and design of IT systems. Deep knowledge with professionals, advanced courses in Data Security, PDPA, Network Systems, and Cloud Architecture. Teaching system analysis and computer network management, as well as the IT Professional Standards Certificate (ITPE) supports the digital future world by supporting technologies like Blockchain and Digital Twin.",
     stats: {

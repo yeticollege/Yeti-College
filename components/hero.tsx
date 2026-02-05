@@ -357,20 +357,31 @@ const SEAT_DATA = [
 
 const SLIDES = [
   {
-    video: "/videos/slide1.mp4",
-    poster:
-      "https://images.pexels.com/photos/6187887/pexels-photo-7972356.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  },
-  {
-    video: "/videos/slide2.mov",
+    video: "/videos/slide5.mp4",
     poster:
       "https://images.pexels.com/photos/34642433/pexels-photo-7972356.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
+  // {
+  //   video: "/videos/slide1.mp4",
+  //   poster:
+  //     "https://images.pexels.com/photos/6187887/pexels-photo-7972356.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  // },
   {
-    video: "https://www.pexels.com/download/video/3366872/",
+    video: "/videos/slide4.mp4",
     poster:
-      "https://images.pexels.com/photos/3366872/pexels-photo-3738601.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://images.pexels.com/photos/34642433/pexels-photo-7972356.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
+  // {
+  //   video: "/videos/slide1.mp4",
+  //   poster:
+  //     "https://images.pexels.com/photos/6187887/pexels-photo-7972356.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  // },
+  {
+    video: "/videos/slide3.mp4",
+    poster:
+      "https://images.pexels.com/photos/34642433/pexels-photo-7972356.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  
 ];
 
 const VideoSlide = ({ video, poster }: { video: string; poster: string }) => {
@@ -590,7 +601,7 @@ export default function Hero() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                 </span>
                 <span className="text-xs font-bold text-blue-300 uppercase tracking-wider">
-                  Admissions Open 2025
+                  Admissions Open {new Date().getFullYear()}
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-balance">
@@ -640,7 +651,7 @@ export default function Hero() {
           </div>
 
           {/* --- RIGHT SIDE --- */}
-          <div className="hidden md:flex h-full flex-col justify-center items-end gap-8 pointer-events-none">
+          {/* <div className="hidden md:flex h-full flex-col justify-center items-end gap-8 pointer-events-none">
             <EventCard constraintsRef={constraintsRef} />
 
             <motion.div
@@ -704,7 +715,7 @@ export default function Hero() {
                 </div>
               </div>
             </motion.div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

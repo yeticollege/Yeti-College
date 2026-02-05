@@ -1,5 +1,8 @@
 {
-  "/api/image-proxy/route": "app/api/image-proxy/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/events/upcoming/route": "app/api/events/upcoming/route.js",
   "/api/popup/route": "app/api/popup/route.js",
-  "/gallery/page": "app/gallery/page.js"
+  "/events/page": "app/events/page.js",
+  "/page": "app/page.js",
+  "/programs/[slug]/page": "app/programs/[slug]/page.js"
 }

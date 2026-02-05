@@ -1,95 +1,810 @@
-[00:00:05.081] Server  LOG     ✓ Ready in 4.3s
-[00:00:43.907] Server  LOG     Fetching gallery items...
-[00:00:44.129] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3001". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:00:44.816] Server  LOG     Found 23 items
-[00:00:45.682] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:46.312] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:46.418] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:46.418] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/gallery","route":"/gallery"}
-[00:00:46.418] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/gallery color: rgb(120, 120, 120) color: inherit {"dp":"/gallery","o":"http://localhost:3001/gallery","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770200201873}
-[00:00:50.223] Server  LOG     Fetching gallery items...
-[00:00:50.335] Server  LOG     Found 23 items
-[00:00:50.736] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:51.637] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:51.649] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:51.649] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/gallery","route":"/gallery"}
-[00:00:51.649] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/gallery color: rgb(120, 120, 120) color: inherit {"dp":"/gallery","o":"http://localhost:3001/gallery","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770200206657}
-[00:01:15.408] Server  LOG     ✓ Compiled in 3.4s
-[00:01:19.309] Server  LOG     Fetching gallery items...
-[00:01:19.689] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3001". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:01:19.828] Server  LOG     Fetching gallery items...
-[00:01:21.813] Server  LOG     Found 23 items
-[00:01:21.946] Server  ERROR   ⨯ ReferenceError: Header is not defined
-[00:01:22.109] Server  LOG     Found 23 items
-[00:01:22.133] Server  ERROR   ⨯ ReferenceError: Header is not defined
-[00:01:26.506] Browser ERROR   uncaughtError: ReferenceError: Header is not defined
-[00:01:41.701] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:43.379] Browser ERROR   uncaughtError: ReferenceError: Header is not defined
-[00:01:43.767] Server  LOG     ✓ Finished writing to filesystem cache in 26.1s
-[00:08:50.376] Server  LOG     ✓ Compiled in 2.7s
-[00:08:50.482] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:08:50.656] Browser ERROR   unhandledRejection: Error: No link element found for chunk /_next/static/chunks/%5Broot-of-the-server%5D__e932a3a7._.css
-[00:08:53.669] Server  LOG     Fetching gallery items...
-[00:08:54.383] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3001". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:08:55.091] Server  LOG     Fetching gallery items...
-[00:08:55.953] Server  LOG     Found 23 items
-[00:08:56.395] Server  LOG     Found 23 items
-[00:08:57.894] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:58.412] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:08:59.019] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:08:59.020] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:08:59.020] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/gallery","route":"/gallery"}
-[00:08:59.020] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/gallery color: rgb(120, 120, 120) color: inherit {"dp":"/gallery","o":"http://localhost:3001/gallery","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770200694242}
-[00:09:18.393] Server  LOG     ✓ Finished filesystem cache database compaction in 15.4s
-[00:09:19.137] Server  LOG     Fetching gallery items...
-[00:09:20.569] Server  LOG     Found 23 items
-[00:09:27.034] Server  LOG     Fetching gallery items...
-[00:09:27.141] Server  LOG     Found 23 items
-[00:09:27.621] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:27.938] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:09:28.194] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:09:28.194] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:09:28.194] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/gallery","route":"/gallery"}
-[00:09:28.194] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/gallery color: rgb(120, 120, 120) color: inherit {"dp":"/gallery","o":"http://localhost:3001/gallery","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770200723660}
-[00:12:18.878] Server  LOG     ✓ Compiled in 2.6s
-[00:14:31.468] Server  LOG     Fetching gallery items...
-[00:14:31.963] Server  LOG     Fetching gallery items...
-[00:14:32.782] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3001". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:14:33.000] Server  LOG     Fetching gallery items...
-[00:14:33.086] Server  LOG     ✓ Compiled in 0ms
-[00:14:34.228] Server  LOG     Found 23 items
-[00:14:34.232] Server  LOG     Found 23 items
-[00:14:34.345] Server  LOG     Found 23 items
-[00:14:36.441] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:37.419] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:14:37.914] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:14:37.914] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/gallery","route":"/gallery"}
-[00:14:37.915] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/gallery color: rgb(120, 120, 120) color: inherit {"dp":"/gallery","o":"http://localhost:3001/gallery","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770201033348}
-[00:17:11.313] Server  LOG     ✓ Compiled in 6.9s
-[00:17:33.620] Browser ERROR   unhandledRejection: AbortError: Share canceled
-[00:23:47.544] Server  LOG     ✓ Compiled in 2.4s
-[00:27:37.507] Server  LOG     ✓ Compiled in 1738ms
-[00:27:39.410] Server  LOG     Fetching gallery items...
-[00:27:39.734] Server  LOG     Fetching gallery items...
-[00:27:40.491] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3001". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:27:41.446] Server  LOG     Found 23 items
-[00:27:41.603] Server  LOG     Found 23 items
-[00:27:42.470] Server  ERROR   ⨯ Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
-[00:27:47.438] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:27:51.756] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+[00:00:19.420] Server  LOG     ✓ Ready in 14.9s
+[00:04:11.781] Server  LOG     ○ Compiling / ...
+[00:04:30.475] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:04:35.763] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:04:35.763] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:35.763] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:04:35.763] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770287794407}
+[00:04:36.750] Browser LOG     Service Worker registered: http://localhost:3000/
+[00:05:19.535] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bhm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bhm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770287838778}
+[00:06:13.685] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770287892856}
+[00:11:23.021] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:11:23.026] Server  LOG     ✓ Compiled in 824ms
+[00:11:29.379] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:11:30.391] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:30.499] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:11:30.499] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:11:30.499] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288209749}
+[00:11:38.994] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:11:39.351] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/babm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288218588}
+[00:13:02.608] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
-Check the render method of `GalleryPage`.
-[00:28:11.962] Server  LOG     ✓ Finished filesystem cache database compaction in 14.1s
-[00:29:44.813] Server  LOG     ✓ Compiled in 1108ms
-[00:29:46.045] Server  LOG     Fetching gallery items...
-[00:29:46.270] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3001". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:29:46.979] Server  LOG     Found 23 items
-[00:29:48.804] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:29:50.495] Browser WARN    Image with src "http://localhost:3001/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:29:50.495] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:29:50.495] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/gallery","route":"/gallery"}
-[00:29:50.495] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3001/gallery color: rgb(120, 120, 120) color: inherit {"dp":"/gallery","o":"http://localhost:3001/gallery","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770201945471}
-[00:29:55.298] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/programs/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:13:02.608] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:13:02.608] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:13:02.608] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/babm","route":"/programs/[slug]"}
+[00:13:02.608] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/babm","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288301855}
+[00:13:09.847] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:13:09.847] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:13:09.847] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/babm","route":"/programs/[slug]"}
+[00:13:09.847] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/babm","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288309099}
+[00:13:59.094] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:13:59.094] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/programs/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:13:59.094] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:13:59.197] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:13:59.197] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/babm","route":"/programs/[slug]"}
+[00:13:59.197] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/babm","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288358452}
+[00:14:02.174] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/mba color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/mba","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288361424}
+[00:14:23.878] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:14:23.878] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:14:23.878] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/mba","route":"/programs/[slug]"}
+[00:14:23.878] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/mba color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/mba","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288383127}
+[00:15:27.971] Server  LOG     ✓ Compiled in 760ms
+[00:15:50.784] Server  LOG     ✓ Compiled in 163ms
+[00:16:07.240] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bca color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bca","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288486466}
+[00:21:14.727] Server  LOG     ✓ Compiled in 747ms
+[00:21:21.496] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:21:22.176] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/programs/bca" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:21:22.176] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:21:22.176] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:21:22.176] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/bca","route":"/programs/[slug]"}
+[00:21:22.176] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bca color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bca","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288801425}
+[00:21:26.720] Server  LOG     ✓ Compiled in 127ms
+[00:21:33.630] Server  LOG     ✓ Compiled in 120ms
+[00:21:38.300] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:21:38.300] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:21:38.300] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/bca","route":"/programs/[slug]"}
+[00:21:38.300] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bca color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bca","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770288817545}
+[00:21:43.678] Server  LOG     ✓ Compiled in 141ms
+[00:22:27.520] Server  LOG     ✓ Compiled in 670ms
+[00:22:47.556] Server  LOG     ✓ Compiled in 116ms
+[00:22:58.160] Server  LOG     ✓ Compiled in 118ms
+[00:23:28.113] Server  LOG     ✓ Compiled in 119ms
+[00:27:46.853] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:27:47.681] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/programs/bca" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:27:47.681] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:27:47.681] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:27:47.681] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/bca","route":"/programs/[slug]"}
+[00:27:47.681] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bca color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bca","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289186928}
+[00:27:55.348] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289194554}
+[00:28:59.321] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:28:59.321] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:28:59.321] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:28:59.321] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:28:59.321] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289258572}
+[00:30:53.097] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:30:53.097] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:30:53.097] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:30:53.097] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:30:53.097] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289372345}
+[00:31:30.930] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bamm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bamm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289410159}
+[00:31:36.571] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289415742}
+[00:32:03.544] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bttm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bttm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289442793}
+[00:32:30.534] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/programs/bamm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[slug]","o":"http://localhost:3000/programs/bamm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770289469774}
+[00:44:23.087] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:44:31.402] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:44:32.979] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290192202}
+[00:44:33.218] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:45:33.003] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:45:33.016] Server  LOG     ✓ Compiled in 935ms
+[00:45:39.899] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:46:29.242] Server  LOG     ✓ Compiled in 707ms
+[00:46:51.203] Server  LOG     ✓ Compiled in 207ms
+[00:47:36.231] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. T
+[00:47:36.231] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. S
+[00:47:36.231] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/events color: rgb(120, 120, 120) color: inherit {"dp":"/events","o":"http://localhost:3000/events","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290375482}
+[00:47:51.393] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290390631}
+[00:51:50.385] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:50.941] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <Home>
+              <main className="min-h-scre...">
+                <Header>
+                <Hero>
+                <section>
+                <Features>
+                <Testimonials>
+                <section>
+                <EventsSnippet>
+                  <EventsSnippetClient events={[...]}>
+                    <section className="py-12 md:p...">
+                      <div className="max-w-[140...">
+                        <div>
+                        <div className="grid grid-...">
+                          <Card onClick={function onClick} className="group flex...">
+                            <div data-slot="card" className="text-card-..." onClick={function onClick}>
+                              <div className="p-6 md:p-8...">
+                                <div className="flex flex-col">
+                                  <span>
+                                  <span
+                                    className="text-5xl md:text-6xl font-bold text-zinc-900 tracking-tighter leading-none"
+                                  >
++                                   2
+-                                   1
+                                  ...
+                                ...
+                              ...
+                          ...
+                ...
+          ...
+        ...
+
+[00:51:50.941] Browser WARN    Image with src "https://xhqx9dt2-3000.inc1.devtunnels.ms/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:51:51.130] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:51:51.130] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:51:51.130] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:51:51.130] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290630486}
+[00:51:51.130] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290630487}
+[00:51:58.112] Browser LOG     Service Worker registered: https://xhqx9dt2-3000.inc1.devtunnels.ms/
+[00:54:40.113] Server  LOG     ✓ Compiled in 672ms
+[00:54:46.387] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:54:47.138] Server  LOG     ✓ Compiled in 120ms
+[00:54:48.760] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:48.760] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:48.760] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:48.760] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:48.760] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:48.888] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:48.889] Browser ERROR   uncaughtError: Error: Could not parse module '[project]/components/hero.tsx'
+
+Expected ',', got ';'
+[00:54:48.994] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:49.098] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:49.311] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:49.748] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:49.748] Browser ERROR   ./components/hero.tsx:563:2
+Parsing ecmascript source code failed
+  561 |     </motion.div>
+  562 |   );
+> 563 | };
+      |  ^
+  564 |
+  565 | // --- Main Hero ---
+  566 | export default function Hero() {
+
+Expected ',', got ';'
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+[00:54:54.977] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:54:55.366] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:54:55.367] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./components/hero.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:54:55.368] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:54:57.244] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:57.957] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <Home>
+              <main className="min-h-scre...">
+                <Header>
+                <Hero>
+                <section>
+                <Features>
+                <Testimonials>
+                <section>
+                <EventsSnippet>
+                  <EventsSnippetClient events={[...]}>
+                    <section className="py-12 md:p...">
+                      <div className="max-w-[140...">
+                        <div>
+                        <div className="grid grid-...">
+                          <Card onClick={function onClick} className="group flex...">
+                            <div data-slot="card" className="text-card-..." onClick={function onClick}>
+                              <div className="p-6 md:p-8...">
+                                <div className="flex flex-col">
+                                  <span>
+                                  <span
+                                    className="text-5xl md:text-6xl font-bold text-zinc-900 tracking-tighter leading-none"
+                                  >
++                                   2
+-                                   1
+                                  ...
+                                ...
+                              ...
+                          ...
+                ...
+          ...
+        ...
+
+[00:54:57.957] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:54:57.957] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:54:57.957] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:54:57.957] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290817196}
+[00:54:57.957] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290817196}
+[00:54:57.957] Browser WARN    Image with src "https://xhqx9dt2-3000.inc1.devtunnels.ms/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:56:10.297] Server  LOG     ✓ Compiled in 667ms
+[00:56:53.263] Server  LOG     ✓ Compiled in 129ms
+[00:56:54.129] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:56:57.046] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:56:57.046] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <Home>
+              <main className="min-h-scre...">
+                <Header>
+                <Hero>
+                <section>
+                <Features>
+                <Testimonials>
+                <section>
+                <EventsSnippet>
+                  <EventsSnippetClient events={[...]}>
+                    <section className="py-12 md:p...">
+                      <div className="max-w-[140...">
+                        <div>
+                        <div className="grid grid-...">
+                          <Card onClick={function onClick} className="group flex...">
+                            <div data-slot="card" className="text-card-..." onClick={function onClick}>
+                              <div className="p-6 md:p-8...">
+                                <div className="flex flex-col">
+                                  <span>
+                                  <span
+                                    className="text-5xl md:text-6xl font-bold text-zinc-900 tracking-tighter leading-none"
+                                  >
++                                   2
+-                                   1
+                                  ...
+                                ...
+                              ...
+                          ...
+                ...
+          ...
+        ...
+
+[00:56:57.212] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:56:57.212] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:56:57.212] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:56:57.212] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290936475}
+[00:56:57.212] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770290936476}
+[00:56:57.212] Browser WARN    Image with src "https://xhqx9dt2-3000.inc1.devtunnels.ms/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:57:05.136] Server  LOG     ✓ Compiled in 108ms
+[00:57:51.517] Server  LOG     ✓ Compiled in 710ms
+[00:58:06.369] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:58:08.216] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:58:08.541] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:58:08.541] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:58:08.541] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:58:08.541] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:58:08.541] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770291007797}
+[00:58:24.667] Server  LOG     ✓ Compiled in 205ms
+[00:59:12.521] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:59:15.659] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:59:15.844] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:59:16.194] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <Home>
+              <main className="min-h-scre...">
+                <Header>
+                <Hero>
+                <section>
+                <Features>
+                <Testimonials>
+                <section>
+                <EventsSnippet>
+                  <EventsSnippetClient events={[...]}>
+                    <section className="py-12 md:p...">
+                      <div className="max-w-[140...">
+                        <div>
+                        <div className="grid grid-...">
+                          <Card onClick={function onClick} className="group flex...">
+                            <div data-slot="card" className="text-card-..." onClick={function onClick}>
+                              <div className="p-6 md:p-8...">
+                                <div className="flex flex-col">
+                                  <span>
+                                  <span
+                                    className="text-5xl md:text-6xl font-bold text-zinc-900 tracking-tighter leading-none"
+                                  >
++                                   2
+-                                   1
+                                  ...
+                                ...
+                              ...
+                          ...
+                ...
+          ...
+        ...
+
+[00:59:16.491] Browser WARN    Image with src "https://xhqx9dt2-3000.inc1.devtunnels.ms/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:59:16.707] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:59:16.707] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:59:16.707] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:59:16.707] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770291075999}
+[00:59:16.707] Browser LOG     %c[Vercel Web Analytics]%c [pageview] https://xhqx9dt2-3000.inc1.devtunnels.ms/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"https://xhqx9dt2-3000.inc1.devtunnels.ms/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770291075999}
+[00:59:21.411] Browser LOG     Service Worker registered: https://xhqx9dt2-3000.inc1.devtunnels.ms/
+[01:01:01.103] Server  LOG     ✓ Compiled in 176ms
+[01:01:08.435] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:01:10.059] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:01:10.371] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="geist_9e050971-module__05dp7a__className  antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[01:01:10.371] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:01:10.371] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:01:10.371] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:01:10.371] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770291189624}
