@@ -21,7 +21,7 @@ export default function Home() {
       </section>
       <Features />
       <Testimonials />
-      <NoticeSnippet />
+      {/* <NoticeSnippet /> */}
       <Events />
       {/* <Blog /> */}
       <CTA />

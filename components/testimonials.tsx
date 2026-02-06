@@ -6,11 +6,10 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -23,7 +22,7 @@ const testimonials = [
     name: "Rupesh Kushwaha",
     role: "Batch of 2021",
     image: "/rupesh.jpg",
-    text: "Yeti international college is the best college in kathmandu .This College has good infrastructure and monument and vast college environment and equipment are good in condition and libraries are plenty of books and sports centers with all sports equipment and classrooms with good classrooms and infrastructure.",
+    text: "Yeti international college is the best college in kathmandu. This College has good infrastructure and monument and vast college environment and equipment are good in condition and libraries are plenty of books and sports centers with all sports equipment and classrooms with good classrooms and infrastructure.",
   },
   {
     name: "Sumit Pokhrel",
@@ -49,7 +48,6 @@ const testimonials = [
     image: "a",
     text: "The faculty at Yeti International College genuinely cares about students’ success. They guide us academically and personally, helping us overcome challenges and stay focused. Their mentorship has made a huge impact on my academic journey.",
   },
-
   {
     name: "Manoj Khatri",
     role: "Batch of 2020",
@@ -60,117 +58,119 @@ const testimonials = [
 
 export default function Testimonials() {
   const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
+  const [showBg, setShowBg] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement>(null);
 
-  // Autoplay plugin
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true }),
+    Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
-  // Update state for the dots
   React.useEffect(() => {
-    if (!api) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowBg(entry.isIntersecting),
+      { threshold: 0.1 } // trigger when 10% of section is visible
+    );
 
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
 
   return (
-    <section className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-zinc-900 leading-[0.9] mb-4">
-            Student Success Stories
+    <section
+      ref={sectionRef}
+      className="relative py-24 bg-[#14316f] overflow-hidden min-h-[700px] flex items-center"
+    >
+      {/* Background Watermark Text - Only shows when section is visible */}
+      {showBg && (
+        <div className="fixed pt-16 inset-0 flex flex-col pointer-events-none select-none">
+          <h2 className="text-[10rem] md:text-[20rem] font-black text-white/[0.3] leading-none tracking-tighter uppercase">
+            YETI INT'L
           </h2>
-          <p className="text-lg text-slate-600 max-w-xl mt-4  mx-auto">
-            Hear from our graduates about their journey.
-          </p>
+          <h2 className="text-[6rem] md:text-[10rem] font-black text-white/[0.3] leading-none tracking-tighter uppercase ml-24 md:ml-64">
+            COLLEGE
+          </h2>
         </div>
+      )}
 
-        <div className="relative">
-          <Carousel
-            setApi={setApi}
-            // @ts-ignore - embla-carousel-autoplay does not ship TypeScript declarations
+      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
+        {/* Header Section */}
+        <div className="flex justify-between items-center mb-10">
+          <div className="flex items-center gap-4">
+            <div className="w-1.5 h-10 bg-[#E72428]" />
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase">
+              What People <span className="text-white/90">Say</span>
+            </h2>
+          </div>
 
-            plugins={[plugin.current]}
-            className="w-full"
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-          >
-            <CarouselContent className="-ml-4 pb-4">
-              {testimonials.map((testimonial, idx) => (
-                <CarouselItem
-                  key={idx}
-                  className="pl-4 md:basis-1/2 lg:basis-1/3"
-                >
-                  <div className="h-full pt-2 pb-2 px-1">
-                    {/* Card Design Matching Reference */}
-                    <Card className="h-full border border-slate-100 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300 rounded-2xl">
-                      <CardContent className="flex flex-col p-8 h-full">
-                        {/* Main Text Area */}
-                        <div className="flex-grow">
-                          <p className="text-slate-700 text-lg leading-relaxed italic font-medium">
-                            "{testimonial.text}"
-                          </p>
-                        </div>
-
-                        {/* Divider Line */}
-                        <div className="w-full h-px bg-slate-100 my-6" />
-
-                        {/* Profile Section */}
-                        <div className="flex items-center gap-4">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-14 h-14 rounded-full object-cover border border-slate-100"
-                            onError={(e) => {
-                              e.currentTarget.src = `https://ui-avatars.com/api/?name=${testimonial.name}&background=e2e8f0&color=475569`;
-                            }}
-                          />
-                          <div>
-                            <h4 className="font-bold text-slate-900 text-base">
-                              {testimonial.name}
-                            </h4>
-                            <p className="text-slate-500 text-sm">
-                              {testimonial.role}
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            {/* Optional: Arrows (Hidden on mobile, visible on large screens) */}
-            <CarouselPrevious className="hidden lg:flex -left-12 h-12 w-12 border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600" />
-            <CarouselNext className="hidden lg:flex -right-12 h-12 w-12 border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600" />
-          </Carousel>
-
-          {/* Indicator Dots */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: count }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  current === index + 1
-                    ? "w-8 h-2.5 bg-slate-800"
-                    : "w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+          {/* Navigation Buttons */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => api?.scrollPrev()}
+              className="w-10 h-10 flex items-center justify-center bg-[#E72428] hover:bg-[#ff4d53] transition-colors rounded-sm shadow-xl"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" strokeWidth={3} />
+            </button>
+            <button
+              onClick={() => api?.scrollNext()}
+              className="w-10 h-10 flex items-center justify-center bg-[#E72428] hover:bg-[#ff4d53] transition-colors rounded-sm shadow-xl"
+            >
+              <ChevronRight className="w-6 h-6 text-white" strokeWidth={3} />
+            </button>
           </div>
         </div>
+
+        <Carousel
+          setApi={setApi}
+          plugins={[plugin.current]}
+          className="w-full"
+          opts={{ align: "start", loop: true }}
+        >
+          <CarouselContent className="-ml-6">
+            {testimonials.map((testimonial, idx) => (
+              <CarouselItem key={idx} className="pl-6 md:basis-1/2 lg:basis-1/2">
+                <div className="h-full pt-10 pb-4">
+                  <Card className="relative h-full border-none bg-white rounded-md shadow-2xl overflow-visible">
+                    <CardContent className="p-8 md:p-12">
+                      {/* Floating Profile Image */}
+                      <div className="absolute -top-10 left-6 w-20 h-20 rounded-full border-[6px] border-white shadow-xl overflow-hidden bg-slate-100 z-20">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src = `https://ui-avatars.com/api/?name=${testimonial.name}&background=2D146F&color=fff`;
+                          }}
+                        />
+                      </div>
+
+                      {/* Top Right Quote Icon */}
+                      <div className="absolute top-6 right-8 opacity-10">
+                        <Quote className="w-16 h-16 text-slate-900 rotate-180 fill-current" />
+                      </div>
+
+                      {/* Name & Role */}
+                      <div className="mb-6 pt-4">
+                        <h4 className="font-bold text-slate-900 text-xl leading-tight">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-slate-500 text-sm font-semibold mt-1">
+                          -{testimonial.role}
+                        </p>
+                      </div>
+
+                      {/* Testimonial Text */}
+                      <p className="text-slate-600 text-[15px] leading-relaxed">
+                        {testimonial.text}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );

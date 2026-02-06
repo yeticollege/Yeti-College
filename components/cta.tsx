@@ -1,14 +1,49 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import * as React from "react";
+
+  
 
 export default function CTA() {
+const [showBg, setShowBg] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement>(null);
+ React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowBg(entry.isIntersecting),
+      { threshold: 0.1 } // trigger when 10% of section is visible
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+  
   return (
-    <section className="py-24 px-6 bg-white border-t border-zinc-100">
-      <div className="max-w-5xl mx-auto">
+    <section
+      ref={sectionRef}
+      className="relative py-24 bg-[#14316f] overflow-hidden min-h-[700px] flex items-center"
+    >
+
+      {/* Background Watermark Text - Only shows when section is visible */}
+      {showBg && (
+        <div className="fixed pt-16 inset-0 flex flex-col pointer-events-none select-none">
+          <h2 className="text-[8rem] md:text-[15rem] font-black text-white/[0.3] leading-none tracking-tighter uppercase">
+            grow with
+          </h2>
+          <h2 className="text-[6rem] text-end pe-10 md:text-[10rem] font-black text-white/[0.3] leading-none tracking-wider uppercase ml-24 md:ml-64">
+            yeti
+          </h2>
+        </div>
+      )}
+      <div className="relative max-w-5xl bg-white/80 backdrop-blur-sm rounded-2xl p-10 mx-auto">
+      <div className="absolute inset-0 bg-white/10 rounded-2xl pointer-events-none" />
         {/* Simple Top Label */}
         <div className="mb-8 flex justify-center">
-          <span className="px-3 py-1 rounded-full border border-zinc-200 text-xs font-medium text-zinc-500 uppercase tracking-wider">
+          <span className="px-3 py-1 rounded-full border border-red-500 text-xs font-medium text-zinc-500 uppercase tracking-wider">
             Admissions 2025
           </span>
         </div>
