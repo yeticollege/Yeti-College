@@ -54,3 +54,5 @@ vercel
 # yarn.lock
 # package-lock.json
 # pnpm-lock.yaml
+.vercel
+.env*.local
