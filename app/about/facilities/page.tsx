@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
+
 // --- UNIVERSAL IMAGE SLIDER COMPONENT ---
 function ImageSlider({ images, className = "", rounded = "rounded-[2rem]" }) {
   const [current, setCurrent] = useState(0);
@@ -39,7 +40,7 @@ function ImageSlider({ images, className = "", rounded = "rounded-[2rem]" }) {
 
   return (
     <div className={`relative w-full h-full overflow-hidden ${rounded} ${className}`}>
-      {images.map((src, i) => (
+      {images.map((src: any, i: any) => (
         <Image
           key={i}
           src={src}
@@ -106,14 +107,14 @@ const facilitiesData = [
         description:
           "State-of-the-art computing facility open 24/7 for coding, design, and research projects.",
       },
-      // {
-      //   title: "Science Center",
-      //   images: ["/demo/science1.jpg", "/demo/science2.jpg"],
-      //   icon: Microscope,
-      //   specs: ["Chemistry Bay", "Physics Wing", "Safety Grade A"],
-      //   description:
-      //     "Fully equipped laboratories meeting international safety standards for practical experimentation.",
-      // },
+      {
+        title: "Aviation Center",
+        images: ["/facilities/aviation-aeroplane.svg", "/facilities/aviation-team.svg"],
+        icon: Microscope,
+        specs: ["Chemistry Bay", "Physics Wing", "Safety Grade A"],
+        description:
+          "Fully equipped laboratories meeting international safety standards for practical experimentation.",
+      },
     ],
   },
   {
@@ -128,14 +129,14 @@ const facilitiesData = [
         description:
           "A vibrant social hub serving healthy meals and providing a space to unwind between classes.",
       },
-      // {
-      //   title: "Sports Complex",
-      //   images: ["/demo/sports1.jpg", "/demo/sports2.jpg"],
-      //   icon: Dumbbell,
-      //   specs: ["Basketball Court", "Indoor Gym", "Changing Rooms"],
-      //   description:
-      //     "Facilities promoting physical fitness, teamwork, and competitive spirit among students.",
-      // },
+      {
+        title: "Sports Complex",
+        images: ["/facilities/carrom.jpg", "/facilities/table-tennis.jpg", "/facilities/basketball.jpg", "/facilities/mobile-legends.jpg", "/facilities/volleyball.jpg",],
+        icon: Dumbbell,
+        specs: ["Basketball Court", "Table Tennis", "Carrom & Chess", "E-Sports Arena"],
+        description:
+          "Facilities promoting physical fitness, teamwork, and competitive spirit among students.",
+      },
     ],
   },
 ];
@@ -233,8 +234,13 @@ export default function FacilitiesPage() {
   );
 }
 
+interface CategorySectionProps {
+  data: any;        // 👈 replace `any` with real type later
+  index: any;
+}
+
 // CATEGORY SECTION
-function CategorySection({ data, index }) {
+function CategorySection({ data, index } : CategorySectionProps) {
   return (
     <section className="py-24 border-t border-border/50">
       <div className="max-w-[1600px] mx-auto px-6">
@@ -260,7 +266,7 @@ function CategorySection({ data, index }) {
 
           <div className="lg:col-span-8">
             <div className="grid md:grid-cols-2 gap-8">
-              {data.items.map((item, i) => (
+              {data.items.map((item : any, i : any) => (
                 <FacilityCard key={i} item={item} index={i} />
               ))}
             </div>
@@ -271,8 +277,13 @@ function CategorySection({ data, index }) {
   );
 }
 
+interface FacilityCardProps {
+  item: any;        // 👈 replace `any` with real type later
+  index: any;
+}
+
 // FACILITY CARD WITH IMAGE SLIDER
-function FacilityCard({ item, index }) {
+function FacilityCard({ item, index }: FacilityCardProps) {
   const Icon = item.icon;
 
   return (
@@ -303,7 +314,7 @@ function FacilityCard({ item, index }) {
 
         <div className="pt-4 border-t border-border border-dashed">
           <div className="grid grid-cols-2 gap-y-2 gap-x-4">
-            {item.specs.map((spec, k) => (
+            {item.specs.map((spec: any, k: any) => (
               <div key={k} className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground/80">
                 <div className="w-1 h-1 rounded-full bg-primary" />
                 {spec}

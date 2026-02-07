@@ -26,7 +26,7 @@ const dataDB: Record<string, any> = {
     name: "Dr. Sanjay Kumar Jha",
     image: "/message/ceo.jpg",
 
-    signature: "Sanjay Jha",
+    // signature: "Sanjay Jha",
     email: "sanjayjha2028@gmail.com",
     socials: { linkedin: "#", twitter: "#" },
     quote:
@@ -44,7 +44,7 @@ const dataDB: Record<string, any> = {
     role: "Director",
     name: "Mr. Arna Raj Silwal",
     image: "/message/director.jpg",
-    signature: "Silwal Arna",
+    // signature: "Silwal Arna",
     email: "director@yeticollege.edu.np",
     socials: { linkedin: "#", twitter: "#" },
     quote:
@@ -60,7 +60,7 @@ const dataDB: Record<string, any> = {
     role: "Principal",
     name: "Mr. R.D Mishra",
     image: "/message/principal.jpeg",
-    signature: "R. D",
+    // signature: "R. D",
     email: "principal@yeticollege.edu.np",
     socials: { linkedin: "#", twitter: "#" },
     quote:
@@ -76,7 +76,7 @@ const dataDB: Record<string, any> = {
     role: "Head of Business Develpopment",
     name: "Mr. Rakesh Kumar Bhagat",
     image: "/message/marketing.jpg",
-    signature: "Rakesh Bhagat",
+    // signature: "Rakesh Bhagat",
     email: "admission@yeticollege.edu.np",
     socials: { linkedin: "#", twitter: "#" },
     quote:
