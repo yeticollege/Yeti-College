@@ -9,6 +9,7 @@
   "/api/popup/route": "app/api/popup/route.js",
   "/blog/page": "app/blog/page.js",
   "/contact/page": "app/contact/page.js",
+  "/events/page": "app/events/page.js",
   "/gallery/page": "app/gallery/page.js",
   "/notices/page": "app/notices/page.js",
   "/page": "app/page.js",
