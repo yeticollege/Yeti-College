@@ -1,17 +1,5 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/about/affiliation/page": "app/about/affiliation/page.js",
-  "/about/facilities/page": "app/about/facilities/page.js",
-  "/about/message/[id]/page": "app/about/message/[id]/page.js",
-  "/about/mission-vision/page": "app/about/mission-vision/page.js",
-  "/about/page": "app/about/page.js",
-  "/about/team/page": "app/about/team/page.js",
-  "/api/popup/route": "app/api/popup/route.js",
-  "/blog/page": "app/blog/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/events/page": "app/events/page.js",
-  "/gallery/page": "app/gallery/page.js",
-  "/notices/page": "app/notices/page.js",
-  "/page": "app/page.js",
-  "/programs/[slug]/page": "app/programs/[slug]/page.js"
+  "/api/popup/route": "app/api/popup/route.js"
 }

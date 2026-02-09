@@ -95,19 +95,19 @@ export default function AffiliationPage() {
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-px w-12 bg-primary" />
                   <span className="text-xs font-bold text-primary uppercase tracking-widest">
-                    Network & Recognition
+                    Academic Affiliations & Partnership
                   </span>
+                  <div className="h-px w-12 bg-primary" />
                 </div>
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.9]">
-                  World Class <br />
-                  <span className="text-muted-foreground/40">Connections.</span>
+                  Partnering for  <br />
+                  <span className="text-muted-foreground/40">Academic Alliance</span>
                 </h1>
               </motion.div>
             </div>
             <div className="lg:col-span-3 pb-4">
-              <p className="text-lg font-medium text-muted-foreground leading-relaxed">
-                Degrees without borders. We bridge the gap between local
-                heritage and international excellence.
+              <p className="text-lg font-medium text-muted-foreground text-center leading-relaxed">
+                We build strong international academic partnerships that enhance educational quality, expand global learning opportunities and prepare students for success in a globally connected world.
               </p>
             </div>
           </div>
@@ -119,7 +119,9 @@ export default function AffiliationPage() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-20 opacity-80  transition-all duration-500">
               {/* NOTE: Add your images to public/logos/ folder */}
               <div className="flex items-center gap-4">
+                <span className="text-3xl font-bold">Ownership & Management</span>
                 <div className="w-64 h-64 relative">
+                  
                   {/* Placeholder for Kent Logo */}
                   <Image
                     src={affiliationsData[1].items[1].logo}
@@ -129,7 +131,7 @@ export default function AffiliationPage() {
                   />
                   {/* <Image src="/logos/kent.png" alt="Kent" fill className="object-contain" /> */}
                 </div>
-                <span className="text-4xl font-bold">Kennt College</span>
+                
               </div>
 
               <div className="hidden md:block w-px h-12 bg-border" />

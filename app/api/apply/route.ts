@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import nodemailer from "nodemailer";
 
-// type definitions remain the same
+// type definitions
 type FilePayload = {
   name: string;
   type: string;
@@ -92,7 +92,6 @@ async function generatePdfBuffer(body: Body) {
       let yPos = 120;
 
       // --- PASSPORT PHOTO (Top Right of Page 1) ---
-      // We draw this first so we know where to wrap text
       const photoWidth = 110;
       const photoHeight = 130;
       const photoX = 445; // Far right
@@ -127,7 +126,6 @@ async function generatePdfBuffer(body: Body) {
       }
 
       // --- SECTION 1: PERSONAL DETAILS ---
-      // We limit the text width to 380 so it doesn't hit the photo
       const textMaxWidth = 380;
 
       doc
@@ -185,7 +183,7 @@ async function generatePdfBuffer(body: Body) {
 
       // Row 1
       drawField("Program Applied For", body.courseId, 40, yPos);
-      drawField("Previous Institute", body.prevInstitute, 300, yPos);
+      drawField("Previous College", body.prevInstitute, 300, yPos);
       yPos += 40;
 
       // Row 2
@@ -270,9 +268,6 @@ async function generatePdfBuffer(body: Body) {
       };
 
       // --- GENERATE ATTACHMENTS ---
-      // Note: Photo is already on Page 1, so we don't print it again unless desired.
-      // We print the other docs as full-page appendices.
-
       const attachments = [
         { label: "Marksheet / Transcript", data: body.marksheet?.data },
         { label: "Character Certificate", data: body.character?.data },
@@ -294,7 +289,6 @@ async function generatePdfBuffer(body: Body) {
   });
 }
 
-// ... existing POST function remains the same ...
 export async function POST(req: Request) {
   try {
     const raw = await req.text();
@@ -343,10 +337,10 @@ export async function POST(req: Request) {
         lastName: body.lastName,
         email: body.email,
         phone: body.phone,
-        dob: body.dob,
+        dob: new Date(body.dob),
         address: body.address,
         courseId: body.courseId,
-        gpa: body.gpa,
+        gpa: parseFloat(body.gpa),
         prevInstitute: body.prevInstitute,
         board: body.board,
         marksheet: body.marksheet.name,
@@ -361,34 +355,54 @@ export async function POST(req: Request) {
       try {
         const pdfBuffer = await generatePdfBuffer(body);
 
+        // Updated Transporter Logic for Gmail Stability
         const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST || "smtp.gmail.com",
-          port: Number(process.env.SMTP_PORT || 587),
-          secure: Number(process.env.SMTP_PORT || 587) === 465,
+          service: "gmail",
           auth: {
             user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
+            pass: process.env.SMTP_PASS, // Make sure this is a 16-char App Password
           },
         });
 
         const fixedEmail = "yeticollegenp@gmail.com";
 
+        // Construct HTML email with form data
+        const emailHtml = `
+          <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #ddd; padding: 20px;">
+            <h2 style="color: #1e3a8a;">New Application: ${body.firstName} ${body.lastName}</h2>
+            <p>A new application has been submitted for <strong>${body.courseId}</strong>.</p>
+            
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 5px; font-weight: bold;">Full Name:</td><td>${body.firstName} ${body.lastName}</td></tr>
+              <tr><td style="padding: 5px; font-weight: bold;">Email:</td><td>${body.email}</td></tr>
+              <tr><td style="padding: 5px; font-weight: bold;">Phone:</td><td>${body.phone}</td></tr>
+              <tr><td style="padding: 5px; font-weight: bold;">Date of Birth:</td><td>${body.dob}</td></tr>
+              <tr><td style="padding: 5px; font-weight: bold;">Address:</td><td>${body.address}</td></tr>
+              <tr><td style="padding: 5px; font-weight: bold;">Previous College:</td><td>${body.prevInstitute}</td></tr>
+              <tr><td style="padding: 5px; font-weight: bold;">GPA:</td><td>${body.gpa}</td></tr>
+            </table>
+            
+            <p style="margin-top: 20px;">Please find the official application PDF and documents attached.</p>
+          </div>
+        `;
+
         await transporter.sendMail({
-          from: fixedEmail,
+          from: `"Yeti Portal" <${process.env.SMTP_USER}>`,
           to: fixedEmail,
-          subject: `New Application: ${body.firstName} ${body.lastName}`,
-          text: `Application received for ${body.courseId}. See attached PDF.`,
+          subject: `Application Received: ${body.firstName} ${body.lastName}`,
+          html: emailHtml,
           attachments: [
             {
-              filename: `Application_${body.firstName}.pdf`,
+              filename: `Application_${body.firstName}_${body.lastName}.pdf`,
               content: pdfBuffer,
+              contentType: "application/pdf",
             },
           ],
         });
 
-        console.log("Email sent for", app.id);
+        console.log("Email sent successfully for application", app.id);
       } catch (bgErr) {
-        console.error("Background error:", bgErr);
+        console.error("Background error sending email:", bgErr, process.env.SMTP_USER, process.env.SMTP_PASS);
       }
     })();
 

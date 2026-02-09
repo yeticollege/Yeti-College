@@ -323,7 +323,7 @@ export default function ContactPage() {
                     <div className="flex justify-between items-end mb-10">
                       <div>
                         <h2 className="text-3xl font-bold text-zinc-900">
-                          Send a message
+                          Send an inquiry
                         </h2>
                         <p className="text-zinc-500 mt-2">
                           We'd love to hear from you.

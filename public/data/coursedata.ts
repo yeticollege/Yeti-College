@@ -1,6 +1,6 @@
 export const coursesDB: Record<string, any> = {
   mba: {
-    title: "Master in Business Administration",
+    title: "Master in Business Administration ~ MBA",
     code: "MBA",
     category: "Postgraduate",
     duration: "2 Years",
@@ -188,12 +188,12 @@ export const coursesDB: Record<string, any> = {
   },
 
   bhm: {
-    title: "Bachelor of Hotel Management",
+    title: "BA (Hotel & MICE Management) ~ BHM",
     code: "BHM",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
-    credits: 120,
+    credits: 130,
     intake: "March / July / November",
     image:
       "/courses/bhm.svg", // Local image path for BHM course
@@ -331,12 +331,12 @@ export const coursesDB: Record<string, any> = {
   },
 
   babm: {
-    title: "Bachelor of Airlines Business Management",
+    title: "BA (Airlines Business Management) ~ BABM",
     code: "BABM",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
-    credits: 120,
+    credits: 130,
     intake: "March / July / November",
     image:
       "/courses/babm.svg", // Local image path for BABM course
@@ -472,12 +472,12 @@ export const coursesDB: Record<string, any> = {
   },
 
   bamm: {
-    title: "Bachelor of MICE (Event) Management",
+    title: "BA(MICE(Event) Management) ~ BAMM",
     code: "BAMM",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
-    credits: 120,
+    credits: 130,
     intake: "March / July / November",
     image:
       "/courses/bamm.svg", // Local image path for BAMM course
@@ -615,12 +615,12 @@ export const coursesDB: Record<string, any> = {
   },
 
   bttm: {
-    title: "Bachelor of Tourism & MICE Management",
+    title: "BA (Tourism & MICE Management) ~ BTMM",
     code: "BTTM",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
-    credits: 124,
+    credits: 130,
     intake: "March / July / November",
     image:
       "/courses/bttm.svg", // Local image path for BTTM course
@@ -760,7 +760,7 @@ export const coursesDB: Record<string, any> = {
   // ... (Other courses like MBA, BHM etc remain unchanged) ...
 
   bca: {
-    title: "Bachelor of Computer Application",
+    title: "Bachelor of Computer Application ~ BCA",
     code: "BCA",
     category: "Undergraduate",
     duration: "4 Years",
@@ -934,12 +934,12 @@ export const coursesDB: Record<string, any> = {
 
   bscictc: {
     title:
-      "Bachelor of Science (Information & Communication Technology-Cybersecurity)",
-    code: "B.Sc ICTC",
+      "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSIT",
+    code: "B.Sc. CSIT",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
-    credits: 135,
+    credits: 136,
     intake: "March / July / November",
     image:
       "/courses/IT.svg", // Local image path for BSc ICTC course

@@ -106,37 +106,37 @@ const aboutLinks = [
 const programLinks = [
   {
     href: "/programs/mba",
-    label: "Master in Business Administration",
+    label: "Master in Business Administration ~ MBA",
     code: "MBA",
     icon: Briefcase,
   },
   {
     href: "/programs/bhm",
-    label: "Bachelor of Hotel Management",
+    label: "BA (Hotel & MICE Management) ~ BHM",
     code: "BHM",
     icon: Hotel,
   },
   {
     href: "/programs/babm",
-    label: "Bachelor of Airlines Business Management",
+    label: "BA (Airlines Business Management) ~ BABM",
     code: "BABM",
     icon: Globe,
   },
   {
     href: "/programs/bamm",
-    label: "Bachelor of MICE (Event) Management",
-    code: "Bamm",
+    label: "BA(MICE(Event) Management) ~ BAMM",
+    code: "BAMM",
     icon: Globe,
   },
   {
     href: "/programs/bttm",
-    label: "Bachelor of Tourism & MICE Management",
+    label: "BA (Tourism & MICE Management) ~ BTMM",
     code: "BTTM",
     icon: Briefcase,
   },
   {
     href: "/programs/bca",
-    label: "Bachelor of Computer Application",
+    label: "Bachelor of Computer Application ~ BCA",
     code: "BCA",
     icon: Cpu,
   },
@@ -147,9 +147,9 @@ const programLinks = [
   //   icon: ComputerIcon,
   // },
   {
-    href: "/programs/bscictc",
-    label: "B.Sc Information and Communication Technology-Cybersecurity",
-    code: "BCA",
+    href: "/programs/bsccsit",
+    label: "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSIT",
+    code: "B.Sc. CSIT",
     icon: Cpu,
   },
 ];
@@ -436,7 +436,7 @@ export default function Header() {
 
             <Link href="/apply">
               <Button className="hidden sm:flex rounded-full px-6 font-bold cursor-pointer tracking-wide bg-zinc-900 text-white hover:bg-zinc-800">
-                Apply Now
+                ADMISSION FORM
               </Button>
             </Link>
 

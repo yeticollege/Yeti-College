@@ -498,7 +498,7 @@ export default function ApplicationPage() {
                 <div className="bg-card rounded-[2.5rem] p-8 md:p-12 border border-border shadow-sm">
                   <div className="grid md:grid-cols-2 gap-8">
                     <InputField
-                      label="Previous Institution"
+                      label="Previous College / School"
                       name="prevInstitute"
                       placeholder="College / School Name"
                       icon={<Book className="w-4 h-4" />}

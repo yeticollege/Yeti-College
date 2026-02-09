@@ -18,8 +18,8 @@ import Footer from "@/components/footer";
 // --- Dummy Data with Images ---
 const leadership = [
   {
-    name: "Dr. Sanjay Kumar Jha",
-    role: "Chief Executive Officer(CEO)",
+    name: "Mr. Sanjay Kumar Jha",
+    role: "Executive Chairperson",
     image: "/message/ceo.jpg",
     bio: "Visionary leader with 20+ years in ed-tech.",
     fb: "#",
@@ -32,7 +32,7 @@ const leadership = [
     fb: "#",
   },
   {
-    name: "Mr. R.D Mishra",
+    name: "Dr. R.D Mishra",
     role: "Principal",
     image: "/message/principal.jpeg",
     bio: "Author of 'Modern Pedagogy in South Asia'.",
@@ -100,8 +100,8 @@ const faculty = [
   },
   {
     name: "Mohan Basmet",
-    role: "Discipline Incharge",
-    dept: "Faculty Member",
+    role: "Secretary Incharge",
+    dept: "Staff",
     image: "/message/mohan.jpg",
     color: "bg-emerald-100 text-emerald-700",
     fb: "#",
