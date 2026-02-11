@@ -942,7 +942,7 @@ export const coursesDB: Record<string, any> = {
     credits: 136,
     intake: "March / July / November",
     image:
-      "/courses/IT.svg", // Local image path for BSc ICTC course
+      "/courses/bsccsit.svg", // Local image path for BSc ICTC course
     description:
       "The emphasis of this degree is on the limitless analysis and design of IT systems. Deep knowledge with professionals, advanced courses in Data Security, PDPA, Network Systems, and Cloud Architecture. Teaching system analysis and computer network management, as well as the IT Professional Standards Certificate (ITPE) supports the digital future world by supporting technologies like Blockchain and Digital Twin.",
     stats: {

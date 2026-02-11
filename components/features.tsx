@@ -123,7 +123,7 @@ export default function Features() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section className="pt-32 px-6 bg-slate-50 relative overflow-hidden">
+    <section className="pb-32 px-6 bg-slate-50 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50" />

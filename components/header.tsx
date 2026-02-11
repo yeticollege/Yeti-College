@@ -147,7 +147,7 @@ const programLinks = [
   //   icon: ComputerIcon,
   // },
   {
-    href: "/programs/bsccsit",
+    href: "/programs/bscictc",
     label: "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSIT",
     code: "B.Sc. CSIT",
     icon: Cpu,

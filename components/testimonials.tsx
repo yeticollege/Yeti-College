@@ -12,28 +12,28 @@ import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
-  {
-    name: "Dhiraj Shah",
-    role: "Batch of 2020",
-    image: "/dhiraj.jpg",
-    text: "Words convey our feelings and a THANK YOU conveys our gratitude and appreciation. So, I must thank YETI Int'l College (Former ICHM Lalitpur College) for striding the dream in all of us and supporting a lot in fulfilling it. YETI International College supports developing a strong feeling of self-confidence among the students to win in this competitive world.",
-  },
-  {
-    name: "Rupesh Kushwaha",
-    role: "Batch of 2021",
-    image: "/rupesh.jpg",
-    text: "Yeti international college is the best college in kathmandu. This College has good infrastructure and monument and vast college environment and equipment are good in condition and libraries are plenty of books and sports centers with all sports equipment and classrooms with good classrooms and infrastructure.",
-  },
-  {
-    name: "Sumit Pokhrel",
-    role: "Batch of 2025",
-    image: "/sumit.jpeg",
-    text: "Yeti International College has completely changed the way I look at education. The teachers are supportive, the classrooms are modern, and the learning environment truly motivates us to grow. I’ve gained confidence, skills, and a clear direction for my future.",
-  },
+  // {
+  //   name: "Dhiraj Shah",
+  //   role: "Batch of 2020",
+  //   image: "/dhiraj.jpg",
+  //   text: "Words convey our feelings and a THANK YOU conveys our gratitude and appreciation. So, I must thank YETI Int'l College (Former ICHM Lalitpur College) for striding the dream in all of us and supporting a lot in fulfilling it. YETI International College supports developing a strong feeling of self-confidence among the students to win in this competitive world.",
+  // },
+  // {
+  //   name: "Rupesh Kushwaha",
+  //   role: "Batch of 2021",
+  //   image: "/rupesh.jpg",
+  //   text: "Yeti international college is the best college in kathmandu. This College has good infrastructure and monument and vast college environment and equipment are good in condition and libraries are plenty of books and sports centers with all sports equipment and classrooms with good classrooms and infrastructure.",
+  // },
+  // {
+  //   name: "Sumit Pokhrel",
+  //   role: "Batch of 2025",
+  //   image: "/sumit.jpeg",
+  //   text: "Yeti International College has completely changed the way I look at education. The teachers are supportive, the classrooms are modern, and the learning environment truly motivates us to grow. I’ve gained confidence, skills, and a clear direction for my future.",
+  // },
   {
     name: "Chandan Kushwaha",
     role: "Batch of 2020",
-    image: "/chandan.jpg",
+    image: "/chandan.png",
     text: "For me, choosing Yeti turned out to be the best decision. Yeti International College offers an outstanding blend of practical and theoretical knowledge. The faculty is highly supportive, maintainable, and the resources provided are top-notch. It's truly a place where students can thrive and achieve their academic goals.",
   },
   {
@@ -42,12 +42,12 @@ const testimonials = [
     image: "/apsara.png",
     text: "The college provides hands-on learning experiences that really prepare us for real-world careers. From workshops to guest lectures, everything is practical. I feel ready for internships and job opportunities because of the exposure I’ve received here.",
   },
-  {
-    name: "Aditi Kashyap",
-    role: "Batch of 2024",
-    image: "a",
-    text: "The faculty at Yeti International College genuinely cares about students’ success. They guide us academically and personally, helping us overcome challenges and stay focused. Their mentorship has made a huge impact on my academic journey.",
-  },
+  // {
+  //   name: "Aditi Kashyap",
+  //   role: "Batch of 2024",
+  //   image: "a",
+  //   text: "The faculty at Yeti International College genuinely cares about students’ success. They guide us academically and personally, helping us overcome challenges and stay focused. Their mentorship has made a huge impact on my academic journey.",
+  // },
   {
     name: "Manoj Khatri",
     role: "Batch of 2020",
@@ -67,8 +67,10 @@ export default function Testimonials() {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setShowBg(entry.isIntersecting),
-      { threshold: 0.1 } // trigger when 10% of section is visible
+      ([entry]) => {
+        setShowBg(entry.isIntersecting);
+      },
+      { threshold: 0.1 } 
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -82,17 +84,28 @@ export default function Testimonials() {
       ref={sectionRef}
       className="relative py-24 bg-[#14316f] overflow-hidden min-h-[700px] flex items-center"
     >
-      {/* Background Watermark Text - Only shows when section is visible */}
-      {showBg && (
-        <div className="fixed pt-16 inset-0 flex flex-col pointer-events-none select-none">
-          <h2 className="text-[10rem] md:text-[20rem] font-black text-white/[0.3] leading-none tracking-tighter uppercase">
-            YETI INT'L
-          </h2>
-          <h2 className="text-[6rem] md:text-[10rem] font-black text-white/[0.3] leading-none tracking-tighter uppercase ml-24 md:ml-64">
-            COLLEGE
-          </h2>
+      {/* 
+          FIXED IMAGE CONSTRAINED TO SECTION HEIGHT
+          - absolute inset-0: Stays exactly the size of the section
+          - clip-path: inset(0): Acts as a mask so 'fixed' child stays inside
+          - fixed: Background stays still while scrolling
+      */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{ clipPath: "inset(0)" }}
+      >
+        <div 
+          className={`fixed inset-0 w-full h-full transition-opacity duration-1000 ${
+            showBg ? "opacity-40" : "opacity-0"
+          }`}
+        >
+          <img
+            src="/bg-salogan.svg" 
+            alt=""
+            className="w-full  h-full object-cover"
+          />
         </div>
-      )}
+      </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
         {/* Header Section */}
