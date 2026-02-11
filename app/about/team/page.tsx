@@ -83,6 +83,14 @@ const faculty = [
     fb: "#",
   },
   {
+    name: "Chandan Kushwaha",
+    role: "IT Officer",
+    dept: "IT Department",
+    image: "/chandan.png",
+    color: "bg-emerald-100 text-emerald-700",
+    fb: "#",
+  },
+  {
     name: "Nirusha Devkota",
     role: "Academic Counselor",
     dept: "Administration",
