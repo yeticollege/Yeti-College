@@ -262,7 +262,7 @@ export default function ApplicationPage() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <span className="px-3 py-1 rounded-full border border-primary/30 text-primary bg-primary/5 text-xs font-bold uppercase tracking-wider">
-                  Fall Intake 2025
+                  Fall Intake {new Date().getFullYear()}
                 </span>
               </div>
               <h1 className="text-5xl md:text-8xl font-bold tracking-tighter text-foreground mb-6 leading-[0.9]">
@@ -686,7 +686,7 @@ export default function ApplicationPage() {
                     </div>
                     <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
                       <Mail className="w-4 h-4 text-primary" />{" "}
-                      admission@college.edu.np
+                      info@yeticollege.edu.np
                     </div>
                   </div>
                 </motion.div>

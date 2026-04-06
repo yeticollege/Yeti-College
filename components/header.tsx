@@ -78,6 +78,12 @@ const aboutLinks = [
     desc: "Admission focus",
   },
   {
+    href: "/about/message/it",
+    label: "Message From IT",
+    icon: User,
+    desc: "Tech focus",
+  },
+  {
     href: "/about/mission-vision",
     label: "Mission & Vision",
     icon: Trophy,
@@ -134,12 +140,12 @@ const programLinks = [
     code: "BTTM",
     icon: Briefcase,
   },
-  {
-    href: "/programs/bca",
-    label: "Bachelor of Computer Application ~ BCA",
-    code: "BCA",
-    icon: Cpu,
-  },
+  // {
+  //   href: "/programs/bca",
+  //   label: "Bachelor of Computer Application ~ BCA",
+  //   code: "BCA",
+  //   icon: Cpu,
+  // },
   // {
   //   href: "/programs/bsccsi",
   //   label: "B.Sc Computer Science and Software Development Innovation",
@@ -148,8 +154,8 @@ const programLinks = [
   // },
   {
     href: "/programs/bscictc",
-    label: "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSIT",
-    code: "B.Sc. CSIT",
+    label: "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSDI",
+    code: "B.Sc. CSDI",
     icon: Cpu,
   },
 ];
@@ -696,7 +702,7 @@ export default function Header() {
                         <div className="absolute -right-4 -top-4 w-24 h-24 bg-zinc-800/50 rounded-full blur-xl" />
                         <GraduationCap className="w-6 h-6 mb-3 text-zinc-400 relative z-10" />
                         <div className="text-xl font-bold mb-1 relative z-10">
-                          Fall 2025
+                          Fall { new Date().getFullYear() } Admissions
                         </div>
                         <p className="text-xs text-zinc-400 mb-3 relative z-10">
                           Applications open.

@@ -73,7 +73,7 @@ const tourSpots = [
     image: "./tour/classroom.jpeg",
     description:
       "A vibrant space for students to attend lectures, participate in discussions, and engage in academic activities.",
-    stats: { capacity: "300", area: "6,000 sq ft", type: "Academic" },
+    stats: { capacity: "3000", area: "6,000 sq ft", type: "Academic" },
     features: ["Projectors", "Whiteboards", "Comfortable Seating"],
   },
 ];

@@ -87,7 +87,27 @@ const dataDB: Record<string, any> = {
       "I look forward to welcoming you to the Yeti International College.",
     ],
   },
+
+  it: {
+    id: "it",
+    role: "IT Manager",
+    name: "MD Mustak Aalam",
+    image: "/message/mustak.jpg",
+    // signature: "Rakesh Bhagat",
+    email: "yeticollege.it@gmail.com",
+    socials: { linkedin: "#", twitter: "#" },
+    quote:
+      "Empowering Education Through Technology, Innovation, and Excellence.",
+    content: [
+      "Dear Students, It is my pleasure to welcome all the students at Yeti International College. As the IT Manager of this prestigious college, I am proud to be part of a learning environment that values innovation, digital excellence and academic growth. In today’s rapidly evolving digital era, technology plays a crucial role in shaping education and future career pathways",
+      "At Yeti International College, we are committed to providing reliable high-speed Wi-Fi facilities, a modern E - Library system, well-equipped computer laboratories, secure digital platforms, and a strong network infrastructure to support teaching, learning and research activities. Our focus is to ensure that students and faculty members can access academic resources seamlessly and efficiently in a secure digital environment.",
+      "We encourage our students to embrace digital literacy, innovation and responsible use of technology as essential life skills. Together with the college leadership and faculty, we are building a future-ready educational ecosystem where technology empowers learning, supports innovation and enables success.",
+      "Wishing you all a productive, inspiring and successful academic journey."
+    ],
+  },
 };
+
+
 
 export default function MessageDetailPage() {
   const params = useParams();

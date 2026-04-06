@@ -47,16 +47,16 @@ const affiliationsData = [
     description:
       "Deeply rooted in the academic history of Nepal, ensuring local relevance and government recognition.",
     items: [
-      {
-        title: "Tribhuvan University",
-        location: "Balkhu, Nepal",
-        logo: "/tu-logo.png",
-        image: "/tu-clocktower.png",
-        icon: Landmark,
-        highlights: ["Govt Recognized", "Oldest University", "Alumni Network"],
-        description:
-          "Affiliated with Nepal's first and largest university. This ensures our curriculum meets rigorous national standards and degrees are recognized in government sectors.",
-      },
+      // {
+      //   title: "Tribhuvan University",
+      //   location: "Balkhu, Nepal",
+      //   logo: "/tu-logo.png",
+      //   image: "/tu-clocktower.png",
+      //   icon: Landmark,
+      //   highlights: ["Govt Recognized", "Oldest University", "Alumni Network"],
+      //   description:
+      //     "Affiliated with Nepal's first and largest university. This ensures our curriculum meets rigorous national standards and degrees are recognized in government sectors.",
+      // },
       {
         title: "Kennt College",
         location: "Kathmandu, Nepal",
@@ -120,17 +120,17 @@ export default function AffiliationPage() {
               {/* NOTE: Add your images to public/logos/ folder */}
               <div className="flex items-center gap-4">
                 <span className="text-3xl font-bold">Ownership & Management</span>
-                <div className="w-64 h-64 relative">
+                {/* <div className="w-64 h-64 relative"> */}
                   
                   {/* Placeholder for Kent Logo */}
-                  <Image
-                    src={affiliationsData[1].items[1].logo}
-                    alt="Kent"
-                    fill
-                    className="object-contain"
-                  />
+                  {/* <Image */}
+                    {/* // src={affiliationsData[1].items[1].logo} */}
+                    {/* // alt="Kent"
+                    // fill
+                    // className="object-contain" */}
+                  {/* /> */}
                   {/* <Image src="/logos/kent.png" alt="Kent" fill className="object-contain" /> */}
-                </div>
+                {/* </div> */}
                 
               </div>
 
@@ -162,7 +162,7 @@ export default function AffiliationPage() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-4xl font-bold">Tribhuvan University</span>
+                <span className="text-4xl font-bold">Technology & Management</span>
               </div>
             </div>
           </div>

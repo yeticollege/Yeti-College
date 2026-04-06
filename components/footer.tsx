@@ -133,7 +133,7 @@ export default function Footer() {
         {/* Bottom Section: Socials & Copyright */}
         <div className="border-t border-zinc-800 pt-8 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-zinc-600">
-            <p>© 2025 Yeti International College.</p>
+            <p>© {new Date().getFullYear()} Yeti International College.</p>
             <div className="hidden md:block w-1 h-1 bg-zinc-800 rounded-full" />
             {/* <Link href="/privacy" className="hover:text-zinc-400">
               Privacy Policy

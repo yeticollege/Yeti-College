@@ -280,9 +280,9 @@ export default function ContactPage() {
                   </div>
                   <div className="p-6 flex justify-between items-center">
                     <div>
-                      <p className="font-bold text-zinc-900">Headquarters</p>
+                      <p className="font-bold text-zinc-900">We Located</p>
                       <p className="text-sm text-zinc-500">
-                        Bahnhofstrasse 10, 8001
+                        Buddhanagar-10, New Baneshwor, Kathmandu, Nepal
                       </p>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-zinc-50 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white transition-all">

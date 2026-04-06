@@ -759,190 +759,190 @@ export const coursesDB: Record<string, any> = {
 
   // ... (Other courses like MBA, BHM etc remain unchanged) ...
 
-  bca: {
-    title: "Bachelor of Computer Application ~ BCA",
-    code: "BCA",
-    category: "Undergraduate",
-    duration: "4 Years",
-    semesters: 8,
-    credits: 130,
-    intake: "March / July",
-    image:
-      "/courses/bca.svg", // Local image path for BCA course
-    description:
-      "A professional IT program preparing students for careers in software development, networking, automation, and modern digital technologies.",
-    stats: {
-      placementRate: "96%",
-      startingSalary: "NPR 45k+",
-      partners: "IT Companies & Dev Agencies",
-    },
-    overview: [
-      "Focus on programming, system design, data management, and application development.",
-      "Includes hands-on projects, lab sessions, and industry-level software development training.",
-      "Students gain practical experience through internships and project delivery.",
-    ],
-    highlights: [
-      "Coding–focused Degree",
-      "Project Development Every Semester",
-      "Strong Networking & Security Foundations",
-      "Internship Guarantee",
-    ],
-    // Curriculum updated to match the image provided
-    curriculum: [
-      {
-        year: "Year 01",
-        focus: "Computing Fundamentals",
-        semesters: [
-          {
-            semester: "Semester I",
-            subjects: [
-              "BCA101 Computer Fundamentals & Applications",
-              "BCA102 Programming in C",
-              "BCA103 Digital Logic",
-              "BCA104 Mathematics I",
-              "BCA104 Professional Communication & Ethics",
-              "BCA106 Hardware Workshop",
-            ],
-          },
-          {
-            semester: "Semester II",
-            subjects: [
-              "BCA151 Descrete Structures",
-              "BCA152 Microprocessor & Computer Architecture",
-              "BCA153 OOP in Java",
-              "BCA154 Mathematics II",
-              "BCA155 UX/UI Design",
-              "BCA156 Principles of Management",
-            ],
-          },
-        ],
-      },
-      {
-        year: "Year 02",
-        focus: "Software Core",
-        semesters: [
-          {
-            semester: "Semester III",
-            subjects: [
-              "BCA201 Data Structures and Algorithms",
-              "BCA202 Database Management System",
-              "BCA203 Web Technology I",
-              "BCA204 System Analysis and Design",
-              "BCA205 Probability and Statistics",
-              "BCA206 Applied Economics",
-            ],
-          },
-          {
-            semester: "Semester IV",
-            subjects: [
-              "BCA251 Operating System",
-              "BCA252 Software Engineering",
-              "BCA253 Numerical Methods",
-              "BCA254 Python Programming",
-              "BCA255 Web Technology II",
-              "BCA256 Project I",
-            ],
-          },
-        ],
-      },
-      {
-        year: "Year 03",
-        focus: "Advanced Technologies",
-        semesters: [
-          {
-            semester: "Semester V",
-            subjects: [
-              "BCA301 Computer Network",
-              "BCA302 Artificial Intelligence",
-              "BCA303 Advanced Java Programming",
-              "BCA304 MIS and e-Business",
-              "BCA305 Society and Technology",
-              "BCA306 Project II",
-            ],
-          },
-          {
-            semester: "Semester VI",
-            subjects: [
-              "BCA351 Computer Graphics & Animation",
-              "BCA352 Mobile Programming",
-              "BCA353 Cryptography and Network Security",
-              "BCA354 Technical Writing",
-              "BCA355 Distributed Systems",
-              "BCA356 Project III",
-            ],
-          },
-        ],
-      },
-      {
-        year: "Year 04",
-        focus: "Specialization & Research",
-        semesters: [
-          {
-            semester: "Semester VII",
-            subjects: [
-              "BCA401 Cyber Security & Ethical Hacking",
-              "BCA402 Software Project Management",
-              "BCA403 Financial Accounting",
-              "BCA404 Project IV",
-              "BCA405 Elective I",
-              "BCA406 Elective II",
-            ],
-            // Added Specific Elective List for Sem VII
-            electiveLabel: "Choose 2 Electives (Sem VII)",
-            electives: [
-              "BCA404-I Machine Learning",
-              "BCA404-II E-Commerce",
-              "BCA404-III Database Administration",
-              "BCA404-IV Linex",
-              "BCA405-I Dotnet Technology",
-              "BCA405-II Business Intelligence",
-              "BCA405-III Software Testing & Quality Assurance",
-              "BCA405-IV Data Visualization",
-            ],
-          },
-          {
-            semester: "Semester VIII",
-            subjects: [
-              "BCA451 Cloud Computing",
-              "BCA452 Internship",
-              "BCA453 Elective III",
-              "BCA454 Elective IV",
-            ],
-            // Added Specific Elective List for Sem VIII
-            electiveLabel: "Choose 2 Electives (Sem VIII)",
-            electives: [
-              "BCA453-I Network Administration",
-              "BCA453-II E-Governance",
-              "BCA453-III Database Programming",
-              "BCA453-IV Geographical Information System",
-              "BCA454-I Digital Marketing & SEO",
-              "BCA454-II Image Processing",
-              "BCA454-III Internet of Things",
-              "BCA454-IV Data Mining & Data Warehouse",
-            ],
-          },
-        ],
-      },
-    ],
-    careers: [
-      "Software Developer",
-      "Database Administrator",
-      "Network Engineer",
-      "Systems Analyst",
-    ],
-  },
+  // bca: {
+  //   title: "Bachelor of Computer Application ~ BCA",
+  //   code: "BCA",
+  //   category: "Undergraduate",
+  //   duration: "4 Years",
+  //   semesters: 8,
+  //   credits: 130,
+  //   intake: "March / July",
+  //   image:
+  //     "/courses/bca.svg", // Local image path for BCA course
+  //   description:
+  //     "A professional IT program preparing students for careers in software development, networking, automation, and modern digital technologies.",
+  //   stats: {
+  //     placementRate: "96%",
+  //     startingSalary: "NPR 45k+",
+  //     partners: "IT Companies & Dev Agencies",
+  //   },
+  //   overview: [
+  //     "Focus on programming, system design, data management, and application development.",
+  //     "Includes hands-on projects, lab sessions, and industry-level software development training.",
+  //     "Students gain practical experience through internships and project delivery.",
+  //   ],
+  //   highlights: [
+  //     "Coding–focused Degree",
+  //     "Project Development Every Semester",
+  //     "Strong Networking & Security Foundations",
+  //     "Internship Guarantee",
+  //   ],
+  //   // Curriculum updated to match the image provided
+  //   curriculum: [
+  //     {
+  //       year: "Year 01",
+  //       focus: "Computing Fundamentals",
+  //       semesters: [
+  //         {
+  //           semester: "Semester I",
+  //           subjects: [
+  //             "BCA101 Computer Fundamentals & Applications",
+  //             "BCA102 Programming in C",
+  //             "BCA103 Digital Logic",
+  //             "BCA104 Mathematics I",
+  //             "BCA104 Professional Communication & Ethics",
+  //             "BCA106 Hardware Workshop",
+  //           ],
+  //         },
+  //         {
+  //           semester: "Semester II",
+  //           subjects: [
+  //             "BCA151 Descrete Structures",
+  //             "BCA152 Microprocessor & Computer Architecture",
+  //             "BCA153 OOP in Java",
+  //             "BCA154 Mathematics II",
+  //             "BCA155 UX/UI Design",
+  //             "BCA156 Principles of Management",
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       year: "Year 02",
+  //       focus: "Software Core",
+  //       semesters: [
+  //         {
+  //           semester: "Semester III",
+  //           subjects: [
+  //             "BCA201 Data Structures and Algorithms",
+  //             "BCA202 Database Management System",
+  //             "BCA203 Web Technology I",
+  //             "BCA204 System Analysis and Design",
+  //             "BCA205 Probability and Statistics",
+  //             "BCA206 Applied Economics",
+  //           ],
+  //         },
+  //         {
+  //           semester: "Semester IV",
+  //           subjects: [
+  //             "BCA251 Operating System",
+  //             "BCA252 Software Engineering",
+  //             "BCA253 Numerical Methods",
+  //             "BCA254 Python Programming",
+  //             "BCA255 Web Technology II",
+  //             "BCA256 Project I",
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       year: "Year 03",
+  //       focus: "Advanced Technologies",
+  //       semesters: [
+  //         {
+  //           semester: "Semester V",
+  //           subjects: [
+  //             "BCA301 Computer Network",
+  //             "BCA302 Artificial Intelligence",
+  //             "BCA303 Advanced Java Programming",
+  //             "BCA304 MIS and e-Business",
+  //             "BCA305 Society and Technology",
+  //             "BCA306 Project II",
+  //           ],
+  //         },
+  //         {
+  //           semester: "Semester VI",
+  //           subjects: [
+  //             "BCA351 Computer Graphics & Animation",
+  //             "BCA352 Mobile Programming",
+  //             "BCA353 Cryptography and Network Security",
+  //             "BCA354 Technical Writing",
+  //             "BCA355 Distributed Systems",
+  //             "BCA356 Project III",
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       year: "Year 04",
+  //       focus: "Specialization & Research",
+  //       semesters: [
+  //         {
+  //           semester: "Semester VII",
+  //           subjects: [
+  //             "BCA401 Cyber Security & Ethical Hacking",
+  //             "BCA402 Software Project Management",
+  //             "BCA403 Financial Accounting",
+  //             "BCA404 Project IV",
+  //             "BCA405 Elective I",
+  //             "BCA406 Elective II",
+  //           ],
+  //           // Added Specific Elective List for Sem VII
+  //           electiveLabel: "Choose 2 Electives (Sem VII)",
+  //           electives: [
+  //             "BCA404-I Machine Learning",
+  //             "BCA404-II E-Commerce",
+  //             "BCA404-III Database Administration",
+  //             "BCA404-IV Linex",
+  //             "BCA405-I Dotnet Technology",
+  //             "BCA405-II Business Intelligence",
+  //             "BCA405-III Software Testing & Quality Assurance",
+  //             "BCA405-IV Data Visualization",
+  //           ],
+  //         },
+  //         {
+  //           semester: "Semester VIII",
+  //           subjects: [
+  //             "BCA451 Cloud Computing",
+  //             "BCA452 Internship",
+  //             "BCA453 Elective III",
+  //             "BCA454 Elective IV",
+  //           ],
+  //           // Added Specific Elective List for Sem VIII
+  //           electiveLabel: "Choose 2 Electives (Sem VIII)",
+  //           electives: [
+  //             "BCA453-I Network Administration",
+  //             "BCA453-II E-Governance",
+  //             "BCA453-III Database Programming",
+  //             "BCA453-IV Geographical Information System",
+  //             "BCA454-I Digital Marketing & SEO",
+  //             "BCA454-II Image Processing",
+  //             "BCA454-III Internet of Things",
+  //             "BCA454-IV Data Mining & Data Warehouse",
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //   ],
+  //   careers: [
+  //     "Software Developer",
+  //     "Database Administrator",
+  //     "Network Engineer",
+  //     "Systems Analyst",
+  //   ],
+  // },
 
   bscictc: {
     title:
-      "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSIT",
-    code: "B.Sc. CSIT",
+      "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSDI",
+    code: "B.Sc. SDI",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
     credits: 136,
     intake: "March / July / November",
     image:
-      "/courses/bsccsit.svg", // Local image path for BSc ICTC course
+      "/courses/bsccsdi.svg", // Local image path for BSc ICTC course
     description:
       "The emphasis of this degree is on the limitless analysis and design of IT systems. Deep knowledge with professionals, advanced courses in Data Security, PDPA, Network Systems, and Cloud Architecture. Teaching system analysis and computer network management, as well as the IT Professional Standards Certificate (ITPE) supports the digital future world by supporting technologies like Blockchain and Digital Twin.",
     stats: {
