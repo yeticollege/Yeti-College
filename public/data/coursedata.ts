@@ -2,6 +2,7 @@ export const coursesDB: Record<string, any> = {
   mba: {
     title: "Master in Business Administration ~ MBA",
     code: "MBA",
+    feeStructureImage: "/courses/mba_fee_structure.png",
     category: "Postgraduate",
     duration: "2 Years",
     semesters: 4,
@@ -190,6 +191,7 @@ export const coursesDB: Record<string, any> = {
   bhm: {
     title: "BA (Hotel & MICE Management) ~ BHM",
     code: "BHM",
+    feeStructureImage: "/courses/bhm_fee_structure.pdf",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
@@ -333,6 +335,7 @@ export const coursesDB: Record<string, any> = {
   babm: {
     title: "BA (Airlines Business Management) ~ BABM",
     code: "BABM",
+    feeStructureImage: "/courses/babm_fee_structure.pdf",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
@@ -474,6 +477,7 @@ export const coursesDB: Record<string, any> = {
   bamm: {
     title: "BA(MICE(Event) Management) ~ BAMM",
     code: "BAMM",
+    feeStructureImage: "/courses/bmm_fee_structure.pdf",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
@@ -617,6 +621,7 @@ export const coursesDB: Record<string, any> = {
   bttm: {
     title: "BA (Tourism & MICE Management) ~ BTMM",
     code: "BTTM",
+    feeStructureImage: "/courses/bttm_fee_structure.pdf",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,
@@ -936,6 +941,7 @@ export const coursesDB: Record<string, any> = {
     title:
       "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSDI",
     code: "B.Sc. SDI",
+    feeStructureImage: "/courses/bsccsdi_fee_structure.pdf",
     category: "Undergraduate",
     duration: "4 Years",
     semesters: 8,

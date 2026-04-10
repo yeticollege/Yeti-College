@@ -604,6 +604,11 @@ export default function Hero() {
                   Admissions Open {new Date().getFullYear()}
                 </span>
               </div>
+              <Link href={'/academic-calendar'}>
+              <span className="text-xs font-bold bg-black p-2 rounded-3xl mx-4 text-blue-300 uppercase tracking-wider">
+                  Academic Calendar {new Date().getFullYear() - 1}/{new Date().getFullYear()}
+                </span>
+              </Link>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-balance">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">
                   First

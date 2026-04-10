@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,6 +14,9 @@ import {
   Sparkles,
   Code2,
   Library,
+  FileText, 
+  ExternalLink,
+  Download
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -22,12 +25,13 @@ import Footer from "@/components/footer";
 
 // Define props interface
 interface CourseClientProps {
-  course: any; // Or your specific Course interface from coursedata.ts
+  course: any; 
   slug: string;
+  initialView?: number | string; // Prop to handle direct URL entry
 }
 
-export default function CourseClient({ course, slug }: CourseClientProps) {
-  // NOTE: We do NOT fetch data here anymore. It comes via props.
+export default function CourseClient({ course, slug, initialView = 0 }: CourseClientProps) {
+  const curriculumSectionRef = useRef<HTMLDivElement>(null);
 
   if (!course) return <div className="p-20 text-center">Course Not Found</div>;
 
@@ -102,7 +106,6 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
               priority
             />
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" /> */}
           </motion.div>
         </header>
 
@@ -138,10 +141,15 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
                 </div>
               </section>
 
-              {/* 02. CURRICULUM */}
-              <section id="curriculum" className="scroll-mt-32">
+              {/* 02. CURRICULUM & FEE STRUCTURE */}
+              <section id="curriculum" ref={curriculumSectionRef} className="scroll-mt-32">
                 <SectionLabel number="02" title="Curriculum" />
-                <CurriculumTabs curriculum={course.curriculum} />
+                <CurriculumTabs 
+                  course={course} 
+                  slug={slug} 
+                  initialView={initialView}
+                  sectionRef={curriculumSectionRef} 
+                />
               </section>
 
               {/* 03. CAREERS */}
@@ -241,7 +249,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
   );
 }
 
-// --- HELPER COMPONENTS (Keep these in course-client.tsx) ---
+// --- HELPER COMPONENTS ---
 
 function SectionLabel({ number, title }: { number: string; title: string }) {
   return (
@@ -254,15 +262,7 @@ function SectionLabel({ number, title }: { number: string; title: string }) {
   );
 }
 
-function StatBox({
-  label,
-  value,
-  icon,
-}: {
-  label: string;
-  value: string;
-  icon: any;
-}) {
+function StatBox({ label, value, icon }: { label: string; value: string; icon: any }) {
   return (
     <div className="bg-card p-8 flex flex-col justify-between h-40 hover:bg-muted/30 transition-colors group">
       <div className="flex justify-between items-start">
@@ -280,237 +280,147 @@ function StatBox({
   );
 }
 
-function CurriculumTabs({ curriculum }: { curriculum: any[] }) {
-  const [activeTab, setActiveTab] = useState(0);
-  const currentYear = curriculum[activeTab];
+function CurriculumTabs({ course, slug, initialView, sectionRef }: { course: any, slug: string, initialView: number | string, sectionRef: React.RefObject<HTMLDivElement> }) {
+  const [activeTab, setActiveTab] = useState<number | string>(initialView);
+  const curriculum = course.curriculum || [];
+  const feeUrl = course.feeStructureImage || "";
+  const isPdf = feeUrl.toLowerCase().endsWith(".pdf");
 
-  const formatSubject = (subject: string) => {
-    const match = subject.match(/^([A-Z]{3,4}\d{3})\s+(.*)/);
-    if (match) {
-      return { code: match[1], title: match[2] };
+  // --- 1. Deep Link Scrolling ---
+  useEffect(() => {
+    if (initialView === "fee") {
+      // Small timeout to allow the browser to complete initial render
+      const timer = setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 800);
+      return () => clearTimeout(timer);
     }
-    return { code: null, title: subject };
-  };
+  }, [initialView, sectionRef]);
 
-  const getSubjectStyle = (subject: string) => {
-    const lowerSub = subject.toLowerCase();
-    if (
-      lowerSub.includes("project") ||
-      lowerSub.includes("internship") ||
-      lowerSub.includes("thesis")
-    ) {
-      return {
-        container: "border-primary/40 bg-primary/5 hover:border-primary",
-        dot: "bg-primary",
-        text: "text-foreground font-semibold",
-      };
-    }
-    if (lowerSub.includes("elective") || lowerSub.includes("seminar")) {
-      return {
-        container:
-          "border-dashed border-accent/50 bg-accent/5 hover:border-accent",
-        dot: "bg-accent",
-        text: "text-foreground",
-      };
-    }
-    return {
-      container: "bg-background border-border hover:border-primary/30",
-      dot: "bg-muted-foreground/30 group-hover:bg-primary",
-      text: "text-muted-foreground group-hover:text-foreground",
+  // --- 2. Browser Back/Forward Navigation ---
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path.endsWith("/fee-structure")) {
+        setActiveTab("fee");
+      } else {
+        setActiveTab(0);
+      }
     };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // --- 3. Tab Change & URL Synchronization ---
+  const handleTabChange = (tab: number | string) => {
+    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      const baseUrl = `/programs/${slug}`;
+      if (tab === "fee") {
+        window.history.pushState(null, "", `${baseUrl}/fee-structure`);
+      } else {
+        window.history.pushState(null, "", baseUrl);
+      }
+    }
   };
+
+  const isFeeTab = activeTab === "fee";
+  const currentYear = !isFeeTab ? curriculum[activeTab as number] : null;
 
   return (
     <div className="bg-card rounded-[2.5rem] p-2 md:p-8 border border-border">
+      {/* Tab Navigation */}
       <div className="flex flex-wrap gap-2 mb-8 p-2">
-        {curriculum.map((year, idx) => (
+        {curriculum.map((year: any, idx: number) => (
           <button
             key={idx}
-            onClick={() => setActiveTab(idx)}
+            onClick={() => handleTabChange(idx)}
             className={cn(
               "px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 border",
               activeTab === idx
                 ? "bg-primary text-primary-foreground border-primary"
-                : "bg-transparent text-muted-foreground border-transparent hover:bg-muted hover:text-foreground",
+                : "bg-transparent text-muted-foreground border-transparent hover:bg-muted"
             )}
           >
             {year.year}
           </button>
         ))}
+
+        {feeUrl && (
+          <button
+            onClick={() => handleTabChange("fee")}
+            className={cn(
+              "flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 border",
+              activeTab === "fee"
+                ? "bg-accent text-accent-foreground border-accent"
+                : "bg-transparent text-muted-foreground border-transparent hover:bg-muted"
+            )}
+          >
+            <FileText className="w-4 h-4" />
+            Fee Structure
+          </button>
+        )}
       </div>
 
-      <div className="relative min-h-[300px]">
+      <div className="relative min-h-[400px]">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-            transition={{ duration: 0.3 }}
-            className="p-2 md:p-4"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
-              {currentYear.semesters.map((sem: any, sIdx: number) => (
+          {isFeeTab ? (
+            <motion.div
+              key="fee-view"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              className="flex flex-col gap-6"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <h3 className="text-xl font-bold text-foreground">Program Fee Structure</h3>
+                  <div className="hidden md:block h-px w-32 bg-border/60" />
+                </div>
+                <div className="flex gap-2">
+                  <a href={feeUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted hover:bg-primary hover:text-primary-foreground transition-all text-xs font-bold">
+                    <ExternalLink className="w-3.5 h-3.5" /> Open Fullscreen
+                  </a>
+                  <a href={feeUrl} download className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground hover:opacity-90 transition-all text-xs font-bold">
+                    <Download className="w-3.5 h-3.5" /> Download
+                  </a>
+                </div>
+              </div>
+
+              <div className="w-full border border-border rounded-2xl overflow-hidden bg-muted/10 min-h-[500px] flex items-center justify-center">
+                {isPdf ? (
+                  <iframe src={`${feeUrl}#toolbar=0&view=FitH`} className="w-full h-[700px] rounded-2xl" title="Fee Structure PDF" />
+                ) : (
+                  <img src={feeUrl} alt="Fee Structure" className="max-w-full h-auto object-contain shadow-2xl" />
+                )}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16"
+            >
+              {currentYear?.semesters.map((sem: any, sIdx: number) => (
                 <div key={sIdx} className="flex flex-col gap-6">
                   <div className="flex items-center gap-4">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <span className="text-xs font-bold text-primary">
-                        {sIdx + 1 + activeTab * 2}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground">
-                      {sem.semester}
-                    </h3>
+                    <h3 className="text-xl font-bold text-foreground">{sem.semester}</h3>
                     <div className="h-px flex-1 bg-border/60" />
                   </div>
-
                   <div className="space-y-3">
-                    {sem.subjects.map((subject: string, subIdx: number) => {
-                      const style = getSubjectStyle(subject);
-                      const { code, title } = formatSubject(subject);
-
-                      return (
-                        <motion.div
-                          key={subIdx}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: subIdx * 0.05 + sIdx * 0.1 }}
-                          className={cn(
-                            "group flex items-center gap-4 p-4 rounded-xl border transition-all duration-300 hover:shadow-sm",
-                            style.container,
-                          )}
-                        >
-                          {code && (
-                            <span className="hidden sm:block text-[10px] font-bold px-2 py-1 rounded bg-muted/50 text-muted-foreground border border-border">
-                              {code}
-                            </span>
-                          )}
-
-                          {!code && (
-                            <div
-                              className={cn(
-                                "w-1.5 h-1.5 rounded-full transition-colors shrink-0",
-                                style.dot,
-                              )}
-                            />
-                          )}
-
-                          <span
-                            className={cn(
-                              "text-base transition-colors line-clamp-2",
-                              style.text,
-                            )}
-                          >
-                            {title}
-                          </span>
-
-                          {(title.toLowerCase().includes("internship") ||
-                            title.toLowerCase().includes("thesis")) && (
-                            <Briefcase className="w-4 h-4 ml-auto text-primary shrink-0" />
-                          )}
-                          {title.toLowerCase().includes("project") && (
-                            <Sparkles className="w-4 h-4 ml-auto text-primary shrink-0" />
-                          )}
-                          {title.toLowerCase().includes("elective") && (
-                            <Library className="w-4 h-4 ml-auto text-muted-foreground shrink-0" />
-                          )}
-                        </motion.div>
-                      );
-                    })}
+                    {sem.subjects.map((sub: string, i: number) => (
+                      <div key={i} className="p-4 rounded-xl border border-border bg-background">
+                         <span className="text-sm font-medium">{sub}</span>
+                      </div>
+                    ))}
                   </div>
-
-                  {sem.electives &&
-                    sem.electives.length > 0 &&
-                    !sem.electiveGroups && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-4 pt-6 border-t border-dashed border-border/60"
-                      >
-                        <div className="flex items-center gap-2 mb-4">
-                          <Layers className="w-4 h-4 text-accent" />
-                          <span className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                            {sem.electiveLabel || "Electives"}
-                          </span>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          {sem.electives.map((elec: string, eIdx: number) => {
-                            const { code, title } = formatSubject(elec);
-                            return (
-                              <div
-                                key={eIdx}
-                                className="flex items-start gap-2 p-2 rounded-lg bg-muted/30 hover:bg-accent/10 transition-colors"
-                              >
-                                <Code2 className="w-3 h-3 text-muted-foreground mt-1 shrink-0" />
-                                <div className="flex flex-col">
-                                  <span className="text-xs font-semibold text-foreground/80">
-                                    {title}
-                                  </span>
-                                  {code && (
-                                    <span className="text-[10px] text-muted-foreground">
-                                      {code}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
-
-                  {sem.electiveGroups && sem.electiveGroups.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-6 pt-6 border-t border-dashed border-border/60"
-                    >
-                      <div className="flex items-center gap-2 mb-6">
-                        <Layers className="w-5 h-5 text-accent" />
-                        <span className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                          {sem.electiveLabel || "Specialization Tracks"}
-                        </span>
-                      </div>
-
-                      <div className="space-y-4">
-                        {sem.electiveGroups.map((group: any, gIdx: number) => (
-                          <div
-                            key={gIdx}
-                            className="rounded-2xl border border-border bg-muted/20 overflow-hidden"
-                          >
-                            <div className="px-4 py-3 bg-muted/40 border-b border-border flex items-center justify-between">
-                              <h4 className="font-bold text-sm text-foreground">
-                                {group.title}
-                              </h4>
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-background border border-border text-muted-foreground">
-                                {group.subjects.length} Subjects
-                              </span>
-                            </div>
-                            <div className="p-3 grid grid-cols-1 gap-1">
-                              {group.subjects.map(
-                                (sub: string, sbIdx: number) => (
-                                  <div
-                                    key={sbIdx}
-                                    className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-background/80 transition-colors"
-                                  >
-                                    <div className="w-1 h-1 rounded-full bg-accent/50" />
-                                    <span className="text-xs text-muted-foreground">
-                                      {sub}
-                                    </span>
-                                  </div>
-                                ),
-                              )}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
                 </div>
               ))}
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </div>

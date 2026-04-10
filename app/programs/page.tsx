@@ -13,6 +13,7 @@ import {
   LayoutGrid,
   X,
   GraduationCap,
+  ReceiptText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Header from "@/components/header";
