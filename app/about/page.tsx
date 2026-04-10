@@ -170,8 +170,10 @@ export default function AboutPageNew() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1">
                 <span className="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">
-                  Our History
+                  Our History |
+                  <Link href={'/fee-structure'}> Fee Structure</Link>
                 </span>
+                
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
                   From humble beginnings to a national leader.
                 </h2>
