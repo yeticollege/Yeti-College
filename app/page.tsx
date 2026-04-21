@@ -9,6 +9,7 @@ import CTA from "@/components/cta";
 import Footer from "@/components/footer";
 import FaqAndInquiry from "@/components/faqandinquiry";
 import NoticeSnippet from "@/components/notices";
+import UpdateHero from "@/components/updateHero";
 // import Header from "@/components/althero";
 
 export default function Home() {

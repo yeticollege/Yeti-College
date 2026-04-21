@@ -19,23 +19,23 @@ import Footer from "@/components/footer";
 const leadership = [
   {
     name: "Mr. Sanjay Kumar Jha",
-    role: "Executive Chairperson",
+    role: "Founder & Executive Chairman",
     image: "/message/ceo.jpg",
-    bio: "Visionary leader with 20+ years in ed-tech.",
+    // bio: "Visionary leader with 20+ years in ed-tech.",
     fb: "#",
   },
   {
     name: "Mr. Arna Raj Silwal",
     role: "Director",
     image: "/message/director.jpg",
-    bio: "Ph.D. in Curriculum Development from Oxford.",
+    // bio: "Ph.D. in Curriculum Development from Oxford.",
     fb: "#",
   },
   {
-    name: "Dr. R.D Mishra",
+    name: "Mr. R.D Mishra",
     role: "Principal",
     image: "/message/principal.jpeg",
-    bio: "Author of 'Modern Pedagogy in South Asia'.",
+    // bio: "Author of 'Modern Pedagogy in South Asia'.",
     fb: "#",
   },
 ];
@@ -44,32 +44,32 @@ const faculty = [
   {
     name: "Shanti Shrestha",
     role: "Vice Principal",
-    dept: "Academic Affairs",
+    // dept: "Academic Affairs",
     image: "/message/bhm_coordinator.jpg",
     color: "bg-amber-100 text-amber-700",
     fb: "#",
   },
   {
     name: "Rakesh Kumar Bhagat",
-    role: "Business Development & HOD",
-    dept: "Marketing",
+    role: "Business Development Head",
+    // dept: "Marketing",
     image: "/message/marketing.jpg",
     color: "bg-blue-100 text-blue-700",
     fb: "#",
   },
 
-  {
-    name: "Bashu Kafle",
-    role: "BABM & BHM Incharge",
-    dept: "Hospitality Management",
-    image: "/message/bashu.jpg",
-    color: "bg-amber-100 text-amber-700",
-    fb: "#",
-  },
+  // {
+  //   name: "Bashu Kafle",
+  //   role: "BABM & BHM Incharge",
+  //   dept: "Hospitality Management",
+  //   image: "/message/bashu.jpg",
+  //   color: "bg-amber-100 text-amber-700",
+  //   fb: "#",
+  // },
   {
     name: "Mukesh Maharjan",
     role: "Accountant",
-    dept: "Finance",
+    // dept: "Finance",
     image: "/message/accountant.jpeg",
     color: "bg-rose-100 text-rose-700",
     fb: "#",
@@ -77,15 +77,23 @@ const faculty = [
   {
     name: "Uma Shrestha",
     role: "Admin Officer",
-    dept: "Administration",
+    // dept: "Administration",
     image: "/message/records_manager.jpeg",
+    color: "bg-emerald-100 text-emerald-700",
+    fb: "#",
+  },
+   {
+    name: "MD. Mustak Aalam",
+    role: "IT Manager",
+    // dept: "IT Department",
+    image: "/message/mustak.jpg",
     color: "bg-emerald-100 text-emerald-700",
     fb: "#",
   },
   {
     name: "Chandan Kushwaha",
     role: "IT Officer",
-    dept: "IT Department",
+    // dept: "IT Department",
     image: "/chandan.png",
     color: "bg-emerald-100 text-emerald-700",
     fb: "#",
@@ -93,23 +101,23 @@ const faculty = [
   {
     name: "Nirusha Devkota",
     role: "Academic Counselor",
-    dept: "Administration",
+    // dept: "Administration",
     image: "/message/nirusha.jpeg",
     color: "bg-emerald-100 text-emerald-700",
     fb: "#",
   },
-  {
-    name: "Nabin Duwal",
-    role: "Food Productions",
-    dept: "Faculty Member",
-    image: "/message/nabin.jpg",
-    color: "bg-emerald-100 text-emerald-700",
-    fb: "#",
-  },
+  // {
+  //   name: "Nabin Duwal",
+  //   role: "Food Productions",
+  //   dept: "Faculty Member",
+  //   image: "/message/nabin.jpg",
+  //   color: "bg-emerald-100 text-emerald-700",
+  //   fb: "#",
+  // },
   {
     name: "Mohan Basmet",
-    role: "Secretary Incharge",
-    dept: "Staff",
+    role: "Security Officer",
+    // dept: "Staff",
     image: "/message/mohan.jpg",
     color: "bg-emerald-100 text-emerald-700",
     fb: "#",
@@ -117,7 +125,7 @@ const faculty = [
   {
     name: "Kamala Karki",
     role: "House Keeping (Supervisor)",
-    dept: "Cafeteria Services",
+    // dept: "Cafeteria Services",
     image: "/message/canteen.jpeg",
     color: "bg-violet-100 text-violet-700",
     fb: "#",
@@ -125,6 +133,12 @@ const faculty = [
 ];
 
 const advisors = [
+{
+    name: "Bashu Kafle ",
+    role: "Instructor",
+    // org: "Paleo Institute",
+    image: "/message/bashu.jpg",
+  },
   {
     name: "Khushbu Saraf",
     role: "Instructor",
@@ -132,10 +146,10 @@ const advisors = [
     image: "/message/khushbu.jpg",
   },
   {
-    name: "Vivek K. Singh ",
+    name: "Nabin Duwal ",
     role: "Instructor",
     // org: "Paleo Institute",
-    image: "/message/bibek.png",
+    image: "/message/nabin.jpg",
   },
   {
     name: "Sanam Sitaula",
@@ -369,14 +383,14 @@ function FacultyCard({ data, index }: { data: any; index: number }) {
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {/* Department Badge Overlay */}
-        <div
+        {/* <div
           className={cn(
             "absolute top-3 left-3 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm backdrop-blur-sm",
             data.color,
           )}
         >
           {data.dept}
-        </div>
+        </div> */}
       </div>
 
       <div className="px-2 pb-2 flex-1 flex flex-col justify-between">

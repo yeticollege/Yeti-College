@@ -18,8 +18,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 border-b border-zinc-800 pb-20">
           <div>
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-[0.9] mb-6">
-              Yeti International
-              <br />
+              Yeti Int'l
               College.
             </h2>
             <p className="text-lg text-zinc-500 max-w-md leading-relaxed">
@@ -133,7 +132,7 @@ export default function Footer() {
         {/* Bottom Section: Socials & Copyright */}
         <div className="border-t border-zinc-800 pt-8 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-zinc-600">
-            <p>© {new Date().getFullYear()} Yeti International College.</p>
+            <p>© {new Date().getFullYear()} Yeti Int'l College.</p>
             <div className="hidden md:block w-1 h-1 bg-zinc-800 rounded-full" />
             {/* <Link href="/privacy" className="hover:text-zinc-400">
               Privacy Policy

@@ -36,15 +36,12 @@ interface BlogClientProps {
 
 export const categories = [
   "All",
-  "Design",
-  "Technology",
-  "Culture",
-  "Architecture",
-  "Sustainability",
+  "Airlines",
+  "Aviation",
   "Business",
-  "AI",
+  "Technology",
   "World",
-  "Health",
+  "Hospitality and Tourism"
 ];
 
 const ITEMS_PER_PAGE = 6;

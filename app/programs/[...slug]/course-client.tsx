@@ -55,15 +55,20 @@ export default function CourseClient({ course, slug, initialView = 0 }: CourseCl
                   <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
                     {course.category}
                   </span>
+                  {course.point && (
+                    <h1 className="text-xs font-bold text-white p-2 border rounded-md uppercase tracking-widest bg-blue-600">
+                      {course.point}
+                    </h1>
+                  )}
                 </div>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground mb-6 leading-[0.95]">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-6 leading-[0.95]">
                   {course.title}
                 </h1>
               </motion.div>
             </div>
 
             <div className="lg:col-span-4 lg:pb-2">
-              <p className="text-lg md:text-xl leading-relaxed font-medium text-muted-foreground text-balance">
+              <p className="text-xs md:text-xs leading-relaxed font-medium text-muted-foreground text-balance">
                 {course.description}
               </p>
             </div>
@@ -89,7 +94,7 @@ export default function CourseClient({ course, slug, initialView = 0 }: CourseCl
             <StatBox
               icon={<Layers className="w-4 h-4" />}
               label="Semesters"
-              value={`${course.semesters} Sems`}
+              value={`${course.semesters}`}
             />
           </div>
 
@@ -163,9 +168,7 @@ export default function CourseClient({ course, slug, initialView = 0 }: CourseCl
                           Future Opportunities
                         </h3>
                         <p className="text-muted-foreground text-lg leading-relaxed mb-12">
-                          Our graduates are leading the industry. With a degree
-                          in {course.code}, you open doors to global
-                          opportunities.
+                          {course.future_opportunities}
                         </p>
                         <div className="grid grid-cols-2 gap-8">
                           <div>

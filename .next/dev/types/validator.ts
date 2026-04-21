@@ -146,6 +146,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/character-certificate/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/character-certificate">> = Specific
+  const handler = {} as typeof import("../../../app/character-certificate/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/contact/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/contact">> = Specific
@@ -249,6 +258,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/apply">> = Specific
   const handler = {} as typeof import("../../../app/api/apply/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/character-certificate/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/character-certificate">> = Specific
+  const handler = {} as typeof import("../../../app/api/character-certificate/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

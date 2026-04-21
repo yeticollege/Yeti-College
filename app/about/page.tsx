@@ -21,8 +21,8 @@ import Link from "next/link";
 // --- LEADERSHIP DATA FROM TEAM PAGE ---
 const leadershipData = [
   {
-    name: "Dr. Sanjay Kumar Jha",
-    role: "Chief Executive Officer (CEO)",
+    name: "Mr. Sanjay Kumar Jha",
+    role: "Founder & Executive Chairman",
     image: "/message/ceo.jpg",
   },
   {
@@ -59,7 +59,7 @@ export default function AboutPageNew() {
                 <span className="text-primary">visionaries</span> of tomorrow.
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Yeti International College combines academic rigor with creative
+                Yeti Int'l College combines academic rigor with creative
                 freedom, building a community where innovation thrives.
               </p>
             </motion.div>
@@ -178,7 +178,7 @@ export default function AboutPageNew() {
                   From humble beginnings to a national leader.
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Established in 2001, Yeti International College began with a
+                  Established in 2001, Yeti Int'l College began with a
                   single classroom and a bold idea: to bring international
                   standard education to Kathmandu.
                 </p>

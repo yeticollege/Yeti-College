@@ -150,7 +150,7 @@ export default function FacilitiesPage() {
         {/* HERO SECTION WITH SLIDER */}
         <section className="pt-32 pb-20 px-6 max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-9">
+            <div className="lg:col-span-7">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="flex items-center gap-3 mb-8">
                   <div className="h-px w-12 bg-primary" />
@@ -158,13 +158,13 @@ export default function FacilitiesPage() {
                     Campus Infrastructure
                   </span>
                 </div>
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.9]">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-8 leading-[0.9]">
                   Built for <br />
                   <span className="text-muted-foreground/40">Brilliance.</span>
                 </h1>
               </motion.div>
             </div>
-            <div className="lg:col-span-3 pb-4">
+            <div className="lg:col-span-5 pb-4">
               <p className="text-lg font-medium text-muted-foreground leading-relaxed">
                 Explore an environment where architecture serves education.
                 Every corner is crafted to inspire.

@@ -20,10 +20,10 @@ import Footer from "@/components/footer";
 
 // --- Data Configuration ---
 const dataDB: Record<string, any> = {
-  ceo: {
-    id: "ceo",
-    role: "Chief Executive Officer(CEO)",
-    name: "Dr. Sanjay Kumar Jha",
+  founder: {
+    id: "founder",
+    role: "Founder & Executive Chairman",
+    name: "Mr. Sanjay Kumar Jha",
     image: "/message/ceo.jpg",
 
     // signature: "Sanjay Jha",
@@ -50,8 +50,8 @@ const dataDB: Record<string, any> = {
     quote:
       "Our focus is simple: Student-centric policies that bridge the gap between academia and industry.",
     content: [
-      "Dear Students, It is my pleasure to welcome you to Yeti International College, Nepal's pioneering institution in aviation education and the first to introduce the Bachelor of Airlines Business Management program. We are committed to providing academic excellence, industry-focused learning, and global standards, ensuring our students gain the specialized knowledge, practical skills, and leadership capabilities needed to succeed in the aviation and business sectors. Our goal is to create a transformative learning experience that prepares you for the dynamic and competitive global landscape.",
-      "At Yeti International College, we take pride in our distinguished faculty, state- of - the - art facilities, and strong industry partnerships, all of which contribute to a future - ready learning environment.Through a curriculum designed to meet evolving industry demands, hands - on training, and real - world exposure, we equip students with the expertise required to excel in their careers.Additionally, we encourage participation in extracurricular activities, leadership programs, and industry interactions to ensure holistic development.",
+      "Dear Students, It is my pleasure to welcome you to Yeti Int'l College, Nepal's pioneering institution in aviation education and the first to introduce the Bachelor of Airlines Business Management program. We are committed to providing academic excellence, industry-focused learning, and global standards, ensuring our students gain the specialized knowledge, practical skills, and leadership capabilities needed to succeed in the aviation and business sectors. Our goal is to create a transformative learning experience that prepares you for the dynamic and competitive global landscape.",
+      "At Yeti Int'l College, we take pride in our distinguished faculty, state- of - the - art facilities, and strong industry partnerships, all of which contribute to a future - ready learning environment.Through a curriculum designed to meet evolving industry demands, hands - on training, and real - world exposure, we equip students with the expertise required to excel in their careers.Additionally, we encourage participation in extracurricular activities, leadership programs, and industry interactions to ensure holistic development.",
       "I invite you to embark on this exciting academic journey with us and become a part of an institution that is redefining aviation education in Nepal.We look forward to supporting your growth and witnessing your success as future leaders in the aviation and business industries.",
     ],
   },
@@ -66,14 +66,14 @@ const dataDB: Record<string, any> = {
     quote:
       "Discipline and creativity are not opposites; they are the twin engines of academic success.",
     content: [
-      "Dear Students, It is my pleasure to welcome you to Yeti International College.In today’s competitive landscape, quality education in technology and management is essential for a successful professional career.With a strong reputation in Kathmandu, Yeti College is dedicated to providing academic excellence through highly qualified faculty, advanced infrastructure, and a dynamic learning environment.",
+      "Dear Students, It is my pleasure to welcome you to Yeti Int'l College.In today’s competitive landscape, quality education in technology and management is essential for a successful professional career.With a strong reputation in Kathmandu, Yeti College is dedicated to providing academic excellence through highly qualified faculty, advanced infrastructure, and a dynamic learning environment.",
       "Our faculty and technical staff are committed to mentoring students, equipping them with the skills, knowledge, and confidence to excel in their fields and contribute meaningfully to society.",
-      "Our mission is to offer value-based education, foster innovation, and encourage research and development to solve real-world challenges. Beyond academics, we provide ample opportunities for holistic growth through tech fests, cultural programs, sports, industrial visits, and club activities, ensuring our students develop both professional and personal competencies. I look forward to welcoming you to Yeti International College and supporting your journey toward academic and professional success.",
+      "Our mission is to offer value-based education, foster innovation, and encourage research and development to solve real-world challenges. Beyond academics, we provide ample opportunities for holistic growth through tech fests, cultural programs, sports, industrial visits, and club activities, ensuring our students develop both professional and personal competencies. I look forward to welcoming you to Yeti Int'l College and supporting your journey toward academic and professional success.",
     ],
   },
   hod: {
     id: "hod",
-    role: "Head of Business Develpopment",
+    role: "Business Development Head",
     name: "Mr. Rakesh Kumar Bhagat",
     image: "/message/marketing.jpg",
     // signature: "Rakesh Bhagat",
@@ -84,7 +84,7 @@ const dataDB: Record<string, any> = {
     content: [
       "Dear Students, It gives me great joy to welcome you here. Our goal is to become a global leader in education excellence and human development. At Yeti College, we are successfully achieving our goals of providing professional education while also promoting creative thinking, applying knowledge, instilling professional ethics, and raising awareness of societal obligations. We want to support, encourage, and incorporate research efforts into the teaching-learning process. We think that training and learning throughout one's life should help society. With the combined efforts of team YETI, I do not have any doubt that the organization will soar to new heights of greatness in the years to come. Yeti College is essential in creating the top management experts in the different sectors needed to satisfy the demands of a rapidly evolving global society.",
       "The Institute also provides its students ample opportunities for the development of professional skill through different activities like; Tech fest, Cultural fest, Sports and Games, Industrial tours, Club activities, etc.",
-      "I look forward to welcoming you to the Yeti International College.",
+      "I look forward to welcoming you to the Yeti Int'l College.",
     ],
   },
 
@@ -99,8 +99,8 @@ const dataDB: Record<string, any> = {
     quote:
       "Empowering Education Through Technology, Innovation, and Excellence.",
     content: [
-      "Dear Students, It is my pleasure to welcome all the students at Yeti International College. As the IT Manager of this prestigious college, I am proud to be part of a learning environment that values innovation, digital excellence and academic growth. In today’s rapidly evolving digital era, technology plays a crucial role in shaping education and future career pathways",
-      "At Yeti International College, we are committed to providing reliable high-speed Wi-Fi facilities, a modern E - Library system, well-equipped computer laboratories, secure digital platforms, and a strong network infrastructure to support teaching, learning and research activities. Our focus is to ensure that students and faculty members can access academic resources seamlessly and efficiently in a secure digital environment.",
+      "Dear Students, It is my pleasure to welcome all the students at Yeti Int'l College. As the IT Manager of this prestigious college, I am proud to be part of a learning environment that values innovation, digital excellence and academic growth. In today’s rapidly evolving digital era, technology plays a crucial role in shaping education and future career pathways",
+      "At Yeti Int'l College, we are committed to providing reliable high-speed Wi-Fi facilities, a modern E - Library system, well-equipped computer laboratories, secure digital platforms, and a strong network infrastructure to support teaching, learning and research activities. Our focus is to ensure that students and faculty members can access academic resources seamlessly and efficiently in a secure digital environment.",
       "We encourage our students to embrace digital literacy, innovation and responsible use of technology as essential life skills. Together with the college leadership and faculty, we are building a future-ready educational ecosystem where technology empowers learning, supports innovation and enables success.",
       "Wishing you all a productive, inspiring and successful academic journey."
     ],
@@ -187,7 +187,7 @@ export default function MessageDetailPage() {
                           transition={{ delay: 0.3 }}
                           className="font-medium text-primary-foreground/90 tracking-wider uppercase text-xs mb-2 flex items-center gap-2"
                         >
-                          <span className="w-8 h-[1px] bg-white/50"></span>
+                          <span className="w-8 h-[1px]  bg-white/50"></span>
                           {data.role}
                         </motion.p>
                         <motion.h1
@@ -288,7 +288,7 @@ export default function MessageDetailPage() {
                       {data.name}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {data.role}, Yeti International College
+                      <span className="font-semibold">{data.role}</span>, Yeti Int' College
                     </p>
                   </div>
                 </motion.div>

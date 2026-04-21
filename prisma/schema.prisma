@@ -201,3 +201,19 @@ model Contact {
   message   String
   createdAt DateTime @default(now())
 }
+model CharacterCertificate {
+  id              String   @id @default(cuid())
+  fullName        String
+  parentName      String
+  municipality    String
+  wardNo          Int
+  district        String
+  faculty         String
+  program         String
+  cgpa            Float
+  outOfCgpa       Float
+  dobBS           String   // e.g., "2057/07/20"
+  dobAD           DateTime // Automatically calculated
+  photoUrl        String   // Link to stored image (S3/Cloudinary)
+  createdAt       DateTime @default(now()) // Serves as the hidden Issue Date
+}

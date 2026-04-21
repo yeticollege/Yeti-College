@@ -36,7 +36,7 @@ export default function MissionVisionPage() {
         className="min-h-screen bg-[#F4F4F5] text-[#18181B] font-sans selection:bg-black selection:text-white overflow-hidden"
       >
         {/* --- HERO SECTION --- */}
-        <header className="relative pt-32 pb-20 px-6 md:px-12 max-w-[1800px] mx-auto border-b border-black/5">
+        <header className="relative pt-22 pb-10 px-6 md:px-12 max-w-[1800px] mx-auto border-b border-black/5">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
@@ -46,7 +46,7 @@ export default function MissionVisionPage() {
               <p className="font-mono text-xs uppercase tracking-[0.2em] mb-6 text-black/60">
                 Yeti International College
               </p>
-              <h1 className="text-[13vw] lg:text-[10rem] leading-[0.8] font-bold tracking-tighter uppercase text-black">
+              <h1 className="text-[13vw] lg:text-[5rem] leading-[0.8] font-bold tracking-tighter uppercase text-black">
                 Why <br />
                 We <span className="text-black/20">Exist.</span>
               </h1>
@@ -90,7 +90,7 @@ export default function MissionVisionPage() {
                 transition={{ duration: 0.8 }}
               >
                 {/* The "Manifesto" Layout */}
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-12 text-black">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.1] tracking-tight mb-12 text-black">
                   To provide{" "}
                   <span className="bg-black text-white px-4 py-1 rounded-[1rem] decoration-clone box-decoration-clone">
                     transformative education

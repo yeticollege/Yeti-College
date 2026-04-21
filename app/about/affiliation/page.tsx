@@ -86,7 +86,7 @@ export default function AffiliationPage() {
         {/* --- HERO SECTION --- */}
         <section className="pt-32 pb-20 px-6 max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-9">
+            <div className="lg:col-span-7">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -99,14 +99,14 @@ export default function AffiliationPage() {
                   </span>
                   <div className="h-px w-12 bg-primary" />
                 </div>
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.9]">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-8 leading-[0.9]">
                   Partnering for  <br />
                   <span className="text-muted-foreground/40">Academic Alliance</span>
                 </h1>
               </motion.div>
             </div>
-            <div className="lg:col-span-3 pb-4">
-              <p className="text-lg font-medium text-muted-foreground text-center leading-relaxed">
+            <div className="lg:col-span-5 pb-4">
+              <p className="text-lg font-medium text-muted-foreground text-start leading-relaxed">
                 We build strong international academic partnerships that enhance educational quality, expand global learning opportunities and prepare students for success in a globally connected world.
               </p>
             </div>
@@ -114,12 +114,12 @@ export default function AffiliationPage() {
         </section>
 
         {/* --- LOGO STRIP SECTION --- */}
-        <section className="px-6 pb-24 max-w-[1600px] mx-auto">
+        <section className="px-6 max-w-[1600px] mx-auto">
           <div className="border-y border-border/50 py-12">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-20 opacity-80  transition-all duration-500">
               {/* NOTE: Add your images to public/logos/ folder */}
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold">Ownership & Management</span>
+                <span className="text-2xl font-bold">Ownership & Management</span>
                 {/* <div className="w-64 h-64 relative"> */}
                   
                   {/* Placeholder for Kent Logo */}
@@ -147,7 +147,7 @@ export default function AffiliationPage() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-4xl font-bold">Sripatum University</span>
+                <span className="text-2xl font-bold">Sripatum University</span>
               </div>
 
               <div className="hidden md:block w-px h-12 bg-border" />
@@ -162,7 +162,7 @@ export default function AffiliationPage() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-4xl font-bold">Technology & Management</span>
+                <span className="text-2xl font-bold">Technology & Management Pvt. Ltd.</span>
               </div>
             </div>
           </div>

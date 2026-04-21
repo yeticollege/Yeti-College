@@ -54,8 +54,8 @@ const aboutLinks = [
     desc: "Our history & legacy",
   },
   {
-    href: "/about/message/ceo",
-    label: "Message From CEO",
+    href: "/about/message/founder",
+    label: "Message From Founder & Executive Chairman",
     icon: User,
     desc: "Leadership insights",
   },
@@ -153,8 +153,8 @@ const programLinks = [
   //   icon: ComputerIcon,
   // },
   {
-    href: "/programs/bscictc",
-    label: "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSDI",
+    href: "/programs/bsccssdi",
+    label: "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSSDI",
     code: "B.Sc. CSDI",
     icon: Cpu,
   },

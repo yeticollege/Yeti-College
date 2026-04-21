@@ -1,6 +1,6 @@
 export const coursesDB: Record<string, any> = {
   mba: {
-    title: "Master in Business Administration ~ MBA",
+    title: "Master in Business Administration (MBA)",
     code: "MBA",
     feeStructureImage: "/courses/mba_fee_structure.png",
     category: "Postgraduate",
@@ -11,22 +11,25 @@ export const coursesDB: Record<string, any> = {
     image:
       "/courses/mba.svg", // Local image path for MBA course
     description:
-      "A professional master's degree designed to develop leadership, analytical, and strategic skills required in modern business organizations.",
+      "A professional master’s degree that builds leadership, analytical, and strategic skills needed for success in modern business organizations.",
     stats: {
       placementRate: "95%",
       startingSalary: "NPR 70k+",
       partners: "Corporate & Banking Sector",
     },
     overview: [
-      "Focuses on managerial leadership and strategic decision-making.",
-      "Includes case studies, field research, and live corporate projects.",
-      "Develops strong communication and managerial competency.",
+      "Develop MBA-level quantitative and qualitative analysis skills to solve real-world business problems using proven models and strategies.",
+      "Strengthen expertise in business research and technology integration to create impactful presentations and professional reports.",
+      "Apply core MBA concepts like finance, marketing, operations, and strategy for effective business decision-making and analysis.",
+      "Prepare to become industry-ready leaders, management professionals, and entrepreneurs with the vision to lead organizations and build successful long-term ventures.",
     ],
     highlights: [
-      "Industry Mentorship",
-      "Research-based Learning",
-      "Corporate Case Study Approach",
-      "7 Specialized Career Tracks",
+      "Industry mentorship from experienced business leaders",
+      "Research-based and practical learning approach",
+      "Real-world corporate case study analysis",
+      "7 specialized career tracks for focused expertise",
+      "Strong focus on leadership and strategic management skills",
+      "Career-oriented curriculum aligned with industry needs"
     ],
     curriculum: [
       {
@@ -180,6 +183,9 @@ export const coursesDB: Record<string, any> = {
         ],
       },
     ],
+    future_opportunities: [
+    "An MBA degree unlocks global career opportunities in top multinational companies and fast-growing industries. Graduates can pursue leadership roles in management, consulting, finance, marketing, operations, and entrepreneurship."
+    ],
     careers: [
       "Business Manager",
       "Project Leader",
@@ -200,22 +206,25 @@ export const coursesDB: Record<string, any> = {
     image:
       "/courses/bhm.svg", // Local image path for BHM course
     description:
-      "Designed for students aiming for a career in the hotel, hospitality, and service industry with a strong focus on operational excellence and service leadership.",
+      "The Bachelor of Hotel Management (BHM) is a hospitality program focused on hotel operations, MICE, and industry training, preparing students for global careers in the hotel and tourism industry.",
     stats: {
       placementRate: "90%",
       startingSalary: "NPR 30k+",
       partners: "International Hotel Groups",
     },
     overview: [
-      "Builds a strong foundation in hospitality and culinary operations.",
-      "Students learn real–world management through internships and practical labs.",
-      "Focus on customer service, hotel systems, and global operations.",
-    ],
+      "Gain strong knowledge in business, economics, and hospitality management to develop well-rounded managers and executives ready for the global hospitality industry.",
+      "Develop the ability to integrate and apply modern technology in hotel and hospitality operations for improved service quality and efficiency.",
+      "Prepare industry-ready graduates for careers in hotel management, tourism, and hospitality sectors across both private and public organizations.",
+      "Contribute to national development by producing skilled professionals who meet the growing demands of the Bachelor of Hotel Management (BHM) and hospitality industry worldwide.",
+          ],
     highlights: [
-      "Fully Equipped Training Kitchens",
-      "Restaurant & Bar Operations Training",
-      "International Internship Opportunities",
-      "Personality Development & Language Training",
+      "Hotel Operations (BHM Career Path)",
+      "Food & Beverage Management",
+      "International Hospitality Opportunities",
+      "Event Planning & Management",
+      "Cruise Line Hospitality Careers",
+      "Sales & Marketing in Hospitality",
     ],
     curriculum: [
       {
@@ -225,25 +234,25 @@ export const coursesDB: Record<string, any> = {
           {
             semester: "Semester I",
             subjects: [
-              "General Psychology",
-              "Future Skills",
               "Intermediate English",
-              "Intro to IT and Applications",
+              "Use of Computers in Business",
               "Tools For the Digital Age",
-              "Food & Beverage Service & Operations",
-              "Kitchen Operations (Basic)",
+              "Personality for Service Work",
+              "Food and Beverage Service and Operation",
+              "Introduction to Kitchen Management & International Food",
+              "Principles of Management(Business  & Risk Management in Hotel Business)",
             ],
           },
           {
             semester: "Semester II",
             subjects: [
               "Advanced English",
-              "Principle of Marketing",
               "Introduction to Economics",
-              "Personality & Identity Development",
-              "Bar and Beverage Operations",
-              "Kitchen Operations (Intermediate)",
-              "Front Office Management",
+              "Future Skills",
+              "Nepalese/Thai Cultural Heritage",
+              "Front Office Operation and Room Service",
+              "Bar and Beverage Operations and Management",
+              "Work Integrated Learning 1- Food Production",
             ],
           },
         ],
@@ -255,25 +264,25 @@ export const coursesDB: Record<string, any> = {
           {
             semester: "Semester III",
             subjects: [
-              "English Presentation Skills",
-              "Consumer Behavior",
-              "Introduction to Statistics",
-              "Principles of Management",
-              "Hotel Business Operations",
-              "Coffee Shop & Bakery Operations",
-              "Kitchen Operations (Advanced)",
+              "General Psychology",
+              "English for the Hospitality Industry",
+              "Modern Hospitality Industry and Tourist Behavior",
+              "Open up a Career Path in Hospitality Industry",
+              "Coffee Shop & Bakery Business Operations & Management",
+              "Work Integrated Learning 2- Food Production",
+              "Housekeeping Operation and Personalized Service",
             ],
           },
           {
             semester: "Semester IV",
             subjects: [
-              "Organizational Behavior",
-              "Accounting & Financial Mgmt",
-              "F&B Cost Control",
-              "Tourism and Hospitality Industry",
-              "MICE Management for Hotel",
-              "Housekeeping Operations",
-              "Banquet and Catering Management",
+              "Nutrition and Healthy Food",
+              "Entrepreneurship in Hospitality Industry",
+              "Marketing and Innovation Strategies for  Hotel and MICE",
+              "English for Hotel and Tourism Business",
+              "Meeting, Exhibition and Incentive Tourism Management",
+              "Restaurant and Banquet Management",
+              "Health Tourism Management",
             ],
           },
         ],
@@ -285,23 +294,22 @@ export const coursesDB: Record<string, any> = {
           {
             semester: "Semester V",
             subjects: [
-              "Intro to Human Resource Mgmt",
-              "Service Psychology",
-              "Digital Marketing for Hospitality",
-              "Florist & Room Operations",
-              "The Basic of Baked Pastry",
-              "Tourist Behavior & Cross-cultural Comm",
+              "Technology for Service",
+              "Customer Experience Management for the Hospitality Industry",
+              "Sustainable Management in Hotel and Tourism Business",
+              "Special Issues in Tourism and Hotel Industry",
+              "Spa and Wellness Resort Management",
+              "Business Planning and Menu Design",
             ],
           },
           {
             semester: "Semester VI",
             subjects: [
-              "Independent Learning",
-              "Research Methods for Hospitality",
-              "Special Project on Hospitality",
-              "Festivals & Special Event Mgmt",
-              "Hotel Planning and Development",
-              "Art of Engraving on Veg/Fruit",
+              "Introduction to Statistics",
+              "Tourist Guides and Local Storytellers",
+              "Independent Study",
+              "Tourism Experience Design (Nepalese Culture and Society)",
+              "Festival and Special Events Management",
             ],
           },
         ],
@@ -311,24 +319,26 @@ export const coursesDB: Record<string, any> = {
         focus: "Industrial Exposure",
         semesters: [
           {
-            semester: "Semester VII",
+            semester: "Final Year",
             subjects: [
-              "Seminar on Hotel and MICE",
-              "Hotel & MICE Pre-Cooperative Edu",
+              "Pre-Cooperative and Work-Integrated Education for Hotel and Tourism Business)",
+              "Work Integrated Learning (Internship)",
             ],
           },
-          {
-            semester: "Semester VIII",
-            subjects: ["Undergraduate Project - Internship"],
-          },
+          
         ],
       },
     ],
+    future_opportunities: [
+    "The Bachelor of Hotel Management (BHM) program focuses on practical hospitality training with expertise in hotel and MICE management. Students gain hands-on experience through the Hotel Information System (HIS) Lab and industry-oriented learning to build essential skills for modern hoteliers. With guidance from industry experts and academic professionals, the program develops problem-solving, analytical, and service skills, preparing students for real-world hospitality careers and global opportunities."
+    ],
     careers: [
-      "Hotel Manager",
-      "Food & Beverage Manager",
-      "Guest Relations Officer",
-      "Hospitality Consultant",
+      "Bachelor of Hotel Management (BHM) Program",
+      "Hotel & MICE Management Training",
+      "Hotel Information System (HIS) Lab",
+      "Industry Expert-Led Learning",
+      "Real-World Hospitality Experience",
+      "Global Hospitality Career Opportunities",
     ],
   },
 
@@ -344,22 +354,32 @@ export const coursesDB: Record<string, any> = {
     image:
       "/courses/babm.svg", // Local image path for BABM course
     description:
-      "A unique degree preparing students for careers in global airline business, airport management, and aviation service leadership.",
+      "The course focuses on airline operations, aviation business management, marketing, customer service, logistics, and aviation regulations, while also developing analytical and decision-making skills.",
     stats: {
       placementRate: "93%",
       startingSalary: "NPR 40k+",
       partners: "Airlines & Ground Handling Companies",
     },
     overview: [
-      "Focus on aviation business, customer service, cabin operations, and airline strategy.",
-      "Offers real-world learning through airport visits, simulations, and internships.",
-      "Blends business skills with airline–specific domain knowledge.",
+      "Bachelor of Airline Business Management (BABM) at Yeti International College – Nepal’s first aviation business program",
+      "Develop strong understanding of the global airline and aviation industry",
+      "Gain expertise in airline business management, operations, and logistics",
+      "Learn airline marketing and customer service management skills",
+      "Build knowledge in aviation regulations, policies, and industry standards",
+      "Strengthen business analysis and decision-making skills in aviation sector",
+      "Understand global aviation trends, challenges, and opportunities"
+    ],
+    point: [
+    'The First BABM College in Nepal'
     ],
     highlights: [
-      "Aviation Business Labs",
-      "Airline Management Courses",
-      "Cabin Crew Soft Skills Training",
-      "Airport Operations Field Visit",
+      "Airline Industry & Aviation Business Management",
+      "Airline Operations, Airport Management & Logistics",
+      "Aviation Marketing & Customer Service",
+      "Aviation Regulations & Global Standards",
+      "Business Analysis & Aviation Decision-Making",
+      "Global Aviation Trends & Industry Challenges",
+      "Airline Operations, Airport Management & Aviation Leadership",
     ],
     curriculum: [
       {
@@ -369,12 +389,13 @@ export const coursesDB: Record<string, any> = {
           {
             semester: "Semester I",
             subjects: [
-              "General Psychology",
-              "Future Skills",
               "Intermediate English",
-              "Intro to IT & Applications",
+              "Use of Computers in Business",
               "Tools For the Digital Age",
-              "Knowledge of Aviation Industry",
+              "Personality and Identity Development",
+              "Principle of Management",
+              "Knowledge forthe Aviation Industry",
+              "Aviation Terminology-I"
             ],
           },
           {
@@ -382,10 +403,11 @@ export const coursesDB: Record<string, any> = {
             subjects: [
               "Advanced English",
               "Introduction to Economics",
-              "Principle of Marketing",
-              "Personality & Identity Development",
-              "Aviation Industry and Environment",
-              "Aviation Terminology I",
+              "Future Skills",
+              "Ground Passenger  Service",
+              "Reservation and Ticketing",
+              "Aviation Terminology-II",
+              "Work Integrated Learning 1(Practical-Reservation and Ticketing)",
             ],
           },
         ],
@@ -397,25 +419,25 @@ export const coursesDB: Record<string, any> = {
           {
             semester: "Semester III",
             subjects: [
-              "English Reading & Writing Skills",
-              "Introduction to Statistics",
+              "General Psychology",
+              "CareerPath in the Aviation Industry",
               "Consumer Behavior",
-              "Principles of Management",
-              "Aviation Terminology II",
-              "Airport Services",
-              "Passenger Ground Service",
+              "Service Psychology and Cross-cultural Communication",
+              "Aviation Terminology-III",
+              "Fare and Tickets",
+              "Work Integrated Learning 2(Practical-Fare and Ticketing)",
             ],
           },
           {
             semester: "Semester IV",
             subjects: [
-              "Organizational Behavior",
-              "Accounting & Financial Mgmt",
-              "Aviation Terminology III",
-              "Low-Cost Airline Management",
-              "Airline Ramp Service",
-              "Risk Management of Aviation",
-              "Air Cargo Transport",
+              "Nutrition and Airline Catering",
+              "Principle of Marketing",
+              "Human Resource Management",
+              "Airport Operation Management",
+              "Aviation Laws",
+              "Aviation Safety and Security",
+              "Budget Airline Management",
             ],
           },
         ],
@@ -427,23 +449,22 @@ export const coursesDB: Record<string, any> = {
           {
             semester: "Semester V",
             subjects: [
-              "Intro to Human Resource Mgmt",
-              "Aviation Laws",
+              "Customer Relationship Management in Airline Business",
+              "MarketingStrategy for the Hospitality Industry",
+              "Airport Ramp Service",
+              "Air Traffic Service and Scheduling Management",
               "Crew Resource Management",
-              "Nutrition and Airline Catering",
-              "Reservation and Ticketing",
-              "Fare and Tickets",
+              "In-flight Service",
             ],
           },
           {
             semester: "Semester VI",
             subjects: [
-              "Independent Learning",
-              "Research Methods for Hospitality",
-              "Special Project in Aviation",
-              "Career Preparation for Aviation",
-              "In-flight Service",
-              "Aviation Safety and Security",
+              "Introduction to Statistics",
+              "Organizational Behavior",
+              "Strategic Management for the Hospitality Industry",
+              "Basic Load Control",
+              "Career Preparation for Aviation Industry",
             ],
           },
         ],
@@ -453,25 +474,27 @@ export const coursesDB: Record<string, any> = {
         focus: "Professional Practice",
         semesters: [
           {
-            semester: "Semester VII",
+            semester: "Final Year",
             subjects: [
-              "Seminar on Airlines & Aviation",
-              "International Pre-Cooperative Edu",
+              "Pre-Cooperative and Work-Integrated Education for Aviation Industry",
+              "Work Integrated Learning (Internship)",
             ],
           },
-          {
-            semester: "Semester VIII",
-            subjects: ["Undergraduate Project - Internship"],
-          },
+          
         ],
       },
     ],
-    careers: [
-      "Airline Service Agent",
-      "Cabin Crew",
-      "Airport Operations Officer",
-      "Aviation Business Manager",
+    future_opportunities: [
+    "Graduates of the Bachelor of Airline Business Management (BABM) at Yeti International College can build successful careers in the global aviation and airline industry. This program opens opportunities in airline operations, airport management, aviation marketing, customer service, and aviation logistics. Students can pursue roles in both domestic and international airlines, airports, and aviation companies, with strong demand for skilled professionals in the fast-growing aviation sector worldwide."
     ],
+   careers: [
+  "Airline Operations Officer",
+  "Airport Ground Staff Executive",
+  "Cabin Crew (Air Hostess / Flight Steward)",
+  "Airline Customer Service Agent",
+  "Aviation Business Manager",
+  "Airport Operations Manager",
+]
   },
 
   bamm: {
@@ -486,136 +509,143 @@ export const coursesDB: Record<string, any> = {
     image:
       "/courses/bamm.svg", // Local image path for BAMM course
     description:
-      "A specialized program focused on the Meetings, Incentives, Conferences, and Exhibitions industry with real–world event management exposure.",
-    stats: {
-      placementRate: "88%",
+      "The Bachelor of MICE Management (BMM) at Yeti International College is a specialized program focused on Meetings, Incentives, Conferences, and Exhibitions (MICE) industry, offering practical training in event planning, hospitality management, and real-world industry exposure for global career opportunities.",
+     stats: {
+      placementRate: "91%",
       startingSalary: "NPR 30k+",
       partners: "Event Companies & Tourism Boards",
     },
-    overview: [
-      "Equips students with planning, execution, and logistics skills.",
-      "Includes internships with event organizers and tourism organizations.",
-      "Opportunity to participate in real–life conference and trade fair projects.",
+   overview: [
+      "Bachelor of MICE Management (BMM) at Yeti International College – Focused on global hospitality, tourism, and MICE industry careers",
+      "Develop strong knowledge in business, economics, hospitality, and MICE management for global competitiveness",
+      "Build expertise in Meetings, Incentives, Conferences, and Exhibitions (MICE) industry operations",
+      "Gain skills in hospitality technology integration and modern event management systems",
+      "Prepare industry-ready graduates for tourism, hospitality, and MICE sectors (public and private industries)",
+      "Develop well-rounded managers and executives for global hospitality and MICE leadership roles"
     ],
+
     highlights: [
-      "Industry-led Training",
-      "Live Event Participation",
-      "Digital Event Management Tools",
-      "Client Presentation Practice",
+      "Industry-led Hospitality & MICE Training",
+      "Live Event Planning & Management Experience",
+      "Digital Event Management & Hospitality Tools",
+      "Client Presentation & Communication Skills",
+      "Real-World MICE Industry Exposure",
+      "Expert Guidance from Industry Professionals"
     ],
-    curriculum: [
+  curriculum: [
       {
         year: "Year 01",
-        focus: "Event Fundamentals",
+        focus: "Hospitality Foundations",
         semesters: [
           {
             semester: "Semester I",
             subjects: [
-              "General Psychology",
-              "Future Skills",
               "Intermediate English",
-              "Intro to IT and Applications",
+              "Use of Computers in Business",
               "Tools For the Digital Age",
-              "Introduction to Event Management",
-              "Venue & Facility Management",
+              "Personality for Service Work",
+              "Food and Beverage Service and Operation",
+              "Introduction to Kitchen Management & International Food",
+              "Principles of Management(Business  & Risk Management in Hotel Business)",
             ],
           },
           {
             semester: "Semester II",
             subjects: [
               "Advanced English",
-              "Principle of Marketing",
               "Introduction to Economics",
-              "Personality & Identity Development",
-              "Customer Relationship Management",
-              "Planning & Financial Mgmt for MICE",
-              "Event Leadership & Communication",
+              "Future Skills",
+              "Nepalese/Thai Cultural Heritage",
+              "Front Office Operation and Room Service",
+              "Bar and Beverage Operations and Management",
+              "Work Integrated Learning 1- Food Production",
             ],
           },
         ],
       },
       {
         year: "Year 02",
-        focus: "Planning & Operations",
+        focus: "Advanced Operations",
         semesters: [
           {
             semester: "Semester III",
             subjects: [
-              "English Presentation Skills",
-              "Consumer Behavior",
-              "Introduction to Statistics",
-              "Principles of Management",
-              "Conference and MICE Planning",
-              "Sustainability & Risk Mgmt",
-              "New Business Development",
+              "General Psychology",
+              "English for the Hospitality Industry",
+              "Modern Hospitality Industry and Tourist Behavior",
+              "Open up a Career Path in Hospitality Industry",
+              "Coffee Shop & Bakery Business Operations & Management",
+              "Work Integrated Learning 2- Food Production",
+              "Housekeeping Operation and Personalized Service",
             ],
           },
           {
             semester: "Semester IV",
             subjects: [
-              "Organizational Behavior",
-              "Accounting & Financial Mgmt",
-              "MICE Management for Hotel",
-              "Sustainable Events Management",
-              "Foundation of Hospitality Mgmt",
-              "Food and Beverage Management",
-              "Advanced Meeting Planning",
+              "Nutrition and Healthy Food",
+              "Entrepreneurship in Hospitality Industry",
+              "Marketing and Innovation Strategies for  Hotel and MICE",
+              "English for Hotel and Tourism Business",
+              "Meeting, Exhibition and Incentive Tourism Management",
+              "Restaurant and Banquet Management",
+              "Health Tourism Management",
             ],
           },
         ],
       },
       {
         year: "Year 03",
-        focus: "Global Event Strategy",
+        focus: "Management & Strategy",
         semesters: [
           {
             semester: "Semester V",
             subjects: [
-              "Intro to Human Resource Mgmt",
-              "Service Psychology",
-              "Digital Marketing for Events",
-              "Event Laws and Licenses",
-              "Managing International Events",
-              "Event Sponsorship & Fundraising",
+              "Technology for Service",
+              "Customer Experience Management for the Hospitality Industry",
+              "Sustainable Management in Hotel and Tourism Business",
+              "Special Issues in Tourism and Hotel Industry",
+              "Spa and Wellness Resort Management",
+              "Business Planning and Menu Design",
             ],
           },
           {
             semester: "Semester VI",
             subjects: [
-              "Independent Learning",
-              "Research Methods for Event Ind",
-              "Special Project on Event Industry",
-              "Festivals & Special Event Mgmt",
-              "Business Ethics & CSR",
-              "Cross Cultural Management",
+              "Introduction to Statistics",
+              "Tourist Guides and Local Storytellers",
+              "Independent Study",
+              "Tourism Experience Design (Nepalese Culture and Society)",
+              "Festival and Special Events Management",
             ],
           },
         ],
       },
       {
         year: "Year 04",
-        focus: "Internship & Thesis",
+        focus: "Industrial Exposure",
         semesters: [
           {
-            semester: "Semester VII",
+            semester: "Final Year",
             subjects: [
-              "Seminar on MICE (Event) Industry",
-              "MICE Pre-Cooperative Education",
+              "Pre-Cooperative and Work-Integrated Education for Hotel and Tourism Business)",
+              "Work Integrated Learning (Internship)",
             ],
           },
-          {
-            semester: "Semester VIII",
-            subjects: ["Undergraduate Project - Internship"],
-          },
+          
         ],
       },
     ],
-    careers: [
-      "Event Coordinator",
-      "Conference Planner",
-      "Corporate Event Manager",
-      "Exhibition Organizer",
-    ],
+    future_opportunities: [
+  "The Bachelor of MICE Management (BMM) at Yeti International College is a career-focused program designed for the global hospitality, tourism, and MICE industry. It provides practical training in Meetings, Incentives, Conferences, and Exhibitions (MICE) management, event planning, and hospitality operations. "
+],
+
+careers: [
+  "MICE Event Manager (Meetings, Incentives, Conferences & Exhibitions)",
+  "Event Planning & Coordination Specialist",
+  "Conference & Exhibition Manager",
+  "Hospitality & Tourism Manager",
+  "Corporate Event Executive",
+],
   },
 
   bttm: {
@@ -754,6 +784,9 @@ export const coursesDB: Record<string, any> = {
         ],
       },
     ],
+    future_opportunities: [
+  "The Bachelor of MICE Management (BMM) at Yeti International College is a career-focused program designed for the global hospitality, tourism, and MICE industry. It provides practical training in Meetings, Incentives, Conferences, and Exhibitions (MICE) management, event planning, and hospitality operations. "
+],
     careers: [
       "Tour Manager",
       "Airline Operations",
@@ -937,10 +970,10 @@ export const coursesDB: Record<string, any> = {
   //   ],
   // },
 
-  bscictc: {
+  bsccssdi: {
     title:
-      "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSDI",
-    code: "B.Sc. SDI",
+      "B.Sc. (Computer Science and Software Development Innovation) ~ B.Sc. CSSDI",
+    code: "B.Sc. CSSDI",
     feeStructureImage: "/courses/bsccsdi_fee_structure.pdf",
     category: "Undergraduate",
     duration: "4 Years",
@@ -950,26 +983,26 @@ export const coursesDB: Record<string, any> = {
     image:
       "/courses/bsccsdi.svg", // Local image path for BSc ICTC course
     description:
-      "The emphasis of this degree is on the limitless analysis and design of IT systems. Deep knowledge with professionals, advanced courses in Data Security, PDPA, Network Systems, and Cloud Architecture. Teaching system analysis and computer network management, as well as the IT Professional Standards Certificate (ITPE) supports the digital future world by supporting technologies like Blockchain and Digital Twin.",
-    stats: {
+      "The Bachelor of Science in Information and Communication Technology (BSc ICT) at Yeti International College is a career-focused IT degree designed to build expertise in software development, system analysis, networking, cloud computing, and data security. The program combines theoretical knowledge with hands-on practical training, preparing students for high-demand careers in the global information technology industry.",
+ stats: {
       placementRate: "96%",
       startingSalary: "NPR 45k+",
       partners: "IT Companies & Dev Agencies",
     },
     overview: [
-      "Focus on programming, system design, data management, and application development.",
-      "Includes hands-on projects, lab sessions, and industry-level software development training.",
-      "Students gain practical experience through internships and project delivery.",
-      "To develop skills in ethical hacking and penetration testing",
-      "To develop a solid foundation in computer science",
-    ],
-    highlights: [
-      "Coding–focused Degree",
-      "Project Development Every Semester",
-      "Strong Networking & Security Foundations",
-      "Internship Guarantee",
-      "skills in ethical hacking and penetration testing",
-    ],
+  "Comprehensive BSc CSDI program covering programming, system design, database management, and software development",
+  "Hands-on training with real-world IT projects, internships, and industry-based learning",
+  "Strong foundation in computer science, networking, cybersecurity, and cloud technologies",
+  "Develop skills in ethical hacking, penetration testing, and information security",
+  "Focus on problem-solving, analytical thinking, and modern IT tools for global careers"
+],
+   highlights: [
+  "Industry-Oriented IT Degree Program",
+  "Practical Labs & Real-World Project Development",
+  "Cybersecurity & Ethical Hacking Training",
+  "Internship & Global Career Opportunities",
+  "Advanced Networking, Cloud & Data Security Skills"
+],
     // Curriculum updated to match the image provided
     curriculum: [
       {
@@ -1238,13 +1271,17 @@ export const coursesDB: Record<string, any> = {
     ],
     // Curriculum updated to match the image provided
 
-    careers: [
-      "Ethical Hacker",
-      "Penetration Tester",
-      "Software Developer",
-      "Database Administrator",
-      "Network Engineer",
-      "Systems Analyst",
-    ],
+    future_opportunities: [
+  "The BSc ICT program at Yeti International College prepares graduates for high-demand careers in the global IT industry. Students gain expertise in software development, networking, cybersecurity, data analysis, and cloud computing, opening opportunities in multinational companies, tech startups, and government sectors with strong career growth and international job prospects."
+],
+
+careers: [
+  "Software Developer / Full Stack Developer",
+  "Ethical Hacker & Cybersecurity Specialist",
+  "Network Engineer & System Administrator",
+  "Database Administrator (DBA)",
+  "Information System Analyst & IT Consultant",
+  "Data Analyst / IT Project Manager"
+],
   },
 };

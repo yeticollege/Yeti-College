@@ -152,7 +152,7 @@ export default function EventsClient({ events }: EventsClientProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showPastEvents, setShowPastEvents] = useState(false);
+  const [showPastEvents, setShowPastEvents] = useState(true);
 
   useEffect(() => {
     if (selectedEvent) {
@@ -254,12 +254,12 @@ export default function EventsClient({ events }: EventsClientProps) {
                       <History className="w-5 h-5" />
                     </div>
                     <span className="text-sm font-bold text-zinc-700">
-                      Show passed events
+                      Hide passed events
                     </span>
                   </div>
                   <div
                     className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 ${
-                      showPastEvents ? "bg-zinc-900" : "bg-zinc-200"
+                      showPastEvents ? "bg-blue-600" : "bg-zinc-200"
                     }`}
                   >
                     <div
