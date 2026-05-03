@@ -1,5 +1,6 @@
 import Header from "@/components/header";
 import Hero from "@/components/hero";
+import FeaturesSection from "@/components/featuresSection";
 import Programs from "@/components/programs";
 import Features from "@/components/features";
 import Testimonials from "@/components/testimonials";
@@ -10,17 +11,20 @@ import Footer from "@/components/footer";
 import FaqAndInquiry from "@/components/faqandinquiry";
 import NoticeSnippet from "@/components/notices";
 import UpdateHero from "@/components/updateHero";
+import EducationHero from "@/components/educationHero";
 // import Header from "@/components/althero";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Header></Header>
+      {/* <Hero /> */}
       <Hero />
       <section id="programs">
         <Programs />
       </section>
       <Features />
+      {/* <FeaturesSection /> */}
       <Testimonials />
       {/* <NoticeSnippet /> */}
       <Events />

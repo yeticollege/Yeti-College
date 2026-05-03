@@ -130,7 +130,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section: Socials & Copyright */}
-        <div className="border-t border-zinc-800 pt-8 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+        <div className="border-t me-18 border-zinc-800 pt-8 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-zinc-600">
             <p>© {new Date().getFullYear()} Yeti Int'l College.</p>
             <div className="hidden md:block w-1 h-1 bg-zinc-800 rounded-full" />
@@ -142,6 +142,16 @@ export default function Footer() {
             </Link> */}
             <Link href="/about/team/dev" className="hover:text-zinc-400">
               Devlopers
+            </Link>
+          </div>
+
+          <div>
+            <Link className="text-gray-500 text-sm" href={'/term-and-conditions'}>
+              Privacy Policy
+            </Link>
+            <span className="text-gray-500 px-3 text-sm">/</span>
+            <Link className="text-gray-500 text-sm" href={'/term-and-conditions'}>
+              Terms & Conditions
             </Link>
           </div>
 

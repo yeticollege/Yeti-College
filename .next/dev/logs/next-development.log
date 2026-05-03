@@ -1,9 +1,15 @@
-[00:00:27.452] Server  LOG     ✓ Ready in 20.7s
-[00:00:35.837] Server  LOG     ○ Compiling / ...
-[00:01:04.884] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:01:06.789] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[00:00:24.413] Server  LOG     ✓ Ready in 20.1s
+[00:00:27.435] Server  LOG     ○ Compiling / ...
+[00:00:59.178] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:01:01.717] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:01.717] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:01.717] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777790821781} /_vercel/insights/view
+[00:01:04.748] Browser LOG     Service Worker registered: http://localhost:3000/
+[00:01:05.899] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:57.219] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:01:58.702] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:01:07.109] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:01:58.932] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -40,80 +46,2816 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:01:07.109] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:01:07.390] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:07.390] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:07.390] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776737325862} /_vercel/insights/view
-[00:01:08.208] Browser LOG     Service Worker registered: http://localhost:3000/
-[00:01:10.060] Server  LOG     ○ Compiling /api/popup ...
-[00:01:37.998] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/team color: rgb(120, 120, 120) color: inherit {"dp":"/about/team","o":"http://localhost:3000/about/team","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776737356461} /_vercel/insights/view
-[00:03:13.374] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/ceo color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/ceo","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776737451837} /_vercel/insights/view
-[00:03:25.120] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/team color: rgb(120, 120, 120) color: inherit {"dp":"/about/team","o":"http://localhost:3000/about/team","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776737463587} /_vercel/insights/view
-[00:03:46.801] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:03:46.965] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:03:46.965] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:03:46.965] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/about/team","route":"/about/team"}
-[00:03:46.965] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/team color: rgb(120, 120, 120) color: inherit {"dp":"/about/team","o":"http://localhost:3000/about/team","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776737485437} /_vercel/insights/view
-[00:03:47.112] Browser WARN    Image with src "/message/ceo.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:04:27.623] Server  LOG     ✓ Compiled in 1415ms
-[00:04:38.941] Server  LOG     ✓ Compiled in 152ms
-[00:04:46.625] Server  LOG     ✓ Compiled in 116ms
-[00:05:09.200] Server  LOG     ✓ Compiled in 169ms
-[00:05:38.057] Server  LOG     ✓ Compiled in 165ms
-[00:05:53.177] Server  LOG     ✓ Compiled in 149ms
-[00:06:26.493] Server  LOG     ✓ Compiled in 138ms
-[00:07:22.218] Server  LOG     ✓ Compiled in 120ms
-[00:08:16.464] Server  LOG     ✓ Compiled in 143ms
-[00:08:59.056] Server  LOG     ✓ Compiled in 138ms
-[00:09:55.369] Server  LOG     ✓ Compiled in 125ms
-[00:10:58.968] Server  LOG     ✓ Compiled in 166ms
-[00:12:40.809] Server  LOG     ✓ Compiled in 127ms
-[00:13:53.854] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:13:54.095] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/ceo color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/ceo","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738092555} /_vercel/insights/view
-[00:14:04.752] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/director color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/director","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738103206} /_vercel/insights/view
-[00:14:09.396] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/ceo color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/ceo","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738107859} /_vercel/insights/view
-[00:14:48.299] Server  LOG     ✓ Compiled in 377ms
-[00:15:00.360] Server  LOG     ✓ Compiled in 118ms
-[00:15:02.541] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:15:02.719] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738161177} /_vercel/insights/view
-[00:15:05.503] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/ceo color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/ceo","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738163975} /_vercel/insights/view
-[00:15:06.646] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:15:08.214] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738166668} /_vercel/insights/view
-[00:15:10.159] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738168633} /_vercel/insights/view
-[00:15:37.259] Server  LOG     ✓ Compiled in 135ms
-[00:15:39.200] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738197415} /_vercel/insights/view
-[00:15:41.196] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:15:41.351] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738199824} /_vercel/insights/view
-[00:15:43.788] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:15:43.788] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/about/message/founder","route":"/about/message/[id]"}
-[00:15:43.788] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738202260} /_vercel/insights/view
-[00:15:45.344] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:15:45.344] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/about/message/founder","route":"/about/message/[id]"}
-[00:15:45.344] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738203814} /_vercel/insights/view
-[00:15:45.792] Browser LOG     Service Worker registered: http://localhost:3000/
-[00:16:29.488] Server  LOG     ✓ Compiled in 128ms
-[00:16:32.261] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738250469} /_vercel/insights/view
-[00:16:32.382] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:16:34.182] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:16:34.404] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738252869} /_vercel/insights/view
-[00:16:40.748] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/principal color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/principal","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738259211} /_vercel/insights/view
-[00:16:43.501] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738261962} /_vercel/insights/view
-[00:17:05.352] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:17:05.558] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/team color: rgb(120, 120, 120) color: inherit {"dp":"/about/team","o":"http://localhost:3000/about/team","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738284028} /_vercel/insights/view
-[00:17:22.175] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/hod color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/hod","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738300642} /_vercel/insights/view
-[00:17:34.749] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738313218} /_vercel/insights/view
-[00:17:39.858] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/director color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/director","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738318323} /_vercel/insights/view
-[00:17:42.563] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/principal color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/principal","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738321019} /_vercel/insights/view
-[00:17:47.957] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/hod color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/hod","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738326426} /_vercel/insights/view
-[00:18:23.436] Server  LOG     ✓ Compiled in 119ms
-[00:19:01.776] Server  LOG     ✓ Compiled in 115ms
-[00:19:13.399] Server  LOG     ✓ Compiled in 163ms
-[00:19:15.409] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:19:16.073] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:19:16.074] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:01:58.932] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:58.932] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:58.932] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:58.932] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777790879226} /_vercel/insights/view
+[00:01:59.544] Browser LOG     Service Worker registered: http://localhost:3000/
+[00:02:07.995] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:02:08.000] Server  LOG     ✓ Compiled in 726ms
+[00:02:32.130] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.137] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.144] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.151] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.157] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.164] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.173] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.178] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.182] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.188] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.194] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.198] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.201] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.205] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.209] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.214] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.216] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.219] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.223] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.226] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.229] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.232] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.237] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.242] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.362] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.366] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.371] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.376] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.381] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.385] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.390] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.394] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.398] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.402] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.406] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.411] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.415] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.418] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.423] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.426] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.431] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.470] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.479] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.485] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.494] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.500] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.505] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.509] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.512] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.516] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.521] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.526] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.530] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.535] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.539] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.544] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.551] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.563] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.575] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.583] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.604] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.618] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.642] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.658] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.674] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.698] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.724] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.728] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.732] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.736] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.741] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.746] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.751] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.767] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.776] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.782] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.786] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.794] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.808] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.813] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.818] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.826] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.833] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.841] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.847] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.853] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.874] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.880] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.887] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.898] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.902] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.910] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.916] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.929] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.939] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.944] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.952] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.958] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.966] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.975] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.982] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.987] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:32.993] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.001] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.009] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.013] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.020] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.042] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.054] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.060] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.065] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.110] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.149] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.186] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.199] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.211] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.226] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.232] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.240] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.249] Server  ERROR   ⨯ ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.255] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.261] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.266] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.276] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.282] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.294] Server  ERROR   ⨯ ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.303] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.318] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.327] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.337] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.348] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.360] Server  ERROR   ⨯ ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:02:33.406] Server  LOG     ✓ Compiled in 2.9s
+[00:02:35.834] Browser ERROR   ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:02:35.834] Browser ERROR   ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:02:35.834] Browser ERROR   ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:02:35.834] Browser ERROR   ./components/chatbot.tsx:4:1
+Module not found: Can't resolve 'framer-motion'
+  2 |
+  3 | import { useState, useEffect, useRef } from "react";
+> 4 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Send,
+  7 |   X,
+
+Import trace:
+  Server Component:
+    ./components/chatbot.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:02:35.834] Browser ERROR   ./components/header.tsx:5:1
+Module not found: Can't resolve 'framer-motion'
+  3 | import React, { useState, useMemo } from "react";
+  4 | import Link from "next/link";
+> 5 | import { motion, AnimatePresence } from "framer-motion";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import {
+  7 |   ChevronDown,
+  8 |   ChevronRight,
+
+Import trace:
+  Server Component:
+    ./components/header.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:02:35.834] Browser ERROR   ./components/hero.tsx:7:1
+Module not found: Can't resolve 'framer-motion'
+   5 | import useEmblaCarousel from "embla-carousel-react";
+   6 | import Autoplay from "embla-carousel-autoplay";
+>  7 | import { motion, AnimatePresence } from "framer-motion";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 | import { useRouter } from "next/navigation";
+   9 | import Link from "next/link";
+  10 |
+
+Import trace:
+  Server Component:
+    ./components/hero.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:02:37.203] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:02:40.717] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:40.717] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:02:40.717] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777790920015} /_vercel/insights/view
+[00:04:35.718] Browser ERROR   ./components/featuresSection.jsx:16:1
+Parsing ecmascript source code failed
+  14 |
+  15 | // --- Types ---
+> 16 | interface FeatureProps {
+     | ^^^^^^^^^
+  17 |   id: string;
+  18 |   title: string;
+  19 |   description: string;
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./components/featuresSection.jsx
+    ./app/page.tsx
+[00:04:36.915] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:05:20.044] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:06:57.662] Server  LOG     ✓ Compiled in 351ms
+[00:06:59.933] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:08:15.930] Server  LOG     ✓ Compiled in 131ms
+[00:08:41.311] Server  LOG     ✓ Compiled in 153ms
+[00:08:48.874] Server  LOG     ✓ Compiled in 271ms
+[00:08:54.553] Server  LOG     ✓ Compiled in 311ms
+[00:09:06.074] Server  LOG     ✓ Compiled in 290ms
+[00:09:15.479] Server  LOG     ✓ Compiled in 182ms
+[00:09:51.282] Server  LOG     ✓ Compiled in 142ms
+[00:09:51.378] Browser ERROR   uncaughtError: Error: Objects are not valid as a React child (found: [object Date]). If you meant to render a collection of children, use an array instead.
+[00:10:28.983] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:29.459] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:10:29.462] Server  LOG     ✓ Compiled in 134ms
+[00:10:29.733] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777791389510} /_vercel/insights/view
+[00:10:31.718] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:31.718] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:10:31.718] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777791391617} /_vercel/insights/view
+[00:10:33.933] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:10:33.933] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:17.409] Server  LOG     ✓ Compiled in 281ms
+[00:12:53.322] Server  LOG     ✓ Compiled in 239ms
+[00:15:37.147] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./components/featuresSection.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:15:37.553] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:15:37.564] Server  LOG     ✓ Compiled in 324ms
+[00:15:39.421] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:15:39.421] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:15:39.421] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:15:39.421] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777791699706} /_vercel/insights/view
+[00:16:12.428] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./components/featuresSection.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:16:12.716] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:16:12.721] Server  LOG     ✓ Compiled in 289ms
+[00:16:14.592] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:16:14.592] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:16:14.592] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:16:14.592] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777791734885} /_vercel/insights/view
+[00:16:58.509] Server  LOG     ✓ Compiled in 215ms
+[00:18:22.970] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:18:22.976] Server  LOG     ✓ Compiled in 915ms
+[00:49:21.440] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:49:22.181] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:49:22.187] Server  LOG     ✓ Compiled in 275ms
+[00:49:48.423] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:49:48.429] Server  LOG     ✓ Compiled in 782ms
+[00:50:59.904] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -131,7 +2873,7 @@ It can also happen if the client has a browser extension installed which messes 
         <ReplaySsrOnlyErrors>
         <DevRootHTTPAccessFallbackBoundary>
           <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/about/mes..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
               <RedirectBoundary>
                 <RedirectErrorBoundary router={{...}}>
                   <Head>
@@ -150,185 +2892,25 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:19:16.074] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:19:16.074] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:16.074] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/about/message/hod","route":"/about/message/[id]"}
-[00:19:16.074] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/hod color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/hod","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738414547} /_vercel/insights/view
-[00:19:25.169] Server  LOG     ✓ Compiled in 186ms
-[00:19:55.198] Server  LOG     ✓ Compiled in 134ms
-[00:20:02.988] Server  LOG     ✓ Compiled in 131ms
-[00:20:12.689] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:20:12.985] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/principal color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/principal","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738471347} /_vercel/insights/view
-[00:20:23.445] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738481904} /_vercel/insights/view
-[00:20:33.095] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bscictc color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bscictc","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738491555} /_vercel/insights/view
-[00:21:24.828] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:21:27.462] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:21:28.582] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738546838} /_vercel/insights/view
-[00:21:31.007] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bscictc color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bscictc","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738549477} /_vercel/insights/view
-[00:23:17.465] Server  LOG     ✓ Compiled in 126ms
-[00:23:19.676] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738658128} /_vercel/insights/view
-[00:23:23.215] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:23:23.417] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bsccssdi color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bsccssdi","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738661877} /_vercel/insights/view
-[00:23:43.968] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:24:33.965] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/programs/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="en">
-                          <body
-                            className="geist_9e050971-module__05dp7a__className  antialiased"
--                           cz-shortcut-listen="true"
-                          >
-                  ...
-
-[00:24:33.965] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:24:33.965] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:24:33.965] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/bsccssdi","route":"/programs/[...slug]"}
-[00:24:33.965] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bsccssdi color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bsccssdi","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738732433} /_vercel/insights/view
-[00:24:43.528] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:25:49.775] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/programs/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="en">
-                          <body
-                            className="geist_9e050971-module__05dp7a__className  antialiased"
--                           cz-shortcut-listen="true"
-                          >
-                  ...
-
-[00:25:49.775] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:25:49.775] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:25:49.775] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/programs/bsccssdi","route":"/programs/[...slug]"}
-[00:25:49.775] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bsccssdi color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bsccssdi","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738808249} /_vercel/insights/view
-[00:26:26.302] Server  LOG     ✓ Compiled in 239ms
-[00:26:49.420] Server  LOG     ✓ Compiled in 122ms
-[00:26:57.502] Server  LOG     ✓ Compiled in 115ms
-[00:27:08.081] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:27:08.344] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bhm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bhm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738886805} /_vercel/insights/view
-[00:28:44.877] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/affiliation color: rgb(120, 120, 120) color: inherit {"dp":"/about/affiliation","o":"http://localhost:3000/about/affiliation","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738983344} /_vercel/insights/view
-[00:28:49.028] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about color: rgb(120, 120, 120) color: inherit {"dp":"/about","o":"http://localhost:3000/about","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738987494} /_vercel/insights/view
-[00:29:00.033] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bttm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bttm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776738998495} /_vercel/insights/view
-[00:29:06.711] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about color: rgb(120, 120, 120) color: inherit {"dp":"/about","o":"http://localhost:3000/about","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739005178} /_vercel/insights/view
-[00:29:20.181] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:29:20.421] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739018886} /_vercel/insights/view
-[00:29:26.463] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:29:26.463] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/mission-vision color: rgb(120, 120, 120) color: inherit {"dp":"/about/mission-vision","o":"http://localhost:3000/about/mission-vision","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739024922} /_vercel/insights/view
-[00:30:14.319] Server  LOG     ✓ Compiled in 249ms
-[00:30:50.654] Server  LOG     ✓ Compiled in 135ms
-[00:30:58.719] Server  LOG     ✓ Compiled in 265ms
-[00:31:29.728] Server  LOG     ✓ Compiled in 200ms
-[00:32:00.404] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/facilities color: rgb(120, 120, 120) color: inherit {"dp":"/about/facilities","o":"http://localhost:3000/about/facilities","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739178872} /_vercel/insights/view
-[00:32:18.287] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/affiliation color: rgb(120, 120, 120) color: inherit {"dp":"/about/affiliation","o":"http://localhost:3000/about/affiliation","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739196753} /_vercel/insights/view
-[00:32:48.802] Server  LOG     ✓ Compiled in 172ms
-[00:32:58.645] Server  LOG     ✓ Compiled in 156ms
-[00:33:14.463] Server  LOG     ✓ Compiled in 138ms
-[00:33:18.768] Server  LOG     ✓ Compiled in 155ms
-[00:33:33.682] Server  LOG     ✓ Compiled in 141ms
-[00:33:40.142] Server  LOG     ✓ Compiled in 150ms
-[00:33:50.286] Server  LOG     ✓ Compiled in 255ms
-[00:33:55.186] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about color: rgb(120, 120, 120) color: inherit {"dp":"/about","o":"http://localhost:3000/about","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739293641} /_vercel/insights/view
-[00:33:57.218] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739295685} /_vercel/insights/view
-[00:34:00.033] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:34:00.192] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/mission-vision color: rgb(120, 120, 120) color: inherit {"dp":"/about/mission-vision","o":"http://localhost:3000/about/mission-vision","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739298654} /_vercel/insights/view
-[00:34:04.805] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/facilities color: rgb(120, 120, 120) color: inherit {"dp":"/about/facilities","o":"http://localhost:3000/about/facilities","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739303274} /_vercel/insights/view
-[00:34:24.776] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:34:24.956] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/affiliation color: rgb(120, 120, 120) color: inherit {"dp":"/about/affiliation","o":"http://localhost:3000/about/affiliation","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739323420} /_vercel/insights/view
-[00:34:28.030] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/facilities color: rgb(120, 120, 120) color: inherit {"dp":"/about/facilities","o":"http://localhost:3000/about/facilities","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739326487} /_vercel/insights/view
-[00:35:06.052] Server  LOG     ✓ Compiled in 137ms
-[00:35:21.776] Server  LOG     ✓ Compiled in 153ms
-[00:39:18.340] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/affiliation color: rgb(120, 120, 120) color: inherit {"dp":"/about/affiliation","o":"http://localhost:3000/about/affiliation","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739616807} /_vercel/insights/view
-[00:39:43.622] Server  LOG     ✓ Compiled in 136ms
-[00:39:51.280] Server  LOG     ✓ Compiled in 167ms
-[00:39:54.962] Server  LOG     ✓ Compiled in 150ms
-[00:40:04.518] Server  LOG     ✓ Compiled in 167ms
-[00:40:11.538] Server  LOG     ✓ Compiled in 175ms
-[00:40:34.519] Server  LOG     ✓ Compiled in 152ms
-[00:40:37.803] Server  LOG     ✓ Compiled in 144ms
-[00:41:30.129] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/about/message/founder color: rgb(120, 120, 120) color: inherit {"dp":"/about/message/[id]","o":"http://localhost:3000/about/message/founder","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739748595} /_vercel/insights/view
-[00:42:17.019] Server  LOG     ✓ Compiled in 141ms
-[00:42:26.642] Server  LOG     ✓ Compiled in 137ms
-[00:43:36.925] Server  LOG     ✓ Compiled in 119ms
-[00:44:00.223] Server  LOG     ✓ Compiled in 137ms
-[00:44:00.225] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:44:09.069] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:44:09.073] Server  LOG     ✓ Compiled in 197ms
-[00:44:27.041] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:44:27.048] Server  LOG     ✓ Compiled in 143ms
-[00:45:09.410] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:45:09.632] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/mba color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/mba","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776739968103} /_vercel/insights/view
-[00:46:06.120] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:46:07.411] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776740025844} /_vercel/insights/view
-[00:47:59.550] Server  LOG     ✓ Compiled in 124ms
-[00:48:01.702] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:48:01.941] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/bhm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/bhm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776740140410} /_vercel/insights/view
-[00:48:16.467] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/babm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776740154933} /_vercel/insights/view
-[00:48:27.538] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/mba color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/mba","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776740165997} /_vercel/insights/view
-[00:48:53.885] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:49:00.333] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/programs/babm color: rgb(120, 120, 120) color: inherit {"dp":"/programs/[...slug]","o":"http://localhost:3000/programs/babm","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776740198797} /_vercel/insights/view
-[00:49:16.087] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:49:28.627] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:49:45.444] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:49:48.975] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:50:01.270] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:50:22.167] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:50:32.760] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:50:33.701] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776740292145} /_vercel/insights/view
-[00:54:07.941] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[01:24:07.412] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[01:24:07.419] Server  LOG     ✓ Compiled in 783ms
-[01:24:47.799] Server  LOG     ✓ Compiled in 868ms
-[02:00:06.457] Server  LOG     ✓ Compiled in 165ms
-[02:00:13.897] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:50:59.904] Browser WARN    Image with src "http://localhost:3000/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:51:00.011] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:51:00.011] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:51:00.011] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777793820302} /_vercel/insights/view
+[00:53:14.816] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:53:19.895] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:53:42.105] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:54:43.657] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:54:53.005] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:54:59.065] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:55:19.908] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:55:24.897] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:55:28.447] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:55:34.395] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:55:39.246] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:56:19.060] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:56:30.471] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:56:40.945] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:57:00.395] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:57:10.221] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:57:17.170] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[02:14:34.307] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/apply color: rgb(120, 120, 120) color: inherit {"dp":"/apply","o":"http://localhost:3000/apply","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1777798834583} /_vercel/insights/view
